@@ -1,0 +1,198 @@
+<div class="container">
+  <!-- Outer Row -->
+  <div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+            <div class="col-lg-6">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                </div>
+                <!-- 印出來 -->
+                <pre>{{ data | json }}</pre>
+                <!-- 上課操作 -->
+                <form class="user" #form="ngForm" (ngSubmit)="doSubmit(form)">
+                  <pre>
+form.value = {{ form.value | json }}
+form.pristine  = {{ form.pristine }}
+form.dirty     = {{ form.dirty }}
+form.touched   = {{ form.touched }}
+form.untouched = {{ form.untouched }}
+form.valid     = {{ form.valid }}
+form.invalid   = {{ form.invalid }}
+form.errors    = {{ form.errors | json }}
+form.pending = {{ form.pending }}
+form.status    = {{ form.status }}
+form.enabled   = {{ form.enabled }}
+form.disabled  = {{ form.disabled }}
+form.submitted  = {{ form.submitted }}
+</pre
+                  >
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      name="email"
+                      #tEmail="ngModel"
+                      required
+                      email
+                      [(ngModel)]="data.email"
+                      [class.is-invalid]="form.submitted && tEmail.invalid"
+                      [class.is-valid]="form.submitted && tEmail.valid"
+                      class="form-control form-control-user"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="123@gmail.com"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="form.submitted && tEmail.errors?.email"
+                    >
+                      請輸入合法的 E-mail
+                    </div>
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="form.submitted && tEmail.errors?.required"
+                    >
+                      請輸入 E-mail
+                    </div>
+                  </div>
+                  <pre>
+tEmail.value={{ tEmail.value }}
+tEmail.pristine = {{ tEmail.pristine }}
+tEmail.dirty = {{ tEmail.dirty }}
+tEmail.touched = {{ tEmail.touched }}
+tEmail.untouched = {{ tEmail.untouched }}
+tEmail.valid = {{ tEmail.valid }}
+tEmail.invalid = {{ tEmail.invalid }}
+tEmail.errors = {{ tEmail.errors | json }}
+tEmail.status = {{ tEmail.status }}
+tEmail.enabled = {{ tEmail.enabled }}
+tEmail.disabled = {{ tEmail.disabled }}
+                  </pre>
+
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      name="password"
+                      #tPassword="ngModel"
+                      required
+                      minlength="6"
+                      [(ngModel)]="data.password"
+                      [class.is-invalid]="isFieldValid(tPassword)"
+                      [class.is-valid]="form.submitted && tPassword.valid"
+                      class="form-control form-control-user"
+                      id="exampleInputPassword"
+                      placeholder="Password"
+                    />
+                    <div class="invalid-feedback" *ngIf="form.submitted">
+                      密碼錯誤
+                    </div>
+                  </div>
+
+                  <!-- Phone -->
+                  <div ngModelGroup="phoneGroup" #tPhoneGroup="ngModelGroup">
+                    <div
+                      class="form-group"
+                      *ngFor="let item of phone_fields; let i = index"
+                    >
+                      <input
+                        type="text"
+                        name="phone"
+                        #tPhone="ngModel"
+                        required
+                        minlength="10"
+                        maxlengh="10"
+                        [(ngModel)]="data.phones[i]"
+                        [class.is-valid]="tPhoneGroup.valid"
+                        [class.is-invalid]="tPhoneGroup.invalid"
+                        class="form-control form-control-user"
+                        id="exampleInputPhone"
+                        placeholder="02-1234-5678"
+                      />
+                      <div
+                        class="invalid-feedback"
+                        *ngIf="tPhone.errors?.require"
+                      >
+                        電話格式錯誤
+                      </div>
+                    </div>
+                    <pre>
+tPhoneGroup.value={{ tPhoneGroup.value }}
+tPhoneGroup.pristine = {{ tPhoneGroup.pristine }}
+tPhoneGroup.dirty = {{ tPhoneGroup.dirty }}
+tPhoneGroup.touched = {{ tPhoneGroup.touched }}
+tPhoneGroup.untouched = {{ tPhoneGroup.untouched }}
+tPhoneGroup.valid = {{ tPhoneGroup.valid }}
+tPhoneGroup.invalid = {{ tPhoneGroup.invalid }}
+tPhoneGroup.errors = {{ tPhoneGroup.errors | json }}
+tPhoneGroup.status = {{ tPhoneGroup.status }}
+tPhoneGroup.enabled = {{ tPhoneGroup.enabled }}
+tPhoneGroup.disabled = {{ tPhoneGroup.disabled }}
+</pre
+                    >
+                  </div>
+
+                  <div class="form-group">
+                    <div class="custom-control custom-checkbox small">
+                      <input
+                        type="checkbox"
+                        name="isRemember"
+                        #tCheck="ngModel"
+                        required
+                        [(ngModel)]="data.isRemember"
+                        [class.is-invalid]="form.submitted && tCheck.invalid"
+                        class="custom-control-input"
+                        id="customCheck"
+                      />
+                      <label class="custom-control-label" for="customCheck">
+                        Remember Me
+                      </label>
+                      <div
+                        class="invalid-feedback"
+                        *ngIf="form.submitted && tCheck.errors?.required"
+                      >
+                        必勾
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="btn btn-primary btn-user btn-block"
+                    type="submit"
+                  >
+                    Login
+                  </button>
+                  <hr />
+                  <a
+                    href="index.html"
+                    class="btn btn-google btn-user btn-block"
+                  >
+                    <i class="fab fa-google fa-fw"></i> Login with Google
+                  </a>
+                  <a
+                    href="index.html"
+                    class="btn btn-facebook btn-user btn-block"
+                  >
+                    <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                  </a>
+                </form>
+                <hr />
+                <div class="text-center">
+                  <a class="small" href="forgot-password.html"
+                    >Forgot Password?</a
+                  >
+                </div>
+                <div class="text-center">
+                  <a class="small" href="register.html">Create an Account!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
