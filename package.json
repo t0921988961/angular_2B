@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "GitHubbuild": "ng build --prod --base-href /angular_2B/dist/demo1/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
