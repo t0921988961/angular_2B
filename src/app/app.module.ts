@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+// ngx-translate
+import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,8 +31,15 @@ import { from } from 'rxjs';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
-    TranslateModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => new TranslateHttpLoader(http),
+        deps: [HttpClient]
+      }
+    }),
     AppRoutingModule,
   ],
   providers: [],

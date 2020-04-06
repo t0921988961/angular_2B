@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent implements OnInit {
   title = 'demo1';
-  langs = ['zh-TW', 'en-US'];
+  langs = ['zh-TW', 'en-US', 'ja-JP'];
 
   constructor(private translateService: TranslateService) {
     this.translateService.setTranslation('zh-TW', {
@@ -16,6 +16,9 @@ export class AppComponent implements OnInit {
     });
     this.translateService.setTranslation('en-US', {
       Hello: 'Hello Hello'
+    });
+    this.translateService.setTranslation('ja-JP', {
+      Hello: 'やあ やあ'
     });
   }
 
