@@ -16,8 +16,11 @@ import { ChartsComponent } from './charts/charts.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { Login2Component } from './login2/login2.component';
-import { from } from 'rxjs';
 
+
+export function createLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -36,7 +39,7 @@ import { from } from 'rxjs';
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (http: HttpClient) => new TranslateHttpLoader(http),
+        useFactory: createLoader,
         deps: [HttpClient]
       }
     }),
