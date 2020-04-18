@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
   helloNames = { helloName: 'Luke' };
 
-  constructor(private translateService: TranslateService) {
+  constructor(public translateService: TranslateService) {
     // this.translateService.setTranslation('zh-TW', {
     //   Hello: '哈囉'
     // });

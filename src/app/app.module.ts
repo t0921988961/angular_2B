@@ -16,6 +16,9 @@ import { ChartsComponent } from './charts/charts.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { Login2Component } from './login2/login2.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { Page01Component } from './page01/page01.component';
+import { Page02Component } from './page02/page02.component';
 
 
 export function createLoader(http: HttpClient) {
@@ -31,6 +34,9 @@ export function createLoader(http: HttpClient) {
     LoginComponent,
     LayoutComponent,
     Login2Component,
+    DashboardComponent,
+    Page01Component,
+    Page02Component
   ],
   imports: [
     BrowserModule,
