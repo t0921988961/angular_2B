@@ -22,7 +22,7 @@ import { Page02Component } from './page02/page02.component';
 
 
 export function createLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
