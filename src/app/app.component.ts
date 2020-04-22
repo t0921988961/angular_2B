@@ -12,6 +12,13 @@ export class AppComponent implements OnInit {
 
   helloNames = { helloName: 'Luke' };
 
+  urlParameters = {
+    protocol: window.location.protocol,
+    host: window.location.host,
+    path: window.location.pathname,
+    acceptLanguge: window.navigator.language
+  };
+
   constructor(public translateService: TranslateService) {
     // this.translateService.setTranslation('zh-TW', {
     //   Hello: '哈囉'
@@ -26,6 +33,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.translateService.use('zh-TW');
+    console.log('window.navigator.language => ' + window.navigator.language);
+    location.href =
+      this.urlParameters.protocol + '//' + this.urlParameters.host + '/' + '#/' + this.urlParameters.acceptLanguge;
   }
 
   changeLanguage(lang: string) {

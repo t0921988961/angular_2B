@@ -17,8 +17,8 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
-      { path: 'dashboard', component: DashboardComponent },
+      { path: ':lang', pathMatch: 'full', redirectTo: ':lang/dashboard' },
+      { path: ':lang/dashboard', component: DashboardComponent },
       { path: 'page01', component: Page01Component },
       { path: 'page02', component: Page02Component },
       { path: 'charts', component: ChartsComponent },
