@@ -49,7 +49,8 @@ export function createLoader(http: HttpClient) {
         provide: TranslateLoader,
         useFactory: createLoader,
         deps: [HttpClient]
-      }
+      },
+      isolate: true
     }),
     AppRoutingModule,
   ],

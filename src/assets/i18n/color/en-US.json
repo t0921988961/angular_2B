@@ -1,0 +1,11 @@
+{
+  "Hello": "Hello Hello {{helloName}}",
+  "menu": {
+    "home": "Home",
+    "feature": {
+      "name": "Feature module",
+      "form": "Form"
+    },
+    "language": "Language"
+  }
+}

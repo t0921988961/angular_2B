@@ -33,9 +33,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.translateService.use('zh-TW');
-    console.log('window.navigator.language => ' + window.navigator.language);
+
+    console.log('this.translateService.resetLang() ' + this.translateService.resetLang('en-US'));
+    console.log('this.translateService.getBrowserLang() ' + this.translateService.getBrowserLang());
+    console.log('this.translateService.getBrowserCultureLang() ' + this.translateService.getBrowserCultureLang());
+
+    // console.log('window.navigator.language => ' + window.navigator.language);
     location.href =
-      this.urlParameters.protocol + '//' + this.urlParameters.host + '/' + '#/' + this.urlParameters.acceptLanguge;
+      this.urlParameters.protocol + '//' + this.urlParameters.host + '/' + '#/' + this.translateService.getBrowserCultureLang();
   }
 
   changeLanguage(lang: string) {
