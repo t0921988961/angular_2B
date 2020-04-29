@@ -11,6 +11,6 @@ import { SupportComponent } from './support.component';
     CommonModule,
     SupportRoutingModule
   ],
-  exports: [SupportComponent]
+  // exports: [SupportComponent]
 })
 export class SupportModule { }

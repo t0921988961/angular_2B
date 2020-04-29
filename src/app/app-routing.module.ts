@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
-import { ContactComponent } from './contact/contact.component';
-import { SupportComponent } from './support/support.component';
+// import { ContactComponent } from './contact/contact.component';
 
 
 const routes: Routes = [
   {
     path: '', component: LayoutComponent, children: [
       {
-        path: 'support', component: SupportComponent
+        path: 'support', loadChildren: () => import('./support/support.module').then(m => m.SupportModule)
       },
       {
-        path: '', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+        path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
       }
     ]
   },
-  { path: 'support', loadChildren: () => import('./support/support.module').then(m => m.SupportModule) },
 ];
 
 @NgModule({
