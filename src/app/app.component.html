@@ -1,7 +1,0 @@
-<h1>{{ "Hello" | translate: helloNames }}</h1>
-<div [translate]="'Hello'" [translateParams]="{ value: 'world' }"></div>
-<div translate [translateParams]="{ value: 'world' }">Hello</div>
-<select name="lang" id="" (change)="changeLanguage($event.target.value)">
-  <option value="{{ item }}" *ngFor="let item of langs">{{ item }}</option>
-</select>
-<router-outlet></router-outlet>
