@@ -11,10 +11,11 @@ const routes: Routes = [
       //   path: 'contact', component: ContactComponent
       // },
       {
-        path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+        path: '', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
       }
     ]
   },
+  { path: 'support', loadChildren: () => import('./support/support.module').then(m => m.SupportModule) },
 ];
 
 @NgModule({

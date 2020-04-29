@@ -5,6 +5,7 @@ import { FootComponent } from './foot/foot.component';
 import { RouterModule } from '@angular/router';
 import { ContactComponent } from '../contact/contact.component';
 import { ContactModule } from '../contact/contact.module';
+import { SupportComponent } from '../support/support.component';
 
 
 
@@ -13,7 +14,8 @@ import { ContactModule } from '../contact/contact.module';
   imports: [
     CommonModule,
     RouterModule,
-    ContactModule
+    ContactModule,
+    SupportComponent
   ],
   exports: [HeadComponent, FootComponent]
 })
