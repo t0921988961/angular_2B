@@ -1,0 +1,20 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HeadComponent } from './head/head.component';
+import { FootComponent } from './foot/foot.component';
+import { RouterModule } from '@angular/router';
+import { ContactComponent } from '../contact/contact.component';
+import { ContactModule } from '../contact/contact.module';
+
+
+
+@NgModule({
+  declarations: [HeadComponent, FootComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ContactModule
+  ],
+  exports: [HeadComponent, FootComponent]
+})
+export class LayoutModule { }
