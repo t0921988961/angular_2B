@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FilamentComponent } from './filament/filament.component';
+import { ResinComponent } from './resin/resin.component';
 
 
 const routes: Routes = [
-  { path: 'filament', loadChildren: () => import('./filament/filament.module').then(m => m.FilamentModule) },
-  { path: 'resin', loadChildren: () => import('./resin/resin.module').then(m => m.ResinModule) },
+  { path: 'filament', component: FilamentComponent },
+  { path: 'resin', component: ResinComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

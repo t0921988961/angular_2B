@@ -1,19 +1,35 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { Partpro350XBCComponent } from './Binder_Jetting/partpro350-x-bc/partpro350-x-bc.component';
+import { Partpro120XPComponent } from './DLP/partpro120-x-p/partpro120-x-p.component';
+import { Castpro100XPComponent } from './DLP/castpro100-x-p/castpro100-x-p.component';
+import { Partpro200XTCSComponent } from './Color_fff/partpro200-x-tcs/partpro200-x-tcs.component';
+import { Partpro100XPComponent } from './DLP/partpro100-x-p/partpro100-x-p.component';
+import { Partpro300XTComponent } from './FFF/partpro300-x-t/partpro300-x-t.component';
+import { Mfgpro230XSComponent } from './SLS/mfgpro230-x-s/mfgpro230-x-s.component';
+import { Partpro150XpComponent } from './SL/partpro150-xp/partpro150-xp.component';
+import { Eeezcure180Component } from './UV_Curing/eeezcure180/eeezcure180.component';
+import { Multicure180Component } from './UV_Curing/multicure180/multicure180.component';
 
 
 const routes: Routes = [
-
-  // tslint:disable-next-line:max-line-length
-  { path: 'Binder_Jetting/PartPro350_xBC', loadChildren: () => import('./Binder_Jetting/partpro350-x-bc/partpro350-x-bc.module').then(m => m.Partpro350XBCModule) },
-  // tslint:disable-next-line:max-line-length
-  { path: 'Color_fff/PartPro200_xTCS', loadChildren: () => import('./Color_fff/partpro200-x-tcs/partpro200-x-tcs.module').then(m => m.Partpro200XTCSModule) },
-  // tslint:disable-next-line:max-line-length
-  { path: 'DLP/CastPro100_xP', loadChildren: () => import('./DLP/castpro100-x-p/castpro100-x-p.module').then(m => m.Castpro100XPModule) },
-  // tslint:disable-next-line:max-line-length
-  { path: 'DLP/PartPro120_xP', loadChildren: () => import('./DLP/partpro120-x-p/partpro120-x-p.module').then(m => m.Partpro120XPModule) },
-  // tslint:disable-next-line:max-line-length
-  { path: 'DLP/PartPro100_xP', loadChildren: () => import('./DLP/partpro100-x-p/partpro100-x-p.module').then(m => m.Partpro100XPModule) },
+  // Binder_Jetting
+  { path: 'Binder_Jetting/PartPro350_xBC', component: Partpro350XBCComponent },
+  // Color_fff
+  { path: 'Color_fff/PartPro200_xTCS', component: Partpro200XTCSComponent },
+  // DLP
+  { path: 'DLP/CastPro100_xP', component: Castpro100XPComponent },
+  { path: 'DLP/PartPro120_xP', component: Partpro120XPComponent },
+  { path: 'DLP/PartPro100_xP', component: Partpro100XPComponent },
+  // FFF
+  { path: 'FFF/PartPro300_xT', component: Partpro300XTComponent },
+  // SLS
+  { path: 'SLS/MfgPro230_xS', component: Mfgpro230XSComponent },
+  // SL
+  { path: 'SL/partPro150_xp', component: Partpro150XpComponent },
+  // UV_Curing
+  { path: 'UV_Curing/EeezCure180', component: Eeezcure180Component },
+  { path: 'UV_Curing/MultiCure180', component: Multicure180Component },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
