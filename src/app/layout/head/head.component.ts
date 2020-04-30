@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CallApiService } from 'src/app/service/call-api.service';
 
 @Component({
   selector: 'app-head',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadComponent implements OnInit {
 
-  constructor() { }
+  constructor(private callApiService: CallApiService) { }
 
   ngOnInit() {
+    this.callApiService.runs();
   }
 
 }
