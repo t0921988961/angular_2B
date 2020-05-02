@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CallApiService } from 'src/app/service/call-api.service';
+
+
+// ngx-translate
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-head',
@@ -8,10 +11,20 @@ import { CallApiService } from 'src/app/service/call-api.service';
 })
 export class HeadComponent implements OnInit {
 
-  constructor(private callApiService: CallApiService) { }
+  langs = ['zh-TW', 'en-US', 'ja-JP'];
+
+  constructor(private translateService: TranslateService) {
+
+  }
 
   ngOnInit() {
-    this.callApiService.runs();
+    this.translateService.use('zh-TW');
+  }
+
+  changeLanguage(lang: string) {
+    this.translateService.use(lang);
+    const hello = this.translateService.instant('Hello');
+    console.log('hello:', hello);
   }
 
 }

@@ -1,0 +1,53 @@
+@mixin mediaQueries($deviceType) {
+  @if $deviceType == lg {
+    @media screen and (min-width: 1921px) {
+      @content;
+    }
+    @media screen and (min-device-width: 1921px) {
+      @content;
+    }
+  } @else if $deviceType == desktop {
+    @media screen and (min-width: 1069px) and (max-width: 1920px) {
+      @content;
+    }
+    @media screen and (min-device-width: 1069px) and (max-device-width: 1920px) {
+      @content;
+    }
+  } @else if $deviceType == pad {
+    @media screen and (min-width: 736px) and (max-width: 1068px) {
+      @content;
+    }
+    @media screen and (min-device-width: 736px) and (max-device-width: 1068px) {
+      @content;
+    }
+  } @else if $deviceType == mobile {
+    @media screen and (max-width: 735px) {
+      @content;
+    }
+    @media screen and (max-device-width: 735px) {
+      @content;
+    }
+  }
+}
+
+//=================================================
+//=================================================
+//==============    Luke breakpoint  ==============
+//=================================================
+//=================================================
+// Use css inherit
+// CSS will inherit desk style so you not need write too many css style
+
+// screen width below 1279px
+@mixin b1279 {
+  @media (max-width: 1279px) {
+    @content;
+  }
+}
+
+// screen width below 767px
+@mixin b768 {
+  @media (max-width: 767px) {
+    @content;
+  }
+}

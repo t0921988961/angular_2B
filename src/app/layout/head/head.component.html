@@ -1,4 +1,13 @@
 <p>header work</p>
+<p>{{ "Hello" | translate }}</p>
+
+<select name="lang" id="" (change)="changeLanguage($event.target.value)">
+  <option value="{{ item }}" *ngFor="let item of langs">{{ item }}</option>
+</select>
+<!-- header start ***************************************************************-->
+
+<!-- header End ***************************************************************-->
+
 <ul class="head">
   <ul>
     <ul>

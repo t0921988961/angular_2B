@@ -1,0 +1,56 @@
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+  li {
+    display: inline;
+    a,
+    span {
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      font-size: 14px;
+      color: $color-gray_4646;
+      border: 1px #bbbbbb solid;
+      background-color: $color-white-light;
+      margin-left: -1px;
+      position: relative;
+      float: left;
+      text-decoration: none;
+      &:hover,
+      &:focus {
+        color: $color-gray_4646;
+        background-color: $color-white;
+      }
+    }
+    &:first-child {
+      a,
+      span {
+        margin-left: 0;
+      }
+    }
+    &.disabled {
+      a,
+      span {
+        color: $color-gray_8282;
+        cursor: not-allowed;
+        &:hover,
+        &:focus {
+          color: $color-gray_8282;
+          cursor: not-allowed;
+          background-color: initial;
+        }
+      }
+    }
+    &.active {
+      a,
+      span {
+        color: white;
+        cursor: default;
+        background-color: #cf1e1e;
+        z-index: 2;
+      }
+    }
+  }
+}

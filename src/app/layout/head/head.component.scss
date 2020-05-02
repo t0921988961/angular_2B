@@ -1,5 +1,754 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/breakpoint";
+
 .head {
   width: 100%;
   padding: 0 20px;
   background-color: rgb(248, 115, 115);
 }
+
+// header_footer Start *************************************************
+.page-header {
+  width: 100%;
+  height: 120px;
+  padding: 28px 15px 0 15px;
+  color: #fff;
+  position: relative;
+  z-index: 10;
+  transition: background-color 0.3s linear;
+  // background-color: $color-gray_9696;
+  @include b768 {
+    position: auto;
+    z-index: 30;
+    height: 50px;
+    padding: 12px 0;
+    background-color: $color-gray_4646;
+  }
+  &:hover,
+  &__active {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+    background-color: rgba(20, 20, 20, 0.7);
+    @include b768 {
+      position: relative;
+      background-color: $color-gray_4646;
+    }
+  }
+  .page1100 {
+    height: 100%;
+    @include b768 {
+      padding: 0px 20px;
+    }
+  }
+  .burgerBtn {
+    display: none;
+    @include b768 {
+      width: 20px;
+      height: 19px;
+      background: url(https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/ic_main.svg)
+        no-repeat 0px -60px / cover;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: 5px;
+      &.showMenu-mb {
+        background-position-y: -80px;
+      }
+    }
+  }
+}
+//top-menu  START ***********************
+.top-menu {
+  text-align: right;
+  margin-bottom: 14px;
+  @include b768 {
+    float: right;
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+  .auth {
+    width: 24px;
+    height: 24px;
+    background: url(https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/ic_main.svg)
+      no-repeat 0px -48px / cover;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    // margin-right: 10px;
+    @include b768 {
+      width: 20px;
+      height: 20px;
+      background: url(https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/ic_main.svg)
+        no-repeat 0px -40px / cover;
+      margin-right: 0;
+    }
+  }
+  .lang-switch {
+    width: 160px;
+    height: 32px;
+    border: 1px solid #d1d1d1;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    font-size: 14px;
+    line-height: 32px;
+    border-radius: 5px;
+    @include b768 {
+      display: none;
+    }
+    .currentLang {
+      &:after {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url(https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/ic_main.svg)
+          no-repeat 0px 0px / cover;
+        overflow: hidden;
+        position: absolute;
+        right: 10px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
+    .lang-item {
+      position: relative;
+      width: 100%;
+      text-indent: 30px;
+    }
+    .lang-list {
+      transition: all 0.2s;
+      position: relative;
+      top: -1px;
+      display: none;
+      &.showLang {
+        z-index: 7;
+        display: block;
+      }
+      .lang-item {
+        text-indent: 38px;
+        background-color: #090909;
+        border: 1px solid #d1d1d1;
+        box-sizing: content-box;
+        position: relative;
+        left: -1px;
+        &:first-child {
+          border-top: none;
+          border-bottom: none;
+        }
+        &:last-child {
+          border-bottom: 1px solid #d1d1d1;
+        }
+        &:hover {
+          background-color: $color-gray_4646;
+        }
+      }
+    }
+  }
+}
+//top-menu  END *************************
+
+.comsumer-site {
+  color: $color-white-deep;
+  vertical-align: middle;
+  font-size: 14px;
+  padding: 0 12px;
+  @include b768 {
+    color: white;
+    font-size: 16px;
+  }
+  &:before {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background: url(https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/ic_main.svg)
+      no-repeat 0px -110px / cover;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+}
+.reseller-site {
+  color: #d1d1d1;
+  vertical-align: middle;
+  font-size: 14px;
+  padding: 0 12px;
+  @include b768 {
+    color: white;
+    font-size: 16px;
+  }
+}
+
+//logo ***********************************
+.logo {
+  width: 32%;
+  max-width: 237px;
+  position: absolute;
+  top: 0;
+  @include b1279 {
+    width: 20%;
+  }
+  @include b768 {
+    width: 105px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  a {
+    display: block;
+    font-size: 0;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+//
+//main_menu_lg  START **********
+.main_menu_lg {
+  font-size: 16px;
+  // line-height: 2.25;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  @include b768 {
+    display: none;
+  }
+}
+.menu-item-wrap {
+  display: flex;
+  justify-content: flex-end;
+  //menu list
+  .menu-item {
+    cursor: pointer;
+    margin-left: 25px;
+    text-align: center;
+    position: relative;
+    z-index: 6;
+    padding: 0 20px;
+    padding-bottom: 30px;
+    // if product have sub menu
+    .printer_kind {
+      display: block;
+      position: relative;
+      width: 100%;
+    }
+    // Angular control Make sure Menu Array have sub-menu
+    // arrow " ^ "
+    .printer_kind:after {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: url(https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/ic_main.svg)
+        no-repeat 0px 0px / cover;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: -25px;
+      margin: auto;
+      transition: all 0.3s linear;
+    }
+    //level one ul
+    .sub-menu {
+      cursor: pointer;
+      width: 160px;
+      background: rgba(130, 130, 130, 1);
+      position: absolute;
+      z-index: -1;
+      top: 40px;
+      right: -17px;
+      display: none;
+      > .sub_product_li {
+        position: relative;
+        text-align: left;
+        // padding: 5px 30px 5px 10px;
+        &:last-child::after {
+          content: "";
+          display: block;
+          position: absolute;
+          width: 69%;
+          height: 41px;
+          padding: 5px 30px 5px 10px;
+        }
+      }
+      .sub_product_a {
+        display: block;
+        width: 100%;
+        padding: 10px 10px 10px 10px;
+      }
+      .type_sup {
+        font-size: 12px;
+        vertical-align: top;
+        position: absolute;
+        right: 10px;
+        top: 0;
+      }
+    }
+    //leve two ul
+    .product_sub_menu {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      display: none;
+      box-sizing: border-box;
+      width: 160px;
+      background: rgba(150, 150, 150, 1);
+      padding: -5px 5px 5px 10px;
+      > .product_sub_li {
+        cursor: pointer;
+        // padding: 5px 10px;
+        &:hover > .product_sub_a {
+          color: #f02323;
+        }
+      }
+      .product_sub_a {
+        display: block;
+        width: 100%;
+        padding: 10px 17px 10px 10px;
+      }
+    }
+  }
+
+  // sub_product <a> arrow
+  .icon_arrow {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/ic_main.svg)
+      no-repeat 0px 0px / cover;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    margin: auto;
+    transform: rotate(0deg);
+    transition: background 0.3s cubic-bezier(0.92, 0.3, 0, 1.33);
+  }
+
+  .menu-item:last-child {
+    padding-right: 0;
+  }
+
+  // angular ng-mouseenter add class  START ********************************
+  // menu active
+  .menu_item_active {
+    > .sub-menu {
+      display: block;
+      z-index: 5;
+    }
+    > .printer_kind,
+    .mobile_lang_switch {
+      color: #f02323;
+      &:after,
+      .icon_arrow {
+        background-position-y: -20px;
+      }
+    }
+  }
+
+  // sub_product active
+  .sub_product_active {
+    > a {
+      color: #f02323;
+      > .icon_arrow {
+        background: url(https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/ic_main.svg)
+          no-repeat 0px -20px / cover;
+        transform: rotate(90deg);
+      }
+    }
+    > .product_sub_menu {
+      display: block;
+    }
+  }
+  // angular ng-mouseenter add class  END ********************************
+}
+//main_menu_lg  END ************
+//
+//
+//main_menu_mb start ***********
+.main_menu_mb {
+  display: none;
+  @include b768 {
+    font-size: 16px;
+    line-height: 2.25;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: auto;
+    bottom: auto;
+    margin-top: 13px;
+    background: $color-gray_4646;
+    &.showMenu-mb {
+      display: block;
+      z-index: 16;
+    }
+  }
+}
+.menu_item_wrap_mb {
+  @include b768 {
+    width: 100%;
+    display: block;
+  }
+  //menu list
+  .menu-item {
+    @include b768 {
+      position: relative;
+      z-index: 6;
+      padding: 7px 0px;
+      width: 100%;
+      text-align: left;
+      text-indent: 30px;
+    }
+    > .a_block {
+      display: block;
+    }
+    > .printer_kind {
+      display: block;
+      position: relative;
+    }
+    // Angular control Make sure Menu Array have sub-menu
+    // arrow " ^ "
+    .printer_kind:after {
+      @include b768 {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url(https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/ic_main.svg)
+          no-repeat 0px 0px / cover;
+        overflow: hidden;
+        position: absolute;
+        right: 20px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        transition: all 0.3s linear;
+      }
+    }
+    //level one ul
+    .sub-menu {
+      display: none;
+      width: 100%;
+      background-color: $color-gray_8282;
+      position: relative;
+      top: 7px;
+      right: 0;
+      z-index: 5;
+      > .sub_product_li {
+        @include b768 {
+          padding: 7px 0;
+        }
+        &:last-child::after {
+          content: "";
+          width: 69%;
+          height: 41px;
+          display: block;
+          position: absolute;
+          padding: 5px 30px 5px 10px;
+        }
+      }
+      .type_sup {
+        position: absolute;
+        left: 117px;
+        top: 0;
+        font-size: 12px;
+        vertical-align: top;
+      }
+
+      > .sub_product {
+        position: relative;
+        text-align: left;
+        > .sub_product_a {
+          position: relative;
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+    .sub_product_a {
+      width: 100%;
+      display: block;
+      position: relative;
+    }
+    //leve two ul
+    .product_sub_menu {
+      @include b768 {
+        width: 100%;
+        display: none;
+        position: relative;
+        top: 0;
+        left: 0;
+        padding: -5px 5px 5px 10px;
+        background-color: $color-gray-9696;
+      }
+      > .product_sub_menu_li {
+        @include b768 {
+          padding: 7px 0;
+        }
+        > .product_sub_menu_a {
+          position: relative;
+          display: block;
+          width: 100%;
+        }
+        &:hover > a {
+          color: #f02323;
+        }
+      }
+    }
+  }
+
+  // sub_product <a> arrow
+  .icon_arrow {
+    @include b768 {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: url(https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/ic_main.svg)
+        no-repeat 0px 0px / cover;
+      overflow: hidden;
+      position: absolute;
+      right: 20px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      transform: rotate(0deg);
+      transition: background 0.1s cubic-bezier(0.92, 0.3, 0, 1.33);
+    }
+  }
+
+  .menu-item:nth-of-type(6) {
+    padding-right: 0;
+  }
+
+  // mobile show lang-switch
+  .lang-switch {
+    .mobile_lang_switch {
+      @include b768 {
+        display: block;
+        position: relative;
+      }
+    }
+    .currentLang {
+      @include b768 {
+        padding-left: 55px;
+      }
+    }
+    .lang_list_item {
+      @include b768 {
+        position: relative;
+        width: 100%;
+        padding-left: 109px;
+        padding: 12px 0;
+        > a {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // angular ng-click add class  START ********************************
+  // menu active
+  .menu_item_active {
+    > .sub-menu {
+      display: block;
+    }
+    > .printer_kind,
+    .mobile_lang_switch {
+      color: #f02323;
+      &:after,
+      .icon_arrow {
+        background-position-y: -20px;
+      }
+    }
+  }
+
+  // sub_product active
+  .sub_product_active {
+    > .sub_product_a {
+      color: #f02323;
+      padding: 0 0 7px 0;
+      > .icon_arrow {
+        background: url(https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/ic_main.svg)
+          no-repeat 0px -20px / cover;
+        transform: rotate(360deg);
+      }
+    }
+    > .product_sub_menu {
+      display: block;
+    }
+  }
+  // angular ng-click add class  END ********************************
+}
+//main_menu_mb END *************
+//
+
+// header  END ***************************************************
+
+//footer Start ***************************************************
+.page-footer {
+  background-color: $color-gray_4646;
+  padding: 40px 12px 20px;
+  color: #fff;
+  .page1100 {
+    height: 100%;
+  }
+  .site-map {
+    width: 100%;
+    .map-group {
+      float: left;
+      margin: 0 20px;
+      &:first-child {
+        margin-left: 0px;
+      }
+      &:last-child {
+        margin-right: 0px;
+      }
+      & > p {
+        font-size: $fontsize-m;
+        font-weight: 600;
+        line-height: 1.5;
+        color: #cf1e1e;
+        margin-bottom: 10px;
+      }
+      .map-item {
+        font-size: $fontsize-base;
+        line-height: 32px;
+      }
+    }
+  }
+  .bottom-wrap {
+    width: 100%;
+    padding-top: 5%;
+    .foot_logo {
+      width: 44%;
+      a {
+        width: 60px;
+        height: 35px;
+        display: block;
+        img {
+          width: 100%;
+        }
+      }
+      .slogan {
+        font-size: 16px;
+        line-height: 32px;
+        font-weight: 600;
+        margin-top: 5px;
+      }
+    }
+    .company {
+      max-width: 798px;
+      width: 55%;
+      text-align: right;
+      li {
+        display: inline-block;
+        color: $color-gray_8282;
+        font-size: 12px;
+        line-height: 18px;
+        a {
+          position: relative;
+          border-bottom: 1px solid $color-gray_8282;
+          &:nth-of-type(1) {
+            margin-right: 10px;
+            &:after {
+              content: "";
+              display: block;
+              border-right: 1px solid $color-gray_8282;
+              position: absolute;
+              right: -8px;
+              top: 3px;
+              height: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @include mediaQueries(mobile) {
+    height: auto;
+    padding: 30px 30px 45px;
+    .site-map {
+      width: 100%;
+      .map-group {
+        width: 100%;
+        float: none;
+        margin: 0;
+        margin-bottom: 20px;
+        & > p {
+          margin-bottom: 0;
+        }
+        .map-item {
+          text-indent: 15px;
+        }
+      }
+    }
+    .bottom-wrap {
+      position: relative;
+      .foot_logo {
+        width: 100%;
+        display: block;
+        margin-top: 50px;
+        margin-bottom: 20px;
+      }
+      .company {
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
+//footer END   *****************************************************
+
+//go to top Start *********************************************************
+.goToTop {
+  display: none;
+}
+.goToTop_show {
+  display: block;
+  position: fixed;
+  z-index: 99999;
+  bottom: 25px;
+  right: 25px;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: #828282;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    background: #fff;
+    color: #626262;
+    transition: all 0.3s linear;
+  }
+  &:hover #arrow_svg {
+    stroke: #626262;
+    transition: all 0.3s linear;
+  }
+  .arrow_img {
+    width: 15px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+  }
+}
+//go to top End *********************************************************

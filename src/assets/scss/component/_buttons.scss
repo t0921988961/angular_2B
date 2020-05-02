@@ -1,0 +1,37 @@
+@mixin sm-btn($bg-color, $bg-hover-color) {
+  background-color: $bg-color;
+  padding: 0 24px;
+  min-width: 130px;
+  font-size: $fontsize-base;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  &:hover {
+    background-color: $bg-hover-color;
+  }
+}
+@mixin lg-btn($bg-color, $bg-hover-color) {
+  background-color: $bg-color;
+  padding: 0 24px;
+  min-width: 200px;
+  font-size: $fontsize-base;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  &:hover {
+    background-color: $bg-hover-color;
+  }
+}
+@mixin line-btn($color, $hover-color) {
+  color: $color;
+  padding: 0 24px;
+  min-width: 130px;
+  font-size: $fontsize-base;
+  font-weight: bold;
+  line-height: 40px;
+  text-decoration: underline;
+  text-align: center;
+  &:hover {
+    color: $hover-color;
+  }
+}

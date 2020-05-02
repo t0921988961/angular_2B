@@ -1,1 +1,208 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Reset and Variables and template class
+// @import "./assets/scss/reset";
+@import "./assets/scss/reboot";
+@import "./assets/scss/variables";
+
+// breakingpoint
+@import "./assets/scss/breakpoint";
+
+// function
+@import "./assets/scss/function/function";
+
+// Mixins and template class
+@import "./assets/scss/mixins/mixins";
+@import "./assets/scss/mixins/addSudo";
+
+// Components
+@import "./assets/scss/component/buttons";
+@import "./assets/scss/component/carousel";
+@import "./assets/scss/component/pagination";
+// @import "./assets/scss/component/loadingAnimation";
+
+// @import "./assets/scss/oocss";
+
+body {
+  color: $color-black-1414;
+  min-width: 320px;
+}
+.lang-ja-JP {
+  font-family: $font-family-JA-base;
+}
+.lang-en-GB {
+  font-family: $font-family-EN-base;
+}
+.lang-en-US {
+  font-family: $font-family-EN-base;
+}
+.lang-fr-FR {
+  font-family: $font-family-FR-base;
+}
+.lang-zh-TW {
+  font-family: $font-family-ZH-base;
+}
+.lang-zh-CN {
+  font-family: $font-family-ZH-base;
+}
+.lang-ko-KR {
+  font-family: $font-family-KO-base;
+}
+.lang-de-DE {
+  font-family: $font-family-DE-base;
+}
+.lang-nl-NL {
+  font-family: $font-family-NL-base;
+}
+.lang-it-IT {
+  font-family: $font-family-IT-base;
+}
+.lang-es-ES {
+  font-family: $font-family-ES-base;
+}
+.lang-es-MX {
+  font-family: $font-family-ES-base;
+}
+.lang-pt-PT {
+  font-family: $font-family-PT-base;
+}
+.lang-pt-BR {
+  font-family: $font-family-PT-base;
+}
+.lang-zh-HK {
+  font-family: $font-family-ZH-base;
+}
+.lang-th-TH {
+  font-family: $font-family-TH-base;
+}
+
+// font_size START---------------------------------------
+.f_36 {
+  font-size: $fontsize-xxl;
+}
+.f_28 {
+  font-size: $fontsize-xl;
+}
+.f_16 {
+  font-size: $fontsize-base;
+}
+.f_14 {
+  font-size: $fontsize-sm;
+}
+// font_size END---------------------------------------
+
+// desktop
+// $fontsize-xxl: 2.25rem;  //36px H1
+// $fontsize-xl: 1.75rem;   //28px H2
+// $fontsize-lg: 1.5rem;    //24px H3
+// $fontsize-m: 1.25rem;    //20px H4
+// $fontsize-base: 1rem;    //16px p
+// $fontsize-sm: 0.875rem;  //14px
+// $fontsize-xs: 0.75rem;   //12px copyright
+
+// modularize font-size
+.primary-title_KR {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+// $fontsize-xxl: 2.25rem;  //36px H1
+.primary-title {
+  font-size: $fontsize-xxl;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+.primary-title-KR {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  width: 795px;
+}
+// $fontsize-lg: 1.5rem;    //24px H3
+.font_24 {
+  font-size: $fontsize-lg;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.subtitle-KR {
+  font-size: 1.45rem !important;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+// $fontsize-xl: 1.75rem;   //28px H2
+.note-for-title {
+  font-size: $fontsize-xl;
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+// $fontsize-m: 1.25rem;    //20px H4
+.desc-title {
+  font-size: $fontsize-m;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+// $fontsize-base: 1rem;    //16px p
+.desc {
+  font-size: $fontsize-base;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.desc-KR {
+  font-size: 18px !important;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+// mobile
+// $fontsize-xxl-mb: 1.75rem;  //28px H1
+// $fontsize-xl-mb: 1.5rem;    //24px H2
+// $fontsize-lg-mb: 1.5rem;    //24px H3
+// $fontsize-m-mb: 1.25rem;    //20px H4
+// $fontsize-base-mb: 1rem;    //16px p
+// $fontsize-sm-mb: 0.875rem;  //14px
+// $fontsize-xs-mb: 0.75rem;   //12px copyright
+
+@include mediaQueries(mobile) {
+  .primary-title {
+    font-size: $fontsize-xxl-mb;
+    width: 100%;
+  }
+  .primary-title-KR {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    width: 348px;
+  }
+  .subtitle {
+    font-size: $fontsize-lg-mb;
+  }
+  .note-for-title {
+    font-size: $fontsize-xl-mb;
+  }
+  .desc-title {
+    font-size: $fontsize-m-mb;
+  }
+  .desc {
+    font-size: $fontsize-base-mb;
+  }
+  .primary-title-DE {
+    font-size: $fontsize-xxl-mb !important;
+    width: 100%;
+  }
+}
