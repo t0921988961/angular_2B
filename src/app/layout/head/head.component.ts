@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+// ngx-translate service
+import { LanguageService } from 'src/app/service/language/language.service';
 
-// ngx-translate
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-head',
@@ -11,20 +11,23 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HeadComponent implements OnInit {
 
-  langs = ['zh-TW', 'en-US', 'ja-JP'];
+  langs = ['en-US', 'en-GB', 'ja-JP', 'fr-FR', 'de-DE', 'zh-TW', 'zh-CN', 'ko-KR'];
 
-  constructor(private translateService: TranslateService) {
+  constructor(public translateService: LanguageService) {
 
   }
 
   ngOnInit() {
-    this.translateService.use('zh-TW');
+    // this.translateService.use('zh-TW');
+    this.translateService.setInitState();
+    this.translateService.runs();
+    console.log('this.languageService.translate.currentLang:', this.translateService.translate.currentLang);
   }
 
   changeLanguage(lang: string) {
-    this.translateService.use(lang);
-    const hello = this.translateService.instant('Hello');
-    console.log('hello:', hello);
+    // this.translateService.use(lang);
+    // const hello = this.translateService.instant('Hello');
+    // console.log('hello:', hello);
   }
 
 }
