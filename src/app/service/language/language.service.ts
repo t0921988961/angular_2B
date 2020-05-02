@@ -2,14 +2,16 @@ import { Injectable } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
 
-  language$ = new ReplaySubject(1);
+  language$ = new BehaviorSubject({});
+  // language$ = new ReplaySubject(1);
+
   translate = this.translateService;
 
   constructor(private translateService: TranslateService) { }
@@ -43,6 +45,7 @@ export class LanguageService {
 
   setLang(lang: string) {
     this.translateService.onLangChange.pipe(take(1)).subscribe(result => {
+      // console.log('result:', result);
       this.language$.next(result);
     });
     this.translateService.use(lang);
