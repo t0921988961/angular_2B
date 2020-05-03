@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: '', component: LayoutComponent, children: [
+    path: ':lang', component: LayoutComponent, children: [
       { path: '', pathMatch: 'full', redirectTo: '/home' },
       { path: 'home', component: HomeComponent },
       {

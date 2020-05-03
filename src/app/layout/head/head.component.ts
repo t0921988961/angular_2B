@@ -18,9 +18,19 @@ export class HeadComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.translateService.use('zh-TW');
-    this.translateService.setInitState();
-    this.translateService.runs();
+    const urlParameters = {
+      protocol: window.location.protocol,
+      host: window.location.host,
+      path: window.location.pathname,
+    };
+
+    const pathArr = urlParameters.path.split('/').filter(n => n);
+    console.log('pathArr:', pathArr[0]);
+    const pathLang = pathArr[0];
+
+    this.translateService.checkUrlPathLang(pathLang);
+
+    // this.translateService.setInitState();
     console.log('this.languageService.translate.currentLang:', this.translateService.translate.currentLang);
   }
 
