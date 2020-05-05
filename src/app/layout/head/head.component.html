@@ -48,7 +48,9 @@
           <li
             *ngFor="let item of langs"
             class="lang-item is-pointer"
-            (click)="this.translateService.switchLang($event.target.value)"
+            (click)="
+              this.translateService.switchLang($event.target.textContent.trim())
+            "
           >
             {{ item }}
           </li>
@@ -60,16 +62,16 @@
 
     <!-- Logo start **************************-->
     <div class="logo">
-      <!-- <a href="/@lang/home">
+      <a [href]="'/' + this.translateService.nowLangCode + '/home'">
         <img
           [src]="
-            $root.mobile_mode
+            mobile_mode
               ? 'https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/logo/header_logo_m.png'
               : 'https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/img_logo_lg.png'
           "
           alt="xyzpriniting_logo"
         />
-      </a> -->
+      </a>
     </div>
     <!-- Logo end **************************-->
 

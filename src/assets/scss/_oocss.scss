@@ -97,42 +97,39 @@
 .element-block {
   display: block;
 }
-.element-flex {
-  @include display-flex;
-}
 .fixImgGap {
   display: block;
 }
 
 .push-to-center {
   position: absolute;
-  @include translateX(-50%);
+  transform: translateX(-50%);
   left: 50%;
 }
 
 .push-to-middle {
   position: absolute;
-  @include translateY(-50%);
+  transform: translateY(-50%);
   top: 50%;
 }
 
 .push-to-middle-center {
   position: absolute;
-  @include translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
 }
 
 .push-to-middle-right {
   position: absolute;
-  @include translateY(-50%);
+  transform: translateY(-50%);
   top: 50%;
   right: 0;
 }
 
 .push-to-middle-left {
   position: absolute;
-  @include translateY(-50%);
+  transform: translateY(-50%);
   top: 50%;
   left: 0;
 }
@@ -397,7 +394,7 @@
   }
   .pad-push-to-center {
     position: absolute;
-    @include translateX(-50%);
+    transform: translateX(-50%);
     left: 50%;
   }
   .pad-text-left {
@@ -426,22 +423,22 @@
     position: relative;
   }
   .mobile-push-to-top {
-    @include translateY(0%);
+    transform: translateY(0%);
     top: 0%;
   }
   .mobile-push-to-center {
     position: absolute;
-    @include translateX(-50%);
+    transform: translateX(-50%);
     left: 50%;
   }
   .mobile-push-to-center-y {
     position: absolute;
-    @include translateY(-50%);
+    transform: translateY(-50%);
     top: 50%;
   }
   .mobile-center-xy {
     position: absolute;
-    @include translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
   }
