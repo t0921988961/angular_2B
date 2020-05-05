@@ -12,6 +12,7 @@ export class LanguageService {
   language$ = new BehaviorSubject({});
   // language$ = new ReplaySubject(1);
 
+  nowLangCode = '';
   translate = this.translateService;
   getBrowserLang = this.translate.getBrowserCultureLang();
   browserLangList = {
@@ -66,6 +67,7 @@ export class LanguageService {
       this.language$.next(result);
     });
     this.translateService.use(lang);
+    return this.nowLangCode = lang;
   }
 
   setUrlPath(lang: string) {
@@ -81,6 +83,18 @@ export class LanguageService {
 
 
   switchLang(lang: string) {
+    const browserLangList = {
+      'US-English': 'en-US',
+      'EU-English': 'en-GB',
+      '日本-日本語': 'ja-JP',
+      'FR-French': 'fr-FR',
+      'DE-Germany': 'de-DE',
+      '台灣-繁體中文': 'zh-TW',
+      '中国-简体中文': 'zh-CN',
+      'KR-한국어': 'ko-KR',
+    };
+    const isSelectLang = browserLangList[lang];
+    console.log('switchLang isSelectLang => ', isSelectLang);
     const urlParameters = {
       protocol: window.location.protocol,
       host: window.location.host,
@@ -90,11 +104,11 @@ export class LanguageService {
     let newPath = '';
     const oldPath = urlParameters.path;
     const pathArrRemoveLang = oldPath.split('/').filter(n => n).slice(1);
-    pathArrRemoveLang.unshift(lang);
+    pathArrRemoveLang.unshift(isSelectLang);
     newPath = pathArrRemoveLang.join('/');
 
     location.href = urlParameters.protocol + '//' + urlParameters.host + '/' + newPath;
-    this.setLang(lang);
+    this.setLang(isSelectLang);
   }
 
 

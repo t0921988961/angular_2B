@@ -11,13 +11,19 @@ import { LanguageService } from 'src/app/service/language/language.service';
 })
 export class HeadComponent implements OnInit {
 
-  langs = ['en-US', 'en-GB', 'ja-JP', 'fr-FR', 'de-DE', 'zh-TW', 'zh-CN', 'ko-KR'];
+  // tslint:disable-next-line:variable-name
+  mobile_mode = window.innerWidth < 736 ? true : false;
+  currentLang = 'currentLang';
+  showLang = false;
+
+  langs = ['US-English', 'EU-English', '日本-日本語', 'FR-French', 'DE-Germany', '台灣-繁體中文', '中国-简体中文', 'KR-한국어'];
 
   constructor(public translateService: LanguageService) {
 
   }
 
   ngOnInit() {
+    console.log('mobile_mode => ', this.mobile_mode);
     const urlParameters = {
       protocol: window.location.protocol,
       host: window.location.host,

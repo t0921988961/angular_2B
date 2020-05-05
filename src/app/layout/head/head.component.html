@@ -17,6 +17,7 @@
 <!-- header start ***************************************************************-->
 <header id="header" class="page-header">
   <div class="page1100 relative">
+    <!-- switch desk or mobile -->
     <div
       class="burgerBtn is-pointer"
       ng-click="showMenu_mb = !showMenu_mb"
@@ -25,118 +26,50 @@
 
     <!-- topMenu start **************************-->
     <div class="top-menu">
-      <!-- <div class="auth is-pointer"></div> -->
-      <!-- ngIf: !$root.mobile_mode -->
+      <!--  Reseller Resources  -->
       <a
-        href="https://pro.xyzprinting.com/support/en-GB/Help"
+        *ngIf="!mobile_mode"
+        [href]="
+          'https://pro.xyzprinting.com/support/' +
+          this.translateService.nowLangCode +
+          '/Help'
+        "
         class="reseller-site ng-scope"
-        ng-if="!$root.mobile_mode"
-        >Reseller Resources
+      >
+        {{ "header.resellerSite" | translate }}
       </a>
-      <!-- end ngIf: !$root.mobile_mode -->
-      <!-- <a href="https://www.xyzprinting.com/en-GB" class="comsumer-site" ng-if="!$root.mobile_mode && lang != 'zh-CN'" ng-cloak>
-                    For consumer product
-                </a> -->
-      <!-- <a href="https://www.xyzprinting.cn/en-GB" class="comsumer-site" ng-if="!$root.mobile_mode && lang == 'zh-CN'" ng-cloak >
-                    For consumer product
-                </a> -->
+
       <!-- lang Select -->
-      <div class="lang-switch" ng-mouseleave="showLang = false">
-        <div
-          class="lang-item currentLang is-pointer flag-icon2"
-          ng-click="showLang = true"
-          ng-bind="currentLang"
-        >
-          EU-English
+      <div class="lang-switch" (mouseleave)="showLang = false">
+        <div class="lang-item currentLang is-pointer" (click)="showLang = true">
+          US-English
         </div>
-        <ul class="lang-list" ng-class="{ showLang: showLang }">
-          <!-- ngRepeat: item in headLangLists -->
+        <ul class="lang-list" [class.showLang]="showLang">
           <li
-            ng-repeat="item in headLangLists"
-            class="lang-item is-pointer flag-icon1"
-            ng-click="switchLang(item.ValA)"
-            ng-bind="item.ValB"
+            *ngFor="let item of langs"
+            class="lang-item is-pointer"
+            (click)="this.translateService.switchLang($event.target.value)"
           >
-            US-English
+            {{ item }}
           </li>
-          <!-- end ngRepeat: item in headLangLists -->
-          <li
-            ng-repeat="item in headLangLists"
-            class="lang-item is-pointer flag-icon2"
-            ng-click="switchLang(item.ValA)"
-            ng-bind="item.ValB"
-          >
-            EU-English
-          </li>
-          <!-- end ngRepeat: item in headLangLists -->
-          <li
-            ng-repeat="item in headLangLists"
-            class="lang-item is-pointer flag-icon3"
-            ng-click="switchLang(item.ValA)"
-            ng-bind="item.ValB"
-          >
-            FR-French
-          </li>
-          <!-- end ngRepeat: item in headLangLists -->
-          <li
-            ng-repeat="item in headLangLists"
-            class="lang-item is-pointer flag-icon4"
-            ng-click="switchLang(item.ValA)"
-            ng-bind="item.ValB"
-          >
-            DE-Germany
-          </li>
-          <!-- end ngRepeat: item in headLangLists -->
-          <li
-            ng-repeat="item in headLangLists"
-            class="lang-item is-pointer flag-icon5"
-            ng-click="switchLang(item.ValA)"
-            ng-bind="item.ValB"
-          >
-            日本-日本語
-          </li>
-          <!-- end ngRepeat: item in headLangLists -->
-          <li
-            ng-repeat="item in headLangLists"
-            class="lang-item is-pointer flag-icon6"
-            ng-click="switchLang(item.ValA)"
-            ng-bind="item.ValB"
-          >
-            台灣-繁體中文
-          </li>
-          <!-- end ngRepeat: item in headLangLists -->
-          <li
-            ng-repeat="item in headLangLists"
-            class="lang-item is-pointer flag-icon7"
-            ng-click="switchLang(item.ValA)"
-            ng-bind="item.ValB"
-          >
-            中国-简体中文
-          </li>
-          <!-- end ngRepeat: item in headLangLists -->
-          <li
-            ng-repeat="item in headLangLists"
-            class="lang-item is-pointer flag-icon8"
-            ng-click="switchLang(item.ValA)"
-            ng-bind="item.ValB"
-          >
-            KR-한국어
-          </li>
-          <!-- end ngRepeat: item in headLangLists -->
         </ul>
       </div>
     </div>
+
     <!-- topMenu end **************************-->
 
     <!-- Logo start **************************-->
     <div class="logo">
-      <a href="/en-GB/home">
+      <!-- <a href="/@lang/home">
         <img
-          ng-src="https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/img_logo_lg.png"
+          [src]="
+            $root.mobile_mode
+              ? 'https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/logo/header_logo_m.png'
+              : 'https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/img_logo_lg.png'
+          "
           alt="xyzpriniting_logo"
-          src="https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/img_logo_lg.png"
         />
-      </a>
+      </a> -->
     </div>
     <!-- Logo end **************************-->
 
@@ -144,9 +77,8 @@
     <nav class="main_menu_lg" ng-init="_menu_item_active = false">
       <ul class="clearfix menu-item-wrap">
         <!-- Printers -->
-        <!-- ngRepeat: item in headMenuLists -->
         <li
-          class="menu-item ng-scope pcHover"
+          class="menu-item"
           ng-repeat="item in headMenuLists"
           ng-class="{
             'has-subMenu': item.subMenu,
@@ -157,551 +89,64 @@
           ng-mouseleave="_menu_item_active = false"
         >
           <!-- Not redirective URL -->
-          <!-- ngIf: item.Link.indexOf('http') !== 0  --><a
+          <a
             ng-if="item.Link.indexOf('http') !== 0"
-            ng-href=""
+            [href]="item.Link.length !== 0 ? '/' + lang + '/' + item.Link : ''"
             ng-bind="item.Title"
             ng-class="{ printer_kind: item.Children }"
-            class="ng-binding ng-scope printer_kind"
-            >3D Printers
-          </a>
-          <!-- end ngIf: item.Link.indexOf('http') !== 0  -->
+          ></a>
           <!-- Redirective Support URL -->
-          <!-- ngIf: item.Link.indexOf('support') === 28  -->
-          <!-- dropdown sub-menu level one ul -->
-          <!-- ngIf: item.Children -->
-          <ul class="sub-menu ng-scope" ng-if="item.Children">
-            <!-- ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope pcHover"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.productSubMenu,
-                pcHover: !$root.mobile_mode,
-                showSubMenu_mb: showSubMenu_mb,
-                sub_product_active: _sub_product_active
-              }"
-              ng-mouseenter="_sub_product_active = true"
-              ng-mouseleave="_sub_product_active = flase"
-            >
-              <a class="sub_product_a ng-binding" ng-href="">
-                Binder Jetting
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul ng-if="subItem.Children" class="product_sub_menu ng-scope">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_a ng-binding"
-                    ng-href="/en-GB/product/Binder_Jetting/PartPro350_xBC"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/Binder_Jetting/PartPro350_xBC"
-                    >PartPro350 xBC</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope pcHover"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.productSubMenu,
-                pcHover: !$root.mobile_mode,
-                showSubMenu_mb: showSubMenu_mb,
-                sub_product_active: _sub_product_active
-              }"
-              ng-mouseenter="_sub_product_active = true"
-              ng-mouseleave="_sub_product_active = flase"
-            >
-              <a class="sub_product_a ng-binding" ng-href="">
-                Color FFF
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul ng-if="subItem.Children" class="product_sub_menu ng-scope">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_a ng-binding"
-                    ng-href="/en-GB/product/Color_fff/PartPro200_xTCS"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/Color_fff/PartPro200_xTCS"
-                    >PartPro200 xTCS</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope pcHover"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.productSubMenu,
-                pcHover: !$root.mobile_mode,
-                showSubMenu_mb: showSubMenu_mb,
-                sub_product_active: _sub_product_active
-              }"
-              ng-mouseenter="_sub_product_active = true"
-              ng-mouseleave="_sub_product_active = flase"
-            >
-              <a class="sub_product_a ng-binding" ng-href="">
-                DLP
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul ng-if="subItem.Children" class="product_sub_menu ng-scope">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_a ng-binding"
-                    ng-href="/en-GB/product/DLP/CastPro100_xP"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/DLP/CastPro100_xP"
-                    >CastPro100 xP</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_a ng-binding"
-                    ng-href="/en-GB/product/DLP/PartPro120_xP"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/DLP/PartPro120_xP"
-                    >PartPro120 xP</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_a ng-binding"
-                    ng-href="/en-GB/product/DLP/PartPro100_xP"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/DLP/PartPro100_xP"
-                    >PartPro100 xP</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope pcHover"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.productSubMenu,
-                pcHover: !$root.mobile_mode,
-                showSubMenu_mb: showSubMenu_mb,
-                sub_product_active: _sub_product_active
-              }"
-              ng-mouseenter="_sub_product_active = true"
-              ng-mouseleave="_sub_product_active = flase"
-            >
-              <a class="sub_product_a ng-binding" ng-href="">
-                FFF
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul ng-if="subItem.Children" class="product_sub_menu ng-scope">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_a ng-binding"
-                    ng-href="/en-GB/product/FFF/PartPro300_xT"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/FFF/PartPro300_xT"
-                    >PartPro300 xT</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope pcHover"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.productSubMenu,
-                pcHover: !$root.mobile_mode,
-                showSubMenu_mb: showSubMenu_mb,
-                sub_product_active: _sub_product_active
-              }"
-              ng-mouseenter="_sub_product_active = true"
-              ng-mouseleave="_sub_product_active = flase"
-            >
-              <a class="sub_product_a ng-binding" ng-href="">
-                SLS
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul ng-if="subItem.Children" class="product_sub_menu ng-scope">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_a ng-binding"
-                    ng-href="/en-GB/product/SLS/MfgPro230_xS"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/SLS/MfgPro230_xS"
-                    >MfgPro230 xS</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope pcHover"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.productSubMenu,
-                pcHover: !$root.mobile_mode,
-                showSubMenu_mb: showSubMenu_mb,
-                sub_product_active: _sub_product_active
-              }"
-              ng-mouseenter="_sub_product_active = true"
-              ng-mouseleave="_sub_product_active = flase"
-            >
-              <a class="sub_product_a ng-binding" ng-href="">
-                SL
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul ng-if="subItem.Children" class="product_sub_menu ng-scope">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_a ng-binding"
-                    ng-href="/en-GB/product/SL/partPro150_xp"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/SL/partPro150_xp"
-                    >PartPro150 xP</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope pcHover"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.productSubMenu,
-                pcHover: !$root.mobile_mode,
-                showSubMenu_mb: showSubMenu_mb,
-                sub_product_active: _sub_product_active
-              }"
-              ng-mouseenter="_sub_product_active = true"
-              ng-mouseleave="_sub_product_active = flase"
-            >
-              <a class="sub_product_a ng-binding" ng-href="">
-                UV Curing
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul ng-if="subItem.Children" class="product_sub_menu ng-scope">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_a ng-binding"
-                    ng-href="/en-GB/product/UV_Curing/EeezCure180"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/UV_Curing/EeezCure180"
-                    >EeezCure180</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_a ng-binding"
-                    ng-href="/en-GB/product/UV_Curing/MultiCure180"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/UV_Curing/MultiCure180"
-                    >MultiCure180</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-          </ul>
-          <!-- end ngIf: item.Children -->
-        </li>
-        <!-- end ngRepeat: item in headMenuLists -->
-        <li
-          class="menu-item ng-scope pcHover"
-          ng-repeat="item in headMenuLists"
-          ng-class="{
-            'has-subMenu': item.subMenu,
-            pcHover: !$root.mobile_mode,
-            menu_item_active: _menu_item_active
-          }"
-          ng-mouseenter="_menu_item_active = true"
-          ng-mouseleave="_menu_item_active = false"
-        >
-          <!-- Not redirective URL -->
-          <!-- ngIf: item.Link.indexOf('http') !== 0  --><a
-            ng-if="item.Link.indexOf('http') !== 0"
-            ng-href=""
-            ng-bind="item.Title"
-            ng-class="{ printer_kind: item.Children }"
-            class="ng-binding ng-scope printer_kind"
-            >Materials</a
-          >
-          <!-- end ngIf: item.Link.indexOf('http') !== 0  -->
-          <!-- Redirective Support URL -->
-          <!-- ngIf: item.Link.indexOf('support') === 28  -->
-          <!-- dropdown sub-menu level one ul -->
-          <!-- ngIf: item.Children -->
-          <ul class="sub-menu ng-scope" ng-if="item.Children">
-            <!-- ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope pcHover"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.productSubMenu,
-                pcHover: !$root.mobile_mode,
-                showSubMenu_mb: showSubMenu_mb,
-                sub_product_active: _sub_product_active
-              }"
-              ng-mouseenter="_sub_product_active = true"
-              ng-mouseleave="_sub_product_active = flase"
-            >
-              <a
-                class="sub_product_a ng-binding"
-                ng-href="/en-GB/materials/filament"
-                href="/en-GB/materials/filament"
-              >
-                Filament
-                <!-- ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope pcHover"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.productSubMenu,
-                pcHover: !$root.mobile_mode,
-                showSubMenu_mb: showSubMenu_mb,
-                sub_product_active: _sub_product_active
-              }"
-              ng-mouseenter="_sub_product_active = true"
-              ng-mouseleave="_sub_product_active = flase"
-            >
-              <a
-                class="sub_product_a ng-binding"
-                ng-href="/en-GB/materials/resin"
-                href="/en-GB/materials/resin"
-              >
-                Resin
-                <!-- ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-          </ul>
-          <!-- end ngIf: item.Children -->
-        </li>
-        <!-- end ngRepeat: item in headMenuLists -->
-        <li
-          class="menu-item ng-scope pcHover"
-          ng-repeat="item in headMenuLists"
-          ng-class="{
-            'has-subMenu': item.subMenu,
-            pcHover: !$root.mobile_mode,
-            menu_item_active: _menu_item_active
-          }"
-          ng-mouseenter="_menu_item_active = true"
-          ng-mouseleave="_menu_item_active = false"
-        >
-          <!-- Not redirective URL -->
-          <!-- ngIf: item.Link.indexOf('http') !== 0  --><a
-            ng-if="item.Link.indexOf('http') !== 0"
-            ng-href=""
-            ng-bind="item.Title"
-            ng-class="{ printer_kind: item.Children }"
-            class="ng-binding ng-scope printer_kind"
-            >Applications</a
-          >
-          <!-- end ngIf: item.Link.indexOf('http') !== 0  -->
-          <!-- Redirective Support URL -->
-          <!-- ngIf: item.Link.indexOf('support') === 28  -->
-          <!-- dropdown sub-menu level one ul -->
-          <!-- ngIf: item.Children -->
-          <ul class="sub-menu ng-scope" ng-if="item.Children">
-            <!-- ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope pcHover"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.productSubMenu,
-                pcHover: !$root.mobile_mode,
-                showSubMenu_mb: showSubMenu_mb,
-                sub_product_active: _sub_product_active
-              }"
-              ng-mouseenter="_sub_product_active = true"
-              ng-mouseleave="_sub_product_active = flase"
-            >
-              <a
-                class="sub_product_a ng-binding"
-                ng-href="/en-GB/casestudy"
-                href="/en-GB/casestudy"
-              >
-                Case Study
-                <!-- ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-          </ul>
-          <!-- end ngIf: item.Children -->
-        </li>
-        <!-- end ngRepeat: item in headMenuLists -->
-        <li
-          class="menu-item ng-scope pcHover"
-          ng-repeat="item in headMenuLists"
-          ng-class="{
-            'has-subMenu': item.subMenu,
-            pcHover: !$root.mobile_mode,
-            menu_item_active: _menu_item_active
-          }"
-          ng-mouseenter="_menu_item_active = true"
-          ng-mouseleave="_menu_item_active = false"
-        >
-          <!-- Not redirective URL -->
-          <!-- ngIf: item.Link.indexOf('http') !== 0  -->
-          <!-- Redirective Support URL -->
-          <!-- ngIf: item.Link.indexOf('support') === 28  --><a
+          <!-- <a
             ng-if="item.Link.indexOf('support') === 28"
-            ng-href="https://pro.xyzprinting.com/support/en-GB/EndUser/Help"
+            [href]="https:  //pro.xyzprinting.com/support/@lang/EndUser/Help"
             ng-bind="item.Title"
             ng-class="{ printer_kind: item.Children }"
-            class="ng-binding ng-scope"
-            href="https://pro.xyzprinting.com/support/en-GB/EndUser/Help"
-            >Support</a
-          >
-          <!-- end ngIf: item.Link.indexOf('support') === 28  -->
+          ></a> -->
           <!-- dropdown sub-menu level one ul -->
-          <!-- ngIf: item.Children -->
+          <ul class="sub-menu" ng-if="item.Children">
+            <li
+              class="sub_product_li"
+              ng-repeat="subItem in item.Children"
+              ng-class="{
+                'has-subMenu': subItem.productSubMenu,
+                pcHover: !$root.mobile_mode,
+                showSubMenu_mb: showSubMenu_mb,
+                sub_product_active: _sub_product_active
+              }"
+              ng-mouseenter="_sub_product_active = true"
+              ng-mouseleave="_sub_product_active = flase"
+            >
+              <a
+                class="sub_product_a"
+                [href]="
+                  subItem.Link.length !== 0
+                    ? '/' + lang + '/' + subItem.Link
+                    : ''
+                "
+              >
+                {{ subItem.Title }}
+                <span ng-if="subItem.Children" class="icon_arrow"></span>
+                <sup class="type_sup" ng-if="subItem.type">{{
+                  subItem.type
+                }}</sup>
+              </a>
+              <!-- dropdown sub-menu level two ul -->
+              <ul ng-if="subItem.Children" class="product_sub_menu">
+                <li
+                  class="product_sub_li"
+                  ng-repeat="proSubItem in subItem.Children"
+                >
+                  <a
+                    class="product_sub_a"
+                    [href]="'/' + lang + '/' + proSubItem.Link"
+                    ng-bind="proSubItem.Title"
+                  >
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </li>
-        <!-- end ngRepeat: item in headMenuLists -->
-        <li
-          class="menu-item ng-scope pcHover"
-          ng-repeat="item in headMenuLists"
-          ng-class="{
-            'has-subMenu': item.subMenu,
-            pcHover: !$root.mobile_mode,
-            menu_item_active: _menu_item_active
-          }"
-          ng-mouseenter="_menu_item_active = true"
-          ng-mouseleave="_menu_item_active = false"
-        >
-          <!-- Not redirective URL -->
-          <!-- ngIf: item.Link.indexOf('http') !== 0  --><a
-            ng-if="item.Link.indexOf('http') !== 0"
-            ng-href="/en-GB/contact-us"
-            ng-bind="item.Title"
-            ng-class="{ printer_kind: item.Children }"
-            class="ng-binding ng-scope"
-            href="/en-GB/contact-us"
-            >Contact Us</a
-          >
-          <!-- end ngIf: item.Link.indexOf('http') !== 0  -->
-          <!-- Redirective Support URL -->
-          <!-- ngIf: item.Link.indexOf('support') === 28  -->
-          <!-- dropdown sub-menu level one ul -->
-          <!-- ngIf: item.Children -->
-        </li>
-        <!-- end ngRepeat: item in headMenuLists -->
       </ul>
     </nav>
     <!-- desk nav end **************************-->
@@ -710,9 +155,8 @@
     <nav class="main_menu_mb" ng-class="{ 'showMenu-mb': showMenu_mb }">
       <ul class="clearfix menu_item_wrap_mb">
         <!-- Printers -->
-        <!-- ngRepeat: item in headMenuLists -->
         <li
-          class="menu-item ng-scope"
+          class="menu-item"
           ng-repeat="item in headMenuLists"
           ng-class="{
             'has-subMenu': item.subMenu,
@@ -720,20 +164,23 @@
           }"
         >
           <!-- Not redirective URL & Redirective Support URL -->
-          <a
-            class="a_block ng-binding printer_kind"
-            ng-href=""
+          <!-- <a
+            class="a_block"
+            [href]="
+              item.Link.length === 0
+                ? ''
+                : item.Link.indexOf('support') === 28
+                ? 'https://pro.xyzprinting.com/support/@lang/EndUser/Help'
+                : '/' + lang + '/' + item.Link
+            "
             ng-bind="item.Title"
             ng-class="{ printer_kind: item.Children }"
             ng-click="_menu_item_active = !_menu_item_active"
-            >3D Printers
-          </a>
+          ></a> -->
           <!-- dropdown sub-menu level one ul -->
-          <!-- ngIf: item.Children -->
-          <ul class="sub-menu ng-scope" ng-if="item.Children">
-            <!-- ngRepeat: subItem in item.Children -->
+          <ul class="sub-menu" ng-if="item.Children">
             <li
-              class="sub_product_li ng-scope has-subMenu"
+              class="sub_product_li"
               ng-repeat="subItem in item.Children"
               ng-class="{
                 'has-subMenu': subItem.Children,
@@ -741,500 +188,75 @@
               }"
             >
               <a
-                class="sub_product_a ng-binding"
-                ng-href=""
+                class="sub_product_a"
+                [href]="
+                  subItem.Link.length !== 0
+                    ? '/' + lang + '/' + subItem.Link
+                    : ''
+                "
                 ng-click="_sub_product_active = !_sub_product_active"
               >
-                Binder Jetting
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
+                {{ subItem.Title }}
+                <span ng-if="subItem.Children" class="icon_arrow"></span>
+                <sup class="type_sup" ng-if="subItem.type">{{
+                  subItem.type
+                }}</sup>
               </a>
               <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul class="product_sub_menu ng-scope" ng-if="subItem.Children">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
+              <ul class="product_sub_menu" ng-if="subItem.Children">
                 <li
-                  class="product_sub_menu_li ng-scope"
+                  class="product_sub_menu_li"
                   ng-repeat="proSubItem in subItem.Children"
                 >
                   <a
-                    class="product_sub_menu_a ng-binding"
-                    ng-href="/en-GB/product/Binder_Jetting/PartPro350_xBC"
+                    class="product_sub_menu_a"
+                    [href]="'/' + lang + '/' + proSubItem.Link"
                     ng-bind="proSubItem.Title"
-                    href="/en-GB/product/Binder_Jetting/PartPro350_xBC"
-                    >PartPro350 xBC</a
                   >
+                  </a>
                 </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
               </ul>
-              <!-- end ngIf: subItem.Children -->
             </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope has-subMenu"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.Children,
-                sub_product_active: _sub_product_active
-              }"
-            >
-              <a
-                class="sub_product_a ng-binding"
-                ng-href=""
-                ng-click="_sub_product_active = !_sub_product_active"
-              >
-                Color FFF
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul class="product_sub_menu ng-scope" ng-if="subItem.Children">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_menu_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_menu_a ng-binding"
-                    ng-href="/en-GB/product/Color_fff/PartPro200_xTCS"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/Color_fff/PartPro200_xTCS"
-                    >PartPro200 xTCS</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope has-subMenu"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.Children,
-                sub_product_active: _sub_product_active
-              }"
-            >
-              <a
-                class="sub_product_a ng-binding"
-                ng-href=""
-                ng-click="_sub_product_active = !_sub_product_active"
-              >
-                DLP
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul class="product_sub_menu ng-scope" ng-if="subItem.Children">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_menu_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_menu_a ng-binding"
-                    ng-href="/en-GB/product/DLP/CastPro100_xP"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/DLP/CastPro100_xP"
-                    >CastPro100 xP</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_menu_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_menu_a ng-binding"
-                    ng-href="/en-GB/product/DLP/PartPro120_xP"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/DLP/PartPro120_xP"
-                    >PartPro120 xP</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_menu_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_menu_a ng-binding"
-                    ng-href="/en-GB/product/DLP/PartPro100_xP"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/DLP/PartPro100_xP"
-                    >PartPro100 xP</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope has-subMenu"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.Children,
-                sub_product_active: _sub_product_active
-              }"
-            >
-              <a
-                class="sub_product_a ng-binding"
-                ng-href=""
-                ng-click="_sub_product_active = !_sub_product_active"
-              >
-                FFF
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul class="product_sub_menu ng-scope" ng-if="subItem.Children">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_menu_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_menu_a ng-binding"
-                    ng-href="/en-GB/product/FFF/PartPro300_xT"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/FFF/PartPro300_xT"
-                    >PartPro300 xT</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope has-subMenu"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.Children,
-                sub_product_active: _sub_product_active
-              }"
-            >
-              <a
-                class="sub_product_a ng-binding"
-                ng-href=""
-                ng-click="_sub_product_active = !_sub_product_active"
-              >
-                SLS
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul class="product_sub_menu ng-scope" ng-if="subItem.Children">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_menu_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_menu_a ng-binding"
-                    ng-href="/en-GB/product/SLS/MfgPro230_xS"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/SLS/MfgPro230_xS"
-                    >MfgPro230 xS</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope has-subMenu"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.Children,
-                sub_product_active: _sub_product_active
-              }"
-            >
-              <a
-                class="sub_product_a ng-binding"
-                ng-href=""
-                ng-click="_sub_product_active = !_sub_product_active"
-              >
-                SL
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul class="product_sub_menu ng-scope" ng-if="subItem.Children">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_menu_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_menu_a ng-binding"
-                    ng-href="/en-GB/product/SL/partPro150_xp"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/SL/partPro150_xp"
-                    >PartPro150 xP</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope has-subMenu"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.Children,
-                sub_product_active: _sub_product_active
-              }"
-            >
-              <a
-                class="sub_product_a ng-binding"
-                ng-href=""
-                ng-click="_sub_product_active = !_sub_product_active"
-              >
-                UV Curing
-                <!-- ngIf: subItem.Children --><span
-                  ng-if="subItem.Children"
-                  class="icon_arrow ng-scope"
-                ></span
-                ><!-- end ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-              <ul class="product_sub_menu ng-scope" ng-if="subItem.Children">
-                <!-- ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_menu_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_menu_a ng-binding"
-                    ng-href="/en-GB/product/UV_Curing/EeezCure180"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/UV_Curing/EeezCure180"
-                    >EeezCure180</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-                <li
-                  class="product_sub_menu_li ng-scope"
-                  ng-repeat="proSubItem in subItem.Children"
-                >
-                  <a
-                    class="product_sub_menu_a ng-binding"
-                    ng-href="/en-GB/product/UV_Curing/MultiCure180"
-                    ng-bind="proSubItem.Title"
-                    href="/en-GB/product/UV_Curing/MultiCure180"
-                    >MultiCure180</a
-                  >
-                </li>
-                <!-- end ngRepeat: proSubItem in subItem.Children -->
-              </ul>
-              <!-- end ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
           </ul>
-          <!-- end ngIf: item.Children -->
         </li>
-        <!-- end ngRepeat: item in headMenuLists -->
-        <li
-          class="menu-item ng-scope"
-          ng-repeat="item in headMenuLists"
-          ng-class="{
-            'has-subMenu': item.subMenu,
-            menu_item_active: _menu_item_active
-          }"
-        >
-          <!-- Not redirective URL & Redirective Support URL -->
-          <a
-            class="a_block ng-binding printer_kind"
-            ng-href=""
-            ng-bind="item.Title"
-            ng-class="{ printer_kind: item.Children }"
-            ng-click="_menu_item_active = !_menu_item_active"
-            >Materials</a
-          >
-          <!-- dropdown sub-menu level one ul -->
-          <!-- ngIf: item.Children -->
-          <ul class="sub-menu ng-scope" ng-if="item.Children">
-            <!-- ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.Children,
-                sub_product_active: _sub_product_active
-              }"
-            >
-              <a
-                class="sub_product_a ng-binding"
-                ng-href="/en-GB/materials/filament"
-                ng-click="_sub_product_active = !_sub_product_active"
-                href="/en-GB/materials/filament"
-              >
-                Filament
-                <!-- ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.Children,
-                sub_product_active: _sub_product_active
-              }"
-            >
-              <a
-                class="sub_product_a ng-binding"
-                ng-href="/en-GB/materials/resin"
-                ng-click="_sub_product_active = !_sub_product_active"
-                href="/en-GB/materials/resin"
-              >
-                Resin
-                <!-- ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-          </ul>
-          <!-- end ngIf: item.Children -->
-        </li>
-        <!-- end ngRepeat: item in headMenuLists -->
-        <li
-          class="menu-item ng-scope"
-          ng-repeat="item in headMenuLists"
-          ng-class="{
-            'has-subMenu': item.subMenu,
-            menu_item_active: _menu_item_active
-          }"
-        >
-          <!-- Not redirective URL & Redirective Support URL -->
-          <a
-            class="a_block ng-binding printer_kind"
-            ng-href=""
-            ng-bind="item.Title"
-            ng-class="{ printer_kind: item.Children }"
-            ng-click="_menu_item_active = !_menu_item_active"
-            >Applications</a
-          >
-          <!-- dropdown sub-menu level one ul -->
-          <!-- ngIf: item.Children -->
-          <ul class="sub-menu ng-scope" ng-if="item.Children">
-            <!-- ngRepeat: subItem in item.Children -->
-            <li
-              class="sub_product_li ng-scope"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
-                'has-subMenu': subItem.Children,
-                sub_product_active: _sub_product_active
-              }"
-            >
-              <a
-                class="sub_product_a ng-binding"
-                ng-href="/en-GB/casestudy"
-                ng-click="_sub_product_active = !_sub_product_active"
-                href="/en-GB/casestudy"
-              >
-                Case Study
-                <!-- ngIf: subItem.Children -->
-                <!-- ngIf: subItem.type -->
-              </a>
-              <!-- dropdown sub-menu level two ul -->
-              <!-- ngIf: subItem.Children -->
-            </li>
-            <!-- end ngRepeat: subItem in item.Children -->
-          </ul>
-          <!-- end ngIf: item.Children -->
-        </li>
-        <!-- end ngRepeat: item in headMenuLists -->
-        <li
-          class="menu-item ng-scope"
-          ng-repeat="item in headMenuLists"
-          ng-class="{
-            'has-subMenu': item.subMenu,
-            menu_item_active: _menu_item_active
-          }"
-        >
-          <!-- Not redirective URL & Redirective Support URL -->
-          <a
-            class="a_block ng-binding"
-            ng-href="https://pro.xyzprinting.com/support/en-GB/EndUser/Help"
-            ng-bind="item.Title"
-            ng-class="{ printer_kind: item.Children }"
-            ng-click="_menu_item_active = !_menu_item_active"
-            href="https://pro.xyzprinting.com/support/en-GB/EndUser/Help"
-            >Support</a
-          >
-          <!-- dropdown sub-menu level one ul -->
-          <!-- ngIf: item.Children -->
-        </li>
-        <!-- end ngRepeat: item in headMenuLists -->
-        <li
-          class="menu-item ng-scope"
-          ng-repeat="item in headMenuLists"
-          ng-class="{
-            'has-subMenu': item.subMenu,
-            menu_item_active: _menu_item_active
-          }"
-        >
-          <!-- Not redirective URL & Redirective Support URL -->
-          <a
-            class="a_block ng-binding"
-            ng-href="/en-GB/contact-us"
-            ng-bind="item.Title"
-            ng-class="{ printer_kind: item.Children }"
-            ng-click="_menu_item_active = !_menu_item_active"
-            href="/en-GB/contact-us"
-            >Contact Us</a
-          >
-          <!-- dropdown sub-menu level one ul -->
-          <!-- ngIf: item.Children -->
-        </li>
-        <!-- end ngRepeat: item in headMenuLists -->
 
         <!-- mobile Reseller Resources -->
-        <!-- ngIf: $root.mobile_mode -->
+        <li class="menu-item lang-switch" ng-if="$root.mobile_mode">
+          <a
+            class="mobile_lang_switch"
+            href="https://pro.xyzprinting.com/support/en-US/Help"
+          >
+            @Messages.get("header.resellerSite")
+          </a>
+        </li>
 
         <!-- mobile lang-select -->
-        <!-- ngIf: $root.mobile_mode -->
+        <li
+          class="menu-item lang-switch"
+          ng-if="$root.mobile_mode"
+          ng-class="{
+            'has-subMenu': true,
+            menu_item_active: _menu_item_active
+          }"
+          ng-click="_menu_item_active = !_menu_item_active"
+        >
+          <a class="mobile_lang_switch">
+            @Messages.get("header.language")
+            <span
+              class="currentLang is-pointer {{ flagIcon }}"
+              ng-bind="currentLang"
+            ></span>
+            <span class="icon_arrow"></span>
+          </a>
+          <ul class="sub-menu lang-list">
+            <li
+              ng-repeat="item in headLangLists"
+              class="lang_list_item is-pointer flag-icon{{ $index + 1 }}"
+            >
+              <a ng-click="switchLang(item.ValA)">{{ item.ValB }}</a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <!-- mobile nav end **************************-->
