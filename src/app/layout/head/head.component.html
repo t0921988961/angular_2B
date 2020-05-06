@@ -85,10 +85,10 @@
           [ngClass]="{
             'has-subMenu': item.subMenu,
             pcHover: mobile_mode,
-            menu_item_active: _menu_item_active
+            menu_item_active: _menu_item_active === item.ID
           }"
-          (mouseenter)="_menu_item_active = true"
-          (mouseleave)="_menu_item_active = false"
+          (mouseenter)="_menu_item_active = item.ID"
+          (mouseleave)="_menu_item_active = null"
         >
           <!-- Not redirective URL -->
           <a
@@ -122,10 +122,10 @@
                 'has-subMenu': subItem.productSubMenu,
                 pcHover: mobile_mode,
                 showSubMenu_mb: showSubMenu_mb,
-                sub_product_active: _sub_product_active
+                sub_product_active: _sub_product_active === subItem.ID
               }"
-              (mouseenter)="_sub_product_active = true"
-              (mouseleave)="_sub_product_active = false"
+              (mouseenter)="_sub_product_active = subItem.ID"
+              (mouseleave)="_sub_product_active = null"
             >
               <a
                 class="sub_product_a"

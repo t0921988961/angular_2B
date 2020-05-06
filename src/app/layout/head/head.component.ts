@@ -18,20 +18,21 @@ export class HeadComponent implements OnInit {
   mobile_mode = window.innerWidth < 736 ? true : false;
   currentLang = 'currentLang';
   showLang = false;
-  // tslint:disable-next-line:variable-name
-  _menu_item_active = false;
-  // tslint:disable-next-line:variable-name
-  _sub_product_active = false;
+
+  _menu_item_active = '';
+  _sub_product_active = '';
   // tslint:disable-next-line:variable-name
   showSubMenu_mb = false;
   // tslint:disable-next-line:variable-name
   showMenu_mb = true;
   headMenuLists = null;
 
-
   langs = ['US-English', 'EU-English', '日本-日本語', 'FR-French', 'DE-Germany', '台灣-繁體中文', '中国-简体中文', 'KR-한국어'];
 
-  constructor(public translateService: LanguageService, public callAPI: CallApiService) { }
+
+  constructor(public translateService: LanguageService, public callAPI: CallApiService) {
+  }
+
 
 
   ngOnInit() {
@@ -56,8 +57,8 @@ export class HeadComponent implements OnInit {
 
   }
 
+
   switchMenu(lang: string) {
-    !this._menu_item_active;
   }
 
 }
