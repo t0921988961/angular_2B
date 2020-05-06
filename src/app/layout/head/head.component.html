@@ -20,8 +20,8 @@
     <!-- switch desk or mobile -->
     <div
       class="burgerBtn is-pointer"
-      ng-click="showMenu_mb = !showMenu_mb"
-      ng-class="{ 'showMenu-mb': showMenu_mb }"
+      (click)="showMenu_mb = !showMenu_mb"
+      [ngClass]="{ 'showMenu-mb': showMenu_mb }"
     ></div>
 
     <!-- topMenu start **************************-->
@@ -44,7 +44,7 @@
         <div class="lang-item currentLang is-pointer" (click)="showLang = true">
           US-English
         </div>
-        <ul class="lang-list" [class.showLang]="showLang">
+        <ul class="lang-list" [ngClass]="{ showLang: showLang }">
           <li
             *ngFor="let item of langs"
             class="lang-item is-pointer"
@@ -76,73 +76,91 @@
     <!-- Logo end **************************-->
 
     <!-- desk nav start **************************-->
-    <nav class="main_menu_lg" ng-init="_menu_item_active = false">
+    <nav class="main_menu_lg">
       <ul class="clearfix menu-item-wrap">
         <!-- Printers -->
         <li
           class="menu-item"
-          ng-repeat="item in headMenuLists"
-          ng-class="{
+          *ngFor="let item of headMenuLists; let i = index"
+          [ngClass]="{
             'has-subMenu': item.subMenu,
-            pcHover: !$root.mobile_mode,
+            pcHover: mobile_mode,
             menu_item_active: _menu_item_active
           }"
-          ng-mouseenter="_menu_item_active = true"
-          ng-mouseleave="_menu_item_active = false"
+          (mouseenter)="_menu_item_active = true"
+          (mouseleave)="_menu_item_active = false"
         >
           <!-- Not redirective URL -->
           <a
-            ng-if="item.Link.indexOf('http') !== 0"
-            [href]="item.Link.length !== 0 ? '/' + lang + '/' + item.Link : ''"
-            ng-bind="item.Title"
-            ng-class="{ printer_kind: item.Children }"
-          ></a>
+            *ngIf="item.Link.indexOf('http') !== 0"
+            [href]="
+              item.Link.length !== 0
+                ? '/' + this.translateService.nowLangCode + '/' + item.Link
+                : ''
+            "
+            [ngClass]="{ printer_kind: item.Children }"
+          >
+            {{ item.Title }}
+          </a>
           <!-- Redirective Support URL -->
-          <!-- <a
-            ng-if="item.Link.indexOf('support') === 28"
-            [href]="https:  //pro.xyzprinting.com/support/@lang/EndUser/Help"
-            ng-bind="item.Title"
-            ng-class="{ printer_kind: item.Children }"
-          ></a> -->
+          <a
+            *ngIf="item.Link.indexOf('support') === 28"
+            [href]="
+              'https://pro.xyzprinting.com/support/' +
+              this.translateService.nowLangCode +
+              '/EndUser/Help'
+            "
+            [ngClass]="{ printer_kind: item.Children }"
+            >{{ item.Title }}</a
+          >
           <!-- dropdown sub-menu level one ul -->
-          <ul class="sub-menu" ng-if="item.Children">
+          <ul class="sub-menu" *ngIf="item.Children">
             <li
               class="sub_product_li"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
+              *ngFor="let subItem of item.Children"
+              [ngClass]="{
                 'has-subMenu': subItem.productSubMenu,
-                pcHover: !$root.mobile_mode,
+                pcHover: mobile_mode,
                 showSubMenu_mb: showSubMenu_mb,
                 sub_product_active: _sub_product_active
               }"
-              ng-mouseenter="_sub_product_active = true"
-              ng-mouseleave="_sub_product_active = flase"
+              (mouseenter)="_sub_product_active = true"
+              (mouseleave)="_sub_product_active = false"
             >
               <a
                 class="sub_product_a"
                 [href]="
                   subItem.Link.length !== 0
-                    ? '/' + lang + '/' + subItem.Link
+                    ? '/' +
+                      this.translateService.nowLangCode +
+                      '/' +
+                      subItem.Link
                     : ''
                 "
               >
                 {{ subItem.Title }}
-                <span ng-if="subItem.Children" class="icon_arrow"></span>
-                <sup class="type_sup" ng-if="subItem.type">{{
+                <span *ngIf="subItem.Children" class="icon_arrow"></span>
+                <sup class="type_sup" *ngIf="subItem.type">{{
                   subItem.type
                 }}</sup>
               </a>
               <!-- dropdown sub-menu level two ul -->
-              <ul ng-if="subItem.Children" class="product_sub_menu">
+              <ul *ngIf="subItem.Children" class="product_sub_menu">
                 <li
                   class="product_sub_li"
-                  ng-repeat="proSubItem in subItem.Children"
+                  *ngFor="let proSubItem of subItem.Children"
                 >
                   <a
                     class="product_sub_a"
-                    [href]="'/' + lang + '/' + proSubItem.Link"
+                    [href]="
+                      '/' +
+                      this.translateService.nowLangCode +
+                      '/' +
+                      proSubItem.Link
+                    "
                     ng-bind="proSubItem.Title"
                   >
+                    {{ proSubItem.Title }}
                   </a>
                 </li>
               </ul>
@@ -154,37 +172,25 @@
     <!-- desk nav end **************************-->
 
     <!-- mobile nav start **************************-->
-    <nav class="main_menu_mb" ng-class="{ 'showMenu-mb': showMenu_mb }">
+    <nav class="main_menu_mb" [class.showMenu-mb]="showMenu_mb">
       <ul class="clearfix menu_item_wrap_mb">
         <!-- Printers -->
         <li
           class="menu-item"
-          ng-repeat="item in headMenuLists"
-          ng-class="{
+          *ngFor="let item of headMenuLists"
+          [ngClass]="{
             'has-subMenu': item.subMenu,
             menu_item_active: _menu_item_active
           }"
         >
           <!-- Not redirective URL & Redirective Support URL -->
-          <!-- <a
-            class="a_block"
-            [href]="
-              item.Link.length === 0
-                ? ''
-                : item.Link.indexOf('support') === 28
-                ? 'https://pro.xyzprinting.com/support/@lang/EndUser/Help'
-                : '/' + lang + '/' + item.Link
-            "
-            ng-bind="item.Title"
-            ng-class="{ printer_kind: item.Children }"
-            ng-click="_menu_item_active = !_menu_item_active"
-          ></a> -->
+
           <!-- dropdown sub-menu level one ul -->
-          <ul class="sub-menu" ng-if="item.Children">
+          <ul class="sub-menu" *ngIf="item.Children">
             <li
               class="sub_product_li"
-              ng-repeat="subItem in item.Children"
-              ng-class="{
+              *ngFor="let subItem of item.Children"
+              [ngClass]="{
                 'has-subMenu': subItem.Children,
                 sub_product_active: _sub_product_active
               }"
@@ -193,28 +199,36 @@
                 class="sub_product_a"
                 [href]="
                   subItem.Link.length !== 0
-                    ? '/' + lang + '/' + subItem.Link
+                    ? '/' +
+                      this.translateService.nowLangCode +
+                      '/' +
+                      subItem.Link
                     : ''
                 "
-                ng-click="_sub_product_active = !_sub_product_active"
+                (click)="_sub_product_active = !_sub_product_active"
               >
                 {{ subItem.Title }}
-                <span ng-if="subItem.Children" class="icon_arrow"></span>
-                <sup class="type_sup" ng-if="subItem.type">{{
+                <span *ngIf="subItem.Children" class="icon_arrow"></span>
+                <sup class="type_sup" *ngIf="subItem.type">{{
                   subItem.type
                 }}</sup>
               </a>
               <!-- dropdown sub-menu level two ul -->
-              <ul class="product_sub_menu" ng-if="subItem.Children">
+              <ul class="product_sub_menu" *ngIf="subItem.Children">
                 <li
                   class="product_sub_menu_li"
-                  ng-repeat="proSubItem in subItem.Children"
+                  *ngFor="let proSubItem of subItem.Children"
                 >
                   <a
                     class="product_sub_menu_a"
-                    [href]="'/' + lang + '/' + proSubItem.Link"
+                    [href]="
+                      '/' +
+                      this.translateService.nowLangCode +
+                      '/' +
+                      proSubItem.Link
+                    "
                     ng-bind="proSubItem.Title"
-                  >
+                    >{{ proSubItem.Title }}
                   </a>
                 </li>
               </ul>
@@ -223,7 +237,7 @@
         </li>
 
         <!-- mobile Reseller Resources -->
-        <li class="menu-item lang-switch" ng-if="$root.mobile_mode">
+        <li class="menu-item lang-switch" *ngIf="mobile_mode">
           <a
             class="mobile_lang_switch"
             href="https://pro.xyzprinting.com/support/en-US/Help"
@@ -235,27 +249,24 @@
         <!-- mobile lang-select -->
         <li
           class="menu-item lang-switch"
-          ng-if="$root.mobile_mode"
-          ng-class="{
+          *ngIf="mobile_mode"
+          [ngClass]="{
             'has-subMenu': true,
             menu_item_active: _menu_item_active
           }"
-          ng-click="_menu_item_active = !_menu_item_active"
+          (click)="_menu_item_active = !_menu_item_active"
         >
           <a class="mobile_lang_switch">
             @Messages.get("header.language")
-            <span
-              class="currentLang is-pointer {{ flagIcon }}"
-              ng-bind="currentLang"
-            ></span>
+            <span class="currentLang is-pointer" ng-bind="currentLang"></span>
             <span class="icon_arrow"></span>
           </a>
           <ul class="sub-menu lang-list">
             <li
-              ng-repeat="item in headLangLists"
-              class="lang_list_item is-pointer flag-icon{{ $index + 1 }}"
+              *ngFor="let item of headLangLists"
+              class="lang_list_item is-pointer"
             >
-              <a ng-click="switchLang(item.ValA)">{{ item.ValB }}</a>
+              <a (click)="switchLang(item.ValA)">{{ item.ValB }}</a>
             </li>
           </ul>
         </li>
