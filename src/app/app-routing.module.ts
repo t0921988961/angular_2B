@@ -23,7 +23,7 @@ const routes: Routes = [
         path: 'support', loadChildren: () => import('./support/support.module').then(m => m.SupportModule)
       },
       {
-        path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+        path: 'contact-us', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
       }
     ],
   },

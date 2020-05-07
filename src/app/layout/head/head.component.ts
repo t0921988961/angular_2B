@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { LanguageService } from 'src/app/service/language/language.service';
 // API service
 import { CallApiService } from 'src/app/service/callAPI/call-api.service';
+import { ResizeService } from 'src/app/service/resize/resize.service';
 
 
 @Component({
@@ -19,23 +20,25 @@ export class HeadComponent implements OnInit {
   currentLang = 'currentLang';
   showLang = false;
 
+  _menu_title = '';
   _menu_item_active = '';
   _sub_product_active = '';
   // tslint:disable-next-line:variable-name
   showSubMenu_mb = false;
   // tslint:disable-next-line:variable-name
-  showMenu_mb = true;
+  showMenu_mb = false;
   headMenuLists = null;
 
   langs = ['US-English', 'EU-English', '日本-日本語', 'FR-French', 'DE-Germany', '台灣-繁體中文', '中国-简体中文', 'KR-한국어'];
 
 
-  constructor(public translateService: LanguageService, public callAPI: CallApiService) {
+  constructor(public translateService: LanguageService, public callApiService: CallApiService, public reizeService: ResizeService) {
   }
 
 
 
   ngOnInit() {
+
     const urlParameters = {
       protocol: window.location.protocol,
       host: window.location.host,
@@ -44,16 +47,25 @@ export class HeadComponent implements OnInit {
     const pathArr = urlParameters.path.split('/').filter(n => n);
     const pathLang = pathArr[0];
 
+
     this.translateService.checkUrlPathLang(pathLang);
 
-    this.callAPI.get('https://web-api.xyzprinting.com/Gw/Cache/Website/Exp/IndexToB/en-US/').subscribe((res) => {
-      console.log(res);
-      this.headMenuLists = res;
-    },
-      (error) => {
-        console.log('Head_API', error);
-      }
-    );
+    // set device size
+    const appInitWindowWidth = window.innerWidth;
+    this.reizeService.setInitDeviceSize(appInitWindowWidth);
+
+
+    // Call Head API
+    {
+      this.callApiService.get('https://web-api.xyzprinting.com/Gw/Cache/Website/Exp/IndexToB/en-US/').subscribe((res) => {
+        console.log(res);
+        this.headMenuLists = res;
+      },
+        (error) => {
+          console.log('Head_API', error);
+        }
+      );
+    }
 
   }
 

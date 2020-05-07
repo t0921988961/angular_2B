@@ -15,7 +15,11 @@
 </select>
 
 <!-- header start ***************************************************************-->
-<header id="header" class="page-header">
+<header
+  id="header"
+  class="page-header"
+  (window:resize)="this.reizeService.onResize($event)"
+>
   <div class="page1100 relative">
     <!-- switch desk or mobile -->
     <div
@@ -28,7 +32,7 @@
     <div class="top-menu">
       <!--  Reseller Resources  -->
       <a
-        *ngIf="!mobile_mode"
+        *ngIf="!this.reizeService.mobile_mode"
         [href]="
           'https://pro.xyzprinting.com/support/' +
           this.translateService.nowLangCode +
@@ -62,7 +66,7 @@
 
     <!-- Logo start **************************-->
     <div class="logo">
-      <a [href]="'/' + this.translateService.nowLangCode + '/home'">
+      <a [routerLink]="'/' + this.translateService.nowLangCode + '/home'">
         <img
           [src]="
             mobile_mode
@@ -93,7 +97,7 @@
           <!-- Not redirective URL -->
           <a
             *ngIf="item.Link.indexOf('http') !== 0"
-            [href]="
+            [routerLink]="
               item.Link.length !== 0
                 ? '/' + this.translateService.nowLangCode + '/' + item.Link
                 : ''
@@ -129,7 +133,7 @@
             >
               <a
                 class="sub_product_a"
-                [href]="
+                [routerLink]="
                   subItem.Link.length !== 0
                     ? '/' +
                       this.translateService.nowLangCode +
@@ -152,7 +156,7 @@
                 >
                   <a
                     class="product_sub_a"
-                    [href]="
+                    [routerLink]="
                       '/' +
                       this.translateService.nowLangCode +
                       '/' +
@@ -184,7 +188,22 @@
           }"
         >
           <!-- Not redirective URL & Redirective Support URL -->
-
+          <a
+            class="a_block"
+            [routerLink]="
+              item.Link.length === 0
+                ? ''
+                : item.Link.indexOf('support') === 28
+                ? 'https://pro.xyzprinting.com/support/' +
+                  this.translateService.nowLangCode +
+                  '/EndUser/Help'
+                : '/' + this.translateService.nowLangCode + '/' + item.Link
+            "
+            [ngClass]="{ printer_kind: true }"
+            (click)="_menu_item_active = !_menu_item_active"
+          >
+            {{ item.Title }}
+          </a>
           <!-- dropdown sub-menu level one ul -->
           <ul class="sub-menu" *ngIf="item.Children">
             <li
@@ -192,12 +211,12 @@
               *ngFor="let subItem of item.Children"
               [ngClass]="{
                 'has-subMenu': subItem.Children,
-                sub_product_active: _sub_product_active
+                sub_product_active: _sub_product_active === subItem.ID
               }"
             >
               <a
                 class="sub_product_a"
-                [href]="
+                [routerLink]="
                   subItem.Link.length !== 0
                     ? '/' +
                       this.translateService.nowLangCode +
@@ -205,7 +224,7 @@
                       subItem.Link
                     : ''
                 "
-                (click)="_sub_product_active = !_sub_product_active"
+                (click)="_sub_product_active = subItem.ID"
               >
                 {{ subItem.Title }}
                 <span *ngIf="subItem.Children" class="icon_arrow"></span>
@@ -221,13 +240,14 @@
                 >
                   <a
                     class="product_sub_menu_a"
-                    [href]="
+                    [routerLink]="
                       '/' +
                       this.translateService.nowLangCode +
                       '/' +
                       proSubItem.Link
                     "
                     ng-bind="proSubItem.Title"
+                    (click)="showMenu_mb = !showMenu_mb"
                     >{{ proSubItem.Title }}
                   </a>
                 </li>
@@ -240,9 +260,13 @@
         <li class="menu-item lang-switch" *ngIf="mobile_mode">
           <a
             class="mobile_lang_switch"
-            href="https://pro.xyzprinting.com/support/en-US/Help"
+            [href]="
+              'https://pro.xyzprinting.com/support/' +
+              this.translateService.nowLangCode +
+              '/Help'
+            "
           >
-            @Messages.get("header.resellerSite")
+            {{ "header.resellerSite" | translate }}
           </a>
         </li>
 
@@ -257,7 +281,7 @@
           (click)="_menu_item_active = !_menu_item_active"
         >
           <a class="mobile_lang_switch">
-            @Messages.get("header.language")
+            {{ "header.language" | translate }}
             <span class="currentLang is-pointer" ng-bind="currentLang"></span>
             <span class="icon_arrow"></span>
           </a>
