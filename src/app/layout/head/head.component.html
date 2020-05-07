@@ -184,8 +184,10 @@
           *ngFor="let item of headMenuLists"
           [ngClass]="{
             'has-subMenu': item.subMenu,
-            menu_item_active: _menu_item_active
+            menu_item_active: _menu_item_active === item.ID
           }"
+          (mouseenter)="_menu_item_active = item.ID"
+          (mouseleave)="_menu_item_active = null"
         >
           <!-- Not redirective URL & Redirective Support URL -->
           <a
