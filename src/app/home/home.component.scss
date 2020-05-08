@@ -1,0 +1,480 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/breakpoint";
+@import "../../assets/scss/component/buttons";
+
+//=========================================================
+//=========================================================
+// Desk =================================================
+//=========================================================
+//=========================================================
+.index-content {
+  margin-top: -120px;
+  @include b768 {
+    margin-top: 0;
+    width: 100%;
+  }
+  .desc {
+    margin-bottom: 30px;
+  }
+  .v-align-center {
+    padding: 100px 0;
+    // height: 500px;
+    // line-height: 500px;
+    text-align: center;
+    & > div {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+    }
+  }
+  .text-center-layout {
+    .textWrap {
+      width: 100%;
+      max-width: 660px;
+      @include b768 {
+        width: 100%;
+        padding: 0 25px;
+        max-width: unset;
+      }
+      .primary-title {
+        margin-bottom: 32px;
+      }
+    }
+  }
+  // slider banner START ******************************
+  #banner {
+    width: 100%;
+    position: relative;
+    // carousel block Start ************
+    .carousel-inner {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      .page1100 {
+        padding: 0 30px;
+        // height: 400px;
+        &:after {
+          content: "";
+          display: inline-block;
+          width: 0;
+          height: 100%;
+          vertical-align: middle;
+        }
+        figure {
+          width: 40%;
+          max-width: 360px;
+          margin-top: 100px;
+          vertical-align: middle;
+          @include b768 {
+            width: 100%;
+            margin-top: 30px;
+            text-align: center;
+          }
+          img {
+            width: 100%;
+            @include b768 {
+              width: 210px;
+            }
+          }
+        }
+        .carousel-content {
+          vertical-align: middle;
+          width: 100%;
+          text-align: center;
+        }
+        .text-left {
+          width: 55%;
+          color: #fff;
+          text-align: left;
+          margin-top: 125px;
+          @include b768 {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+          }
+        }
+      }
+    }
+    // pic block Start***********
+    .carousel-item {
+      width: 100%;
+      height: 620px;
+      .banner_link {
+        display: inline-block;
+        width: 100%;
+      }
+      .video-bg {
+        width: 100%;
+        height: 620px;
+        position: relative;
+      }
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .video-bg::before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .div-content {
+        position: absolute;
+        z-index: 3;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        @include b768 {
+          display: flex;
+          align-items: center;
+        }
+      }
+      .img-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include b768 {
+          flex-wrap: wrap;
+          align-items: flex-start;
+        }
+      }
+      .bg {
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        @include b768 {
+          object-fit: unset;
+        }
+      }
+      .carousel-content {
+        color: white;
+        .desc {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 4;
+          max-height: 1.5rem * 4;
+          width: 546px;
+          margin: 0 auto;
+          @include b768 {
+            width: 100%;
+          }
+        }
+        .moreBtn {
+          display: inline-block;
+          @include sm-btn($color-black-1414, $color-gray_4646);
+          // margin-bottom: 50px;
+        }
+        .otherBtn {
+          display: inline-block;
+          @include sm-btn($color-black-1414, $color-gray_4646);
+          position: absolute;
+          margin-top: 90px;
+          margin-left: -60px;
+        }
+      }
+    }
+    .carousel-indicators {
+      bottom: 30px;
+      > .indicator {
+        width: 30px;
+        height: 3px;
+        margin-left: 10px;
+        position: relative;
+        height: 3px;
+        text-indent: -999px;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.5);
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          width: 100%;
+          height: 20px;
+        }
+        &:hover {
+          background: #141414;
+        }
+      }
+      & .active {
+        background-color: #fff;
+        width: 70px;
+        transition: width 0.3s linear;
+      }
+    }
+  }
+  // slider banner END ********************************
+
+  // section Application START ******************************
+  .prototyping {
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/index/application@3x.jpg")
+      no-repeat center/cover;
+    color: white;
+    @include b768 {
+      width: 100%;
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/index/application-sm@3x.jpg")
+        no-repeat center/cover;
+    }
+    > .note-for-title {
+      margin: 20px 0;
+    }
+    .moreBtn {
+      display: inline-block;
+      @include sm-btn($color-red, $color-red-light);
+      // @include sm-btn($color-black-1414, $color-gray_4646);
+    }
+  }
+  // section Application END ********************************
+
+  // New and Event & Looking For Something START ******************************
+  .news-and-event {
+    // height: 400px;
+    display: flex;
+    align-items: stretch;
+    @include b768 {
+      width: 100%;
+      display: block;
+    }
+    .subtitle,
+    .desc-title {
+      margin-bottom: 24px;
+    }
+    .subtitle {
+      font-size: 1.48rem;
+    }
+    .subtitle-event {
+      margin-bottom: 5px;
+      font-size: 1.5rem;
+      @include b768 {
+        line-height: 2rem;
+      }
+    }
+    .desc {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      //-webkit-line-clamp: 5;
+      //max-height: 9.5rem;
+    }
+    .moreBtn {
+      display: block;
+      @include sm-btn($color-red, $color-red-light);
+      margin-bottom: 10px;
+    }
+    & > div {
+      // height: 100%;
+      padding: 80px 0 40px 0;
+      .textWrap {
+        max-width: 510px;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        text-align: left;
+        position: relative;
+        padding: 0 30px;
+      }
+      .btns {
+        display: inline-block;
+      }
+    }
+    .news {
+      color: $color-black-1414;
+      background-color: white;
+      .moreBtn-line {
+        display: block;
+        @include line-btn($color-gray_4646, $color-red-light);
+      }
+      .btns {
+        color: white;
+      }
+    }
+    .event {
+      // height: 430px;
+      color: white;
+      background-color: $color-black-1414;
+      .desc {
+        margin-top: 22px;
+      }
+      .desc-title {
+        color: $color-red;
+      }
+      .moreBtn-line {
+        display: block;
+        @include line-btn(white, $color-red-light);
+      }
+      .moreBtn {
+        display: inline-block;
+        @include sm-btn($color-red, $color-red-light);
+        // @include sm-btn($color-black-1414, $color-gray_4646);
+      }
+    }
+  }
+  // New and Event & Looking For Something END ********************************
+
+  // get-in-touch START ******************************
+  .get-in-touch {
+    background: url("https://twportal.blob.core.windows.net/images-xyzprinting/b2b/index/bg_dark-red_lg.jpg")
+      no-repeat top/cover;
+    color: white;
+    .moreBtn {
+      display: inline-block;
+      @include sm-btn($color-black-1414, $color-gray_4646);
+    }
+  }
+  // get-in-touch END ********************************
+
+  //=========================================================
+  //=========================================================
+  // Below Mobile =================================================
+  //=========================================================
+  //=========================================================
+
+  // @include mediaQueries(mobile) {
+  //   #banner {
+  //     width: 100%;
+  //     .carousel-indicators {
+  //       bottom: 20px;
+  //     }
+  //     .carousel-inner {
+  //       .page1100 {
+  //         width: 90%;
+  //         padding: 0;
+  //         height: auto;
+  //         figure {
+  //           width: 100%;
+  //           height: 230px;
+  //           display: block;
+  //           text-align: center;
+  //           img {
+  //             width: auto;
+  //             height: 100%;
+  //           }
+  //           .blockSpace {
+  //             display: block;
+  //             width: 200px;
+  //             height: 0;
+  //             padding-bottom: 85%;
+  //             opacity: 0;
+  //           }
+  //         }
+  //         .carousel-content {
+  //           width: 100%;
+  //           display: block;
+  //           .desc {
+  //             overflow: hidden;
+  //             text-overflow: ellipsis;
+  //             display: -webkit-box;
+  //             -webkit-box-orient: vertical;
+  //             -webkit-line-clamp: 4;
+  //             max-height: 1.5rem * 4;
+  //             margin-bottom: 20px;
+  //             width: 340px;
+  //           }
+  //         }
+  //       }
+  //       .carousel-item {
+  //         //padding: 40px 0;
+  //         //height: 586px;
+  //         .carousel-content {
+  //           padding: 0;
+  //           .subtitle {
+  //             margin-top: 12px;
+  //           }
+  //           .primary-title {
+  //             line-height: 27px;
+  //             font-size: 23px;
+  //             width: 350px;
+  //           }
+  //           .moreBtn {
+  //             min-width: 180px;
+  //             margin-bottom: 25px;
+  //           }
+  //           .otherBtn {
+  //             min-width: 180px;
+  //             margin-bottom: 25px;
+  //             position: absolute;
+  //             margin-top: 40px;
+  //             margin-left: -100px;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   .prototyping {
+  //     // background: url('https://twportal.blob.core.windows.net/images-xyzprinting/b2b/index/bg_prototyping_sm.jpg')
+  //     //   no-repeat center/cover;
+  //     background: url('../images/index/application.png') no-repeat center/cover;
+  //     .textWrap {
+  //       padding: 0 30px;
+  //     }
+  //     .moreBtn {
+  //       min-width: 180px;
+  //     }
+  //   }
+
+  //   .news-and-event {
+  //     height: auto;
+  //     & > div {
+  //       float: none;
+  //       // min-height: 500px;
+  //       height: auto;
+  //       .textWrap {
+  //         .subtitle-event {
+  //           margin-bottom: 5px;
+  //           font-size: 1.4rem;
+  //         }
+  //         width: 100%;
+  //         .btns {
+  //           position: relative;
+  //           display: inline-block;
+  //         }
+  //       }
+  //     }
+  //     .moreBtn {
+  //       min-width: 180px;
+  //     }
+  //     .news {
+  //       .moreBtn-line {
+  //         min-width: 180px;
+  //         padding: 0;
+  //         text-align: left;
+  //       }
+  //     }
+  //     .event {
+  //       h3 {
+  //         margin-bottom: 40px;
+  //       }
+  //       .moreBtn-line {
+  //         min-width: 180px;
+  //         padding: 0;
+  //         text-align: left;
+  //       }
+  //     }
+  //   }
+
+  //   .get-in-touch {
+  //     background: url('https://twportal.blob.core.windows.net/images-xyzprinting/b2b/index/bg_dark-red_sm.jpg')
+  //       no-repeat center/cover;
+  //     .textWrap {
+  //       padding: 0 30px;
+  //     }
+  //     .moreBtn {
+  //       min-width: 180px;
+  //     }
+  //   }
+  // }
+}

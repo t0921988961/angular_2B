@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 import { ReplaySubject, BehaviorSubject } from 'rxjs';
+import { CallApiService } from '../callAPI/call-api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,17 @@ export class LanguageService {
   language$ = new BehaviorSubject({});
   // language$ = new ReplaySubject(1);
 
+  // API URL Domain name
+  apiUrl = this.callApiService.apiUrl;
+
+  // For Formal-site
+  apiParameter = this.callApiService.apiParameter;
+  apiLangParameter = this.callApiService.apiLangParameter;
+
+
   nowLangCode = '';
+  regionProList = '';
+
   translate = this.translateService;
   getBrowserLang = this.translate.getBrowserCultureLang();
   browserLangList = {
@@ -27,7 +38,7 @@ export class LanguageService {
   };
 
 
-  constructor(private translateService: TranslateService) { }
+  constructor(private translateService: TranslateService, public callApiService: CallApiService) { }
 
 
   checkUrlPathLang(pathLang: string) {
@@ -84,6 +95,7 @@ export class LanguageService {
 
 
   switchLang(lang: string) {
+
     const browserLangList = {
       'US-English': 'en-US',
       'EU-English': 'en-GB',
@@ -94,8 +106,9 @@ export class LanguageService {
       '中国-简体中文': 'zh-CN',
       'KR-한국어': 'ko-KR',
     };
+
     const isSelectLang = browserLangList[lang];
-    console.log('switchLang isSelectLang => ', isSelectLang);
+    // console.log('switchLang isSelectLang => ', isSelectLang);
     const urlParameters = {
       protocol: window.location.protocol,
       host: window.location.host,
@@ -110,6 +123,29 @@ export class LanguageService {
 
     location.href = urlParameters.protocol + '//' + urlParameters.host + '/' + newPath;
     this.setLang(isSelectLang);
+
+
+    // Call LangCode API 確認有沒有產品 導頁
+    // {
+    //   this.callApiService.get('https://web-api.xyzprinting.com/Apitob/PDListToB/' + this.nowLangCode).subscribe((res) => {
+    //     // console.log('API lang region product res', res);
+    //     if (!res) {
+    //       // API Empty
+    //       console.log(
+    //         'API API lang region product response is empty no data'
+    //       );
+    //     } else {
+    //       this.regionProList = res[0].ToBPDList.split(',');
+    //       console.log('this.regionProList:', this.regionProList);
+    //     }
+    //   },
+    //     (error) => {
+    //       console.log('Error API langRegion product', error);
+    //     }
+    //   );
+    // }
+
+
   }
 
 

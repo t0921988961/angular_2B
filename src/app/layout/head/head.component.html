@@ -1,4 +1,4 @@
-<p>header work</p>
+<!-- <p>header work</p>
 <p>{{ "Hello" | translate }}</p>
 
 <p>{{ "partpro100.section1.desc" | translate }}</p>
@@ -7,16 +7,16 @@
 
 <select
   name="lang"
-  id=""
+  activ=""
   (change)="this.translateService.switchLang($event.target.value)"
 >
   <option selected value="Lang" aria-placeholder="seleced">Lang</option>
   <option value="{{ item }}" *ngFor="let item of langs">{{ item }}</option>
-</select>
+</select> -->
 
 <!-- header start ***************************************************************-->
 <header
-  id="header"
+  activ="header"
   class="page-header"
   (window:resize)="this.reizeService.onResize($event)"
 >
@@ -56,7 +56,7 @@
               this.translateService.switchLang($event.target.textContent.trim())
             "
           >
-            {{ item }}
+            {{ item.ValB }}
           </li>
         </ul>
       </div>
@@ -115,8 +115,8 @@
               '/EndUser/Help'
             "
             [ngClass]="{ printer_kind: item.Children }"
-            >{{ item.Title }}</a
-          >
+            >{{ item.Title }}
+          </a>
           <!-- dropdown sub-menu level one ul -->
           <ul class="sub-menu" *ngIf="item.Children">
             <li
@@ -184,10 +184,8 @@
           *ngFor="let item of headMenuLists"
           [ngClass]="{
             'has-subMenu': item.subMenu,
-            menu_item_active: _menu_item_active === item.ID
+            menu_item_active: item.activ
           }"
-          (mouseenter)="_menu_item_active = item.ID"
-          (mouseleave)="_menu_item_active = null"
         >
           <!-- Not redirective URL & Redirective Support URL -->
           <a
@@ -196,13 +194,13 @@
               item.Link.length === 0
                 ? ''
                 : item.Link.indexOf('support') === 28
-                ? 'https://pro.xyzprinting.com/support/' +
+                ? '/support/' +
                   this.translateService.nowLangCode +
                   '/EndUser/Help'
                 : '/' + this.translateService.nowLangCode + '/' + item.Link
             "
-            [ngClass]="{ printer_kind: true }"
-            (click)="_menu_item_active = !_menu_item_active"
+            [ngClass]="{ printer_kind: item.Children }"
+            (click)="switchMobileSubmenu(item)"
           >
             {{ item.Title }}
           </a>
@@ -213,7 +211,7 @@
               *ngFor="let subItem of item.Children"
               [ngClass]="{
                 'has-subMenu': subItem.Children,
-                sub_product_active: _sub_product_active === subItem.ID
+                sub_product_active: subItem.activ
               }"
             >
               <a
@@ -226,7 +224,7 @@
                       subItem.Link
                     : ''
                 "
-                (click)="_sub_product_active = subItem.ID"
+                (click)="checkMobileMenuChildren(subItem, item)"
               >
                 {{ subItem.Title }}
                 <span *ngIf="subItem.Children" class="icon_arrow"></span>
@@ -249,7 +247,11 @@
                       proSubItem.Link
                     "
                     ng-bind="proSubItem.Title"
-                    (click)="showMenu_mb = !showMenu_mb"
+                    (click)="
+                      showMenu_mb = !showMenu_mb;
+                      subItem.activ = !subItem.activ;
+                      item.activ = !item.activ
+                    "
                     >{{ proSubItem.Title }}
                   </a>
                 </li>
@@ -288,11 +290,15 @@
             <span class="icon_arrow"></span>
           </a>
           <ul class="sub-menu lang-list">
-            <li
-              *ngFor="let item of headLangLists"
-              class="lang_list_item is-pointer"
-            >
-              <a (click)="switchLang(item.ValA)">{{ item.ValB }}</a>
+            <li *ngFor="let item of langs" class="lang_list_item is-pointer">
+              <a
+                (click)="
+                  this.translateService.switchLang(
+                    $event.target.textContent.trim()
+                  )
+                "
+                >{{ item.ValB }}</a
+              >
             </li>
           </ul>
         </li>
@@ -303,115 +309,3 @@
 </header>
 
 <!-- header End ***************************************************************-->
-
-<!-- <ul class="head">
-  <ul>
-    <ul>
-      Binder_Jetting
-      <li>
-        <a routerLink="/zh-TW/product/Binder_Jetting/PartPro350_xBC">
-          PartPro350_xBC
-        </a>
-      </li>
-    </ul>
-
-    <ul>
-      Color_fff
-      <li>
-        <a routerLink="/zh-TW/product/Color_fff/PartPro200_xTCS">
-          PartPro200_xTCS
-        </a>
-      </li>
-    </ul>
-
-    <ul>
-      DLP
-      <li>
-        <a routerLink="/zh-TW/product/DLP/CastPro100_xP">
-          CastPro100_xP
-        </a>
-      </li>
-      <li>
-        <a routerLink="/zh-TW/product/DLP/PartPro120_xP">
-          PartPro120_xP
-        </a>
-      </li>
-      <li>
-        <a routerLink="/zh-TW/product/DLP/PartPro100_xP">
-          PartPro100_xP
-        </a>
-      </li>
-    </ul>
-
-    <ul>
-      FFF
-      <li>
-        <a routerLink="/zh-TW/product/FFF/PartPro300_xT">
-          PartPro300_xT
-        </a>
-      </li>
-    </ul>
-
-    <ul>
-      SLS
-      <li>
-        <a routerLink="/zh-TW/product/SLS/MfgPro230_xS">
-          MfgPro230_xS
-        </a>
-      </li>
-    </ul>
-
-    <ul>
-      SL
-      <li>
-        <a routerLink="/zh-TW/product/SL/partPro150_xp">
-          partPro150_xp
-        </a>
-      </li>
-    </ul>
-
-    <ul>
-      UV_Curing
-      <li>
-        <a routerLink="/zh-TW/product/UV_Curing/EeezCure180">
-          EeezCure180
-        </a>
-      </li>
-      <li>
-        <a routerLink="/zh-TW/product/UV_Curing/MultiCure180">
-          MultiCure180
-        </a>
-      </li>
-    </ul>
-  </ul>
-
-  <ul>
-    <ul>
-      materials
-      <li>
-        <a routerLink="/materials/filament">
-          Filament
-        </a>
-      </li>
-      <li>
-        <a routerLink="/materials/resin">
-          Resin
-        </a>
-      </li>
-    </ul>
-  </ul>
-
-  <ul>
-    <ul>
-      Application
-      <li>
-        <a routerLink="/casestudy">
-          casestudy
-        </a>
-      </li>
-    </ul>
-  </ul>
-
-  <li><a [routerLink]="['/support']">Support</a></li>
-  <li><a [routerLink]="['/contact']">contact</a></li>
-</ul> -->

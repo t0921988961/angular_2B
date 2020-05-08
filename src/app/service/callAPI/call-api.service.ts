@@ -8,12 +8,23 @@ import { catchError } from 'rxjs/operators';
 })
 export class CallApiService {
 
+  // API URL Domain name
+  apiUrl = 'https://web-api.xyzprinting.com/Gw/Cache/Website/';
+
+  // For Formal-site
+  apiParameter = 'Exp';
+  apiLangParameter = 'Cfg';
+
+  // For Test-site
+  // apiParameter = 'ExpTest';
+  // apiLangParameter = 'CfgTest';
+
+
   constructor(
     public http: HttpClient,
     public httpBackend: HttpBackend,
     private httpWithoutInterceptor: HttpClient,
   ) {
-    // this.httpWithoutInterceptor = new HttpClient(httpBackend);
   }
 
   // catch API error and return Observable let keep for Subscribe

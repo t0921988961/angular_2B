@@ -14,14 +14,21 @@ import { ResizeService } from 'src/app/service/resize/resize.service';
 })
 export class HeadComponent implements OnInit {
 
+  // API URL Domain name
+  apiUrl = this.callApiService.apiUrl;
+
+  // For Formal-site
+  apiParameter = this.callApiService.apiParameter;
+  apiLangParameter = this.callApiService.apiLangParameter;
+
 
   // tslint:disable-next-line:variable-name
   mobile_mode = window.innerWidth < 736 ? true : false;
   currentLang = 'currentLang';
   showLang = false;
 
-  _menu_title = '';
-  _menu_item_active = '';
+
+  _menu_item_active = false;
   _sub_product_active = '';
   // tslint:disable-next-line:variable-name
   showSubMenu_mb = false;
@@ -39,27 +46,43 @@ export class HeadComponent implements OnInit {
 
   ngOnInit() {
 
-    const urlParameters = {
-      protocol: window.location.protocol,
-      host: window.location.host,
-      path: window.location.pathname,
-    };
-    const pathArr = urlParameters.path.split('/').filter(n => n);
-    const pathLang = pathArr[0];
+    // init url langCode
+    {
+      const urlParameters = {
+        protocol: window.location.protocol,
+        host: window.location.host,
+        path: window.location.pathname,
+      };
+      const pathArr = urlParameters.path.split('/').filter(n => n);
+      const pathLang = pathArr[0];
+      this.translateService.checkUrlPathLang(pathLang);
+    }
 
-
-    this.translateService.checkUrlPathLang(pathLang);
 
     // set device size
-    const appInitWindowWidth = window.innerWidth;
-    this.reizeService.setInitDeviceSize(appInitWindowWidth);
+    {
+      const appInitWindowWidth = window.innerWidth;
+      this.reizeService.setInitDeviceSize(appInitWindowWidth);
+    }
 
 
     // Call Head API
     {
-      this.callApiService.get('https://web-api.xyzprinting.com/Gw/Cache/Website/Exp/IndexToB/en-US/').subscribe((res) => {
-        console.log(res);
+      this.callApiService.get(this.apiUrl + this.apiParameter + '/IndexToB/' + this.translateService.nowLangCode).subscribe((res) => {
+        console.log('Head API res:', res);
         this.headMenuLists = res;
+      },
+        (error) => {
+          console.log('Head_API', error);
+        }
+      );
+    }
+
+    // Call LangCode API
+    {
+      this.callApiService.get(this.apiUrl + this.apiLangParameter + '/FELangToB/').subscribe((res) => {
+        // console.log(res);
+        this.langs = res;
       },
         (error) => {
           console.log('Head_API', error);
@@ -70,7 +93,24 @@ export class HeadComponent implements OnInit {
   }
 
 
-  switchMenu(lang: string) {
+  switchMobileSubmenu(item) {
+    if (item.Children) {
+      item.activ = !item.activ;
+    } else {
+      this.showMenu_mb = !this.showMenu_mb;
+      item.activ = !item.activ;
+    }
   }
+
+  checkMobileMenuChildren(subItem, item) {
+    if (subItem.Children) {
+      subItem.activ = !subItem.activ;
+    } else {
+      this.showMenu_mb = !this.showMenu_mb;
+      item.activ = !item.activ;
+    }
+  }
+
+
 
 }

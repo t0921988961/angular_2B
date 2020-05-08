@@ -1,1 +1,74 @@
-<p class="foot">foot works!</p>
+<footer class="page-footer">
+  <div class="page1100">
+    <ul class="site-map clearfix">
+      <li class="map-group" *ngFor="let item of headMenuLists">
+        <p>{{ item.Title }}</p>
+        <ul *ngIf="item.Children">
+          <li class="map-item" *ngFor="let subItem of item.Children">
+            <!-- Not redirective URL -->
+            <a
+              *ngIf="subItem.Link.indexOf('http') !== 0"
+              [href]="
+                '/' + this.translateService.nowLangCode + '/' + subItem.Link
+              "
+            >
+              {{ subItem.Title }}
+            </a>
+            <!-- Redirective 2C URL -->
+            <a
+              *ngIf="subItem.Link.indexOf('www.xyz') === 8"
+              [href]="
+                'https://www.xyzprinting.com/' +
+                this.translateService.nowLangCode
+              "
+            >
+              {{ subItem.Title }}
+            </a>
+            <!-- Redirective Support URL -->
+            <a
+              *ngIf="subItem.Link.indexOf('support') === 28"
+              [href]="
+                'https://pro.xyzprinting.com/support/' +
+                this.translateService.nowLangCode +
+                '/EndUser/Help'
+              "
+            >
+              {{ subItem.Title }}
+            </a>
+            <!-- Redirective Account URL -->
+            <a
+              *ngIf="subItem.Link.indexOf('account') === 8"
+              [href]="subItem.Link"
+            >
+              {{ subItem.Title }}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div class="clearfix bottom-wrap">
+      <div class="foot_logo element-inlineb">
+        <a href="/@lang/home">
+          <img
+            src="https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/img_logo_sm.png"
+            alt=""
+          />
+        </a>
+        <p class="slogan">{{ "footer.logoSlogan" | translate }}</p>
+      </div>
+      <ul class="company element-inlineb">
+        <li>
+          <span class="copyright"> {{ "footer.copyright" | translate }}</span>
+        </li>
+        <li>
+          <a href="/@lang/policy">
+            {{ "footer.policy" | translate }}
+          </a>
+          <a href="/@lang/terms-of-use">
+            {{ "footer.termsOfUse" | translate }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>

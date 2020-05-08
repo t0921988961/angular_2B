@@ -1,1 +1,77 @@
-<p>home works!</p>
+<div class="index-content">
+  <!-- Application -->
+  <div class="prototyping v-align-center text-center-layout">
+    <div class="textWrap">
+      <h2 class="primary-title_KR">
+        {{ "index.prototype.title" | translate }}
+      </h2>
+      <h4 class="note-for-title">
+        {{ "index.prototype.product" | translate }}
+      </h4>
+      <p
+        *ngIf="this.translateService.nowLangCode != 'ko-KR'"
+        class="primary-title"
+      >
+        {{ "index.prototype.desc" | translate }}
+      </p>
+      <p
+        *ngIf="this.translateService.nowLangCode == 'ko-KR'"
+        class="primary-title"
+      >
+        {{ "index.prototype.desc" | translate }}
+      </p>
+      <a
+        [href]="
+          '/' + this.translateService.nowLangCode + '/case-study/castpro100-xp'
+        "
+        class="moreBtn"
+      >
+        {{ "index.prototype.moreBtn" | translate }}
+      </a>
+    </div>
+  </div>
+
+  <div class="news-and-event clearfix">
+    <!-- News and Events -->
+    <div class="news float-left col-6 mobile-col-12">
+      <div class="textWrap">
+        <h4 class="font_24">
+          {{ "index.newAndEvent.title" | translate }}
+        </h4>
+        <p class="desc">
+          {{ "index.news.desc" | translate }}
+        </p>
+        <div class="btns">
+          <a
+            [href]="'/' + this.translateService.nowLangCode + '/news?tab=news'"
+            class="moreBtn"
+          >
+            {{ "index.news.readBtn" | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Looking For Something Feel Free To Ask. -->
+    <div class="event float-right col-6 mobile-col-12">
+      <div class="textWrap">
+        <h3
+          class="subtitle-event"
+          [innerHTML]="'index.event.subtitle' | translate"
+        ></h3>
+        <p class="desc">
+          {{ "index.event.desc" | translate }}
+        </p>
+        <div class="btns">
+          <a
+            [href]="'/' + this.translateService.nowLangCode + '/contact-us'"
+            class="moreBtn"
+            ng-if="true"
+          >
+            {{ "btn.getInTouch" | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
