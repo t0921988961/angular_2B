@@ -13,15 +13,6 @@ import { LayoutModule } from './layout/layout.module';
 import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
 
-// swiper slider
-import { SwiperModule } from 'ngx-swiper-wrapper';
-import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
-import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-
-const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
-  direction: 'horizontal',
-  slidesPerView: 'auto'
-};
 
 export function createLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -39,7 +30,6 @@ export function createLoader(http: HttpClient) {
     LayoutModule,
     HttpClientModule,
     FormsModule,
-    SwiperModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -49,10 +39,7 @@ export function createLoader(http: HttpClient) {
     }),
 
   ],
-  providers: [{
-    provide: SWIPER_CONFIG,
-    useValue: DEFAULT_SWIPER_CONFIG
-  }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
