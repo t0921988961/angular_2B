@@ -13,6 +13,9 @@ import { LayoutModule } from './layout/layout.module';
 import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
 
+// swiper slider
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+
 
 export function createLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -30,6 +33,7 @@ export function createLoader(http: HttpClient) {
     LayoutModule,
     HttpClientModule,
     FormsModule,
+    NgxUsefulSwiperModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
