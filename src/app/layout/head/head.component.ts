@@ -15,7 +15,7 @@ import { EventEmitter } from 'events';
 })
 export class HeadComponent implements OnInit {
 
-  @Output urlPathLangCode = new EventEmitter();
+  // @Output urlPathLangCode = new EventEmitter();
 
   // API URL Domain name
   apiUrl = this.callApiService.apiUrl;
