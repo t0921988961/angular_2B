@@ -24,10 +24,19 @@ const routes: Routes = [
       },
       {
         path: 'contact-us', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+      },
+      {
+        path: 'story', loadChildren: () => import('./story/story.module').then(m => m.StoryModule)
+      },
+      {
+        path: 'policy', loadChildren: () => import('./policy/policy.module').then(m => m.PolicyModule)
+      },
+      {
+        path: 'terms-of-use', loadChildren: () => import('./terms-of-use/terms-of-use.module').then(m => m.TermsOfUseModule)
       }
     ],
   },
-  { path: '**', redirectTo: '/home' },
+  { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({

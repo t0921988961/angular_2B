@@ -1,0 +1,238 @@
+<div class="page-static-content policy-v3">
+  <!-- Privacy Policy -->
+  <section>
+    <h1 *ngIf="this.translateService.nowLangCode != 'de-DE'" class="subtitle">
+      {{ "policy.pageTitle" | translate }}
+    </h1>
+    <h1
+      *ngIf="this.translateService.nowLangCode == 'de-DE'"
+      class="subtitle-DE"
+    >
+      {{ "policy.pageTitle" | translate }}
+    </h1>
+    <hr />
+    <p>
+      <strong class="text-danger h5">
+        {{ "policy.pageDate1" | translate }} </strong
+      ><br />
+      {{ "policy.pageDate2" | translate }}
+    </p>
+  </section>
+
+  <!-- COMPANY PRIVACY POLICY SCOPE -->
+  <section>
+    <h2 class="desc-title">
+      {{ "policy.preface.title" | translate }}
+    </h2>
+    <p class="desc">
+      {{ "policy.preface.desc" | translate }}
+    </p>
+  </section>
+
+  <!-- COLLECTION -->
+  <section>
+    <h2 class="desc-title">{{ "policy.section2.title" | translate }}</h2>
+    <h3 class="sub-title">{{ "policy.section2.subtitle1" | translate }}</h3>
+    <p class="desc">{{ "policy.section2.desc" | translate }}</p>
+    <ul class="list-style-disc">
+      <li>{{ "policy.section2.desc1" | translate }}</li>
+      <li>{{ "policy.section2.desc2" | translate }}</li>
+      <li>{{ "policy.section2.desc3" | translate }}</li>
+      <li>{{ "policy.section2.desc4" | translate }}</li>
+      <li>{{ "policy.section2.desc5" | translate }}</li>
+      <li>{{ "policy.section2.desc6" | translate }}</li>
+      <li *ngIf="this.translateService.nowLangCode != 'ja-JP'">
+        {{ "policy.section2.desc7" | translate }}
+      </li>
+    </ul>
+  </section>
+
+  <!-- Data Supplementation -->
+  <section>
+    <h3 class="sub-title">{{ "policy.section3.title" | translate }}</h3>
+    <p class="desc">{{ "policy.section3.desc1_1" | translate }}</p>
+    <p class="desc">{{ "policy.section3.desc1_2" | translate }}</p>
+    <ul class="list-style-disc">
+      <li>{{ "policy.section3.desc1_2_sub" | translate }}</li>
+    </ul>
+  </section>
+
+  <!-- Passive Collection -->
+  <section>
+    <h3 class="sub-title">{{ "policy.section4.title" | translate }}</h3>
+    <p class="desc">{{ "policy.section4.desc1" | translate }}</p>
+  </section>
+
+  <!-- Tracking Technologies -->
+  <section>
+    <h3 class="sub-title">{{ "policy.section5.title" | translate }}</h3>
+    <p class="desc">{{ "policy.section5.desc1" | translate }}</p>
+  </section>
+
+  <!-- Application -->
+  <section>
+    <h3 class="sub-title">{{ "policy.section6.title" | translate }}</h3>
+    <p class="desc">{{ "policy.section6.desc1" | translate }}</p>
+    <p class="desc">{{ "policy.section6.desc2" | translate }}</p>
+    <p class="desc">{{ "policy.section6.desc3" | translate }}</p>
+  </section>
+
+  <!-- USE -->
+  <section>
+    <h2 class="desc-title">{{ "policy.section7.title" | translate }}</h2>
+    <p class="desc">{{ "policy.section7.desc" | translate }}</p>
+    <ul class="list-style-disc">
+      <li>{{ "policy.section7.desc_sub1" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub2" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub3" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub4" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub5" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub6" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub7" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub8" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub9" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub10" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub11" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub12" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub13" | translate }}</li>
+      <li>{{ "policy.section7.desc_sub14" | translate }}</li>
+    </ul>
+  </section>
+
+  <!-- SHARING -->
+  <section>
+    <h2 class="desc-title">{{ "policy.section8.title" | translate }}</h2>
+    <h3 class="sub-title">{{ "policy.section8.subtitle1" | translate }}</h3>
+    <p class="desc">
+      {{ "policy.section8.desc1" | translate }}
+      <a class="text-primary" href="mailto:info@@xyzprinting.com">
+        {{ "policy.section13.desc1_1" | translate }}
+      </a>
+    </p>
+    <!-- <p ng-if="lang == 'ko-KR'" class="desc">
+      {{'policy.section8.desc1'|translate}}
+      <a class="text-primary" href="mailto:info@@xyzprinting.com">
+        {{'policy.section13.desc1_1'|translate}}
+      </a>
+    </p> -->
+  </section>
+
+  <!-- Sharing with Service Providers -->
+  <section>
+    <h3 class="sub-title">{{ "policy.section8.subtitle2" | translate }}</h3>
+    <p class="desc">{{ "policy.section8.desc2" | translate }}</p>
+    <p class="desc">{{ "policy.section8.desc3" | translate }}</p>
+    <ul class="list-style-disc">
+      <li>{{ "policy.section8.desc3_1" | translate }}</li>
+      <li>{{ "policy.section8.desc3_2" | translate }}</li>
+      <li>{{ "policy.section8.desc3_3" | translate }}</li>
+      <li>{{ "policy.section8.desc3_4" | translate }}</li>
+      <li>{{ "policy.section8.desc3_5" | translate }}</li>
+    </ul>
+    <p class="desc">{{ "policy.section8.desc4" | translate }}</p>
+  </section>
+
+  <!-- LINKS TO OTHER SITE/SERVICES -->
+  <section>
+    <h2 class="desc-title">{{ "policy.section9.title" | translate }}</h2>
+    <p class="desc">{{ "policy.section9.desc1" | translate }}</p>
+    <p class="desc">{{ "policy.section9.desc2" | translate }}</p>
+  </section>
+
+  <!-- LEGAL NOTICE -->
+  <section>
+    <h2 class="desc-title">{{ "policy.section10.title" | translate }}</h2>
+    <p class="desc">{{ "policy.section10.desc1" | translate }}</p>
+    <p class="desc">{{ "policy.section10.desc2" | translate }}</p>
+  </section>
+
+  <!-- SECURITY -->
+  <section>
+    <h2 class="desc-title">{{ "policy.section11.title" | translate }}</h2>
+    <p class="desc">
+      {{ "policy.section11.desc1" | translate }}
+      <a class="text-primary" href="mailto:info@@xyzprinting.com">
+        {{ "policy.section11.desc1_1" | translate }}
+      </a>
+    </p>
+    <!-- <p ng-if="lang == 'ko-KR'" class="desc">
+      {{'policy.section11.desc1'|translate}}
+      <a class="text-primary" href="mailto:info@@xyzprinting.com">
+        {{'policy.section11.desc1_1'|translate}}
+      </a>
+    </p> -->
+    <p class="desc">{{ "policy.section11.desc2" | translate }}</p>
+  </section>
+
+  <!-- ACCESS -->
+  <section>
+    <h2 class="desc-title">{{ "policy.section12.title" | translate }}</h2>
+    <p class="desc">{{ "policy.section12.desc1" | translate }}</p>
+    <p class="desc">{{ "policy.section12.desc2" | translate }}</p>
+    <ul class="list-style-disc">
+      <li>{{ "policy.section12.desc2_1" | translate }}</li>
+      <li>{{ "policy.section12.desc2_2" | translate }}</li>
+      <li>{{ "policy.section12.desc2_3" | translate }}</li>
+      <li>{{ "policy.section12.desc2_4" | translate }}</li>
+    </ul>
+    <p class="desc">
+      {{ "policy.section12.desc3" | translate
+      }}<a
+        class="text-primary"
+        href="https://pro.xyzprinting.com/support/@lang/Help"
+        target="_blank"
+      >
+        {{ "policy.section12.desc3_1" | translate }}</a
+      ><span *ngIf="this.translateService.nowLangCode == 'fr-FR'">,</span>
+      {{ "policy.section12.desc3_2" | translate }}
+    </p>
+    <p class="desc">{{ "policy.section12.desc4" | translate }}</p>
+  </section>
+
+  <!-- CHOICE -->
+  <section>
+    <h2 class="desc-title">{{ "policy.section13.title" | translate }}</h2>
+    <p class="desc">
+      {{ "policy.section13.desc1" | translate }}
+      <a class="text-primary" href="mailto:info@@xyzprinting.com">
+        {{ "policy.section13.desc1_1" | translate }}
+      </a>
+      <!-- <span ng-if="lang == 'de-DE' || lang == 'zh-CN'">
+        {{'policy.section13.desc1_2'|translate}}
+      </span> -->
+    </p>
+    <!-- <p ng-if="lang == 'ko-KR'" class="desc">
+      {{'policy.section13.desc1'|translate}}
+      <a class="text-primary" href="mailto:info@@xyzprinting.com">
+        {{'policy.section13.desc1_1'|translate}}
+      </a>
+    </p> -->
+  </section>
+
+  <!-- CHANGE TO THIS PRIVACY POLICY -->
+  <section>
+    <h2 class="desc-title">{{ "policy.section14.title" | translate }}</h2>
+    <p class="desc">{{ "policy.section14.desc1" | translate }}</p>
+  </section>
+
+  <!-- CONTACT INFORMATION -->
+  <section
+    *ngIf="
+      this.translateService.nowLangCode != 'fr-FR' &&
+      this.translateService.nowLangCode != 'zh-CN' &&
+      this.translateService.nowLangCode != 'de-DE'
+    "
+  >
+    <h2 class="desc-title">{{ "policy.section15.title" | translate }}</h2>
+    <ul class="contact-info">
+      <li>{{ "policy.section15.desc1" | translate }}</li>
+      <li>{{ "policy.section15.desc2" | translate }}</li>
+      <li>{{ "policy.section15.desc3" | translate }}</li>
+      <li>
+        <a class="text-primary" href="mailto:info@@xyzprinting.com">{{
+          "policy.section15.desc4" | translate
+        }}</a>
+      </li>
+    </ul>
+  </section>
+</div>

@@ -46,7 +46,7 @@
       <!-- lang Select -->
       <div class="lang-switch" (mouseleave)="showLang = false">
         <div class="lang-item currentLang is-pointer" (click)="showLang = true">
-          US-English
+          {{ showMenuLangCode }}
         </div>
         <ul class="lang-list" [ngClass]="{ showLang: showLang }">
           <li
@@ -89,10 +89,10 @@
           [ngClass]="{
             'has-subMenu': item.subMenu,
             pcHover: mobile_mode,
-            menu_item_active: _menu_item_active === item.ID
+            menu_item_active: menuItemActive === item.ID
           }"
-          (mouseenter)="_menu_item_active = item.ID"
-          (mouseleave)="_menu_item_active = null"
+          (mouseenter)="menuItemActive = item.ID"
+          (mouseleave)="menuItemActive = null"
         >
           <!-- Not redirective URL -->
           <a
@@ -100,7 +100,7 @@
             [routerLink]="
               item.Link.length !== 0
                 ? '/' + this.translateService.nowLangCode + '/' + item.Link
-                : ''
+                : '/' + this.translateService.nowLangCode + '/' + '/home'
             "
             [ngClass]="{ printer_kind: item.Children }"
           >
@@ -126,10 +126,10 @@
                 'has-subMenu': subItem.productSubMenu,
                 pcHover: mobile_mode,
                 showSubMenu_mb: showSubMenu_mb,
-                sub_product_active: _sub_product_active === subItem.ID
+                sub_product_active: subProductActive === subItem.ID
               }"
-              (mouseenter)="_sub_product_active = subItem.ID"
-              (mouseleave)="_sub_product_active = null"
+              (mouseenter)="subProductActive = subItem.ID"
+              (mouseleave)="subProductActive = null"
             >
               <a
                 class="sub_product_a"
@@ -139,7 +139,7 @@
                       this.translateService.nowLangCode +
                       '/' +
                       subItem.Link
-                    : ''
+                    : '/' + this.translateService.nowLangCode + '/home'
                 "
               >
                 {{ subItem.Title }}
@@ -280,9 +280,9 @@
           *ngIf="mobile_mode"
           [ngClass]="{
             'has-subMenu': true,
-            menu_item_active: _menu_item_active
+            menu_item_active: menuItemActive
           }"
-          (click)="_menu_item_active = !_menu_item_active"
+          (click)="menuItemActive = !menuItemActive"
         >
           <a class="mobile_lang_switch">
             {{ "header.language" | translate }}

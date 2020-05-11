@@ -28,8 +28,8 @@ export class HeadComponent implements OnInit {
   showLang = false;
 
 
-  _menu_item_active = false;
-  _sub_product_active = '';
+  menuItemActive = false;
+  subProductActive = '';
   // tslint:disable-next-line:variable-name
   showSubMenu_mb = false;
   // tslint:disable-next-line:variable-name
@@ -37,6 +37,18 @@ export class HeadComponent implements OnInit {
   headMenuLists = null;
 
   langs = ['US-English', 'EU-English', '日本-日本語', 'FR-French', 'DE-Germany', '台灣-繁體中文', '中国-简体中文', 'KR-한국어'];
+
+  showMenuLangCode = '';
+  showLangList = {
+    'en-US': 'US-English',
+    'en-GB': 'EU-English',
+    'ja-JP': '日本-日本語',
+    'fr-FR': 'FR-French',
+    'de-DE': 'DE-Germany',
+    'zh-TW': '台灣-繁體中文',
+    'zh-CN': '中国-简体中文',
+    'ko-KR': 'KR-한국어',
+  };
 
 
   constructor(public translateService: LanguageService, public callApiService: CallApiService, public reizeService: ResizeService) {
@@ -56,6 +68,7 @@ export class HeadComponent implements OnInit {
       const pathArr = urlParameters.path.split('/').filter(n => n);
       const pathLang = pathArr[0];
       this.translateService.checkUrlPathLang(pathLang);
+      this.showMenuLangCode = this.showLangList[pathLang];
     }
 
 
@@ -68,6 +81,7 @@ export class HeadComponent implements OnInit {
 
     // Call Head API
     {
+      // tslint:disable-next-line:max-line-length
       this.callApiService.get(this.apiUrl + this.apiParameter + '/IndexToB/' + this.translateService.nowLangCode).subscribe((res) => {
         console.log('Head API res:', res);
         this.headMenuLists = res;

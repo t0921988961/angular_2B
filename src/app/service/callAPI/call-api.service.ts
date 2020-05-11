@@ -38,6 +38,7 @@ export class CallApiService {
       .pipe(catchError(this.formatErrors));
   }
 
+  // tslint:disable-next-line:ban-types
   put(path: string, body: Object = {}): Observable<any> {
     return this.http.post(
       `${path}`,

@@ -8,7 +8,7 @@
             <!-- Not redirective URL -->
             <a
               *ngIf="subItem.Link.indexOf('http') !== 0"
-              [href]="
+              [routerLink]="
                 '/' + this.translateService.nowLangCode + '/' + subItem.Link
               "
             >
@@ -48,7 +48,7 @@
     </ul>
     <div class="clearfix bottom-wrap">
       <div class="foot_logo element-inlineb">
-        <a href="/@lang/home">
+        <a [routerLink]="'/' + this.translateService.nowLangCode + '/home'">
           <img
             src="https://twportal.blob.core.windows.net/images-xyzprinting/b2b/header/img_logo_sm.png"
             alt=""
@@ -61,10 +61,14 @@
           <span class="copyright"> {{ "footer.copyright" | translate }}</span>
         </li>
         <li>
-          <a href="/@lang/policy">
+          <a [routerLink]="'/' + this.translateService.nowLangCode + '/policy'">
             {{ "footer.policy" | translate }}
           </a>
-          <a href="/@lang/terms-of-use">
+          <a
+            [routerLink]="
+              '/' + this.translateService.nowLangCode + '/terms-of-use'
+            "
+          >
             {{ "footer.termsOfUse" | translate }}
           </a>
         </li>

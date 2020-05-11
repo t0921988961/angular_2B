@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../service/language/language.service';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  selector: 'app-policy',
+  templateUrl: './policy.component.html',
+  styleUrls: ['./policy.component.scss']
 })
-export class LayoutComponent implements OnInit {
+export class PolicyComponent implements OnInit {
 
   constructor(public translateService: LanguageService) { }
 
