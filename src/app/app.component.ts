@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, DoCheck {
 
   title = 'rout';
 
@@ -33,8 +33,9 @@ export class AppComponent implements OnInit {
 
   }
 
-  // 確認網址有沒有語系,有語系的話，裝進
-  // 網址沒語系的話去抓 瀏覽器的語系
-  // 瀏覽器沒語系的話 去抓Default 的語系
+  ngDoCheck() {
+
+  }
+
 
 }

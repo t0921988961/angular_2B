@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 // ngx-translate service
 import { LanguageService } from 'src/app/service/language/language.service';
 // API service
 import { CallApiService } from 'src/app/service/callAPI/call-api.service';
 import { ResizeService } from 'src/app/service/resize/resize.service';
+import { EventEmitter } from 'events';
 
 
 @Component({
@@ -13,6 +14,8 @@ import { ResizeService } from 'src/app/service/resize/resize.service';
   styleUrls: ['./head.component.scss']
 })
 export class HeadComponent implements OnInit {
+
+  @Output urlPathLangCode = new EventEmitter();
 
   // API URL Domain name
   apiUrl = this.callApiService.apiUrl;
@@ -105,6 +108,7 @@ export class HeadComponent implements OnInit {
     }
 
   }
+
 
 
   switchMobileSubmenu(item) {
