@@ -1,11 +1,10 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // ngx-translate service
 import { LanguageService } from 'src/app/service/language/language.service';
 // API service
 import { CallApiService } from 'src/app/service/callAPI/call-api.service';
 import { ResizeService } from 'src/app/service/resize/resize.service';
-import { EventEmitter } from 'events';
 
 
 @Component({
@@ -15,10 +14,10 @@ import { EventEmitter } from 'events';
 })
 export class HeadComponent implements OnInit {
 
-  // @Output urlPathLangCode = new EventEmitter();
 
   // API URL Domain name
   apiUrl = this.callApiService.apiUrl;
+  pathLang = this.translateService.nowUrlPathlangCode;
 
   // For Formal-site
   apiParameter = this.callApiService.apiParameter;
@@ -42,16 +41,7 @@ export class HeadComponent implements OnInit {
   langs = ['US-English', 'EU-English', '日本-日本語', 'FR-French', 'DE-Germany', '台灣-繁體中文', '中国-简体中文', 'KR-한국어'];
 
   showMenuLangCode = '';
-  showLangList = {
-    'en-US': 'US-English',
-    'en-GB': 'EU-English',
-    'ja-JP': '日本-日本語',
-    'fr-FR': 'FR-French',
-    'de-DE': 'DE-Germany',
-    'zh-TW': '台灣-繁體中文',
-    'zh-CN': '中国-简体中文',
-    'ko-KR': 'KR-한국어',
-  };
+
 
 
   constructor(public translateService: LanguageService, public callApiService: CallApiService, public reizeService: ResizeService) {
@@ -63,15 +53,8 @@ export class HeadComponent implements OnInit {
 
     // init url langCode
     {
-      const urlParameters = {
-        protocol: window.location.protocol,
-        host: window.location.host,
-        path: window.location.pathname,
-      };
-      const pathArr = urlParameters.path.split('/').filter(n => n);
-      const pathLang = pathArr[0];
-      this.translateService.checkUrlPathLang(pathLang);
-      this.showMenuLangCode = this.showLangList[pathLang];
+      this.translateService.checkUrlPathLang(this.pathLang);
+      this.showMenuLangCode = this.translateService.menuShowLangList[this.pathLang];
     }
 
 
@@ -128,7 +111,6 @@ export class HeadComponent implements OnInit {
       item.activ = !item.activ;
     }
   }
-
 
 
 }

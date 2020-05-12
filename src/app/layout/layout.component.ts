@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { LanguageService } from '../service/language/language.service';
 
 @Component({
@@ -8,9 +8,15 @@ import { LanguageService } from '../service/language/language.service';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor(public translateService: LanguageService) { }
+  cssStyleLangFontFamily = '';
+
+  constructor(public translateService: LanguageService, public changeDetector: ChangeDetectorRef) { }
 
   ngOnInit() {
+    this.cssStyleLangFontFamily = 'lang-' + this.translateService.nowLangCode;
+    console.log('this.translateService.nowLangCode:', this.translateService.nowLangCode);
+
+    this.changeDetector.detectChanges();
   }
 
 }

@@ -20,12 +20,21 @@ export class LanguageService {
   apiParameter = this.callApiService.apiParameter;
   apiLangParameter = this.callApiService.apiLangParameter;
 
-
   nowLangCode = '';
   regionProList = '';
 
+  // get now Url path combination
+  isUrlParameters = {
+    protocol: window.location.protocol,
+    host: window.location.host,
+    path: window.location.pathname,
+  };
+  pathArr = this.isUrlParameters.path.split('/').filter(n => n);
+  nowUrlPathlangCode = this.pathArr[0];
+
   translate = this.translateService;
   getBrowserLang = this.translate.getBrowserCultureLang();
+
   browserLangList = {
     'en-US': 'en-US',
     'en-GB': 'en-GB',
@@ -35,6 +44,28 @@ export class LanguageService {
     'zh-TW': 'zh-TW',
     'zh-CN': 'zh-CN',
     'ko-KR': 'ko-KR',
+  };
+
+  menuShowLangList = {
+    'en-US': 'US-English',
+    'en-GB': 'EU-English',
+    'ja-JP': '日本-日本語',
+    'fr-FR': 'FR-French',
+    'de-DE': 'DE-Germany',
+    'zh-TW': '台灣-繁體中文',
+    'zh-CN': '中国-简体中文',
+    'ko-KR': 'KR-한국어',
+  };
+
+  menuCheckBrowserLangList = {
+    'US-English': 'en-US',
+    'EU-English': 'en-GB',
+    '日本-日本語': 'ja-JP',
+    'FR-French': 'fr-FR',
+    'DE-Germany': 'de-DE',
+    '台灣-繁體中文': 'zh-TW',
+    '中国-简体中文': 'zh-CN',
+    'KR-한국어': 'ko-KR',
   };
 
 
@@ -83,45 +114,30 @@ export class LanguageService {
   }
 
   setUrlPath(lang: string) {
-    const urlParameters = {
-      protocol: window.location.protocol,
-      host: window.location.host,
-      path: window.location.pathname,
-    };
-
-    location.href = urlParameters.protocol + '//' + urlParameters.host + '/' + lang + urlParameters.path;
-    console.log('location.href :', location.href);
+    location.href = this.isUrlParameters.protocol + '//' + this.isUrlParameters.host + '/' + lang + this.isUrlParameters.path;
+    // console.log('location.href :', location.href);
   }
 
 
   switchLang(lang: string) {
 
-    const browserLangList = {
-      'US-English': 'en-US',
-      'EU-English': 'en-GB',
-      '日本-日本語': 'ja-JP',
-      'FR-French': 'fr-FR',
-      'DE-Germany': 'de-DE',
-      '台灣-繁體中文': 'zh-TW',
-      '中国-简体中文': 'zh-CN',
-      'KR-한국어': 'ko-KR',
-    };
-
-    const isSelectLang = browserLangList[lang];
-    // console.log('switchLang isSelectLang => ', isSelectLang);
-    const urlParameters = {
+    // get now Url path combination
+    const getNowUrlParameters = {
       protocol: window.location.protocol,
       host: window.location.host,
       path: window.location.pathname,
     };
 
+    const isSelectLang = this.menuCheckBrowserLangList[lang];
+    // console.log('switchLang isSelectLang => ', isSelectLang);
+
     let newPath = '';
-    const oldPath = urlParameters.path;
+    const oldPath = getNowUrlParameters.path;
     const pathArrRemoveLang = oldPath.split('/').filter(n => n).slice(1);
     pathArrRemoveLang.unshift(isSelectLang);
     newPath = pathArrRemoveLang.join('/');
 
-    location.href = urlParameters.protocol + '//' + urlParameters.host + '/' + newPath;
+    location.href = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/' + newPath;
     this.setLang(isSelectLang);
 
 
@@ -144,7 +160,6 @@ export class LanguageService {
     //     }
     //   );
     // }
-
 
   }
 
