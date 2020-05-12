@@ -1,15 +1,36 @@
 <div class="index-content">
   <!-- swiper slider -->
   <swiper [config]="config" style="height: 620px; width: 100%;">
-    <div class="swiper-wrapper" *ngFor="let item of bannerLists">
-      <a class="banner_link swiper-slide">
+    <div class="swiper-wrapper">
+      <a
+        class="banner_link swiper-slide"
+        *ngFor="let item of bannerLists; let idx = index"
+        href="{{ item.moreBtn_link }}"
+      >
+        <!-- slide bg img -->
         <img
           *ngIf="item.bgImg"
           class="bg"
           [src]="item.bgImg + this.resizeService.imgSize + item.bgImgFormat"
         />
+
+        <!-- slide video -->
+        <div ng-if="item.video" class="video-bg">
+          <video
+            *ngIf="item.video_bg"
+            id="first-video"
+            playsinline=""
+            autoplay=""
+            loop=""
+            muted=""
+            [attr.checked]="item.video_bg"
+          >
+            <source type="video/mp4" [src]="item.video" />
+          </video>
+        </div>
       </a>
     </div>
+
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
     <!-- Add Arrows -->

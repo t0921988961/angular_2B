@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     spaceBetween: 30,
     loop: true,
     autoplay: {
-      delay: 3000,
+      delay: 5000,
     },
     pagination: { el: '.swiper-pagination', clickable: true, },
     navigation: {
