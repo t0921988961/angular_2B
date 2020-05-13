@@ -1,9 +1,9 @@
 <div class="index-content">
   <!-- swiper slider -->
-  <swiper [config]="config" id="banner">
-    <div class="swiper-wrapper carousel-item" style="display: flex;">
+  <swiper [config]="config">
+    <div class="swiper-wrapper" id="banner">
       <a
-        class="banner_link swiper-slide"
+        class="swiper-slide"
         *ngFor="let item of bannerLists; let idx = index"
         [href]="item.moreBtn_link"
       >
@@ -30,18 +30,19 @@
         </div>
 
         <!-- slide video_info text-center -->
-        <div *ngIf="item.video" class="">
+        <div *ngIf="item.video" class="page1100 reset-inlineblock div-content">
           <!-- product pic -->
           <figure class="element-inlineb" *ngIf="item.img">
-            <img [ngClass]="{ blockSpace: item.img }" [src]="item.img" />
+            <img Class="blockSpace" [src]="item.img" />
           </figure>
           <!-- porduct info font -->
           <div class="element-inlineb carousel-content">
-            <h2 class="note-for-title">{{ item.productName }}</h2>
-            <h3 class="primary-title" [innerHTML]="item.title"></h3>
-            <p class="desc">
-              {{ item.desc }}
-            </p>
+            <h2
+              class="note-for-title"
+              [innerHTML]="item.productName | translate"
+            ></h2>
+            <h3 class="primary-title" [innerHTML]="item.title | translate"></h3>
+            <p class="desc" [innerHTML]="item.desc | translate"></p>
           </div>
         </div>
 
@@ -56,10 +57,11 @@
           </figure>
           <!-- porduct info font -->
           <div class="element-inlineb text-left">
-            <h2 class="note-for-title">
-              {{ item.productName }}
-            </h2>
-            <h3 class="primary-title" [innerHTML]="item.title"></h3>
+            <h2
+              class="note-for-title"
+              [innerHTML]="item.productName | translate"
+            ></h2>
+            <h3 class="primary-title" [innerHTML]="item.title | translate"></h3>
             <p class="desc"></p>
           </div>
         </div>

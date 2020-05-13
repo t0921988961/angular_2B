@@ -14,16 +14,18 @@ export class HomeComponent implements OnInit {
 
   // swiper slider config
   config: SwiperOptions = {
+    pagination: { el: '.swiper-pagination', clickable: true, },
     initialSlide: 0,
     slidesPerView: 1,
-    spaceBetween: 30,
+    autoHeight: true,
+    allowTouchMove: true,
+    // spaceBetween: 30,
     loop: true,
     parallax: true,
     speed: 600,
     autoplay: {
       delay: 5000,
     },
-    pagination: { el: '.swiper-pagination', clickable: true, },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
@@ -58,8 +60,8 @@ export class HomeComponent implements OnInit {
         video: 'https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/index/video/2B_Support.mp4',
         video_bg: 'https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/index/video/2B_Support.png',
         productName: '',
-        title: '"partpro200xTCS.banner.title"|translate',
-        desc: '"partpro200xTCS.banner.desc"|translate',
+        title: 'partpro200xTCS.banner.title',
+        desc: 'partpro200xTCS.banner.desc',
         moreBtn_link: '',
         moreBtn_text: '',
         otherBtn_link: '',
@@ -72,8 +74,8 @@ export class HomeComponent implements OnInit {
         img: 'https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/index/banner/banner_230.png',
         video: '',
         video_bg: '',
-        productName: '"index.banner2.productName"|translate',
-        title: '"index.banner2.title"|translate',
+        productName: 'index.banner2.productName',
+        title: 'index.banner2.title',
         desc: '',
         moreBtn_link: '/' + this.translateService.nowLangCode + '/product/SLS/MfgPro230_xS',
         moreBtn_text: '',
