@@ -1,11 +1,11 @@
 <div class="index-content">
   <!-- swiper slider -->
-  <swiper [config]="config" style="height: 620px; width: 100%;">
-    <div class="swiper-wrapper">
+  <swiper [config]="config" id="banner">
+    <div class="swiper-wrapper carousel-item" style="display: flex;">
       <a
         class="banner_link swiper-slide"
         *ngFor="let item of bannerLists; let idx = index"
-        href="{{ item.moreBtn_link }}"
+        [href]="item.moreBtn_link"
       >
         <!-- slide bg img -->
         <img
@@ -15,7 +15,7 @@
         />
 
         <!-- slide video -->
-        <div ng-if="item.video" class="video-bg">
+        <div *ngIf="item.video" class="video-bg">
           <video
             *ngIf="item.video_bg"
             id="first-video"
@@ -27,6 +27,41 @@
           >
             <source type="video/mp4" [src]="item.video" />
           </video>
+        </div>
+
+        <!-- slide video_info text-center -->
+        <div *ngIf="item.video" class="">
+          <!-- product pic -->
+          <figure class="element-inlineb" *ngIf="item.img">
+            <img [ngClass]="{ blockSpace: item.img }" [src]="item.img" />
+          </figure>
+          <!-- porduct info font -->
+          <div class="element-inlineb carousel-content">
+            <h2 class="note-for-title">{{ item.productName }}</h2>
+            <h3 class="primary-title" [innerHTML]="item.title"></h3>
+            <p class="desc">
+              {{ item.desc }}
+            </p>
+          </div>
+        </div>
+
+        <!-- slide img_info text-left -->
+        <div
+          *ngIf="!item.video"
+          class="page1100 reset-inlineblock div-content img-content"
+        >
+          <!-- product pic -->
+          <figure class="element-inlineb" *ngIf="item.img">
+            <img [ngClass]="{ blockSpace: !item.img }" [src]="item.img" />
+          </figure>
+          <!-- porduct info font -->
+          <div class="element-inlineb text-left">
+            <h2 class="note-for-title">
+              {{ item.productName }}
+            </h2>
+            <h3 class="primary-title" [innerHTML]="item.title"></h3>
+            <p class="desc"></p>
+          </div>
         </div>
       </a>
     </div>
