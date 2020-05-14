@@ -15,21 +15,25 @@ export class HomeComponent implements OnInit {
   // swiper slider config
   config: SwiperOptions = {
     pagination: { el: '.swiper-pagination', clickable: true, },
+    direction: 'horizontal', //  竖屏 vertical  、 横屏 horizontal
     initialSlide: 0,
-    slidesPerView: 1,
+    slidesPerView: 'auto',
     autoHeight: true,
-    allowTouchMove: true,
+    watchSlidesVisibility: true,
     // spaceBetween: 30,
     loop: true,
     parallax: true,
-    speed: 600,
+    speed: 300,
+    grabCursor: true, //  抓手光标
     autoplay: {
-      delay: 5000,
+      delay: 3000,
+      stopOnLastSlide: false,
+      disableOnInteraction: false, // false: 触碰后自动切换也不会停止
     },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
-    },
+    }
   };
 
   bannerLists = null;

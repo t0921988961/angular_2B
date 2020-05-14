@@ -192,7 +192,7 @@
             class="a_block"
             [routerLink]="
               item.Link.length === 0
-                ? ''
+                ? '/' + this.translateService.nowLangCode + '/' + '/home'
                 : item.Link.indexOf('support') === 28
                 ? '/support/' +
                   this.translateService.nowLangCode +
@@ -222,7 +222,7 @@
                       this.translateService.nowLangCode +
                       '/' +
                       subItem.Link
-                    : ''
+                    : '/' + this.translateService.nowLangCode + '/home'
                 "
                 (click)="checkMobileMenuChildren(subItem, item)"
               >

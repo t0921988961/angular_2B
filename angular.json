@@ -25,8 +25,8 @@
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.scss",
-              "./node_modules/swiper/css/swiper.min.css"
+              "./node_modules/swiper/css/swiper.min.css",
+              "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["./src/assets/scss"]
