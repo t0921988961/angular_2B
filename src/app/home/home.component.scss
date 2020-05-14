@@ -36,6 +36,7 @@
   background-color: rgba(255, 255, 255, 0.5);
   transition: width 0.3s linear;
   &:hover {
+    opacity: 0.7;
     background: #faf4f4;
   }
   &::after {
