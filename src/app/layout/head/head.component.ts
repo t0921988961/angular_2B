@@ -44,7 +44,11 @@ export class HeadComponent implements OnInit {
 
 
 
-  constructor(public translateService: LanguageService, public callApiService: CallApiService, public reizeService: ResizeService) {
+  constructor(
+    public translateService: LanguageService,
+    public callApiService: CallApiService,
+    public reizeService: ResizeService,
+  ) {
   }
 
 

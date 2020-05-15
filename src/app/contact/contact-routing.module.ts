@@ -4,7 +4,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContactComponent } from './contact.component';
 
 const routes: Routes = [
-  { path: '', component: ContactComponent }
+  {
+    path: '', component: ContactComponent,
+    data: {
+      meta: {
+        title: '"contact.title',
+        description: 'contact.description'
+      }
+    }
+  }
 ];
 
 @NgModule({
