@@ -1,0 +1,34 @@
+//font-size
+//google 建議網站最小要使用 16px
+$baseSize: 14px; //基本 font-size
+$sizeLevel: 2px; //font-size 的級距
+
+@function font($level: 0) {
+  @if $level<0 {
+    $level: 0;
+  }
+  @return $baseSize + $sizeLevel * round($level);
+}
+
+//依照 font-size 做出的 line-height
+@function rhythm($size) {
+  @return ceil($size * $paddingLevel / $baseLineSize) * $baseLineSize;
+}
+
+// @each $key, $value in $font_list {
+//   .fs_#{$key} {
+//     font-size: $value;
+//   }
+// }
+
+//font-family
+$font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+
+//全域
+html,
+body,
+ul,
+li,
+a {
+  font-family: $font-family;
+}

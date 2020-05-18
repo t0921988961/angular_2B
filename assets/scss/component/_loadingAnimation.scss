@@ -1,0 +1,16 @@
+@include keyframes(loading) {
+  0% {
+    @include transform(rotate(0));
+  }
+  100% {
+    @include transform(rotate(360deg));
+  }
+}
+@mixin loading($w, $h, $borderSize, $borderColor, $brColor) {
+  width: $w;
+  height: $h;
+  border: $borderSize solid $borderColor;
+  border-right-color: $brColor;
+  @include border-radius(50%);
+  @include animation(loading 0.75s linear infinite);
+}

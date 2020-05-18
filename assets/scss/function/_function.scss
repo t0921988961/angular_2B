@@ -1,0 +1,9 @@
+// px => %
+@function px2percent($size, $width) {
+  @return ($size / $width) * 100%;
+}
+
+// px => vw   ********* RWD
+@function px2vw($size, $nowOutBlockWidth) {
+  @return ($size/$nowOutBlockWidth) * 100vw;
+}

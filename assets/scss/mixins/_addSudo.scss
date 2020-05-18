@@ -1,0 +1,138 @@
+// === add sudo element ==== //
+@mixin addBefore($disp, $vert-align, $w, $h) {
+  &:before {
+    content: "";
+    display: $disp;
+    vertical-align: $vert-align;
+    width: $w;
+    height: $h;
+  }
+}
+
+@mixin addAfter($disp, $vert-align, $w, $h) {
+  &:after {
+    content: "";
+    display: $disp;
+    vertical-align: $vert-align;
+    width: $w;
+    height: $h;
+  }
+}
+
+// add sudo triangle (base on direction)
+
+@mixin add-sudo-before-toBottom-Triangle($disp, $posi, $w, $h, $color) {
+  &:before {
+    content: "";
+    display: $disp;
+    position: $posi;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: #{$h}px #{$w}px 0 #{$w}px;
+    border-color: $color transparent transparent transparent;
+  }
+}
+
+@mixin add-sudo-after-toBottom-Triangle($disp, $posi, $w, $h, $color) {
+  &:after {
+    content: "";
+    display: $disp;
+    position: $posi;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: #{$h}px #{$w}px 0 #{$w}px;
+    border-color: $color transparent transparent transparent;
+  }
+}
+
+@mixin add-sudo-before-toTop-Triangle($disp, $posi, $w, $h, $color) {
+  &:before {
+    content: "";
+    display: $disp;
+    position: $posi;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 #{$w}px #{$h}px #{$w}px;
+    border-color: transparent transparent $color transparent;
+  }
+}
+
+@mixin add-sudo-after-toRight-Triangle($disp, $posi, $w, $h, $color) {
+  &:after {
+    content: "";
+    display: $disp;
+    position: $posi;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: #{$h/2}px 0 #{$h/2}px #{$w}px;
+    border-color: transparent transparent transparent $color;
+  }
+}
+
+@mixin add-sudo-TopRight-Triangle($disp, $posi, $w, $h, $color) {
+  &:before {
+    content: "";
+    display: $disp;
+    position: $posi;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 #{$w}px #{$h}px 0;
+    border-color: transparent $color transparent transparent;
+  }
+}
+
+@mixin add-sudo-TopLeft-Triangle($disp, $posi, $w, $h, $color) {
+  &:after {
+    content: "";
+    display: $disp;
+    position: $posi;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: #{$h}px #{$w}px 0 0;
+    border-color: $color transparent transparent transparent;
+  }
+}
+
+@mixin add-before-sudo-BottomRight-Triangle($disp, $posi, $w, $h, $color) {
+  &:before {
+    content: "";
+    display: $disp;
+    position: $posi;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 #{$h}px #{$w}px;
+    border-color: transparent transparent $color transparent;
+  }
+}
+@mixin add-sudo-BottomRight-Triangle($disp, $posi, $w, $h, $color) {
+  &:after {
+    content: "";
+    display: $disp;
+    position: $posi;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 #{$h}px #{$w}px;
+    border-color: transparent transparent $color transparent;
+  }
+}
+
+@mixin add-sudo-BottomLeft-Triangle($disp, $posi, $w, $h, $color) {
+  &:after {
+    content: "";
+    display: $disp;
+    position: $posi;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: #{$h}px 0 0 #{$w}px;
+    border-color: transparent transparent transparent $color;
+  }
+}
