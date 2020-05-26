@@ -9,7 +9,15 @@ const routes: Routes = [
   {
     path: ':lang', component: LayoutComponent, children: [
       { path: '', pathMatch: 'full', redirectTo: '/home' },
-      { path: 'home', component: HomeComponent },
+      {
+        path: 'home', component: HomeComponent,
+        data: {
+          meta: {
+            title: 'index.title',
+            description: 'index.description'
+          }
+        }
+      },
       {
         path: 'product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
       },

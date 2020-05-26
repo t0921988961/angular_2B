@@ -16,6 +16,8 @@ import { HomeComponent } from './home/home.component';
 // swiper slider
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 
+import { MetaModule } from '@ngx-meta/core';
+
 export function createLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
   // return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -42,7 +44,8 @@ export function createLoader(http: HttpClient) {
         useFactory: createLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    MetaModule.forRoot()
 
   ],
   providers: [],

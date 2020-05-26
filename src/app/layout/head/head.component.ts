@@ -1,10 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 // ngx-translate service
 import { LanguageService } from 'src/app/service/language/language.service';
 // API service
 import { CallApiService } from 'src/app/service/callAPI/call-api.service';
 import { ResizeService } from 'src/app/service/resize/resize.service';
+import { TranslateService } from '@ngx-translate/core';
+import { MetaService } from '@ngx-meta/core';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+
+import { filter, map, mergeMap } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -12,7 +18,7 @@ import { ResizeService } from 'src/app/service/resize/resize.service';
   templateUrl: './head.component.html',
   styleUrls: ['./head.component.scss']
 })
-export class HeadComponent implements OnInit {
+export class HeadComponent implements OnInit, OnDestroy {
 
 
   // API URL Domain name
@@ -46,14 +52,40 @@ export class HeadComponent implements OnInit {
 
   constructor(
     public translateService: LanguageService,
+    public translate: TranslateService,
     public callApiService: CallApiService,
     public reizeService: ResizeService,
+    private meta: MetaService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title
   ) {
   }
 
 
 
   ngOnInit() {
+
+
+    this.router.events
+      .pipe(
+        filter((e) => e instanceof NavigationEnd),
+        map(() => this.activatedRoute),
+        map((route) => {
+          while (route.firstChild) { route = route.firstChild; }
+          console.log('route:', route);
+          return route;
+        }),
+        filter((route) => route.outlet === 'primary'),
+        mergeMap((route) => route.data)
+      )
+      .subscribe(
+        (e) => {
+          console.log('NavigationEnd:', e);
+          this.meta.setTitle(this.translate.instant('contact.title'));
+          this.meta.setTag('description', this.translate.instant('contact.description'));
+        }
+      );
 
     // init url langCode
     {
@@ -94,6 +126,11 @@ export class HeadComponent implements OnInit {
       );
     }
 
+  }
+
+  ngOnDestroy(): void {
+    this.meta.setTitle('');
+    this.meta.setTag('description', '');
   }
 
 

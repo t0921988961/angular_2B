@@ -5,7 +5,15 @@ import { ResinComponent } from './resin/resin.component';
 
 
 const routes: Routes = [
-  { path: 'filament', component: FilamentComponent },
+  {
+    path: 'filament', component: FilamentComponent,
+    data: {
+      meta: {
+        title: 'materialFilament.title',
+        description: 'materialFilament.description'
+      }
+    }
+  },
   { path: 'resin', component: ResinComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
