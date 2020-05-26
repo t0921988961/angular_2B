@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../service/language/language.service';
 import { SwiperOptions } from 'swiper';
 import { ResizeService } from '../service/resize/resize.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,11 @@ import { ResizeService } from '../service/resize/resize.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public translateService: LanguageService, public resizeService: ResizeService) { }
+  constructor(
+    public translateService: LanguageService,
+    public translate: TranslateService,
+    public resizeService: ResizeService,
+  ) { }
 
   // swiper slider config
   config: SwiperOptions = {
@@ -39,6 +44,8 @@ export class HomeComponent implements OnInit {
   bannerLists = null;
 
   ngOnInit() {
+    this.translate.instant('contact.title');
+
     this.bannerLists = [
       //  Major Banner
       {

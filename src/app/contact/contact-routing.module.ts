@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '', component: ContactComponent,
     data: {
       meta: {
-        title: '"contact.title',
+        title: 'contact.title',
         description: 'contact.description'
       }
     }

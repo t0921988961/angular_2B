@@ -7,7 +7,6 @@ import { CallApiService } from '../callAPI/call-api.service';
 
 
 import { Title, Meta } from '@angular/platform-browser';
-import { MetaService } from '@ngx-meta/core';
 
 @Injectable({
   providedIn: 'root'
@@ -77,7 +76,6 @@ export class LanguageService {
     private translateService: TranslateService,
     public callApiService: CallApiService,
     private metaService: Meta,
-    private meta: MetaService,
     private titleService: Title
   ) { }
 
@@ -119,14 +117,7 @@ export class LanguageService {
       // console.log('result:', result);
       this.language$.next(result);
     });
-    this.translateService.use(lang).subscribe(() => {
-      // this.titleService.setTitle('defaults.title');
-      this.meta.setTitle('');
-      this.meta.setTag('description', '');
-      this.meta.setTag('og:locale', 'en-US');
-      // this.translateService.instant('defaults.title');
-      // this.metaService.addTag({ name: 'description', content: 'Title and Meta tags examples' });
-    });
+    this.translateService.use(lang);
     return this.nowLangCode = lang;
   }
 
