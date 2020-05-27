@@ -16,12 +16,31 @@ import { HomeComponent } from './home/home.component';
 // swiper slider
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 
-import { MetaModule } from '@ngx-meta/core';
+// import { MetaModule } from '@ngx-meta/core';
+import { MetaModule, MetaLoader, MetaStaticLoader, PageTitlePositioning } from '@ngx-meta/core';
+import { TranslateService } from '@ngx-translate/core';
 
 export function createLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
   // return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
   // return new TranslateHttpLoader(http, '/angular_2B/assets/i18n/', '.json');
+}
+
+export function metaFactory(translate: TranslateService): MetaLoader {
+  return new MetaStaticLoader({
+    callback: (key: string) => translate.get(key),
+    pageTitlePositioning: PageTitlePositioning.PrependPageTitle,
+    pageTitleSeparator: ' - ',
+    applicationName: '',
+    defaults: {
+      title: 'Mighty mighty mouse',
+      description: 'Mighty Mouse is an animated superhero mouse character',
+      'og:image': 'https://upload.wikimedia.org/wikipedia/commons/f/f8/superraton.jpg',
+      'og:type': 'website',
+      'og:locale': 'en_US',
+      'og:locale:alternate': 'en_US,nl_NL,tr_TR'
+    }
+  });
 }
 
 
@@ -45,7 +64,12 @@ export function createLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    MetaModule.forRoot()
+    // MetaModule.forRoot()
+    MetaModule.forRoot({
+      provide: MetaLoader,
+      useFactory: (metaFactory),
+      deps: [TranslateService]
+    })
 
   ],
   providers: [],

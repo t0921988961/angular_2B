@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MetaService } from '@ngx-meta/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
-import { filter, map, mergeMap } from 'rxjs/operators';
+import { filter, map, mergeMap, switchMap, startWith } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 
 
@@ -66,7 +66,7 @@ export class HeadComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-
+    // change router , change <meta>, <title>
     this.router.events
       .pipe(
         filter((e) => e instanceof NavigationEnd),
@@ -82,8 +82,8 @@ export class HeadComponent implements OnInit, OnDestroy {
       .subscribe(
         (e) => {
           console.log('NavigationEnd:', e);
-          this.meta.setTitle(this.translate.instant('contact.title'));
-          this.meta.setTag('description', this.translate.instant('contact.description'));
+          this.meta.setTitle(this.translate.instant(e.meta.title));
+          this.meta.setTag('description', this.translate.instant(e.meta.description));
         }
       );
 

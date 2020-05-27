@@ -4,9 +4,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 import { ReplaySubject, BehaviorSubject } from 'rxjs';
 import { CallApiService } from '../callAPI/call-api.service';
+import { MetaService, MetaLoader } from '@ngx-meta/core';
 
 
-import { Title, Meta } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -75,9 +75,12 @@ export class LanguageService {
   constructor(
     private translateService: TranslateService,
     public callApiService: CallApiService,
-    private metaService: Meta,
-    private titleService: Title
-  ) { }
+    private metaService: MetaService,
+    private metaLoaderService: MetaLoader
+  ) {
+    metaLoaderService;
+    console.log('metaLoaderService:', metaLoaderService.settings);
+  }
 
 
   checkUrlPathLang(pathLang: string) {
