@@ -4,7 +4,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 import { ReplaySubject, BehaviorSubject } from 'rxjs';
 import { CallApiService } from '../callAPI/call-api.service';
-import { MetaService, MetaLoader } from '@ngx-meta/core';
 
 
 
@@ -75,11 +74,7 @@ export class LanguageService {
   constructor(
     private translateService: TranslateService,
     public callApiService: CallApiService,
-    private metaService: MetaService,
-    private metaLoaderService: MetaLoader
   ) {
-    metaLoaderService;
-    console.log('metaLoaderService:', metaLoaderService.settings);
   }
 
 

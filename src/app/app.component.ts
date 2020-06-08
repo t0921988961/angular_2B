@@ -1,4 +1,13 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
+// ngx-translate service
+import { LanguageService } from './service/language/language.service';
+import { TranslateService } from '@ngx-translate/core';
+import { CallApiService } from './service/callAPI/call-api.service';
+import { ResizeService } from './service/resize/resize.service';
+import { MetaService } from '@ngx-meta/core';
+import { filter, map, mergeMap } from 'rxjs/operators';
+import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +18,50 @@ export class AppComponent implements OnInit, DoCheck {
 
   title = 'rout';
 
-  constructor() { }
+  // API URL Domain name
+  pathLang = this.translateService.nowUrlPathlangCode;
+
+  constructor(
+    public translateService: LanguageService,
+    public translate: TranslateService,
+    public callApiService: CallApiService,
+    public reizeService: ResizeService,
+    private meta: MetaService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title
+  ) { }
 
 
   ngOnInit() {
+    console.log('app.component.html:');
+
+    // change router , change <meta>, <title>
+    this.router.events
+      .pipe(
+        filter((e) => e instanceof NavigationEnd),
+        map(() => this.activatedRoute),
+        map((route) => {
+          while (route.firstChild) { route = route.firstChild; }
+          console.log('route:', route);
+          return route;
+        }),
+        filter((route) => route.outlet === 'primary'),
+        mergeMap((route) => route.data)
+      )
+      .subscribe(
+        (e) => {
+          console.log('NavigationEnd:', e);
+          this.meta.setTitle(this.translate.instant(e.meta.title));
+          this.meta.setTag('description', this.translate.instant(e.meta.description));
+        }
+      );
+
+
+    // init url langCode
+    {
+      this.translateService.checkUrlPathLang(this.pathLang);
+    }
 
   }
 

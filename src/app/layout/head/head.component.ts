@@ -56,9 +56,6 @@ export class HeadComponent implements OnInit, OnDestroy {
     public callApiService: CallApiService,
     public reizeService: ResizeService,
     private meta: MetaService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private titleService: Title
   ) {
   }
 
@@ -66,30 +63,8 @@ export class HeadComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    // change router , change <meta>, <title>
-    this.router.events
-      .pipe(
-        filter((e) => e instanceof NavigationEnd),
-        map(() => this.activatedRoute),
-        map((route) => {
-          while (route.firstChild) { route = route.firstChild; }
-          console.log('route:', route);
-          return route;
-        }),
-        filter((route) => route.outlet === 'primary'),
-        mergeMap((route) => route.data)
-      )
-      .subscribe(
-        (e) => {
-          console.log('NavigationEnd:', e);
-          this.meta.setTitle(this.translate.instant(e.meta.title));
-          this.meta.setTag('description', this.translate.instant(e.meta.description));
-        }
-      );
-
     // init url langCode
     {
-      this.translateService.checkUrlPathLang(this.pathLang);
       this.showMenuLangCode = this.translateService.menuShowLangList[this.pathLang];
     }
 
@@ -99,7 +74,6 @@ export class HeadComponent implements OnInit, OnDestroy {
       const appInitWindowWidth = window.innerWidth;
       this.reizeService.setInitDeviceSize(appInitWindowWidth);
     }
-
 
     // Call Head API
     {

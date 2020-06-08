@@ -26,6 +26,7 @@ export function createLoader(http: HttpClient) {
   // return new TranslateHttpLoader(http, '/angular_2B/assets/i18n/', '.json');
 }
 
+// let page init page Meta and title
 export function metaFactory(translate: TranslateService): MetaLoader {
   return new MetaStaticLoader({
     callback: (key: string) => translate.get(key),
