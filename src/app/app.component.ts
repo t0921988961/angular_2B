@@ -16,7 +16,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit, DoCheck {
 
-  title = 'rout';
+  // title = 'rout';
 
   // API URL Domain name
   pathLang = this.translateService.nowUrlPathlangCode;
@@ -32,9 +32,14 @@ export class AppComponent implements OnInit, DoCheck {
     private titleService: Title
   ) { }
 
-
   ngOnInit() {
     console.log('app.component.html:');
+
+    // init url langCode
+    {
+      console.log('this.pathLang:', this.pathLang);
+      this.translateService.checkUrlPathLang(this.pathLang);
+    }
 
     // change router , change <meta>, <title>
     this.router.events
@@ -56,18 +61,10 @@ export class AppComponent implements OnInit, DoCheck {
           this.meta.setTag('description', this.translate.instant(e.meta.description));
         }
       );
-
-
-    // init url langCode
-    {
-      this.translateService.checkUrlPathLang(this.pathLang);
-    }
-
   }
 
   ngDoCheck() {
 
   }
-
 
 }

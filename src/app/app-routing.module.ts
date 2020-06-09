@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {
     path: ':lang', component: LayoutComponent, children: [
-      { path: '', pathMatch: 'full', redirectTo: '/home' },
+      { path: '', pathMatch: 'full', redirectTo: 'home' },
       {
         path: 'home', component: HomeComponent,
         data: {

@@ -111,6 +111,7 @@ export class LanguageService {
   }
 
   setLang(lang: string) {
+    console.log('setLang:');
     this.translateService.onLangChange.pipe(take(1)).subscribe(result => {
       // console.log('result:', result);
       this.language$.next(result);
@@ -120,7 +121,12 @@ export class LanguageService {
   }
 
   setUrlPath(lang: string) {
+    console.log('setUrlPath:');
     location.href = this.isUrlParameters.protocol + '//' + this.isUrlParameters.host + '/' + lang + this.isUrlParameters.path;
+    console.log('this.isUrlParameters.protocol:', this.isUrlParameters.protocol);
+    console.log('this.isUrlParameters.host:', this.isUrlParameters.host);
+    console.log('lang:', lang);
+    console.log('this.isUrlParameters.path:', this.isUrlParameters.path);
     // console.log('location.href :', location.href);
   }
 
