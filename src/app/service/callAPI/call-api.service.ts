@@ -46,7 +46,6 @@ export class CallApiService {
     ).pipe(catchError(this.formatErrors));
   }
 
-  runs() { console.log('CallApiService'); }
 
 
 }

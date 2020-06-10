@@ -28,7 +28,6 @@ export class AppComponent implements OnInit, DoCheck {
   ) { }
 
   ngOnInit() {
-    console.log('app.component.html:');
 
     // init url langCode
     this.languageService.checkUrlPathLang(this.pathLang);
@@ -40,7 +39,6 @@ export class AppComponent implements OnInit, DoCheck {
         map(() => this.activatedRoute),
         map((route) => {
           while (route.firstChild) { route = route.firstChild; }
-          console.log('route:', route);
           return route;
         }),
         filter((route) => route.outlet === 'primary'),
@@ -48,7 +46,6 @@ export class AppComponent implements OnInit, DoCheck {
       )
       .subscribe(
         (e) => {
-          console.log('NavigationEnd:', e);
           this.meta.setTitle(this.translate.instant(e.meta.title));
           this.meta.setTag('description', this.translate.instant(e.meta.description));
         }

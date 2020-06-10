@@ -111,7 +111,6 @@ export class LanguageService {
   }
 
   setLang(lang: string) {
-    console.log('setLang:');
     this.translateService.onLangChange.pipe(take(1)).subscribe(result => {
       // console.log('result:', result);
       this.language$.next(result);
@@ -146,27 +145,6 @@ export class LanguageService {
 
     location.href = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/' + newPath;
     this.setLang(isSelectLang);
-
-
-    // Call LangCode API 確認有沒有產品 導頁
-    // {
-    //   this.callApiService.get('https://web-api.xyzprinting.com/Apitob/PDListToB/' + this.nowLangCode).subscribe((res) => {
-    //     // console.log('API lang region product res', res);
-    //     if (!res) {
-    //       // API Empty
-    //       console.log(
-    //         'API API lang region product response is empty no data'
-    //       );
-    //     } else {
-    //       this.regionProList = res[0].ToBPDList.split(',');
-    //       console.log('this.regionProList:', this.regionProList);
-    //     }
-    //   },
-    //     (error) => {
-    //       console.log('Error API langRegion product', error);
-    //     }
-    //   );
-    // }
 
   }
 

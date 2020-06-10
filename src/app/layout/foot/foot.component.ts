@@ -22,13 +22,10 @@ export class FootComponent implements OnInit {
 
   ngOnInit() {
 
-    // Call footer API
-    console.log('this.apiUrl:', this.apiUrl);
-    console.log('this.apiParameter:', this.apiParameter);
     {
       // tslint:disable-next-line:max-line-length
       this.callApiService.get(this.apiUrl + '/' + this.apiParameter + '/FooterToB/' + this.translateService.nowLangCode).subscribe((res) => {
-        console.log('Footter res:', res);
+        // console.log('Footter res:', res);
         this.headMenuLists = res;
       },
         (error) => {

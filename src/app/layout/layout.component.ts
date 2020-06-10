@@ -13,9 +13,7 @@ export class LayoutComponent implements OnInit {
   constructor(public translateService: LanguageService, public changeDetector: ChangeDetectorRef) { }
 
   ngOnInit() {
-    console.log('layout.component.html:');
     this.cssStyleLangFontFamily = 'lang-' + this.translateService.nowLangCode;
-    console.log('this.translateService.nowLangCode:', this.translateService.nowLangCode);
 
     this.changeDetector.detectChanges();
   }
