@@ -1,13 +1,11 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
+
 // ngx-translate service
 import { LanguageService } from './service/language/language.service';
 import { TranslateService } from '@ngx-translate/core';
-import { CallApiService } from './service/callAPI/call-api.service';
-import { ResizeService } from './service/resize/resize.service';
 import { MetaService } from '@ngx-meta/core';
 import { filter, map, mergeMap } from 'rxjs/operators';
 import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -19,27 +17,21 @@ export class AppComponent implements OnInit, DoCheck {
   // title = 'rout';
 
   // API URL Domain name
-  pathLang = this.translateService.nowUrlPathlangCode;
+  pathLang = this.languageService.nowUrlPathlangCode;
 
   constructor(
-    public translateService: LanguageService,
+    public languageService: LanguageService,
     public translate: TranslateService,
-    public callApiService: CallApiService,
-    public reizeService: ResizeService,
     private meta: MetaService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title
   ) { }
 
   ngOnInit() {
     console.log('app.component.html:');
 
     // init url langCode
-    {
-      console.log('this.pathLang:', this.pathLang);
-      this.translateService.checkUrlPathLang(this.pathLang);
-    }
+    this.languageService.checkUrlPathLang(this.pathLang);
 
     // change router , change <meta>, <title>
     this.router.events

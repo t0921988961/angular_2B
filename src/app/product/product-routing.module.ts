@@ -14,22 +14,102 @@ import { Multicure180Component } from './UV_Curing/multicure180/multicure180.com
 
 const routes: Routes = [
   // Binder_Jetting
-  { path: 'Binder_Jetting/PartPro350_xBC', component: Partpro350XBCComponent },
+  {
+    path: 'Binder_Jetting/PartPro350_xBC', component: Partpro350XBCComponent,
+    data: {
+      meta: {
+        title: 'partpro350.title',
+        description: 'partpro350.description'
+      }
+    }
+  },
   // Color_fff
-  { path: 'Color_fff/PartPro200_xTCS', component: Partpro200XTCSComponent },
+  {
+    path: 'Color_fff/PartPro200_xTCS', component: Partpro200XTCSComponent,
+    data: {
+      meta: {
+        title: 'partpro200xTCS.title',
+        description: 'partpro200xTCS.description'
+      }
+    }
+  },
   // DLP
-  { path: 'DLP/CastPro100_xP', component: Castpro100XPComponent },
-  { path: 'DLP/PartPro120_xP', component: Partpro120XPComponent },
-  { path: 'DLP/PartPro100_xP', component: Partpro100XPComponent },
+  {
+    path: 'DLP/CastPro100_xP', component: Castpro100XPComponent,
+    data: {
+      meta: {
+        title: 'castpro100.title',
+        description: 'castpro100.description'
+      }
+    }
+  },
+  {
+    path: 'DLP/PartPro120_xP', component: Partpro120XPComponent,
+    data: {
+      meta: {
+        title: 'partpro120.title',
+        description: 'partpro120.description'
+      }
+    }
+  },
+  {
+    path: 'DLP/PartPro100_xP', component: Partpro100XPComponent,
+    data: {
+      meta: {
+        title: 'partpro100.title',
+        description: 'partpro100.description'
+      }
+    }
+  },
   // FFF
-  { path: 'FFF/PartPro300_xT', component: Partpro300XTComponent },
+  {
+    path: 'FFF/PartPro300_xT', component: Partpro300XTComponent,
+    data: {
+      meta: {
+        title: 'partpro300.title',
+        description: 'partpro300.description'
+      }
+    }
+  },
   // SLS
-  { path: 'SLS/MfgPro230_xS', component: Mfgpro230XSComponent },
+  {
+    path: 'SLS/MfgPro230_xS', component: Mfgpro230XSComponent,
+    data: {
+      meta: {
+        title: 'mfgpro.title',
+        description: 'mfgpro.description'
+      }
+    }
+  },
   // SL
-  { path: 'SL/partPro150_xp', component: Partpro150XpComponent },
+  {
+    path: 'SL/partPro150_xp', component: Partpro150XpComponent,
+    data: {
+      meta: {
+        title: 'partpro150.title',
+        description: 'partpro150.description'
+      }
+    }
+  },
   // UV_Curing
-  { path: 'UV_Curing/EeezCure180', component: Eeezcure180Component },
-  { path: 'UV_Curing/MultiCure180', component: Multicure180Component },
+  {
+    path: 'UV_Curing/EeezCure180', component: Eeezcure180Component,
+    data: {
+      meta: {
+        title: 'eeezCure180.title',
+        description: 'eeezCure180.description'
+      }
+    }
+  },
+  {
+    path: 'UV_Curing/MultiCure180', component: Multicure180Component,
+    data: {
+      meta: {
+        title: 'multicure180.title',
+        description: 'multicure180.description'
+      }
+    }
+  },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
