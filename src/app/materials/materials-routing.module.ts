@@ -14,7 +14,15 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'resin', component: ResinComponent },
+  {
+    path: 'resin', component: ResinComponent,
+    data: {
+      meta: {
+        title: 'materialResin.title',
+        description: 'materialResin.description'
+      }
+    }
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

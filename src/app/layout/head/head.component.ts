@@ -79,7 +79,6 @@ export class HeadComponent implements OnInit, OnDestroy {
     {
       // tslint:disable-next-line:max-line-length
       this.callApiService.get(this.apiUrl + this.apiParameter + '/IndexToB/' + this.translateService.nowLangCode).subscribe((res) => {
-        console.log('Head API res:', res);
         this.headMenuLists = res;
       },
         (error) => {
@@ -99,7 +98,6 @@ export class HeadComponent implements OnInit, OnDestroy {
         }
       );
     }
-
   }
 
   ngOnDestroy(): void {

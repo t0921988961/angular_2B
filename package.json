@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prod": "ng build --prod --base-href=/angular_2B/",
-    "ngh": "ngh --dir=dist/demo1"
+    "prod": "ng build --prod --output-path docs --base-href=/angular_2B/",
+    "ngh": "ngh --dir=docs"
   },
   "private": true,
   "dependencies": {

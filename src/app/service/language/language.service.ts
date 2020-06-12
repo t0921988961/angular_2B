@@ -32,7 +32,7 @@ export class LanguageService {
     path: window.location.pathname,
   };
   pathArr = this.isUrlParameters.path.split('/').filter(n => n);
-  nowUrlPathlangCode = this.pathArr[0];
+  nowUrlPathlangCode = this.pathArr[0] === 'angular_2B' ? this.pathArr[1] : this.pathArr[0];
 
   translate = this.translateService;
   getBrowserLang = this.translate.getBrowserCultureLang();
@@ -120,7 +120,9 @@ export class LanguageService {
   }
 
   setUrlPath(lang: string) {
-    location.href = this.isUrlParameters.protocol + '//' + this.isUrlParameters.host + '/' + lang + this.isUrlParameters.path;
+    const formalOnline = this.isUrlParameters.protocol + '//' + this.isUrlParameters.host + '/' + lang + this.isUrlParameters.path;
+    const githubPage = this.isUrlParameters.protocol + '//' + this.isUrlParameters.host + '/angular_2B/' + lang + this.isUrlParameters.path;
+    location.href = formalOnline;
     // console.log('location.href :', location.href);
   }
 
@@ -143,7 +145,10 @@ export class LanguageService {
     pathArrRemoveLang.unshift(isSelectLang);
     newPath = pathArrRemoveLang.join('/');
 
-    location.href = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/' + newPath;
+    const formalOnline = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/' + newPath;
+    const githubPage = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/angular_2B/' + newPath;
+
+    location.href = formalOnline;
     this.setLang(isSelectLang);
 
   }

@@ -1,0 +1,17 @@
+//position
+//EX absolute(40px,80px)
+@mixin absolute($top: auto, $left: auto, $button: auto, $right: auto) {
+  position: absolute;
+  @if $top != auto {
+    top: $top;
+  }
+  @if $left != auto {
+    left: $left;
+  }
+  @if $bottom != auto {
+    bottom: $bottom;
+  }
+  @if $right != auto {
+    right: $right;
+  }
+}

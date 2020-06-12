@@ -43,11 +43,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
+    const getLangCode = this.translateService.nowLangCode;
+
     this.bannerLists = [
       //  Major Banner
       {
-        region: ['en-US', 'en-GB', 'fr-FR', 'de-DE', 'ja-JP', 'zh-TW', 'zh-CN', 'ko-KR'],
-        bgImg: 'https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/index/banner/banner_Covid_',
+        region: ['en-US'],
+        bgImg: 'https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/index/banner/banner_printServic_',
         bgImgFormat: '.jpg',
         img: '',
         video: '',
@@ -55,7 +57,7 @@ export class HomeComponent implements OnInit {
         productName: '',
         title: '',
         desc: '',
-        moreBtn_link: 'mailto:info_Pro@@xyzprinting.com?subject=COVID-19 Enquiry&body=Hello',
+        moreBtn_link: '/' + getLangCode + '/print_service',
         moreBtn_text: '',
         otherBtn_link: '',
         otherBtn_text: '',
@@ -85,7 +87,7 @@ export class HomeComponent implements OnInit {
         productName: 'index.banner2.productName',
         title: 'index.banner2.title',
         desc: '',
-        moreBtn_link: '/' + this.translateService.nowLangCode + '/product/SLS/MfgPro230_xS',
+        moreBtn_link: '/' + getLangCode + '/product/SLS/MfgPro230_xS',
         moreBtn_text: '',
         otherBtn_link: '',
         otherBtn_text: '',

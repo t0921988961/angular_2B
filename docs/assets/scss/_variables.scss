@@ -1,0 +1,56 @@
+// font family
+// @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+// @import url(//fonts.googleapis.com/earlyaccess/notosansjp.css);
+// @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+$font-family-EN-base: "Roboto", "Arial", "Helvetica", sans-serif;
+$font-family-ZH-base: "Microsoft JhengHei", "Arial", "Helvetica", sans-serif;
+$font-family-JA-base: "Poppins", "Noto Sans JP", "Meiryo", "Helvetica", "Arial";
+$font-family-KO-base: "Microsoft JhengHei", "Arial", "Helvetica", sans-serif;
+$font-family-FR-base: "Roboto", "Arial", "Helvetica", sans-serif;
+$font-family-DE-base: "Roboto", "Arial", "Helvetica", sans-serif;
+$font-family-NL-base: "Roboto", "Arial", "Helvetica", sans-serif;
+$font-family-IT-base: "Roboto", "Arial", "Helvetica", sans-serif;
+$font-family-ES-base: "Roboto", "Arial", "Helvetica", sans-serif;
+$font-family-PT-base: "Roboto", "Arial", "Helvetica", sans-serif;
+$font-family-TH-base: "Roboto", "Arial", "Helvetica", sans-serif;
+
+// font size
+// desktop
+$fontsize-xxl: 2.25rem; //36px H1
+$fontsize-xl: 1.75rem; //28px H2
+$fontsize-lg: 1.5rem; //24px H3
+$fontsize-m: 1.25rem; //20px H4
+$fontsize-base: 1rem; //16px p
+$fontsize-sm: 0.875rem; //14px
+$fontsize-xs: 0.75rem; //12px copyright
+
+// mobile
+$fontsize-xxl-mb: 1.75rem; //28px H1
+$fontsize-xl-mb: 1.5rem; //24px H2
+$fontsize-lg-mb: 1.5rem; //24px H3
+$fontsize-m-mb: 1.25rem; //20px H4
+$fontsize-base-mb: 1rem; //16px p
+$fontsize-sm-mb: 0.875rem; //14px
+$fontsize-xs-mb: 0.75rem; //12px copyright
+
+// website primary color
+$color-white-light: #f7f7f7;
+$color-white: #e9e9e9;
+$color-white-deep: #d1d1d1;
+
+$color-gray_8282: #828282;
+$color-gray-9696: #969696;
+$color-gray_4646: #464646;
+$color-gray_d1d1: #d1d1d1;
+$color-gray_3333: #333333;
+
+$color-black-1414: #141414;
+
+$color-red-light: #f14040;
+$color-red: #cf1e1e;
+$color-red-deep: #b41414;
+$color-red-dark-deep: #780000;
+
+$color-gradient-start: #f02323;
+$color-gradient-end: #b41414;
