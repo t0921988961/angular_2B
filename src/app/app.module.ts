@@ -21,9 +21,18 @@ import { MetaModule, MetaLoader, MetaStaticLoader, PageTitlePositioning } from '
 import { TranslateService } from '@ngx-translate/core';
 
 export function createLoader(http: HttpClient) {
+  // get now Url path
+  const isUrlParameters = {
+    protocol: window.location.protocol,
+    host: window.location.host,
+    path: window.location.pathname,
+  };
+  const getPathArr = isUrlParameters.path.split('/').filter(n => n);
+
+  // 判斷是不是 Github Pages
+  if (getPathArr[0] === 'angular_2B') { return new TranslateHttpLoader(http, '/angular_2B/assets/i18n/', '.json'); }
   return new TranslateHttpLoader(http);
-  // return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
-  // return new TranslateHttpLoader(http, '/angular_2B/assets/i18n/', '.json');
+
 }
 
 // let page init page Meta and title

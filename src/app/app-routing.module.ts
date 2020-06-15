@@ -7,6 +7,44 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
+    path: 'angular_2B/:lang', component: LayoutComponent, children: [
+      { path: '', pathMatch: 'full', redirectTo: 'home' },
+      {
+        path: 'home', component: HomeComponent,
+        data: {
+          meta: {
+            title: 'index.title',
+            description: 'index.description'
+          }
+        }
+      },
+      {
+        path: 'product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
+      },
+      {
+        path: 'materials', loadChildren: () => import('./materials/materials.module').then(m => m.MaterialsModule)
+      },
+      {
+        path: 'casestudy', loadChildren: () => import('./application/application.module').then(m => m.ApplicationModule)
+      },
+      {
+        path: 'support', loadChildren: () => import('./support/support.module').then(m => m.SupportModule)
+      },
+      {
+        path: 'contact-us', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+      },
+      {
+        path: 'story', loadChildren: () => import('./story/story.module').then(m => m.StoryModule)
+      },
+      {
+        path: 'policy', loadChildren: () => import('./policy/policy.module').then(m => m.PolicyModule)
+      },
+      {
+        path: 'terms-of-use', loadChildren: () => import('./terms-of-use/terms-of-use.module').then(m => m.TermsOfUseModule)
+      }
+    ],
+  },
+  {
     path: ':lang', component: LayoutComponent, children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       {

@@ -14,11 +14,6 @@ import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 })
 export class AppComponent implements OnInit, DoCheck {
 
-  // title = 'rout';
-
-  // API URL Domain name
-  pathLang = this.languageService.nowUrlPathlangCode;
-
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,
@@ -28,9 +23,10 @@ export class AppComponent implements OnInit, DoCheck {
   ) { }
 
   ngOnInit() {
+    const pathLang = this.languageService.nowUrlPathlangCode;
 
     // init url langCode
-    this.languageService.checkUrlPathLang(this.pathLang);
+    this.languageService.checkUrlPathLang(pathLang);
 
     // change router , change <meta>, <title>
     this.router.events
@@ -50,6 +46,7 @@ export class AppComponent implements OnInit, DoCheck {
           this.meta.setTag('description', this.translate.instant(e.meta.description));
         }
       );
+
   }
 
   ngDoCheck() {

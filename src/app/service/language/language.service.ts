@@ -33,6 +33,7 @@ export class LanguageService {
   };
   pathArr = this.isUrlParameters.path.split('/').filter(n => n);
   nowUrlPathlangCode = this.pathArr[0] === 'angular_2B' ? this.pathArr[1] : this.pathArr[0];
+  isGithubWindowPath = this.pathArr.filter(n => n !== 'angular_2B').join('/');
 
   translate = this.translateService;
   getBrowserLang = this.translate.getBrowserCultureLang();
@@ -106,13 +107,11 @@ export class LanguageService {
     this.translateService.addLangs(['en-US', 'en-GB', 'ja-JP', 'fr-FR', 'de-DE', 'zh-TW', 'zh-CN', 'ko-KR']);
     const checkBrowserLang = this.browserLangList[this.getBrowserLang] || 'en-US';
 
-    // console.log('checkBrowserLang:', checkBrowserLang);
     this.setLang(checkBrowserLang);
   }
 
   setLang(lang: string) {
     this.translateService.onLangChange.pipe(take(1)).subscribe(result => {
-      // console.log('result:', result);
       this.language$.next(result);
     });
     this.translateService.use(lang);
@@ -120,10 +119,12 @@ export class LanguageService {
   }
 
   setUrlPath(lang: string) {
-    const formalOnline = this.isUrlParameters.protocol + '//' + this.isUrlParameters.host + '/' + lang + this.isUrlParameters.path;
-    const githubPage = this.isUrlParameters.protocol + '//' + this.isUrlParameters.host + '/angular_2B/' + lang + this.isUrlParameters.path;
-    location.href = formalOnline;
-    // console.log('location.href :', location.href);
+    const formalSitePath = this.isUrlParameters.protocol + '//' + this.isUrlParameters.host + '/' + lang + this.isUrlParameters.path;
+    // tslint:disable-next-line:max-line-length
+    const githubPageUrl = this.isUrlParameters.protocol + '//' + this.isUrlParameters.host + '/angular_2B/' + lang + this.isGithubWindowPath;
+    const isGithubPages = this.pathArr[0] === 'angular_2B';
+    if (isGithubPages) { return location.href = githubPageUrl; }
+    return location.href = formalSitePath;
   }
 
 
@@ -137,19 +138,26 @@ export class LanguageService {
     };
 
     const isSelectLang = this.menuCheckBrowserLangList[lang];
-    // console.log('switchLang isSelectLang => ', isSelectLang);
 
     let newPath = '';
     const oldPath = getNowUrlParameters.path;
-    const pathArrRemoveLang = oldPath.split('/').filter(n => n).slice(1);
-    pathArrRemoveLang.unshift(isSelectLang);
-    newPath = pathArrRemoveLang.join('/');
+    const pathArrRemoveLang = oldPath.split('/').filter(n => n);
+    const notGithubPagePath = oldPath.split('/').filter(n => n).splice(1);
+
+    notGithubPagePath.unshift(isSelectLang);
+    newPath = notGithubPagePath.join('/');
 
     const formalOnline = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/' + newPath;
-    const githubPage = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/angular_2B/' + newPath;
-
     location.href = formalOnline;
     this.setLang(isSelectLang);
+
+    // if is githubPage
+    if (pathArrRemoveLang[0] === 'angular_2B') {
+      const isGithubeRemove = pathArrRemoveLang.splice(1, 1, isSelectLang);
+      const isGitNewPath = pathArrRemoveLang.join('/');
+      const isNewGithubPagePath = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/' + isGitNewPath;
+      location.href = isNewGithubPagePath;
+    }
 
   }
 
