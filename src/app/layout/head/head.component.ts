@@ -7,10 +7,6 @@ import { CallApiService } from 'src/app/service/callAPI/call-api.service';
 import { ResizeService } from 'src/app/service/resize/resize.service';
 import { TranslateService } from '@ngx-translate/core';
 import { MetaService } from '@ngx-meta/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-
-import { filter, map, mergeMap, switchMap, startWith } from 'rxjs/operators';
-import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -108,18 +104,16 @@ export class HeadComponent implements OnInit, OnDestroy {
 
 
   switchMobileSubmenu(item) {
-    if (item.Children) {
-      item.activ = !item.activ;
-    } else {
+    if (item.Children) { return item.activ = !item.activ; }
+    if (!item.Children) {
       this.showMenu_mb = !this.showMenu_mb;
       item.activ = !item.activ;
     }
   }
 
   checkMobileMenuChildren(subItem, item) {
-    if (subItem.Children) {
-      subItem.activ = !subItem.activ;
-    } else {
+    if (subItem.Children) { return subItem.activ = !subItem.activ; }
+    if (!subItem.Children) {
       this.showMenu_mb = !this.showMenu_mb;
       item.activ = !item.activ;
     }

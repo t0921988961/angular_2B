@@ -12,6 +12,20 @@ export class CallApiService {
   apiUrl = 'https://web-api.xyzprinting.com/Gw/Cache/Website/';
 
   // For Formal-site
+  allApiFormalSite = {
+    apiHead: 'Exp',
+    apiLangParameter: 'Cfg',
+    caseStudy: 'api',
+  };
+
+  // For Test-site
+  allApiTestSite = {
+    apiHead: 'ExpTest',
+    apiLangParameter: 'CfgTest',
+    caseStudy: 'apitest',
+  };
+
+  // For Formal-site
   apiParameter = 'Exp';
   apiLangParameter = 'Cfg';
 

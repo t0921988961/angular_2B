@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { StoryRoutingModule } from './story-routing.module';
 import { StoryComponent } from './story.component';
-import { SharedTranslateModule } from '../sharedModule/share_translate/shared-translate/shared-translate.module';
+import { SharedTranslateModule } from '../sharedModule/shared-translate/shared-translate.module';
 
 
 @NgModule({

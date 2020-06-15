@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TermsOfUseRoutingModule } from './terms-of-use-routing.module';
 import { TermsOfUseComponent } from './terms-of-use.component';
-import { SharedTranslateModule } from '../sharedModule/share_translate/shared-translate/shared-translate.module';
+import { SharedTranslateModule } from '../sharedModule/shared-translate/shared-translate.module';
 
 
 @NgModule({

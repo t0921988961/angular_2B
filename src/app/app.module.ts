@@ -20,8 +20,8 @@ import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { MetaModule, MetaLoader, MetaStaticLoader, PageTitlePositioning } from '@ngx-meta/core';
 import { TranslateService } from '@ngx-translate/core';
 
+// ngx-translate set language json url path
 export function createLoader(http: HttpClient) {
-  // get now Url path
   const isUrlParameters = {
     protocol: window.location.protocol,
     host: window.location.host,
@@ -32,7 +32,6 @@ export function createLoader(http: HttpClient) {
   // 判斷是不是 Github Pages
   if (getPathArr[0] === 'angular_2B') { return new TranslateHttpLoader(http, '/angular_2B/assets/i18n/', '.json'); }
   return new TranslateHttpLoader(http);
-
 }
 
 // let page init page Meta and title

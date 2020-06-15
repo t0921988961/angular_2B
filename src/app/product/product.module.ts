@@ -12,7 +12,7 @@ import { Mfgpro230XSComponent } from './SLS/mfgpro230-x-s/mfgpro230-x-s.componen
 import { Partpro150XpComponent } from './SL/partpro150-xp/partpro150-xp.component';
 import { Eeezcure180Component } from './UV_Curing/eeezcure180/eeezcure180.component';
 import { Multicure180Component } from './UV_Curing/multicure180/multicure180.component';
-import { SharedTranslateModule } from '../sharedModule/share_translate/shared-translate/shared-translate.module';
+import { SharedTranslateModule } from '../sharedModule/shared-translate/shared-translate.module';
 
 
 @NgModule({

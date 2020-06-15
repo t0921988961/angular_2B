@@ -4,7 +4,7 @@ import { HeadComponent } from './head/head.component';
 import { FootComponent } from './foot/foot.component';
 import { RouterModule } from '@angular/router';
 
-import { SharedTranslateModule } from '../sharedModule/share_translate/shared-translate/shared-translate.module';
+import { SharedTranslateModule } from '../sharedModule/shared-translate/shared-translate.module';
 
 
 @NgModule({
