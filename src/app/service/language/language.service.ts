@@ -25,6 +25,9 @@ export class LanguageService {
   nowLangCode = '';
   regionProList = '';
 
+  isLocalHost = '';
+  isGitHost = '';
+
   // get now Url path combination
   isUrlParameters = {
     protocol: window.location.protocol,
@@ -71,15 +74,16 @@ export class LanguageService {
     'KR-한국어': 'ko-KR',
   };
 
-
   constructor(
     private translateService: TranslateService,
     public callApiService: CallApiService,
   ) {
+    console.log('LanguageService.ts => LanguageService constructor work');
   }
 
 
   checkUrlPathLang(pathLang: string) {
+    console.log('LanguageService.ts => LanguageService work');
     // add language
     this.translateService.addLangs(['en-US', 'en-GB', 'ja-JP', 'fr-FR', 'de-DE', 'zh-TW', 'zh-CN', 'ko-KR']);
 

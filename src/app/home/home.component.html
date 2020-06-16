@@ -107,45 +107,50 @@
     </div>
   </div>
 
+  <!-- News and Event -->
   <div class="news-and-event clearfix">
-    <!-- News and Events -->
-    <div class="news float-left col-6 mobile-col-12">
-      <div class="textWrap">
-        <h4 class="font_24">
-          {{ "index.newAndEvent.title" | translate }}
-        </h4>
-        <p class="desc">
-          {{ "index.news.desc" | translate }}
-        </p>
-        <div class="btns">
-          <a
-            [href]="'/' + this.translateService.nowLangCode + '/news?tab=news'"
-            class="moreBtn"
-          >
-            {{ "index.news.readBtn" | translate }}
-          </a>
+    <div class="w_1100 newsAndLook">
+      <!-- News and Events -->
+      <div class="news float-left col-6 mobile-col-12">
+        <div class="textWrap">
+          <h4 class="font_24">
+            {{ "index.newAndEvent.title" | translate }}
+          </h4>
+          <!-- <h3 class="subtitle">@Html(Messages.get("index.news.subtitle"))</h3> -->
+          <p class="desc">
+            {{ "index.news.desc" | translate }}
+          </p>
+          <div class="btns">
+            <a
+              [href]="
+                '/' + this.translateService.nowLangCode + '/news?tab=news'
+              "
+              class="moreBtn"
+            >
+              {{ "index.news.readBtn" | translate }}
+            </a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Looking For Something Feel Free To Ask. -->
-    <div class="event float-right col-6 mobile-col-12">
-      <div class="textWrap">
-        <h3
-          class="subtitle-event"
-          [innerHTML]="'index.event.subtitle' | translate"
-        ></h3>
-        <p class="desc">
-          {{ "index.event.desc" | translate }}
-        </p>
-        <div class="btns">
-          <a
-            [href]="'/' + this.translateService.nowLangCode + '/contact-us'"
-            class="moreBtn"
-            ng-if="true"
-          >
-            {{ "btn.getInTouch" | translate }}
-          </a>
+      <!-- Looking For Something Feel Free To Ask. -->
+      <div class="event float-right col-6 mobile-col-12">
+        <div class="textWrap">
+          <!-- <h4 class="desc-title">@Messages.get("index.event.title")</h4> -->
+          <h3
+            class="subtitle-event"
+            [innerHTML]="'index.event.subtitle' | translate"
+          ></h3>
+          <p class="desc">{{ "index.event.desc" | translate }}</p>
+          <div class="btns">
+            <a
+              [href]="'/' + this.translateService.nowLangCode + '/contact-us'"
+              class="moreBtn"
+              ng-if="true"
+            >
+              {{ "btn.getInTouch" | translate }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
