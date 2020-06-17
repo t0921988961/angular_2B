@@ -146,7 +146,9 @@ export class LanguageService {
     if (pathArrRemoveLang[0] === 'angular_2B') {
       const isGithubeRemove = pathArrRemoveLang.splice(1, 1, isSelectLang);
       const isGitNewPath = pathArrRemoveLang.join('/');
+      console.log('isGitNewPath:', isGitNewPath);
       const isNewGithubPagePath = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/' + isGitNewPath;
+      console.log('isNewGithubPagePath:', isNewGithubPagePath);
       location.href = isNewGithubPagePath;
     }
 
