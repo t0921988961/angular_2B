@@ -16,7 +16,6 @@ import { MetaService } from '@ngx-meta/core';
 })
 export class HeadComponent implements OnInit, OnDestroy {
 
-
   // API URL Domain name
   apiUrl = this.callApiService.apiUrl;
   pathLang = this.translateService.nowUrlPathlangCode;
@@ -25,12 +24,10 @@ export class HeadComponent implements OnInit, OnDestroy {
   apiParameter = this.callApiService.apiParameter;
   apiLangParameter = this.callApiService.apiLangParameter;
 
-
   // tslint:disable-next-line:variable-name
   mobile_mode = window.innerWidth < 736 ? true : false;
   currentLang = 'currentLang';
   showLang = false;
-
 
   menuItemActive = false;
   subProductActive = '';
@@ -45,7 +42,6 @@ export class HeadComponent implements OnInit, OnDestroy {
   showMenuLangCode = '';
 
 
-
   constructor(
     public translateService: LanguageService,
     public translate: TranslateService,
@@ -54,7 +50,6 @@ export class HeadComponent implements OnInit, OnDestroy {
     private meta: MetaService,
   ) {
   }
-
 
 
   ngOnInit() {
@@ -100,7 +95,6 @@ export class HeadComponent implements OnInit, OnDestroy {
     this.meta.setTitle('');
     this.meta.setTag('description', '');
   }
-
 
 
   switchMobileSubmenu(item) {

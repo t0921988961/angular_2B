@@ -1,3 +1,355 @@
-<p>partpro350-x-bc works!</p>
+<div id="partpro350" class="font_c_w">
+  <!-- sec1 banner -->
+  <div class="section sec1">
+    <!-- bg video -->
+    <div class="video-bg">
+      <video
+        class="mainBg"
+        playsinline=""
+        autoplay=""
+        loop=""
+        muted=""
+        poster="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro350_xBC/video/video_PP350update.png"
+        width="100%"
+        style="position: relative;"
+      >
+        <source
+          type="video/mp4"
+          src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro350_xBC/video/PP350update.mp4"
+        />
+      </video>
+    </div>
 
-<p>{{ "Hello" | translate }}</p>
+    <div class="container">
+      <div class="intro">
+        <!-- Product text intro  START *********************-->
+        <!-- Product name -->
+        <div class="title" data-aos="fade-down">
+          {{ "partpro350.sec1.name" | translate }}
+        </div>
+
+        <!-- Product title -->
+        <div
+          class="title2"
+          *ngIf="
+            this.langCode == 'en-US' ||
+            this.langCode == 'en-GB' ||
+            this.langCode == 'ja-JP' ||
+            this.langCode == 'de-DE' ||
+            this.langCode == 'zh-TW' ||
+            this.langCode == 'zh-CN' ||
+            this.langCode == 'ko-KR'
+          "
+          data-aos="flip-up"
+          data-aos-offset="200"
+          data-aos-delay="250"
+          data-aos-duration="800"
+          data-aos-easing="linear"
+        >
+          {{ "partpro350.sec1.title" | translate }}
+        </div>
+        <div
+          class="title3"
+          *ngIf="this.langCode == 'fr-FR'"
+          data-aos="flip-up"
+          data-aos-offset="200"
+          data-aos-delay="250"
+          data-aos-duration="800"
+          data-aos-easing="linear"
+        >
+          {{ "partpro350.sec1.title" | translate }}
+        </div>
+
+        <!-- Product description -->
+        <div
+          class="desc"
+          *ngIf="
+            this.langCode == 'en-US' ||
+            this.langCode == 'en-GB' ||
+            this.langCode == 'ja-JP' ||
+            this.langCode == 'de-DE' ||
+            this.langCode == 'zh-TW' ||
+            this.langCode == 'zh-CN' ||
+            this.langCode == 'ko-KR'
+          "
+          data-aos="fade-up"
+          data-aos-offset="200"
+          data-aos-delay="250"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out-quart"
+        >
+          {{ "partpro350.sec1.desc" | translate }}
+        </div>
+        <div
+          class="desc1"
+          *ngIf="this.langCode == 'fr-FR'"
+          data-aos="fade-up"
+          data-aos-offset="200"
+          data-aos-delay="250"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out-quart"
+        >
+          {{ "partpro350.sec1.desc" | translate }}
+        </div>
+        <!-- Product text intro  END *********************-->
+        <!--  -->
+        <!--  -->
+        <!-- How to buy  START *********************-->
+        <a
+          class="btn-download"
+          [href]="'/' + this.langCode + '/contact-us'"
+          target="_blank"
+        >
+          {{ "btn.howToBuy" | translate }}
+        </a>
+        <!-- How to buy  END *********************-->
+      </div>
+    </div>
+  </div>
+
+  <!-- sec2 printing product -->
+  <section class="section sec2">
+    <div class="container">
+      <div class="intro">
+        <div class="title">
+          {{ "partpro350.sec2.title" | translate }}
+        </div>
+        <div *ngIf="this.langCode != 'ko-KR'" class="desc">
+          {{ "partpro350.sec2.desc" | translate }}
+        </div>
+        <div *ngIf="this.langCode == 'ko-KR'" class="desc_KR">
+          {{ "partpro350.sec2.desc" | translate }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- sec3  -->
+  <section class="section sec3">
+    <div class="container">
+      <div class="intro">
+        <div
+          *ngIf="this.langCode != 'ko-KR'"
+          class="title"
+          [innerHTML]="'partpro350.sec3.title' | translate"
+        ></div>
+        <div
+          *ngIf="this.langCode == 'ko-KR'"
+          class="title_KR"
+          [innerHTML]="'partpro350.sec3.title' | translate"
+        ></div>
+        <div *ngIf="this.langCode != 'ko-KR'" class="desc">
+          {{ "partpro350.sec3.desc" | translate }}
+        </div>
+        <div *ngIf="this.langCode == 'ko-KR'" class="desc_KR">
+          {{ "partpro350.sec3.desc" | translate }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- sec4  -->
+  <section class="section sec4">
+    <div class="container">
+      <div class="intro">
+        <div *ngIf="this.langCode != 'ko-KR'" class="title">
+          {{ "partpro350.sec4.title" | translate }}
+        </div>
+        <div *ngIf="this.langCode == 'ko-KR'" class="title_KR">
+          {{ "partpro350.sec4.title" | translate }}
+        </div>
+        <div *ngIf="this.langCode != 'ko-KR'" class="desc">
+          {{ "partpro350.sec4.desc" | translate }}
+        </div>
+        <div *ngIf="this.langCode == 'ko-KR'" class="desc_KR">
+          {{ "partpro350.sec4.desc" | translate }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- sec5  -->
+  <section class="section sec5">
+    <div class="container">
+      <!-- Product Intro -->
+      <div class="intro">
+        <div class="intro_text">
+          <!-- @Html(Messages.get("partpro350.sec4.title")) -->
+          <p
+            class="i_title"
+            [innerHTML]="'partpro350.sec5.product.intro.dec1.title' | translate"
+          ></p>
+          <p
+            class="i_dec"
+            [innerHTML]="'partpro350.sec5.product.intro.dec1.name' | translate"
+          ></p>
+          <p class="line"></p>
+          <p
+            class="i_title"
+            [innerHTML]="'partpro350.sec5.product.intro.dec2.title' | translate"
+          ></p>
+          <p
+            class="i_dec"
+            [innerHTML]="'partpro350.sec5.product.intro.dec2.name' | translate"
+          ></p>
+          <p class="line"></p>
+          <p
+            class="i_title"
+            [innerHTML]="'partpro350.sec5.product.intro.dec3.title' | translate"
+          ></p>
+          <p
+            class="i_dec"
+            [innerHTML]="'partpro350.sec5.product.intro.dec3.name' | translate"
+          ></p>
+          <p class="line"></p>
+          <p
+            class="i_title"
+            [innerHTML]="'partpro350.sec5.product.intro.dec4.title' | translate"
+          ></p>
+          <p
+            class="i_dec"
+            [innerHTML]="'partpro350.sec5.product.intro.dec4.name' | translate"
+          ></p>
+        </div>
+
+        <!-- Download btn  START *********************-->
+        <a
+          *ngIf="this.langCode == 'en-US' || this.langCode == 'en-GB'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Binder%20Jetting/PartPro350%20xBC/PartPro350%20xBC_spec_en.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="this.langCode == 'ja-JP'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Binder%20Jetting/PartPro350%20xBC/PartPro350%20xBC_spec_jp.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="this.langCode == 'fr-FR'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Binder%20Jetting/PartPro350%20xBC/PartPro350%20xBC_spec_fr.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="this.langCode == 'zh-TW'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Binder%20Jetting/PartPro350%20xBC/PartPro350%20xBC_spec_tw.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="this.langCode == 'zh-CN'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Binder%20Jetting/PartPro350%20xBC/PartPro350%20xBC_spec_cn.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="this.langCode == 'ko-KR'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Binder%20Jetting/PartPro350%20xBC/PartPro350%20xBC_spec_kr.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="this.langCode == 'de-DE'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Binder%20Jetting/PartPro350%20xBC/PartPro350%20xBC_spec_de.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <!-- Download btn  END *********************-->
+      </div>
+
+      <!-- Product img -->
+      <div class="product_img">
+        <img
+          src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro350_xBC/partpro350_xBC.png"
+          alt=""
+        />
+        <h4 class="product_name">
+          {{ "partpro350.sec5.product.name" | translate }}
+        </h4>
+        <div class="btn_group">
+          <!-- BTN Software hide 20190914 -->
+          <!-- <a class="moreBtn-red btn-right" href="#">
+								@Messages.get("btn.software")
+							</a> -->
+
+          <!-- video button START *********-->
+          <!-- <a class="moreBtn-black btn" ng-href="https://pro.xyzprinting.com/support/{{lang}}/Help/tutorial/PartPro350%20xBC" target="_blank">
+								{{ "btn.video" | translate}}
+							</!-->
+          <a
+            *ngIf="this.langCode == 'en-US' || this.langCode == 'en-GB'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/en-US/Help/tutorial/PartPro350%20xBC"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <a
+            *ngIf="this.langCode == 'ja-JP'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/ja-JP/Help/tutorial/PartPro350%20xBC"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <a
+            *ngIf="this.langCode == 'fr-FR'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/fr-FR/Help/tutorial/PartPro350%20xBC"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <a
+            *ngIf="this.langCode == 'zh-TW'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/zh-TW/Help/tutorial/PartPro350%20xBC"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <a
+            *ngIf="this.langCode == 'zh-CN'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/zh-CN/Help/tutorial/PartPro350%20xBC"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <a
+            *ngIf="this.langCode == 'ko-KR'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/ko-KR/Help/tutorial/PartPro350%20xBC"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <a
+            *ngIf="this.langCode == 'de-DE'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/de-DE/Help/tutorial/PartPro350%20xBC"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <!-- video button END *********-->
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

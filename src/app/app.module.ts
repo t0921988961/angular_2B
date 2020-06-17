@@ -19,7 +19,6 @@ import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 // import { MetaModule } from '@ngx-meta/core';
 import { MetaModule, MetaLoader, MetaStaticLoader, PageTitlePositioning } from '@ngx-meta/core';
 import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from './service/language/language.service';
 
 // ngx-translate set language json url path
 export function createLoader(http: HttpClient) {

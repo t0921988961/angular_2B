@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { CallApiService } from '../callAPI/call-api.service';
 
 
@@ -15,15 +15,7 @@ export class LanguageService {
   language$ = new BehaviorSubject({});
   // language$ = new ReplaySubject(1);
 
-  // API URL Domain name
-  apiUrl = this.callApiService.apiUrl;
-
-  // For Formal-site
-  apiParameter = this.callApiService.apiParameter;
-  apiLangParameter = this.callApiService.apiLangParameter;
-
   nowLangCode = '';
-  regionProList = '';
 
   isLocalHost = '';
   isGitHost = '';
@@ -34,6 +26,7 @@ export class LanguageService {
     host: window.location.host,
     path: window.location.pathname,
   };
+
   pathArr = this.isUrlParameters.path.split('/').filter(n => n);
   nowUrlPathlangCode = this.pathArr[0] === 'angular_2B' ? this.pathArr[1] : this.pathArr[0];
   isGithubWindowPath = this.pathArr.filter(n => n !== 'angular_2B').join('/');
@@ -105,7 +98,6 @@ export class LanguageService {
 
   }
 
-
   setInitState() {
     // add language
     this.translateService.addLangs(['en-US', 'en-GB', 'ja-JP', 'fr-FR', 'de-DE', 'zh-TW', 'zh-CN', 'ko-KR']);
@@ -131,15 +123,10 @@ export class LanguageService {
     return location.href = formalSitePath;
   }
 
-
   switchLang(lang: string) {
 
     // get now Url path combination
-    const getNowUrlParameters = {
-      protocol: window.location.protocol,
-      host: window.location.host,
-      path: window.location.pathname,
-    };
+    const getNowUrlParameters = this.isUrlParameters;
 
     const isSelectLang = this.menuCheckBrowserLangList[lang];
 
@@ -152,8 +139,8 @@ export class LanguageService {
     newPath = notGithubPagePath.join('/');
 
     const formalOnline = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/' + newPath;
-    location.href = formalOnline;
     this.setLang(isSelectLang);
+    location.href = formalOnline;
 
     // if is githubPage
     if (pathArrRemoveLang[0] === 'angular_2B') {
