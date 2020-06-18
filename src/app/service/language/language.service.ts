@@ -101,14 +101,6 @@ export class LanguageService {
 
   }
 
-  setInitState() {
-    // add language
-    this.translateService.addLangs(['en-US', 'en-GB', 'ja-JP', 'fr-FR', 'de-DE', 'zh-TW', 'zh-CN', 'ko-KR']);
-    const checkBrowserLang = this.browserLangList[this.getBrowserLang] || 'en-US';
-
-    this.setLang(checkBrowserLang);
-  }
-
   setLang(lang: string) {
     this.translateService.onLangChange.pipe(take(1)).subscribe(result => {
       this.language$.next(result);
@@ -141,7 +133,9 @@ export class LanguageService {
     newPath = notGithubPagePath.join('/');
 
     const formalOnline = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/' + newPath;
+    console.log('newPath:', newPath);
     this.setLang(isSelectLang);
+    // this.router.navigate([newPath]);
     location.href = formalOnline;
 
     // if is githubPage
@@ -151,6 +145,7 @@ export class LanguageService {
       isNewGithubPath.splice(1, 1, isSelectLang);
       const isGitNewPath = isNewGithubPath.join('/');
       const isNewGithubPagePath = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/' + isGitNewPath;
+      // this.router.navigate([isGitNewPath]);
       location.href = isNewGithubPagePath;
     }
 

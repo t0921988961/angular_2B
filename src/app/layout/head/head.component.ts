@@ -76,7 +76,7 @@ export class HeadComponent implements OnInit, OnDestroy {
         this.headMenuLists = res;
       },
         (error) => {
-          console.log('Head_API', error);
+          console.log('Head_API Error => ', error);
         }
       );
     }
@@ -106,7 +106,6 @@ export class HeadComponent implements OnInit, OnDestroy {
     if (isBigPosYoffset) { return this.isMenuStickyActived = true; }
     if (isSmallPosYoffset) { return this.isMenuStickyActived = false; }
   }
-
 
   switchMobileSubmenu(item) {
     if (item.Children) { return item.activ = !item.activ; }
