@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { CallApiService } from '../callAPI/call-api.service';
+import { Router } from '@angular/router';
 
 
 
@@ -68,15 +69,17 @@ export class LanguageService {
   };
 
   constructor(
+    private router: Router,
     private translateService: TranslateService,
     public callApiService: CallApiService,
   ) {
-    console.log('LanguageService.ts => LanguageService constructor work');
+    // console.log('LanguageService.ts => LanguageService constructor work');
   }
 
 
   checkUrlPathLang(pathLang: string) {
-    console.log('LanguageService.ts => LanguageService work');
+    // console.log('LanguageService.ts => LanguageService work');
+
     // add language
     this.translateService.addLangs(['en-US', 'en-GB', 'ja-JP', 'fr-FR', 'de-DE', 'zh-TW', 'zh-CN', 'ko-KR']);
 
@@ -125,16 +128,15 @@ export class LanguageService {
 
   switchLang(lang: string) {
 
+    let newPath = '';
     // get now Url path combination
     const getNowUrlParameters = this.isUrlParameters;
-
     const isSelectLang = this.menuCheckBrowserLangList[lang];
-
-    let newPath = '';
     const oldPath = getNowUrlParameters.path;
-    const pathArrRemoveLang = oldPath.split('/').filter(n => n);
-    const notGithubPagePath = oldPath.split('/').filter(n => n).splice(1);
 
+    const isGithubPage = oldPath.split('/').filter(n => n);
+
+    const notGithubPagePath = this.router.url.split('/').filter(n => n).splice(1);
     notGithubPagePath.unshift(isSelectLang);
     newPath = notGithubPagePath.join('/');
 
@@ -143,12 +145,12 @@ export class LanguageService {
     location.href = formalOnline;
 
     // if is githubPage
-    if (pathArrRemoveLang[0] === 'angular_2B') {
-      const isGithubeRemove = pathArrRemoveLang.splice(1, 1, isSelectLang);
-      const isGitNewPath = pathArrRemoveLang.join('/');
-      console.log('isGitNewPath:', isGitNewPath);
+    if (isGithubPage[0] === 'angular_2B') {
+      const isNewGithubPath = this.router.url.split('/').filter(n => n);
+      isNewGithubPath.unshift('angular_2B');
+      isNewGithubPath.splice(1, 1, isSelectLang);
+      const isGitNewPath = isNewGithubPath.join('/');
       const isNewGithubPagePath = getNowUrlParameters.protocol + '//' + getNowUrlParameters.host + '/' + isGitNewPath;
-      console.log('isNewGithubPagePath:', isNewGithubPagePath);
       location.href = isNewGithubPagePath;
     }
 

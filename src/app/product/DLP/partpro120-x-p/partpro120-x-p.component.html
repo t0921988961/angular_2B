@@ -1,1 +1,361 @@
-<p>partpro120-x-p works!</p>
+<div id="partpro120_xP">
+  <div class="section sec1 font_c_w">
+    <!-- video block -->
+    <div class="video_bg">
+      <video
+        class="video_block"
+        playsinline=""
+        autoplay=""
+        loop=""
+        muted=""
+        poster="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro120_xP/video/sec01_pp120.png"
+        width="100%"
+      >
+        <source
+          type="video/mp4"
+          src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro120_xP/video/sec01_pp120.mp4"
+        />
+      </video>
+    </div>
+
+    <!-- text content -->
+    <div class="container">
+      <div class="intro">
+        <img
+          class="sec01_printer"
+          src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro120_xP/sec01_pp120.png"
+          alt="partpro120"
+        />
+        <!-- title -->
+        <div class="title" data-aos="fade-down">
+          {{ "partpro120.sec1.name" | translate }}
+        </div>
+        <div
+          class="title_bold"
+          data-aos="flip-up"
+          data-aos-offset="200"
+          data-aos-delay="250"
+          data-aos-duration="800"
+          data-aos-easing="linear"
+          [innerHTML]="'partpro120.sec1.title' | translate"
+        ></div>
+        <!-- dec -->
+        <div
+          *ngIf="this.langCode != 'fr-FR' && this.langCode != 'de-DE'"
+          class="desc"
+          data-aos="fade-up"
+          data-aos-offset="200"
+          data-aos-delay="250"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out-quart"
+          [innerHTML]="'partpro120.sec1.desc' | translate"
+        ></div>
+        <div
+          *ngIf="this.langCode == 'fr-FR' || this.langCode == 'de-DE'"
+          class="desc_EU"
+          data-aos="fade-up"
+          data-aos-offset="200"
+          data-aos-delay="250"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out-quart"
+          [innerHTML]="'partpro120.sec1.desc' | translate"
+        ></div>
+        <!-- btn -->
+        <!-- How to buy  START *********************-->
+        <a
+          class="btn-download"
+          [href]="'/' + this.langCode + '/contact-us'"
+          target="_blank"
+        >
+          {{ "btn.howToBuy" | translate }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section sec2 font_c_w">
+    <div class="container">
+      <video
+        class="sec2_video"
+        playsinline=""
+        autoplay=""
+        loop=""
+        muted=""
+        poster="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro120_xP/video/sec02_video_img.jpg"
+      >
+        <source
+          type="video/mp4"
+          src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro120_xP/video/pp120_short.mp4"
+        />
+      </video>
+      <div class="intro">
+        <div
+          class="title"
+          [innerHTML]="'partpro120.sec2.title' | translate"
+        ></div>
+        <div
+          *ngIf="this.langCode != 'ko-KR'"
+          class="desc"
+          [innerHTML]="'partpro120.sec2.desc' | translate"
+        ></div>
+        <div
+          *ngIf="this.langCode == 'ko-KR'"
+          class="desc_KR"
+          [innerHTML]="'partpro120.sec2.desc' | translate"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section sec3 font_c_b">
+    <div class="container">
+      <div class="intro">
+        <div
+          class="title"
+          [innerHTML]="'partpro120.sec3.title' | translate"
+        ></div>
+        <div
+          *ngIf="this.langCode != 'ko-KR'"
+          class="desc"
+          [innerHTML]="'partpro120.sec3.desc' | translate"
+        ></div>
+        <div
+          *ngIf="this.langCode == 'ko-KR'"
+          class="desc_KR"
+          [innerHTML]="'partpro120.sec3.desc' | translate"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section sec4 font_c_b">
+    <div class="container">
+      <div class="intro">
+        <div
+          class="title"
+          [innerHTML]="'partpro120.sec4.title' | translate"
+        ></div>
+        <div
+          *ngIf="this.langCode != 'ko-KR'"
+          class="desc"
+          [innerHTML]="'partpro120.sec4.desc' | translate"
+        ></div>
+        <div
+          *ngIf="this.langCode == 'ko-KR'"
+          class="desc_KR"
+          [innerHTML]="'partpro120.sec4.desc' | translate"
+        ></div>
+        <img
+          class="sec04_img"
+          src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro120_xP/sec04_img.jpg"
+          alt="partpro120"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="section sec5 font_c_w">
+    <div class="container">
+      <div class="sec5_slide">
+        <div class="slide_img"></div>
+        <div class="step_box">
+          <!-- <img
+            class="step_img"
+            src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro120_xP/ux_img/sec05_UX_01.jpg"
+            alt=""
+          /> -->
+        </div>
+      </div>
+      <div class="intro">
+        <div
+          class="title"
+          [innerHTML]="'partpro120.sec5.title' | translate"
+        ></div>
+        <div
+          *ngIf="this.langCode != 'ko-KR'"
+          class="desc"
+          [innerHTML]="'partpro120.sec5.desc' | translate"
+        ></div>
+        <div
+          *ngIf="this.langCode == 'ko-KR'"
+          class="desc_KR"
+          [innerHTML]="'partpro120.sec5.desc' | translate"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section sec6 font_c_w">
+    <div class="container">
+      <!-- Product Intro -->
+      <div class="intro">
+        <div class="intro_text">
+          <!-- @Html(Messages.get("mfgpro230.sec4.title")) -->
+          <p
+            class="i_title"
+            [innerHTML]="'partpro120.sec6.product.intro.dec1.title' | translate"
+          ></p>
+          <p
+            class="i_dec"
+            [innerHTML]="'partpro120.sec6.product.intro.dec1.name' | translate"
+          ></p>
+          <p class="line"></p>
+          <p
+            class="i_title"
+            [innerHTML]="'partpro120.sec6.product.intro.dec2.title' | translate"
+          ></p>
+          <p
+            class="i_dec"
+            [innerHTML]="'partpro120.sec6.product.intro.dec2.name' | translate"
+          ></p>
+          <p class="line"></p>
+          <p
+            class="i_title"
+            [innerHTML]="'partpro120.sec6.product.intro.dec3.title' | translate"
+          ></p>
+          <p
+            class="i_dec"
+            [innerHTML]="'partpro120.sec6.product.intro.dec3.name' | translate"
+          ></p>
+          <p class="line"></p>
+          <p
+            class="i_title"
+            [innerHTML]="'partpro120.sec6.product.intro.dec4.title' | translate"
+          ></p>
+          <p
+            class="i_dec"
+            [innerHTML]="'partpro120.sec6.product.intro.dec4.name' | translate"
+          ></p>
+        </div>
+
+        <!-- Download btn  START *********************-->
+        <a
+          *ngIf="this.langCode == 'en-US' || this.langCode == 'en-GB'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/DLP/PartPro120%20xP/PartPro120%20xP_spec_en.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="this.langCode == 'fr-FR'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/DLP/PartPro120%20xP/PartPro120%20xP_spec_fr.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="this.langCode == 'de-DE'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/DLP/PartPro120%20xP/PartPro120%20xP_spec_de.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="this.langCode == 'ja-JP'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/DLP/PartPro120%20xP/PartPro120%20xP_spec_jp.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="this.langCode == 'zh-TW'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/DLP/PartPro120%20xP/PartPro120%20xP_spec_tw.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="this.langCode == 'zh-CN'"
+          class="moreBtn-red btn_bottom"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/DLP/PartPro120%20xP/PartPro120%20xP_spec_cn.pdf"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <!-- Download btn  END *********************-->
+      </div>
+
+      <!-- Product img -->
+      <div class="product_img">
+        <img
+          src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro120_xP/sec06_pp120.png"
+          alt=""
+        />
+        <h4
+          class="product_name"
+          [innerHTML]="'partpro120.sec6.product.name' | translate"
+        ></h4>
+        <div class="btn_group">
+          <!-- BTN Software hide 20190914 -->
+          <!-- <a class="moreBtn-red btn-right" href="#">
+                        @Messages.get("btn.software")
+                    </a> -->
+
+          <!-- video button START *********-->
+          <a
+            *ngIf="this.langCode == 'en-US'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/en-US/EndUser/Help/tutorial/PartPro120%20xP"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <a
+            *ngIf="this.langCode == 'en-GB'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/en-GB/EndUser/Help/tutorial/PartPro120%20xP"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <a
+            *ngIf="this.langCode == 'fr-FR'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/fr-FR/EndUser/Help/tutorial/PartPro120%20xP"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <a
+            *ngIf="this.langCode == 'de-DE'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/de-DE/EndUser/Help/tutorial/PartPro120%20xP"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <a
+            *ngIf="this.langCode == 'ja-JP'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/ja-JP/EndUser/Help/tutorial/PartPro120%20xP"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <a
+            *ngIf="this.langCode == 'zh-TW'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/zh-TW/EndUser/Help/tutorial/PartPro120%20xP"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <a
+            *ngIf="this.langCode == 'zh-CN'"
+            class="moreBtn-black btn"
+            href="https://pro.xyzprinting.com/support/zh-CN/EndUser/Help/tutorial/PartPro120%20xP"
+            target="_blank"
+          >
+            {{ "btn.video" | translate }}
+          </a>
+          <!-- video button END *********-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

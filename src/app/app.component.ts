@@ -21,11 +21,11 @@ export class AppComponent implements OnInit, DoCheck {
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
-    console.log('Appcomponent.ts => constructor work');
+    // console.log('Appcomponent.ts => constructor work');
   }
 
   ngOnInit() {
-    console.log('Appcomponent.ts => ngOnInit work');
+    // console.log('Appcomponent.ts => ngOnInit work');
 
     const pathLang = this.languageService.nowUrlPathlangCode;
 

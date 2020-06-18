@@ -81,7 +81,6 @@ export class HeadComponent implements OnInit, OnDestroy {
     // Call LangCode API
     {
       this.callApiService.get(this.apiUrl + this.apiLangParameter + '/FELangToB/').subscribe((res) => {
-        // console.log(res);
         this.langs = res;
       },
         (error) => {
