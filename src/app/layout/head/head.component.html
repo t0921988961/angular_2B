@@ -2,6 +2,7 @@
 <header
   activ="header"
   class="page-header"
+  [ngClass]="{ 'page-header__active': isMenuStickyActived }"
   (window:resize)="this.reizeService.onResize($event)"
 >
   <div class="page1100 relative">

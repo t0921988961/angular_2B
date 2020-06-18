@@ -17,3 +17,5 @@ import { SharedTranslateModule } from '../sharedModule/shared-translate/shared-t
   exports: [HeadComponent, FootComponent]
 })
 export class LayoutModule { }
+
+

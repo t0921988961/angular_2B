@@ -14,7 +14,10 @@ import { MetaService } from '@ngx-meta/core';
   templateUrl: './head.component.html',
   styleUrls: ['./head.component.scss']
 })
+
 export class HeadComponent implements OnInit, OnDestroy {
+
+  isMenuStickyActived = false;
 
   // API URL Domain name
   apiUrl = this.callApiService.apiUrl;
@@ -41,7 +44,6 @@ export class HeadComponent implements OnInit, OnDestroy {
 
   showMenuLangCode = '';
 
-
   constructor(
     public translateService: LanguageService,
     public translate: TranslateService,
@@ -54,7 +56,8 @@ export class HeadComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    // init url langCode
+    window.addEventListener('scroll', this.scrollEvent, true);
+
     {
       this.showMenuLangCode = this.translateService.menuShowLangList[this.pathLang];
     }
@@ -91,8 +94,17 @@ export class HeadComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    window.addEventListener('scroll', this.scrollEvent, true);
     this.meta.setTitle('');
     this.meta.setTag('description', '');
+  }
+
+  scrollEvent = (event): any => {
+    const getPosYoffset = window.pageYOffset;
+    const isBigPosYoffset = getPosYoffset > 100;
+    const isSmallPosYoffset = getPosYoffset < 100;
+    if (isBigPosYoffset) { return this.isMenuStickyActived = true; }
+    if (isSmallPosYoffset) { return this.isMenuStickyActived = false; }
   }
 
 
@@ -111,6 +123,5 @@ export class HeadComponent implements OnInit, OnDestroy {
       item.activ = !item.activ;
     }
   }
-
 
 }
