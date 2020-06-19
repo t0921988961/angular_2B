@@ -35,7 +35,7 @@
         </div>
         <ul class="lang-list" [ngClass]="{ showLang: showLang }">
           <li
-            *ngFor="let item of langs"
+            *ngFor="let item of apiLangLists$ | async"
             class="lang-item is-pointer"
             (click)="
               this.translateService.switchLang($event.target.textContent.trim())
@@ -70,7 +70,7 @@
         <!-- Printers -->
         <li
           class="menu-item"
-          *ngFor="let item of headMenuLists; let i = index"
+          *ngFor="let item of apiHeadMenuLists$ | async; let i = index"
           [ngClass]="{
             'has-subMenu': item.subMenu,
             pcHover: mobile_mode,
@@ -166,7 +166,7 @@
         <!-- Printers -->
         <li
           class="menu-item"
-          *ngFor="let item of headMenuLists"
+          *ngFor="let item of apiHeadMenuLists$ | async"
           [ngClass]="{
             'has-subMenu': item.subMenu,
             menu_item_active: item.activ
@@ -275,7 +275,10 @@
             <span class="icon_arrow"></span>
           </a>
           <ul class="sub-menu lang-list">
-            <li *ngFor="let item of langs" class="lang_list_item is-pointer">
+            <li
+              *ngFor="let item of apiLangLists$ | async"
+              class="lang_list_item is-pointer"
+            >
               <a
                 (click)="
                   this.translateService.switchLang(

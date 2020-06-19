@@ -89,7 +89,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'top', // change conponent scoll to top
-      // preloadingStrategy: PreloadAllModules,
+      preloadingStrategy: PreloadAllModules,
       // enableTracing: true, // use debug route path
     })
   ],

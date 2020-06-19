@@ -7,6 +7,7 @@ import { CallApiService } from 'src/app/service/callAPI/call-api.service';
 import { ResizeService } from 'src/app/service/resize/resize.service';
 import { TranslateService } from '@ngx-translate/core';
 import { MetaService } from '@ngx-meta/core';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -34,13 +35,12 @@ export class HeadComponent implements OnInit, OnDestroy {
 
   menuItemActive = false;
   subProductActive = '';
-  // tslint:disable-next-line:variable-name
   showSubMenu_mb = false;
-  // tslint:disable-next-line:variable-name
   showMenu_mb = false;
-  headMenuLists = null;
 
-  langs = ['US-English', 'EU-English', '日本-日本語', 'FR-French', 'DE-Germany', '台灣-繁體中文', '中国-简体中文', 'KR-한국어'];
+  apiHeadMenuLists$: Observable<any>;
+  apiLangLists$: Observable<any>;
+
 
   showMenuLangCode = '';
 
@@ -53,44 +53,24 @@ export class HeadComponent implements OnInit, OnDestroy {
   ) {
   }
 
+  test$: Observable<any>;
 
   ngOnInit() {
 
-    window.addEventListener('scroll', this.scrollEvent, true);
-
-    {
-      this.showMenuLangCode = this.translateService.menuShowLangList[this.pathLang];
-    }
-
+    const isLangCodeApiPath = this.apiUrl + this.apiLangParameter + '/FELangToB/';
+    const appInitWindowWidth = window.innerWidth;
+    const isHeadApiPath = this.apiUrl + this.apiParameter + '/IndexToB/' + this.translateService.nowLangCode;
 
     // set device size
-    {
-      const appInitWindowWidth = window.innerWidth;
-      this.reizeService.setInitDeviceSize(appInitWindowWidth);
-    }
+    this.reizeService.setInitDeviceSize(appInitWindowWidth);
+    window.addEventListener('scroll', this.scrollEvent, true);
+
+    this.showMenuLangCode = this.translateService.menuShowLangList[this.pathLang];
 
     // Call Head API
-    {
-      // tslint:disable-next-line:max-line-length
-      this.callApiService.get(this.apiUrl + this.apiParameter + '/IndexToB/' + this.translateService.nowLangCode).subscribe((res) => {
-        this.headMenuLists = res;
-      },
-        (error) => {
-          console.log('Head_API Error => ', error);
-        }
-      );
-    }
-
+    this.apiHeadMenuLists$ = this.callApiService.get(isHeadApiPath, 'Head_API');
     // Call LangCode API
-    {
-      this.callApiService.get(this.apiUrl + this.apiLangParameter + '/FELangToB/').subscribe((res) => {
-        this.langs = res;
-      },
-        (error) => {
-          console.log('Head_API', error);
-        }
-      );
-    }
+    this.apiLangLists$ = this.callApiService.get(isLangCodeApiPath, 'LangCode_API');
   }
 
   ngOnDestroy(): void {

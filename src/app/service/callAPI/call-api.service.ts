@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams, HttpBackend } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -44,12 +44,21 @@ export class CallApiService {
   // catch API error and return Observable let keep for Subscribe
   // Retries the caught source Observable again in case of error, similar to retry() operator
   private formatErrors(error: any) {
-    return throwError(error);
+    return throwError(
+      console.log('error:', error)
+    );
   }
 
-  get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
+  get(path: string, apiName: string, params: HttpParams = new HttpParams()): Observable<any> {
     return this.http.get(`${path}`, { params })
-      .pipe(catchError(this.formatErrors));
+      .pipe(
+        catchError((err) => {
+          console.log(apiName + ' Err: ', '**********', err);
+          // this.formatErrors;
+          // return throwError(() => { });  // observable line stop
+          return of(() => { }); // observable line keep work, and can set 預設的資料
+        })
+      );
   }
 
   // tslint:disable-next-line:ban-types

@@ -17,18 +17,18 @@
           [innerHTML]="'partpro200xTCS.banner.title' | translate"
         ></div>
         <!-- dec -->
-        <div *ngIf="this.langCode !== 'zh-CN'" class="desc">
+        <div *ngIf="langCode !== 'zh-CN'" class="desc">
           {{ "partpro200xTCS.section1.desc1" | translate }}<br />
           {{ "partpro200xTCS.section1.desc2" | translate }}
         </div>
-        <div *ngIf="this.langCode == 'zh-CN'" class="desc">
+        <div *ngIf="langCode == 'zh-CN'" class="desc">
           {{ "partpro200xTCS.section1.desc1" | translate }}<br />
           {{ "partpro200xTCS.section1.desc2" | translate }}
         </div>
         <!-- btn "how to buy" link to "contact us" -->
         <a
           class="btn-download"
-          [href]="'/' + this.langCode + '/contact-us'"
+          [href]="'/' + langCode + '/contact-us'"
           target="_blank"
         >
           {{ "btn.howToBuy" | translate }}
@@ -191,7 +191,7 @@
 
         <!-- Download btn  START *********************-->
         <a
-          *ngIf="this.langCode == 'en-US' || this.langCode == 'en-GB'"
+          *ngIf="langCode == 'en-US' || langCode == 'en-GB'"
           class="moreBtn-red btn_bottom"
           href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Color%20FFF/PartPro200%20xTCS/PartPro200%20xTCS_spec_en.pdf"
           target="_blank"
@@ -199,7 +199,7 @@
           {{ "btn.downloadSpecs" | translate }}
         </a>
         <a
-          *ngIf="this.langCode == 'fr-FR'"
+          *ngIf="langCode == 'fr-FR'"
           class="moreBtn-red btn_bottom"
           href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Color%20FFF/PartPro200%20xTCS/PartPro200%20xTCS_spec_fr.pdf"
           target="_blank"
@@ -207,7 +207,7 @@
           {{ "btn.downloadSpecs" | translate }}
         </a>
         <a
-          *ngIf="this.langCode == 'de-DE'"
+          *ngIf="langCode == 'de-DE'"
           class="moreBtn-red btn_bottom"
           href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Color%20FFF/PartPro200%20xTCS/PartPro200%20xTCS_spec_de.pdf"
           target="_blank"
@@ -215,7 +215,7 @@
           {{ "btn.downloadSpecs" | translate }}
         </a>
         <a
-          *ngIf="this.langCode == 'ja-JP'"
+          *ngIf="langCode == 'ja-JP'"
           class="moreBtn-red btn_bottom"
           href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Color%20FFF/PartPro200%20xTCS/PartPro200%20xTCS_spec_jp.pdf"
           target="_blank"
@@ -223,7 +223,7 @@
           {{ "btn.downloadSpecs" | translate }}
         </a>
         <a
-          *ngIf="this.langCode == 'zh-TW'"
+          *ngIf="langCode == 'zh-TW'"
           class="moreBtn-red btn_bottom"
           href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Color%20FFF/PartPro200%20xTCS/PartPro200%20xTCS_spec_tw.pdf"
           target="_blank"
@@ -231,7 +231,7 @@
           {{ "btn.downloadSpecs" | translate }}
         </a>
         <a
-          *ngIf="this.langCode == 'zh-CN'"
+          *ngIf="langCode == 'zh-CN'"
           class="moreBtn-red btn_bottom"
           href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/Color%20FFF/PartPro200%20xTCS/PartPro200%20xTCS_spec_cn.pdf"
           target="_blank"
@@ -258,22 +258,22 @@
               </a> -->
 
           <!-- video button START *********-->
-          <!-- <a *ngIf="this.langCode == 'en-US'" class="moreBtn-black btn" href="https://pro.xyzprinting.com/support/en-US/EndUser/Help/tutorial/PartPro150%20xP" target="_blank">
+          <!-- <a *ngIf="langCode == 'en-US'" class="moreBtn-black btn" href="https://pro.xyzprinting.com/support/en-US/EndUser/Help/tutorial/PartPro150%20xP" target="_blank">
               {{ "btn.video" | translate }}
           </a>
-          <a *ngIf="this.langCode == 'en-GB'" class="moreBtn-black btn" href="https://pro.xyzprinting.com/support/en-GB/EndUser/Help/tutorial/PartPro150%20xP" target="_blank">
+          <a *ngIf="langCode == 'en-GB'" class="moreBtn-black btn" href="https://pro.xyzprinting.com/support/en-GB/EndUser/Help/tutorial/PartPro150%20xP" target="_blank">
               {{ "btn.video" | translate }}
           </a>
-          <a *ngIf="this.langCode == 'fr-FR'" class="moreBtn-black btn" href="https://pro.xyzprinting.com/support/fr-FR/EndUser/Help/tutorial/PartPro150%20xP" target="_blank">
+          <a *ngIf="langCode == 'fr-FR'" class="moreBtn-black btn" href="https://pro.xyzprinting.com/support/fr-FR/EndUser/Help/tutorial/PartPro150%20xP" target="_blank">
               {{ "btn.video" | translate }}
           </a>
-          <a *ngIf="this.langCode == 'de-DE'" class="moreBtn-black btn" href="https://pro.xyzprinting.com/support/de-DE/EndUser/Help/tutorial/PartPro150%20xP" target="_blank">
+          <a *ngIf="langCode == 'de-DE'" class="moreBtn-black btn" href="https://pro.xyzprinting.com/support/de-DE/EndUser/Help/tutorial/PartPro150%20xP" target="_blank">
               {{ "btn.video" | translate }}
           </a>
-          <a *ngIf="this.langCode == 'ja-JP'" class="moreBtn-black btn" href="https://pro.xyzprinting.com/support/ja-JP/EndUser/Help/tutorial/PartPro150%20xP" target="_blank">
+          <a *ngIf="langCode == 'ja-JP'" class="moreBtn-black btn" href="https://pro.xyzprinting.com/support/ja-JP/EndUser/Help/tutorial/PartPro150%20xP" target="_blank">
               {{ "btn.video" | translate }}
           </a>
-          <a *ngIf="this.langCode == 'zh-TW'" class="moreBtn-black btn" href="https://pro.xyzprinting.com/support/zh-TW/EndUser/Help/tutorial/PartPro150%20xP" target="_blank">
+          <a *ngIf="langCode == 'zh-TW'" class="moreBtn-black btn" href="https://pro.xyzprinting.com/support/zh-TW/EndUser/Help/tutorial/PartPro150%20xP" target="_blank">
               {{ "btn.video" | translate }}
           </a> -->
           <!-- video button END *********-->

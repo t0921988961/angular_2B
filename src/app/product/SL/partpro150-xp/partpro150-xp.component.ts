@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguageService } from 'src/app/service/language/language.service';
 
 @Component({
   selector: 'app-partpro150-xp',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Partpro150XpComponent implements OnInit {
 
-  constructor() { }
+  langCode = this.languageService.nowUrlPathlangCode;
+
+  constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
   }
 
 }
+

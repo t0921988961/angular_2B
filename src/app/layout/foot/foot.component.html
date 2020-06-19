@@ -1,7 +1,7 @@
 <footer class="page-footer">
   <div class="page1100">
     <ul class="site-map clearfix">
-      <li class="map-group" *ngFor="let item of headMenuLists">
+      <li class="map-group" *ngFor="let item of apiFootResponse$ | async">
         <p>{{ item.Title }}</p>
         <ul *ngIf="item.Children">
           <li class="map-item" *ngFor="let subItem of item.Children">

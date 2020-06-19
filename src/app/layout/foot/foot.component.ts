@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CallApiService } from 'src/app/service/callAPI/call-api.service';
 import { LanguageService } from 'src/app/service/language/language.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-foot',
@@ -15,24 +16,13 @@ export class FootComponent implements OnInit {
   apiParameter = this.callApiService.apiParameter;
   apiLangParameter = this.callApiService.apiLangParameter;
 
-  // nowLangCode = this.translateService.nowLangCode;
-  headMenuLists = null;
+  apiFootResponse$: Observable<any>;
 
   constructor(public translateService: LanguageService, public callApiService: CallApiService) { }
 
   ngOnInit() {
-
-    {
-      // tslint:disable-next-line:max-line-length
-      this.callApiService.get(this.apiUrl + '/' + this.apiParameter + '/FooterToB/' + this.translateService.nowLangCode).subscribe((res) => {
-        // console.log('Footter res:', res);
-        this.headMenuLists = res;
-      },
-        (error) => {
-          console.log('Error footer API', error);
-        }
-      );
-    }
+    const isFooterApiPath = this.apiUrl + '/' + this.apiParameter + '/FooterToB/' + this.translateService.nowLangCode;
+    this.apiFootResponse$ = this.callApiService.get(isFooterApiPath, 'Foot_Api');
   }
 
 }

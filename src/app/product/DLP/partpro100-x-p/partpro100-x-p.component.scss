@@ -1,0 +1,236 @@
+@import "variables";
+@import "breakpoint";
+
+// Partpro100 xP
+#Partpro100 {
+  margin: 0 auto;
+  margin-top: -120px;
+  line-height: 1.5;
+  @include b768 {
+    margin-top: 0;
+  }
+
+  // all section style
+  .section {
+    min-height: 500px;
+    padding: 145px 0 160px 0;
+    @include b1279 {
+      padding: 145px 50px 160px 50px;
+    }
+    @include b768 {
+      min-height: 650px;
+      display: flex;
+      align-items: flex-end;
+      padding: 145px 20px 70px 20px;
+    }
+    > .container {
+      width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: left;
+      @include b1279 {
+        width: 100%;
+      }
+      @include b768 {
+        text-align: center;
+      }
+    }
+    .intro {
+      width: 50%;
+      @include b768 {
+        width: 100%;
+      }
+      .title {
+        font-size: 36px;
+        padding-bottom: 32px;
+        font-weight: bold;
+        @include b768 {
+          font-size: 28px;
+        }
+      }
+      .desc {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 25px;
+        @include b768 {
+          font-size: 14px;
+        }
+      }
+      .desc_KR {
+        margin: auto;
+        font-size: 15px;
+        font-weight: 300;
+        width: 100%;
+      }
+    }
+  }
+
+  .btn-download {
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 13px 52px;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #cf1e1e;
+  }
+
+  .sec1 {
+    padding: 40px 0 70px 0;
+    background: url(https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro150_xP/sec01_bg_lg.jpg)
+      center/ cover;
+    @include b768 {
+      background: url(https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/printers/PartPro150_xP/mobile/sec01_bg_sm.jpg)
+        center bottom / cover;
+      padding: 55px 20px 65px 20px;
+    }
+    .container {
+      line-height: 1.2;
+      text-align: center;
+      .intro {
+        width: 100%;
+        margin-top: 100px;
+        @include b768 {
+          margin-top: 0;
+        }
+        .title {
+          font-size: 28px;
+          font-weight: normal;
+          padding-bottom: 20px;
+          line-height: 1.2;
+          font-weight: 200;
+        }
+        .title2,
+        .title3 {
+          font-size: 36px;
+          // padding-bottom: 32px;
+          line-height: 1.2;
+          font-weight: 600;
+          @include b768 {
+            font-size: 28px;
+          }
+        }
+        .desc,
+        .desc1 {
+          letter-spacing: 1px;
+          max-width: 761px;
+          margin: 0 auto;
+          font-size: 16px;
+          font-weight: 100;
+          line-height: 25px;
+        }
+        .desc_EU {
+          font-size: 14px;
+          font-weight: 300;
+          width: 56%;
+          margin-left: 23%;
+          padding-top: 2px;
+          padding-bottom: 20px;
+        }
+      }
+    }
+    .sec01_printer {
+      width: 290px;
+      margin-bottom: 25px;
+      @include b768 {
+        width: 210px;
+      }
+    }
+    .title2 {
+      margin-bottom: 20px;
+    }
+  }
+
+  .sec2 {
+    padding: 0;
+    background: #000;
+    @include b768 {
+      background: url(https://xyzwebsite.blob.core.windows.net/b2b-landing/PartPro100xP_sec2_sm.jpg)
+        center bottom / cover;
+    }
+    .container {
+      width: 100%;
+      padding: 0;
+      justify-content: flex-start;
+      @include b768 {
+        flex-wrap: wrap;
+      }
+      .title {
+        @include b768 {
+          padding: 30px 0 20px 0;
+        }
+      }
+    }
+    .sec2_img_pro_01 {
+      width: 50%;
+      padding-bottom: 500px;
+      background: url(https://xyzwebsite.blob.core.windows.net/b2b-landing/img_product_partpro100xp_sec2.jpg)
+        center/ cover;
+      @include b768 {
+        display: none;
+      }
+    }
+    .intro {
+      width: 550px;
+      // padding: 0 280px 40px 60px;
+      padding: 0 20px 40px 20px;
+      @include b1279 {
+        width: 50%;
+        padding: 20px;
+      }
+      @include b768 {
+        width: 100%;
+        padding: 0 20px 40px 20px;
+      }
+    }
+  }
+
+  .sec3 {
+    padding: 180px 50px;
+    background: url(https://xyzwebsite.blob.core.windows.net/b2b-landing/PartPro100xP_Desktop_Sec3_LG.jpg)
+      center / cover;
+    @include b768 {
+      padding: 320px 20px 50px 20px;
+      background: url(https://xyzwebsite.blob.core.windows.net/b2b-landing/PartPro100xP_sec3_sm.jpg)
+        center / cover;
+    }
+    .container {
+      justify-content: flex-start;
+      @include b768 {
+        align-items: flex-start;
+      }
+      .intro {
+        width: 45%;
+        @include b768 {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .sec4 {
+    padding: 180px 50px;
+    background: url(https://xyzwebsite.blob.core.windows.net/b2b-landing/PartPro100xP_Desktop_Sec4_LG.jpg)
+      center / cover;
+    @include b768 {
+      padding: 320px 20px 50px 20px;
+      background: url(https://xyzwebsite.blob.core.windows.net/b2b-landing/PartPro100xP_sec4_sm.jpg)
+        center / cover;
+    }
+    .container {
+      justify-content: flex-end;
+      @include b768 {
+        align-items: flex-start;
+      }
+      .intro {
+        width: 45%;
+        @include b768 {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,1 +1,118 @@
-<p>partpro100-x-p works!</p>
+<div id="Partpro100">
+  <div class="section sec1 font_c_w">
+    <div class="container">
+      <div class="intro">
+        <img
+          class="sec01_printer"
+          src="https://xyzwebsite.blob.core.windows.net/b2b-landing/img_product_partpro100xp_sec1.png"
+          alt="partpro150"
+        />
+        <!-- title -->
+        <div
+          class="title"
+          [innerHTML]="'partpro100.section1.title-bottom-img' | translate"
+        ></div>
+        <div
+          class="title2"
+          [innerHTML]="'partpro100.section1.title' | translate"
+        ></div>
+        <!-- dec -->
+        <div
+          class="desc"
+          [innerHTML]="'partpro100.section1.desc' | translate"
+        ></div>
+        <!-- btn "how to buy" link to "contact us" -->
+        <!-- <a class="btn-download" ng-href="/@langCode/contact-us" target="_blank">@Messages.get("btn.howToBuy")</a> -->
+        <a
+          *ngIf="langCode == 'en-US' || langCode == 'en-GB'"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/DLP/PartPro100%20xP/PartPro100%20xP_spec_en.pdf"
+          class="btn-download"
+          target="_blank"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="langCode == 'ja-JP'"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/DLP/PartPro100%20xP/PartPro100%20xP_spec_jp.pdf"
+          class="btn-download"
+          target="_blank"
+          >{{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="langCode == 'fr-FR'"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/DLP/PartPro100%20xP/PartPro100%20xP_spec_fr.pdf"
+          class="btn-download"
+          target="_blank"
+          >{{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="langCode == 'zh-TW'"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/DLP/PartPro100%20xP/PartPro100%20xP_spec_tw.pdf"
+          class="btn-download"
+          target="_blank"
+          >{{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="langCode == 'zh-CN'"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/DLP/PartPro100%20xP/PartPro100%20xP_spec_cn.pdf"
+          class="btn-download"
+          target="_blank"
+          >{{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="langCode == 'de-DE'"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Printers/DLP/PartPro100%20xP/PartPro100%20xP_spec_de.pdf"
+          class="btn-download"
+          target="_blank"
+          >{{ "btn.downloadSpecs" | translate }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section sec2 font_c_w">
+    <div class="container">
+      <div class="sec2_img_pro_01"></div>
+      <div class="intro">
+        <div
+          class="title"
+          [innerHTML]="'partpro100.section2.title' | translate"
+        ></div>
+        <div
+          class="desc"
+          [innerHTML]="'partpro100.section2.desc' | translate"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section sec3 font_c_b">
+    <div class="container">
+      <div class="intro">
+        <div
+          class="title"
+          [innerHTML]="'partpro100.section3.title' | translate"
+        ></div>
+        <div
+          class="desc"
+          [innerHTML]="'partpro100.section3.desc' | translate"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section sec4 font_c_b">
+    <div class="container">
+      <div class="intro">
+        <div
+          class="title"
+          [innerHTML]="'partpro100.section4.title' | translate"
+        ></div>
+        <div
+          class="desc"
+          [innerHTML]="'partpro100.section4.desc' | translate"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>
