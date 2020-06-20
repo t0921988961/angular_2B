@@ -1,0 +1,493 @@
+@import "variables";
+@import "breakpoint";
+
+// font_size ---------------------------------------
+.f_36 {
+  font-size: $fontsize-xxl;
+}
+.f_28 {
+  font-size: $fontsize-xl;
+}
+.f_16 {
+  font-size: $fontsize-base;
+}
+.f_14 {
+  font-size: $fontsize-sm;
+}
+
+// color black ---------------------------------------
+.c_b {
+  color: $color-black-1414;
+}
+// color white ---------------------------------------
+.c_w {
+  color: #fff;
+}
+
+.w_1100 {
+  width: 1100px;
+  margin: 0 auto;
+  @include b1279 {
+    width: 100%;
+  }
+}
+
+.sec_flex {
+  display: flex;
+  @include b768 {
+    flex-wrap: wrap;
+  }
+}
+
+#filament {
+  width: 100%;
+  margin-top: -120px;
+  padding-top: 120px;
+  background-color: #969696;
+
+  // All Opacity Color Box
+  .model_color_opacity {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 1px solid white;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(181, 181, 181, 1),
+      rgba(181, 181, 181, 1) 3px,
+      rgba(255, 255, 255, 1) 0,
+      rgba(255, 255, 255, 1) 4px
+    );
+    @include b1279 {
+      margin-bottom: 10px;
+    }
+  }
+
+  // All section block use class START------------------------------->
+  .section {
+    width: 100%;
+    padding: 130px 20px 150px 20px;
+    line-height: 20px;
+    text-align: left;
+    @include b768 {
+      text-align: center;
+      padding: 0;
+    }
+    // mobile show img
+    .mobile_img {
+      width: 50%;
+      display: none;
+      @include b768 {
+        width: 100%;
+        height: 100%;
+        flex-shrink: 0;
+        display: block;
+      }
+    }
+
+    //description
+    .sec_des {
+      width: 50%;
+      @include b1279 {
+        width: 55%;
+      }
+      @include b768 {
+        width: 100%;
+        padding: 30px 20px 5px 20px;
+        transform: translateY(-25%);
+      }
+    }
+    .type_name {
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+    .describe {
+      font-size: 16px;
+      margin-bottom: 30px;
+      @include b768 {
+        font-size: 14px;
+      }
+    }
+
+    // Color box
+    .color_model {
+      font-size: 14px;
+      @include b768 {
+        text-align: left;
+      }
+      .model_name {
+        margin-bottom: 10px;
+        font-size: 14px;
+        @include b768 {
+          display: flex;
+          justify-content: flex-start;
+          margin-bottom: 20px;
+        }
+      }
+      .span_title {
+        @include b768 {
+          width: 140px;
+        }
+      }
+      .span_text {
+        font-weight: 900;
+        @include b768 {
+          width: 145px;
+        }
+        .model_link {
+          margin: 0 5px;
+        }
+      }
+    }
+    // color group
+    .model_box {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      @include b1279 {
+        align-items: flex-start;
+      }
+      p {
+        font-size: 14px;
+        margin-right: 15px;
+      }
+      .color_groups {
+        display: flex;
+        align-items: center;
+        @include b1279 {
+          flex-wrap: wrap;
+        }
+        @include b768 {
+          width: 80%;
+        }
+      }
+      .color_box {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #fff;
+        margin-right: 10px;
+        @include b1279 {
+          margin-bottom: 10px;
+        }
+      }
+      // color title
+      .color_p_r {
+        position: relative;
+        cursor: pointer;
+        .color_title {
+          width: max-content;
+          display: none;
+          position: absolute;
+          top: 30px;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 4px 7px;
+          font-size: 10px;
+          font-weight: 500;
+          background-color: #d8d8d8;
+          color: $color-gray_4646;
+        }
+        &:hover .color_title {
+          display: block;
+        }
+      }
+      .model_color {
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+        border: 1px solid #ffffff;
+        @include b1279 {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    // btn download
+    .btn_download {
+      font-size: 14px;
+      font-weight: 900;
+      color: #f02323;
+      border-bottom: 1px solid #f02323;
+    }
+  }
+  // All section block use class END------------------------------->
+
+  //Filaments  START------------------------------->
+  .sec_01 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/sec01_bg_lg.jpg")
+      center/cover;
+    text-align: center;
+    padding: 50px 20px 50px 20px;
+    @include b768 {
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/mobile/sec01_bg_sm.jpg")
+        center/cover;
+      padding: 60px 20px 70px 20px;
+    }
+    .describe {
+      @include b1279 {
+        width: 100%;
+      }
+    }
+    > .type_img {
+      width: 520px;
+      display: inline-block;
+      margin-bottom: 20px;
+      @include b768 {
+        width: 100%;
+      }
+    }
+    > .type_name {
+      font-size: 36px;
+      line-height: 48px;
+      font-weight: 750;
+      margin-bottom: 20px;
+    }
+    > .describe {
+      font-weight: 300;
+      width: 780px;
+      display: block;
+      margin: 0 auto;
+      line-height: 20px;
+      @include b1279 {
+        width: 100%;
+      }
+    }
+  }
+  //Filaments  END------------------------------->
+
+  //Tab Menu  START------------------------------->
+  .tab_menu {
+    width: 100%;
+    background-color: #464646;
+    text-align: center;
+    > .tab_ul {
+      display: flex;
+      margin: 0 auto;
+      width: 1100px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      @include b1279 {
+        width: 100%;
+      }
+      > li {
+        width: 20%;
+        line-height: 20px;
+        @include b768 {
+          width: 33.333%;
+          font-size: 10px;
+        }
+      }
+      > li > a {
+        width: 100%;
+        display: inline-block;
+        padding: 17px;
+        font-weight: 700;
+        transition: all 0.3s linear;
+        color: #828282;
+        &:hover {
+          color: #fff;
+        }
+      }
+      .link_active {
+        position: relative;
+        color: #fff;
+        transition: all 0.3s linear;
+        &:after {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 5px;
+          background-color: #cf1e1e;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+        }
+      }
+    }
+    .bg_c_red {
+      background-color: #cf1e1e;
+      color: #fff;
+    }
+  }
+  //Tab Menu  END------------------------------->
+
+  //ABS  START------------------------------->
+  .sec_02 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/sec02_bg_lg.jpg")
+      center/cover;
+    @include b768 {
+      background: #1c2611;
+    }
+    .sec_flex {
+      justify-content: flex-start;
+    }
+  }
+  //ABS  END------------------------------->
+
+  //PLA  START------------------------------->
+  .sec_03 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/sec03_bg_lg.jpg")
+      center/cover;
+    @include b768 {
+      background: #dadedf;
+    }
+    .sec_flex {
+      justify-content: flex-end;
+    }
+  }
+  //PLA  END------------------------------->
+
+  //Tough PLA  START------------------------------->
+  .sec_04 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/sec04_bg_lg.jpg")
+      center/cover no-repeat;
+    @include b768 {
+      background: #170d06;
+    }
+    .sec_flex {
+      justify-content: flex-start;
+    }
+  }
+  //Tough PLA  END------------------------------->
+
+  //PETG  START------------------------------->
+  .sec_05 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/sec05_bg_lg.jpg")
+      center/cover no-repeat;
+    @include b768 {
+      background: #1a1a1a;
+    }
+    .sec_flex {
+      justify-content: flex-end;
+    }
+  }
+
+  //PETG  END------------------------------->
+
+  //Premium Metallic PLA  START------------------------------->
+  .sec_06 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/sec06_bg_lg.jpg")
+      center/cover no-repeat;
+    @include b768 {
+      background: #000000;
+    }
+    .sec_flex {
+      justify-content: flex-start;
+    }
+  }
+  //Premium Metallic PLA  END------------------------------->
+
+  //XYZ Carbon Fiber  START------------------------------->
+  .sec_07 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/sec07_bg_lg.jpg")
+      center/cover;
+    @include b768 {
+      background: #eeeeee;
+    }
+
+    .sec_flex {
+      justify-content: flex-end;
+    }
+  }
+  //XYZ Carbon Fiber  END------------------------------->
+
+  //3D Color-Inkjet PLA  START------------------------------->
+  .sec_08 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/sec08_bg_lg.jpg")
+      center/cover;
+    @include b768 {
+      background: #000000;
+    }
+
+    .sec_flex {
+      justify-content: flex-start;
+    }
+  }
+  //3D Color-Inkjet PLA  END------------------------------->
+
+  //PC  START------------------------------->
+  .sec_09 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/sec09_bg_lg.jpg")
+      center/cover;
+    @include b768 {
+      background: #6d6d6d;
+    }
+    .sec_des {
+      width: 45%;
+      @include b768 {
+        width: 100%;
+      }
+    }
+
+    .sec_flex {
+      justify-content: flex-end;
+    }
+  }
+  //PC  END------------------------------->
+
+  //BVOH  START------------------------------->
+  .sec_10 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/sec10_bg_lg.jpg")
+      center/cover;
+    @include b768 {
+      background: #464c4d;
+    }
+    .sec_des {
+      width: 45%;
+      @include b768 {
+        width: 100%;
+      }
+    }
+    .sec_flex {
+      justify-content: flex-start;
+    }
+  }
+  //BVOH  END------------------------------->
+
+  //XYZ CF-PET  START------------------------------->
+  .sec_11 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/sec11_bg_lg.jpg")
+      center/cover;
+    @include b768 {
+      background: #dadedf;
+    }
+
+    .sec_flex {
+      justify-content: flex-end;
+    }
+  }
+  //XYZ CF-PET  END------------------------------->
+
+  //XYZ CF-Nylon  START------------------------------->
+  .sec_12 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/filament/sec12_bg_lg.jpg")
+      center/cover;
+    @include b768 {
+      background: #c0c0c0;
+    }
+    .sec_des {
+      width: 45%;
+      @include b1279 {
+        width: 100%;
+        transform: translateY(-15%);
+      }
+    }
+    .sec_flex {
+      justify-content: flex-start;
+    }
+  }
+  //XYZ CF-Nylon  END------------------------------->
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguageService } from 'src/app/service/language/language.service';
 
 @Component({
   selector: 'app-eeezcure180',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Eeezcure180Component implements OnInit {
 
-  constructor() { }
+  langCode = this.languageService.nowUrlPathlangCode;
+
+
+  constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
   }

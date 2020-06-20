@@ -20,6 +20,8 @@ import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { MetaModule, MetaLoader, MetaStaticLoader, PageTitlePositioning } from '@ngx-meta/core';
 import { TranslateService } from '@ngx-translate/core';
 
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+
 // ngx-translate set language json url path
 export function createLoader(http: HttpClient) {
   console.log('AppModule.ts => createLoader work');
@@ -80,7 +82,9 @@ export function metaFactory(translate: TranslateService): MetaLoader {
       provide: MetaLoader,
       useFactory: (metaFactory),
       deps: [TranslateService]
-    })
+    }),
+    // scrollTo pluging
+    ScrollToModule.forRoot()
 
   ],
   providers: [],

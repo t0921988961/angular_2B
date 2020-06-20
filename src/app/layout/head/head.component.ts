@@ -54,6 +54,7 @@ export class HeadComponent implements OnInit, OnDestroy {
     public reizeService: ResizeService,
     private meta: MetaService,
   ) {
+    // window scroll polyfill => For Safari/iPhone
     smoothscroll.polyfill();
   }
 
