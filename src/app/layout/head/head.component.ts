@@ -8,6 +8,7 @@ import { ResizeService } from 'src/app/service/resize/resize.service';
 import { TranslateService } from '@ngx-translate/core';
 import { MetaService } from '@ngx-meta/core';
 import { Observable } from 'rxjs';
+import smoothscroll from 'smoothscroll-polyfill';
 
 
 @Component({
@@ -42,6 +43,8 @@ export class HeadComponent implements OnInit, OnDestroy {
   apiLangLists$: Observable<any>;
 
 
+  scollShow = false;
+
   showMenuLangCode = '';
 
   constructor(
@@ -51,6 +54,7 @@ export class HeadComponent implements OnInit, OnDestroy {
     public reizeService: ResizeService,
     private meta: MetaService,
   ) {
+    smoothscroll.polyfill();
   }
 
   test$: Observable<any>;
@@ -83,8 +87,8 @@ export class HeadComponent implements OnInit, OnDestroy {
     const getPosYoffset = window.pageYOffset;
     const isBigPosYoffset = getPosYoffset > 100;
     const isSmallPosYoffset = getPosYoffset < 100;
-    if (isBigPosYoffset) { return this.isMenuStickyActived = true; }
-    if (isSmallPosYoffset) { return this.isMenuStickyActived = false; }
+    if (isBigPosYoffset) { this.isMenuStickyActived = true; this.scollShow = true; }
+    if (isSmallPosYoffset) { this.isMenuStickyActived = false; this.scollShow = false; }
   }
 
   switchMobileSubmenu(item) {
@@ -101,6 +105,14 @@ export class HeadComponent implements OnInit, OnDestroy {
       this.showMenu_mb = !this.showMenu_mb;
       item.activ = !item.activ;
     }
+  }
+
+  gotoTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
 }

@@ -10,7 +10,8 @@ export class LayoutComponent implements OnInit {
 
   cssStyleLangFontFamily = '';
 
-  constructor(public translateService: LanguageService, public changeDetector: ChangeDetectorRef) { }
+  constructor(public translateService: LanguageService, public changeDetector: ChangeDetectorRef) {
+  }
 
   ngOnInit() {
     this.cssStyleLangFontFamily = 'lang-' + this.translateService.nowLangCode;
