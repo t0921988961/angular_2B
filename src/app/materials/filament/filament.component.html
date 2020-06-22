@@ -1,4 +1,4 @@
-<div id="filament" ng-controller="materialsPageCtrl">
+<div id="filament">
   <!-- filament START----------------------->
   <div class="section sec_01">
     <img
@@ -22,7 +22,7 @@
     <ul class="tab_ul">
       <li>
         <a
-          href="#type_01"
+          (click)="scrollToElement(target)"
           class="link"
           [innerHTML]="'materialFilament.tab.01' | translate"
         >
@@ -30,7 +30,7 @@
       </li>
       <li>
         <a
-          href="#type_02"
+          (click)="scrollToElement(type_02)"
           class="link"
           [innerHTML]="'materialFilament.tab.02' | translate"
         >
@@ -102,7 +102,7 @@
   <!-- Tab Menu END----------------------->
 
   <!-- ABS START----------------------->
-  <div id="type_01" class="section sec_02 font_c_w">
+  <div id="type_01" class="section sec_02 font_c_w" #target>
     <div class="w_1100 sec_flex">
       <!-- mobile show img -->
       <img
@@ -208,7 +208,7 @@
   <!-- ABS END----------------------->
 
   <!-- PLA START----------------------->
-  <div id="type_02" class="section sec_03 font_c_b">
+  <div id="type_02" class="section sec_03 font_c_b" #type_02>
     <div class="w_1100 sec_flex">
       <!-- mobile show img -->
       <img

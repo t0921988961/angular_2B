@@ -61,7 +61,7 @@ export function metaFactory(translate: TranslateService): MetaLoader {
   declarations: [
     AppComponent,
     LayoutComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +85,6 @@ export function metaFactory(translate: TranslateService): MetaLoader {
     }),
     // scrollTo pluging
     ScrollToModule.forRoot()
-
   ],
   providers: [],
   bootstrap: [AppComponent]

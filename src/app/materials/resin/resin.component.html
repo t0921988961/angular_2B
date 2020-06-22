@@ -1,1 +1,439 @@
-<p>resin works!</p>
+<div id="resin">
+  <!-- Resins START----------------------->
+  <div class="section sec_01">
+    <img
+      class="type_img"
+      src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_01_el.png"
+      alt=""
+    />
+    <h1 class="type_name f_36">
+      {{ "materialResin.section1.title" | translate }}
+    </h1>
+    <p class="describe">
+      {{ "materialResin.section1.dec" | translate }}
+    </p>
+  </div>
+  <!-- Resins END----------------------->
+
+  <!-- Tab Menu START----------------------->
+  <div class="tab_menu">
+    <ul>
+      <li>
+        <a href="#type_01" class="link">
+          {{ "materialResin.section2.title" | translate }}
+        </a>
+      </li>
+      <li>
+        <a href="#type_02" class="link">
+          {{ "materialResin.section3.title" | translate }}
+        </a>
+      </li>
+      <li>
+        <a href="#type_03" class="link">
+          {{ "materialResin.section4.title" | translate }}
+        </a>
+      </li>
+      <li>
+        <a href="#type_04" class="link">
+          {{ "materialResin.section5.title" | translate }}
+        </a>
+      </li>
+      <li>
+        <a href="#type_05" class="link">
+          {{ "materialResin.section6.title" | translate }}
+        </a>
+      </li>
+      <li>
+        <a
+          *ngIf="langCode == 'en-US' || langCode == 'en-GB'"
+          class="bg_c_red"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Materials/Resin/Resins_EN_190916.pdf"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="langCode == 'fr-FR'"
+          class="bg_c_red"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Materials/Resin/Resins_FRA_190916.pdf"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="langCode == 'de-DE'"
+          class="bg_c_red"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Materials/Resin/Resins_DEU_190916.pdf"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="langCode == 'ja-JP'"
+          class="bg_c_red"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Materials/Resin/Resins_JP_190916.pdf"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="langCode == 'zh-TW'"
+          class="bg_c_red"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Materials/Resin/Resins_TW_190916.pdf"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="langCode == 'zh-CN'"
+          class="bg_c_red"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Materials/Resin/Resins_CN_190916.pdf"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a *ngIf="langCode == 'ko-KR'" class="bg_c_red" href="#">
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+        <a
+          *ngIf="langCode == 'th-TH'"
+          class="bg_c_red"
+          href="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/PDF/Materials/Resin/Resins_TH_190916.pdf"
+        >
+          {{ "btn.downloadSpecs" | translate }}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- Tab Menu END----------------------->
+
+  <!-- ProUtility START----------------------->
+  <div id="type_01" class="section sec_02 font_c_w">
+    <img
+      class="type_img"
+      src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_02_el.png"
+      alt=""
+    />
+    <h1 class="type_name">
+      {{ "materialResin.section2.title" | translate }}
+    </h1>
+    <p class="describe">
+      {{ "materialResin.section2.dec" | translate }}
+    </p>
+
+    <div class="model_group">
+      <a
+        class="model"
+        [href]="'/' + langCode + '/product/DLP/PartPro100_xP'"
+        target="_blank"
+      >
+        {{ "material.compatible.model" | translate }} &nbsp;
+        <strong class="model_name">
+          {{ "materialResin.section2.model" | translate }}
+        </strong>
+        <span class="middle_line">|</span>
+      </a>
+      <div class="color_groups">
+        {{ "material.compatible.model.color" | translate }}
+        <!-- <div class="color_box" style="background:#141414;"></div> -->
+        <span class="color_p_r model_color">
+          <div class="color_title">
+            {{ "materialResin.section2.colorBox_01" | translate }}
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- ProUtility END----------------------->
+
+  <!-- ProAccureSTART----------------------->
+  <div id="type_02" class="section sec_03 font_c_b">
+    <img
+      class="type_img"
+      src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_03_el.png"
+      alt=""
+    />
+    <h1 class="type_name">
+      {{ "materialResin.section3.title" | translate }}
+    </h1>
+    <p class="describe">
+      {{ "materialResin.section3.dec" | translate }}
+    </p>
+
+    <div class="model_group">
+      <a
+        class="model"
+        [href]="'/' + langCode + '/product/DLP/PartPro100_xP'"
+        target="_blank"
+      >
+        {{ "material.compatible.model" | translate }} &nbsp;
+        <strong class="model_name">
+          {{ "materialResin.section3.model" | translate }}
+        </strong>
+        <span class="middle_line">|</span>
+      </a>
+      <div class="color_groups">
+        {{ "material.compatible.model.color" | translate }}
+        <!-- <div class="color_box" style="background:#141414;"></div> -->
+        <span class="color_p_r model_color">
+          <div class="color_title">
+            {{ "materialResin.section3.colorBox_01" | translate }}
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- ProAccureEND----------------------->
+
+  <!-- EeezCast START----------------------->
+  <div id="type_03" class="section sec_04 font_c_w">
+    <img
+      class="type_img"
+      src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_04_el.png"
+      alt=""
+    />
+    <h1 class="type_name">
+      {{ "materialResin.section4.title" | translate }}
+    </h1>
+    <p class="describe">
+      {{ "materialResin.section4.dec" | translate }}
+    </p>
+
+    <div class="model_group">
+      <a
+        class="model"
+        [href]="'/' + langCode + '/product/DLP/PartPro100_xP'"
+        target="_blank"
+      >
+        {{ "material.compatible.model" | translate }} &nbsp;
+        <strong class="model_name">
+          {{ "materialResin.section4.model" | translate }}
+        </strong>
+        <span class="middle_line">|</span>
+      </a>
+      <div class="color_groups">
+        {{ "material.compatible.model.color" | translate }}
+        <!-- <div class="color_box" style="background:#141414;"></div> -->
+        <span class="color_p_r model_color">
+          <div class="color_title">
+            {{ "materialResin.section4.colorBox_01" | translate }}
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- EeezCast END------------------------->
+
+  <!-- EeezCast+ START----------------------->
+  <div id="type_04" class="section sec_05 font_c_w">
+    <h1 class="type_name">
+      {{ "materialResin.section5.title" | translate }}
+    </h1>
+    <p class="describe">
+      {{ "materialResin.section5.dec" | translate }}
+    </p>
+
+    <div class="model_group">
+      <a
+        class="model"
+        [href]="'/' + langCode + '/product/DLP/PartPro100_xP'"
+        target="_blank"
+      >
+        {{ "material.compatible.model" | translate }} &nbsp;
+        <strong class="model_name">
+          {{ "materialResin.section5.model" | translate }}
+        </strong>
+        <span class="middle_line">|</span>
+      </a>
+      <div class="color_groups">
+        {{ "material.compatible.model.color" | translate }}
+        <!-- <div class="color_box" style="background:#141414;"></div> -->
+        <span class="color_p_r model_color">
+          <div class="color_title">
+            {{ "materialResin.section5.colorBox_01" | translate }}
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- EeezCast+ END------------------------->
+
+  <!-- ProHighTemp START----------------------->
+  <div id="type_05" class="section sec_06 font_c_w">
+    <h1 class="type_name">
+      {{ "materialResin.section6.title" | translate }}
+    </h1>
+    <p class="describe">
+      {{ "materialResin.section6.dec" | translate }}
+    </p>
+
+    <div class="model_group">
+      <a
+        class="model"
+        [href]="'/' + langCode + '/product/DLP/PartPro100_xP'"
+        target="_blank"
+      >
+        {{ "material.compatible.model" | translate }} &nbsp;
+        <strong class="model_name">
+          {{ "materialResin.section6.model" | translate }}
+        </strong>
+        <span class="middle_line">|</span>
+      </a>
+      <div class="color_groups">
+        {{ "material.compatible.model.color" | translate }}
+        <!-- <div class="color_box" style="background:#141414;"></div> -->
+        <span class="color_p_r model_color">
+          <div class="color_title">
+            {{ "materialResin.section6.colorBox_01" | translate }}
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- ProHighTemp END------------------------->
+
+  <!-- ProBasic START----------------------->
+  <div id="type_06" class="section sec_07 font_c_w">
+    <h1 class="type_name">
+      {{ "materialResin.section7.title" | translate }}
+    </h1>
+    <p class="describe">
+      {{ "materialResin.section7.dec" | translate }}
+    </p>
+
+    <div class="model_group">
+      <a
+        class="model"
+        [href]="'/' + langCode + '/product/DLP/PartPro100_xP'"
+        target="_blank"
+      >
+        {{ "material.compatible.model" | translate }} &nbsp;
+        <strong class="model_name">
+          {{ "materialResin.section7.model" | translate }}
+        </strong>
+        <span class="middle_line">|</span>
+      </a>
+      <div class="color_groups">
+        {{ "material.compatible.model.color" | translate }}
+        <!-- <div class="color_box" style="background:#141414;"></div> -->
+        <span class="color_p_r model_color" style="background: #141414;">
+          <div class="color_title">
+            {{ "materialResin.section7.colorBox_01" | translate }}
+          </div>
+        </span>
+        <span class="color_p_r model_color" style="background: #ffffff;">
+          <div class="color_title">
+            {{ "materialResin.section7.colorBox_02" | translate }}
+          </div>
+        </span>
+        <span class="color_p_r model_color_clear">
+          <div class="color_title">
+            {{ "materialResin.section7.colorBox_03" | translate }}
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- ProBasic END------------------------->
+
+  <!-- ProPreciseSL START----------------------->
+  <div id="type_07" class="section sec_08 font_c_w">
+    <h1 class="type_name">
+      {{ "materialResin.section8.title" | translate }}
+    </h1>
+    <p class="describe">
+      {{ "materialResin.section8.dec" | translate }}
+    </p>
+
+    <div class="model_group">
+      <a
+        class="model"
+        [href]="'/' + langCode + '/product/DLP/PartPro100_xP'"
+        target="_blank"
+      >
+        {{ "material.compatible.model" | translate }} &nbsp;
+        <strong class="model_name">
+          {{ "materialResin.section8.model" | translate }}
+        </strong>
+        <span class="middle_line">|</span>
+      </a>
+      <div class="color_groups">
+        {{ "material.compatible.model.color" | translate }}
+        <!-- <div class="color_box" style="background:#141414;"></div> -->
+        <span class="color_p_r model_color_clear">
+          <div class="color_title">
+            {{ "materialResin.section8.colorBox_01" | translate }}
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- ProPreciseSL END------------------------->
+
+  <!-- ProPlasSL START----------------------->
+  <div id="type_08" class="section sec_09 font_c_b">
+    <img
+      class="type_img"
+      src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_09_el.png"
+      alt=""
+    />
+    <h1 class="type_name">
+      {{ "materialResin.section9.title" | translate }}
+    </h1>
+    <p class="describe">
+      {{ "materialResin.section9.dec" | translate }}
+    </p>
+
+    <div class="model_group">
+      <a
+        class="model"
+        [href]="'/' + langCode + '/product/DLP/PartPro100_xP'"
+        target="_blank"
+      >
+        {{ "material.compatible.model" | translate }} &nbsp;
+        <strong class="model_name">
+          {{ "materialResin.section9.model" | translate }}
+        </strong>
+        <span class="middle_line">|</span>
+      </a>
+      <div class="color_groups">
+        {{ "material.compatible.model.color" | translate }}
+        <!-- <div class="color_box" style="background:#141414;"></div> -->
+        <span class="color_p_r model_color">
+          <div class="color_title">
+            {{ "materialResin.section9.colorBox_01" | translate }}
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- ProPlasSL END------------------------->
+
+  <!-- ProPolySL START----------------------->
+  <div id="type_09" class="section sec_10 font_c_b">
+    <h1 class="type_name">
+      {{ "materialResin.section10.title" | translate }}
+    </h1>
+    <p class="describe">
+      {{ "materialResin.section10.dec" | translate }}
+    </p>
+
+    <div class="model_group">
+      <a
+        class="model"
+        [href]="'/' + langCode + '/product/DLP/PartPro100_xP'"
+        target="_blank"
+      >
+        {{ "material.compatible.model" | translate }} &nbsp;
+        <strong class="model_name">
+          {{ "materialResin.section10.model" | translate }}
+        </strong>
+        <span class="middle_line">|</span>
+      </a>
+      <div class="color_groups">
+        {{ "material.compatible.model.color" | translate }}
+        <!-- <div class="color_box" style="background:#141414;"></div> -->
+        <span class="color_p_r model_color_clear">
+          <div class="color_title">
+            {{ "materialResin.section10.colorBox_01" | translate }}
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- ProPolySL END------------------------->
+</div>

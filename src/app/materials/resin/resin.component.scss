@@ -1,0 +1,422 @@
+@import "variables";
+@import "breakpoint";
+
+#resin {
+  width: 100%;
+  margin-top: -120px;
+  padding-top: 120px;
+  background-color: #969696;
+
+  // All Clear Color Box
+  .model_color_clear {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border: 1px solid white;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(181, 181, 181, 1),
+      rgba(181, 181, 181, 1) 3px,
+      rgba(255, 255, 255, 1) 0,
+      rgba(255, 255, 255, 1) 4px
+    );
+  }
+
+  // all section block use class
+  .section {
+    width: 100%;
+    // height: 500px;
+    text-align: center;
+    padding: 50px;
+    font-size: 16px;
+    @include b768 {
+      padding: 40px 20px 50px 20px;
+      font-size: 14px;
+    }
+    > .type_img {
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    > .type_name {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    > .describe {
+      font-weight: 300;
+      width: 780px;
+      display: block;
+      margin: 0 auto;
+      line-height: 20px;
+      font-size: 16px;
+      @include b1279 {
+        width: 100%;
+        font-size: 14px;
+      }
+    }
+    > .model_group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 55px;
+      @include b768 {
+        height: 50px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+    }
+    .model {
+      font-weight: 300;
+      @include b768 {
+        font-size: 10px;
+      }
+      > .model_name {
+        font-weight: 900;
+      }
+      > .middle_line {
+        margin: 0 20px;
+      }
+    }
+    .color_groups {
+      display: flex;
+      align-items: center;
+    }
+    // color title
+    .color_p_r {
+      position: relative;
+      cursor: pointer;
+      .color_title {
+        width: max-content;
+        display: none;
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 4px 7px;
+        font-size: 10px;
+        font-weight: 500;
+        background-color: #d8d8d8;
+        color: $color-gray_4646;
+      }
+      &:hover .color_title {
+        display: block;
+      }
+    }
+    .model_color {
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+      border: 1px solid #ffffff;
+    }
+  }
+
+  //Tab Menu  START------------------------------->
+  .tab_menu {
+    width: 100%;
+    background-color: #464646;
+    text-align: center;
+    > ul {
+      display: flex;
+      justify-content: center;
+      @include b1279 {
+        flex-wrap: wrap;
+      }
+      > li {
+        @include b1279 {
+          width: 33.333%;
+        }
+      }
+      > li > a {
+        display: inline-block;
+        padding: 17px 38px;
+        transition: all 0.3s linear;
+        color: #828282;
+        font-weight: 700;
+        &:hover {
+          color: #fff;
+        }
+        @include b1279 {
+          width: 100%;
+          padding: 17px 0;
+        }
+        @include b768 {
+          font-size: 10px;
+        }
+      }
+      .link_active {
+        position: relative;
+        color: #fff;
+        transition: all 0.3s linear;
+        &:after {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 5px;
+          background-color: #cf1e1e;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+        }
+      }
+    }
+    .bg_c_red {
+      background-color: #cf1e1e;
+      color: #fff;
+    }
+  }
+  //Tab Menu  END------------------------------->
+
+  //Resins  START------------------------------->
+  .sec_01 {
+    width: 100%;
+    padding: 45px 20px 60px 20px;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_01_bg.jpg")
+      center/cover;
+    > .type_img {
+      width: 467px;
+      @include b768 {
+        width: 100%;
+      }
+    }
+    > .type_name {
+      font-weight: 750;
+      margin-bottom: 20px;
+      font-size: 36px;
+    }
+  }
+  //Resins  END------------------------------->
+
+  //ProUtility  START------------------------------->
+  .sec_02 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_02_bg.jpg")
+      center/cover;
+    @include b768 {
+      padding: 30px 20px 320px 20px;
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/mobile/sec_02_bg_m.jpg")
+        center bottom/cover;
+    }
+    > .type_img {
+      width: 380px;
+      @include b768 {
+        width: 100%;
+      }
+    }
+    > .type_name {
+      font-weight: 300;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    .model_color {
+      background-color: #a6a6a6;
+    }
+  }
+  //ProUtility  END------------------------------->
+
+  //ProAccure START------------------------------->
+  .sec_03 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_03_bg.jpg")
+      center/cover;
+    @include b768 {
+      padding: 30px 20px 250px 20px;
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/mobile/sec_03_bg_m.jpg")
+        center bottom/cover;
+    }
+    > .type_img {
+      width: 410px;
+      @include b768 {
+        width: 100%;
+      }
+    }
+    > .type_name {
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .model_color {
+      background-color: #efb300;
+    }
+  }
+  //ProAccure END------------------------------->
+
+  //EeezCast  START------------------------------->
+  .sec_04 {
+    width: 100%;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_04_bg.jpg")
+      center/cover;
+    @include b768 {
+      padding: 225px 20px 70px 20px;
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/mobile/sec_04_bg_m.jpg")
+        center top/cover;
+    }
+    > .type_img {
+      width: 590px;
+      @include b768 {
+        width: 100%;
+      }
+    }
+    > .type_name {
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .model_color {
+      background-color: #ffe600;
+    }
+  }
+  //EeezCast  END------------------------------->
+
+  //EeezCast+  START------------------------------->
+  .sec_05 {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_05_bg.jpg")
+      center/cover;
+    @include b768 {
+      padding: 75px 20px 160px 20px;
+      justify-content: flex-start;
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/mobile/sec_05_bg_m.jpg")
+        center bottom/cover;
+    }
+    .type_name {
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .model_color {
+      background-color: #754c24;
+    }
+  }
+  //EeezCast+  END------------------------------->
+
+  //ProHighTemp  START------------------------------->
+  .sec_06 {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_06_bg.jpg")
+      center/cover;
+    @include b768 {
+      padding: 75px 20px 160px 20px;
+      justify-content: flex-start;
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/mobile/sec_06_bg_m.jpg")
+        center bottom/cover;
+    }
+    .type_name {
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .model_color {
+      background-color: #22413a;
+    }
+  }
+  //ProHighTemp  END------------------------------->
+
+  //ProBasic  START------------------------------->
+  .sec_07 {
+    width: 100%;
+    height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_07_bg.jpg")
+      center/cover;
+    @include b768 {
+      padding: 55px 20px 260px 20px;
+      justify-content: flex-start;
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/mobile/sec_07_bg_m.jpg")
+        center bottom/cover;
+    }
+    .type_name {
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+  }
+  //ProBasic  END------------------------------->
+
+  //ProPreciseSL  START------------------------------->
+  .sec_08 {
+    width: 100%;
+    height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_08_bg.jpg")
+      center/cover;
+    @include b768 {
+      padding: 55px 20px 260px 20px;
+      justify-content: flex-start;
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/mobile/sec_08_bg_m.jpg")
+        center bottom/cover;
+    }
+    .type_name {
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .model_color {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+  //ProPreciseSL  END------------------------------->
+
+  //ProPlasSL  START------------------------------->
+  .sec_09 {
+    width: 100%;
+    height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_09_bg.jpg")
+      center/cover;
+    @include b768 {
+      height: auto;
+      padding: 55px 20px 260px 20px;
+      justify-content: flex-start;
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/mobile/sec_09_bg_m.jpg")
+        center bottom/cover;
+    }
+    > .type_img {
+      width: 350px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      @include b768 {
+        width: 240px;
+      }
+    }
+    .type_name {
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .model_color {
+      background-color: #b5b5b5;
+    }
+  }
+  //ProPlasSL  END------------------------------->
+
+  //ProPolySL  START------------------------------->
+  .sec_10 {
+    width: 100%;
+    height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/sec_10_bg.jpg")
+      center/cover;
+    @include b768 {
+      height: auto;
+      padding: 55px 20px 260px 20px;
+      justify-content: flex-start;
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/Materials/resins/mobile/sec_10_bg_m.jpg")
+        center bottom/cover;
+    }
+    .type_name {
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+  }
+  //ProPolySL  END------------------------------->
+}

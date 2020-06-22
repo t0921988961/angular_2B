@@ -70,6 +70,7 @@
     padding: 130px 20px 150px 20px;
     line-height: 20px;
     text-align: left;
+    scroll-margin: 120px;
     @include b768 {
       text-align: center;
       padding: 0;
