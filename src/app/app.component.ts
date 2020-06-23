@@ -50,11 +50,9 @@ export class AppComponent implements OnInit, DoCheck {
           this.meta.setTag('description', this.translate.instant(e.meta.description));
         }
       );
-
   }
 
   ngDoCheck() {
-
   }
 
 }

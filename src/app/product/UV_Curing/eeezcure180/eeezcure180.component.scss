@@ -286,9 +286,6 @@
       width: 100%;
       line-height: 20px;
       margin-bottom: 15px;
-      #content1 {
-        display: block;
-      }
       .title_link {
         position: relative;
         padding: 10px 15px;
@@ -337,13 +334,13 @@
           }
         }
       }
-      // .title_link_active {
-      //   font-weight: 800;
-      //   color: #cf1e1e;
-      //   &.title_link:after {
-      //     width: 100%;
-      //   }
-      // }
+      .title_link_active {
+        font-weight: 800;
+        color: #cf1e1e;
+        &.title_link:after {
+          width: 100%;
+        }
+      }
     }
     .content {
       display: none;
