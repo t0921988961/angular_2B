@@ -70,7 +70,6 @@
     padding: 130px 20px 150px 20px;
     line-height: 20px;
     text-align: left;
-    scroll-margin: 120px;
     @include b768 {
       text-align: center;
       padding: 0;
@@ -287,6 +286,7 @@
         font-weight: 700;
         transition: all 0.3s linear;
         color: #828282;
+        cursor: pointer;
         &:hover {
           color: #fff;
         }

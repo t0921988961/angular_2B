@@ -17,12 +17,13 @@
   </div>
   <!-- filament END----------------------->
 
-  <!-- Tab Menu START----------------------->
+  <!-- Tab Menu START--------------------->
   <div class="tab_menu">
     <ul class="tab_ul">
       <li>
         <a
-          (click)="scrollToElement(target)"
+          [ngxScrollTo]="'#type_01'"
+          [ngxScrollToOffset]="isScrollOffset"
           class="link"
           [innerHTML]="'materialFilament.tab.01' | translate"
         >
@@ -30,7 +31,8 @@
       </li>
       <li>
         <a
-          (click)="scrollToElement(type_02)"
+          [ngxScrollTo]="'#type_02'"
+          [ngxScrollToOffset]="isScrollOffset"
           class="link"
           [innerHTML]="'materialFilament.tab.02' | translate"
         >
@@ -38,7 +40,8 @@
       </li>
       <li>
         <a
-          href="#type_03"
+          [ngxScrollTo]="'#type_03'"
+          [ngxScrollToOffset]="isScrollOffset"
           class="link"
           [innerHTML]="'materialFilament.tab.03' | translate"
         >
@@ -46,7 +49,8 @@
       </li>
       <li>
         <a
-          href="#type_04"
+          [ngxScrollTo]="'#type_04'"
+          [ngxScrollToOffset]="isScrollOffset"
           class="link"
           [innerHTML]="'materialFilament.tab.04' | translate"
         >
@@ -54,7 +58,8 @@
       </li>
       <li>
         <a
-          href="#type_05"
+          [ngxScrollTo]="'#type_05'"
+          [ngxScrollToOffset]="isScrollOffset"
           class="link"
           [innerHTML]="'materialFilament.tab.05' | translate"
         >
@@ -62,7 +67,8 @@
       </li>
       <li>
         <a
-          href="#type_06"
+          [ngxScrollTo]="'#type_06'"
+          [ngxScrollToOffset]="isScrollOffset"
           class="link"
           [innerHTML]="'materialFilament.tab.06' | translate"
         >
@@ -70,7 +76,8 @@
       </li>
       <li>
         <a
-          href="#type_07"
+          [ngxScrollTo]="'#type_07'"
+          [ngxScrollToOffset]="isScrollOffset"
           class="link"
           [innerHTML]="'materialFilament.tab.07' | translate"
         >
@@ -78,7 +85,8 @@
       </li>
       <li>
         <a
-          href="#type_08"
+          [ngxScrollTo]="'#type_08'"
+          [ngxScrollToOffset]="isScrollOffset"
           class="link"
           [innerHTML]="'materialFilament.tab.08' | translate"
         >
@@ -86,23 +94,28 @@
       </li>
       <li>
         <a
-          href="#type_09"
+          [ngxScrollTo]="'#type_09'"
+          [ngxScrollToOffset]="isScrollOffset"
           class="link"
           [innerHTML]="'materialFilament.tab.09' | translate"
         >
         </a>
       </li>
-      <!-- <li>
-            <a href="#type_10" class="link"
-                [innerHTML]="'materialFilament.tab.10' | translate">
-            </a>
-        </li> -->
+      <li>
+        <a
+          [ngxScrollTo]="'#type_10'"
+          [ngxScrollToOffset]="isScrollOffset"
+          class="link"
+          [innerHTML]="'materialFilament.tab.10' | translate"
+        >
+        </a>
+      </li>
     </ul>
   </div>
   <!-- Tab Menu END----------------------->
 
   <!-- ABS START----------------------->
-  <div id="type_01" class="section sec_02 font_c_w" #target>
+  <div id="type_01" class="section sec_02 font_c_w">
     <div class="w_1100 sec_flex">
       <!-- mobile show img -->
       <img
@@ -208,7 +221,7 @@
   <!-- ABS END----------------------->
 
   <!-- PLA START----------------------->
-  <div id="type_02" class="section sec_03 font_c_b" #type_02>
+  <div id="type_02" class="section sec_03 font_c_b">
     <div class="w_1100 sec_flex">
       <!-- mobile show img -->
       <img

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from 'src/app/service/language/language.service';
+import { ResizeService } from 'src/app/service/resize/resize.service';
+
 
 @Component({
   selector: 'app-filament',
@@ -10,15 +12,15 @@ import { LanguageService } from 'src/app/service/language/language.service';
 export class FilamentComponent implements OnInit {
 
   langCode = this.languageService.nowUrlPathlangCode;
+  isScrollOffset = '';
 
-  constructor(public languageService: LanguageService) { }
+  constructor(
+    public languageService: LanguageService,
+    private resizeService: ResizeService
+  ) { }
 
   ngOnInit() {
-  }
-
-  scrollToElement($element): void {
-    console.log($element);
-    $element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
+    this.isScrollOffset = this.resizeService.setScrollOffset();
   }
 
 }
