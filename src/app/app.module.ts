@@ -24,7 +24,8 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 // ngx-translate set language json url path
 export function createLoader(http: HttpClient) {
-  console.log('%cAppModule.ts => createLoader work', 'color:#24b5aa;');
+  console.log('%c AppModule.ts => createLoader work', 'color:#24b5aa;');
+
   const isUrlParameters = {
     protocol: window.location.protocol,
     host: window.location.host,

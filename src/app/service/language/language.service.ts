@@ -78,7 +78,8 @@ export class LanguageService {
 
 
   checkUrlPathLang(pathLang: string) {
-    // console.log('LanguageService.ts => LanguageService work');
+    console.log('%c LanguageService.ts => LanguageService work', 'color:#aab524;');
+
 
     // add language
     this.translateService.addLangs(['en-US', 'en-GB', 'ja-JP', 'fr-FR', 'de-DE', 'zh-TW', 'zh-CN', 'ko-KR']);

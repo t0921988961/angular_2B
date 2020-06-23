@@ -13,7 +13,9 @@ export class ResizeService {
 
   scrollOffset = '';
 
-  constructor() { }
+  constructor() {
+    console.log('%c resizeService.ts => resizeService work', 'color:#aab524;');
+  }
 
   setInitDeviceSize(widthsize) {
     this.mobile_mode = widthsize < 736 ? true : false;

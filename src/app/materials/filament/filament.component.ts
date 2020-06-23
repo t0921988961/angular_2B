@@ -21,6 +21,7 @@ export class FilamentComponent implements OnInit {
 
   ngOnInit() {
     this.isScrollOffset = this.resizeService.setScrollOffset();
+    console.log('this.isScrollOffset:', this.isScrollOffset);
   }
 
 }

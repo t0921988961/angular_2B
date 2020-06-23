@@ -22,6 +22,7 @@ export class AppComponent implements OnInit, DoCheck {
     private activatedRoute: ActivatedRoute,
   ) {
     // console.log('Appcomponent.ts => constructor work');
+    console.log('%c Appcomponent.ts => Appcomponent work', 'color:#24b5aa;');
   }
 
   ngOnInit() {
