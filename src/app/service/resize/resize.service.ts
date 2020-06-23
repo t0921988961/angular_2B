@@ -31,7 +31,7 @@ export class ResizeService {
     const getDeviceSize = this.imgSize;
     const isDeviceLargSize = getDeviceSize === 'lg';
     const isDeviceSmallSize = getDeviceSize === 'sm';
-    if (isDeviceLargSize) { return this.scrollOffset = '-120'; }
+    if (isDeviceLargSize) { return this.scrollOffset = '-240'; }
     if (isDeviceSmallSize) { return this.scrollOffset = '0'; }
   }
 
