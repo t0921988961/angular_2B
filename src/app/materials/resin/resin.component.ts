@@ -10,15 +10,14 @@ import { ResizeService } from 'src/app/service/resize/resize.service';
 export class ResinComponent implements OnInit {
 
   langCode = this.languageService.nowUrlPathlangCode;
-  isScrollOffset = '';
 
   constructor(
     public languageService: LanguageService,
-    private resizeService: ResizeService
+    public resizeService: ResizeService
   ) { }
 
   ngOnInit() {
-    this.isScrollOffset = this.resizeService.setScrollOffset();
+    this.resizeService.setInitDeviceSize(window.innerWidth);
   }
 
 }

@@ -84,6 +84,7 @@ export class HeadComponent implements OnInit, OnDestroy {
     this.meta.setTag('description', '');
   }
 
+
   scrollEvent = (event): any => {
     const getPosYoffset = window.pageYOffset;
     const isBigPosYoffset = getPosYoffset > 100;

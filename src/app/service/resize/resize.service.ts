@@ -20,18 +20,19 @@ export class ResizeService {
   setInitDeviceSize(widthsize) {
     this.mobile_mode = widthsize < 736 ? true : false;
     this.imgSize = this.mobile_mode ? 'sm' : 'lg';
+    this.setScrollOffset(this.imgSize);
   }
 
   onResize(e) {
-    this.mobile_mode = window.innerWidth < 736 ? true : false;
+    this.mobile_mode = e.target.innerWidth < 736 ? true : false;
     this.imgSize = this.mobile_mode ? 'sm' : 'lg';
+    this.setScrollOffset(this.imgSize);
   }
 
-  setScrollOffset() {
-    const getDeviceSize = this.imgSize;
-    const isDeviceLargSize = getDeviceSize === 'lg';
-    const isDeviceSmallSize = getDeviceSize === 'sm';
-    if (isDeviceLargSize) { return this.scrollOffset = '-240'; }
+  setScrollOffset(imgSize) {
+    const isDeviceLargSize = imgSize === 'lg';
+    const isDeviceSmallSize = imgSize === 'sm';
+    if (isDeviceLargSize) { return this.scrollOffset = '-120'; }
     if (isDeviceSmallSize) { return this.scrollOffset = '0'; }
   }
 
