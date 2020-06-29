@@ -5,8 +5,11 @@ import { CasestudyContentComponent } from './casestudy/casestudy-content/casestu
 
 
 const routes: Routes = [
-  { path: '', component: CasestudyListComponent },
-  { path: ':id', component: CasestudyContentComponent },
+  {
+    path: '', component: CasestudyListComponent, children: [
+      { path: ':id', component: CasestudyContentComponent, },
+    ],
+  },
   { path: '**', redirectTo: '/home' }
 ];
 
