@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
+import { CasestudyListComponent } from './application/casestudy/casestudy-list/casestudy-list.component';
+import { CasestudyContentComponent } from './application/casestudy/casestudy-content/casestudy-content.component';
 // import { ContactComponent } from './contact/contact.component';
 
 
@@ -62,8 +64,26 @@ const routes: Routes = [
       {
         path: 'materials', loadChildren: () => import('./materials/materials.module').then(m => m.MaterialsModule)
       },
+      // {
+      //   path: 'casestudy', loadChildren: () => import('./application/application.module').then(m => m.ApplicationModule)
+      // },
       {
-        path: 'casestudy', loadChildren: () => import('./application/application.module').then(m => m.ApplicationModule)
+        path: 'casestudy', component: CasestudyListComponent,
+        data: {
+          meta: {
+            title: 'caseStudy.title',
+            description: 'caseStudy.description'
+          }
+        }
+      },
+      {
+        path: 'casestudy/:id', component: CasestudyContentComponent,
+        data: {
+          meta: {
+            title: 'caseStudy.title',
+            description: 'caseStudy.description'
+          }
+        }
       },
       {
         path: 'support', loadChildren: () => import('./support/support.module').then(m => m.SupportModule)

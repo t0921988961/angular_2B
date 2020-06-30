@@ -1,0 +1,770 @@
+@import "variables";
+@import "component/buttons";
+@import "breakpoint";
+
+.case-study {
+  background-color: $color-white;
+  padding-bottom: 40px;
+  margin-top: -120px;
+  @include b768 {
+    margin-top: 0;
+  }
+  .w_1100 {
+    width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    @include b1279 {
+      width: 100%;
+    }
+    @include b768 {
+      text-align: center;
+    }
+  }
+  .w_550 {
+    width: 550px;
+    @include b1279 {
+      width: 100%;
+    }
+  }
+  .top-banner {
+    background-image: none;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/application/bg.jpg")
+      center/cover no-repeat;
+    padding: 230px 80px 135px 80px;
+    @include b768 {
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/application/application_bg_sm.jpg")
+        center/cover no-repeat;
+      padding: 240px 20px 65px 20px;
+    }
+    .desc {
+      max-width: 550px;
+    }
+  }
+
+  .content-lists {
+    padding: 60px 30px 0;
+    .desc-title {
+      color: $color-black-1414;
+    }
+    .desc {
+      color: $color-gray_4646;
+    }
+    .item {
+      background-color: $color-white-light;
+      position: relative;
+      margin-bottom: 24px;
+      figure {
+        width: 34.5%;
+        max-width: 360px;
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+      }
+      .infor {
+        width: 65.5%;
+        max-width: 680px;
+        padding: 24px;
+        > a:hover .desc-title {
+          color: $color-gray_4646;
+        }
+        .moreBtn {
+          @include line-btn($color-red, $color-red-light);
+          text-align: left;
+          padding: 0 0 24px;
+          display: inline-block;
+        }
+        .date {
+          color: $color-gray_8282;
+          position: absolute;
+          bottom: 24px;
+        }
+      }
+    }
+  }
+  @include mediaQueries(mobile) {
+    .top-banner {
+      figure {
+        background: url("https://twportal.blob.core.windows.net/images-xyzprinting/b2b/caseStudy/img_catalog_case_study_banner_sm.jpg")
+          no-repeat center/cover;
+      }
+    }
+    .content-lists {
+      padding: 30px;
+      .item {
+        figure {
+          float: none;
+          width: 100%;
+          max-width: 100%;
+          height: 0;
+          padding-bottom: 72%;
+        }
+        .infor {
+          float: none;
+          width: 100%;
+          .moreBtn {
+            @include line-btn($color-red, $color-red-light);
+            text-align: left;
+            padding: 0 0 24px;
+            display: block;
+          }
+          .date {
+            color: $color-gray_8282;
+            position: absolute;
+            bottom: 24px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// case-study castpro100 content page
+.castpro100 {
+  background-color: $color-white;
+  margin-top: -120px;
+  @include b768 {
+    margin-top: 0;
+  }
+  .top-banner {
+    color: white;
+    background: url("https://twportal.blob.core.windows.net/images-xyzprinting/b2b/caseStudy/castpro100/img_case_study_jewelry_banner_lg.jpg")
+      no-repeat center/cover;
+    margin: auto;
+    .text-wrap {
+      width: 100%;
+      padding: 70px 50px 0;
+      max-width: 870px;
+      @include b768 {
+        padding: 50px 30px;
+      }
+    }
+  }
+  .primary-title {
+    @include b1279 {
+      font-size: 1.75rem;
+    }
+    @include b768 {
+      font-size: 24px;
+    }
+  }
+  .v-align-center {
+    height: 500px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > div {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+    }
+  }
+  .main-content {
+    padding: 48px 0 60px;
+    .page800 {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+      padding: 8px 20px 16px;
+    }
+    .quote {
+      font-size: 24px;
+      line-height: 36px;
+      font-weight: 400;
+      font-style: italic;
+      color: #cf1e1e;
+      border-top: 1px solid #cf1e1e;
+      border-bottom: 1px solid #cf1e1e;
+      padding: 24px 0;
+      margin: 24px 0 0;
+      span {
+        display: block;
+        font-size: 18px;
+        padding-top: 48px;
+      }
+    }
+    figure {
+      margin-top: 24px;
+      img {
+        width: 100%;
+      }
+    }
+    section {
+      .desc {
+        padding: 8px 0 16px;
+      }
+    }
+    .disclaimer {
+      padding: 0 20px;
+    }
+    .bottom-banner {
+      background-color: white;
+      width: 100%;
+      margin-top: 40px;
+      .page800 {
+        padding: 60px 30px;
+      }
+      img {
+        width: 37.5%;
+        max-width: 300px;
+      }
+      .infor {
+        width: 62.5%;
+        max-width: 500px;
+      }
+      .btns {
+        font-size: 0;
+        color: white;
+        padding-top: 20px;
+        a {
+          margin-top: 20px;
+        }
+        .moreBtn-black {
+          display: inline-block;
+          @include sm-btn($color-black-1414, $color-gray_4646);
+        }
+        .moreBtn-red {
+          display: inline-block;
+          @include sm-btn($color-red, $color-red-light);
+        }
+        .margin {
+          margin: 0 12px;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+  .note-for-title {
+    font-size: 18px;
+  }
+  @include mediaQueries(mobile) {
+    .v-align-center {
+      height: 400px;
+      line-height: 400px;
+    }
+    .top-banner {
+      color: white;
+      background: url("https://twportal.blob.core.windows.net/images-xyzprinting/b2b/caseStudy/castpro100/img_case_study_jewelry_banner_sm.jpg")
+        no-repeat center/cover;
+    }
+    .main-content {
+      .bottom-banner {
+        .page800 {
+          padding: 20px 20px 40px;
+          text-align: center;
+        }
+        img {
+          width: 100%;
+          max-width: 250px;
+          float: none;
+        }
+        .infor {
+          width: 100%;
+          max-width: 100%;
+          padding-left: 0;
+          float: none;
+        }
+        .btns {
+          a {
+            display: block !important;
+            max-width: 200px;
+            margin: 0 auto 20px;
+          }
+          .margin {
+            margin: 0 auto 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// case-study partpro100 content page
+.partpro100 {
+  background-color: $color-white;
+  margin-top: -120px;
+  @include b768 {
+    margin-top: 0;
+  }
+  .v-align-center {
+    height: 500px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > div {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+    }
+  }
+
+  .top-banner {
+    color: white;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/img_case-study_techniplas__top_lg.jpg")
+      no-repeat center/cover;
+    margin: auto;
+    .text-wrap {
+      width: 100%;
+      padding: 0 50px;
+      max-width: 800px;
+      @include b768 {
+        padding: 0 30px;
+      }
+    }
+  }
+  .primary-title {
+    font-size: 2rem;
+    @include b1279 {
+      font-size: 1.75rem;
+    }
+    @include b768 {
+      font-size: 24px;
+    }
+  }
+  .main-content {
+    padding: 48px 0 0px 0;
+    .page800 {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+      padding: 8px 20px 16px;
+    }
+    .quote {
+      font-size: 24px;
+      line-height: 36px;
+      font-weight: 400;
+      font-style: italic;
+      color: #cf1e1e;
+      border-top: 1px solid #cf1e1e;
+      border-bottom: 1px solid #cf1e1e;
+      padding: 24px 0;
+      margin: 24px 0 0;
+      span {
+        display: block;
+        font-size: 18px;
+        padding-top: 48px;
+      }
+    }
+    figure {
+      margin-top: 24px;
+      img {
+        width: 100%;
+      }
+    }
+    section {
+      .desc {
+        padding: 8px 0 16px;
+      }
+    }
+    .disclaimer {
+      padding: 0 20px;
+    }
+    .bottom-banner {
+      background-color: white;
+      width: 100%;
+      margin-top: 40px;
+      .page800 {
+        padding: 60px 0;
+      }
+      img {
+        width: 37.5%;
+        max-width: 300px;
+      }
+      .infor {
+        width: 62.5%;
+        max-width: 500px;
+      }
+      .btns {
+        font-size: 0;
+        color: white;
+        padding-top: 20px;
+        a {
+          margin-top: 20px;
+        }
+        .moreBtn-black {
+          display: inline-block;
+          @include sm-btn($color-black-1414, $color-gray_4646);
+        }
+        .moreBtn-red {
+          display: inline-block;
+          @include sm-btn($color-red, $color-red-light);
+        }
+        .margin {
+          margin: 0 12px;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+  @include mediaQueries(mobile) {
+    .v-align-center {
+      height: 400px;
+      line-height: 400px;
+    }
+    .top-banner {
+      color: white;
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/img_case-study_techniplas_top_sm.jpg")
+        no-repeat center/cover;
+    }
+    .main-content {
+      .bottom-banner {
+        .page800 {
+          padding: 20px 20px 40px;
+          text-align: center;
+        }
+        img {
+          width: 100%;
+          max-width: 250px;
+          float: none;
+        }
+        .infor {
+          width: 100%;
+          max-width: 100%;
+          padding-left: 0;
+          float: none;
+        }
+        .btns {
+          a {
+            display: block !important;
+            max-width: 200px;
+            margin: 0 auto 20px;
+          }
+          .margin {
+            margin: 0 auto 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// case-study partpro300 content page
+.partpro300 {
+  background-color: $color-white;
+  margin-top: -120px;
+  @include b768 {
+    margin-top: 0;
+  }
+  .v-align-center {
+    height: 500px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > div {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+    }
+  }
+  .top-banner {
+    color: white;
+    background: url("https://xyzofficialweb.blob.core.windows.net/web-v3/AppStudyToB_Img_b_en-US_15832890571880730615.jpg")
+      no-repeat center/cover;
+    margin: auto;
+    .text-wrap {
+      width: 100%;
+      padding: 0 50px;
+      max-width: 800px;
+      @include b768 {
+        padding: 0 30px;
+      }
+    }
+  }
+  .primary-title {
+    font-size: 2rem;
+    @include b1279 {
+      font-size: 1.75rem;
+    }
+    @include b768 {
+      font-size: 24px;
+    }
+  }
+  .main-content {
+    padding: 48px 0 0px 0;
+    .page800 {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+      padding: 8px 20px 16px;
+    }
+    // Set section flex
+    .sec_flex {
+      display: flex;
+      justify-content: space-between;
+      > .flex_left {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        @include b768 {
+          width: 100%;
+          order: 2;
+        }
+      }
+      > .flex_right {
+        width: 50%;
+        @include b768 {
+          width: 100%;
+        }
+      }
+    }
+    //Summary table
+    .summary_table_groups {
+      width: 70% !important;
+      line-height: 1.6;
+      letter-spacing: 0.03rem;
+      margin: 1em 0;
+      font-size: 1rem;
+      @include b768 {
+        order: 2;
+        width: 100% !important;
+      }
+      > .summary_table {
+        width: 100%;
+        display: flex;
+        @include b768 {
+          flex-wrap: wrap;
+        }
+        > .summary_title {
+          font-weight: 700;
+          width: 185px;
+          @include b768 {
+            width: 100%;
+          }
+        }
+        > .summary_des {
+          margin-bottom: 8px;
+          sup {
+            vertical-align: super;
+            font-size: smaller;
+          }
+        }
+      }
+    }
+    .summary_table_img {
+      width: 30% !important;
+      @include b768 {
+        width: 100% !important;
+      }
+    }
+
+    .quote {
+      font-size: 24px;
+      line-height: 36px;
+      font-weight: 400;
+      font-style: italic;
+      color: #cf1e1e;
+      border-top: 1px solid #cf1e1e;
+      border-bottom: 1px solid #cf1e1e;
+      padding: 24px 0;
+      margin: 24px 0 0;
+      span {
+        display: block;
+        font-size: 18px;
+        padding-top: 48px;
+      }
+    }
+    figure {
+      margin-top: 24px;
+      img {
+        width: 100%;
+      }
+    }
+    section {
+      .desc {
+        padding: 8px 0 16px;
+      }
+    }
+    .disclaimer {
+      padding: 0 20px;
+    }
+    .bottom-banner {
+      background-color: white;
+      width: 100%;
+      margin-top: 40px;
+      .page800 {
+        padding: 60px 20px;
+      }
+      img {
+        width: 37.5%;
+        max-width: 300px;
+      }
+      .infor {
+        width: 62.5%;
+        max-width: 500px;
+      }
+      .btns {
+        font-size: 0;
+        color: white;
+        padding-top: 20px;
+        a {
+          margin-top: 20px;
+        }
+        .moreBtn-black {
+          display: inline-block;
+          @include sm-btn($color-black-1414, $color-gray_4646);
+        }
+        .moreBtn-red {
+          display: inline-block;
+          @include sm-btn($color-red, $color-red-light);
+        }
+        .margin {
+          margin: 0 12px;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+  @include mediaQueries(mobile) {
+    .v-align-center {
+      height: 400px;
+      line-height: 400px;
+    }
+    .top-banner {
+      color: white;
+      background: url("https://xyzofficialweb.blob.core.windows.net/web-v3/AppStudyToB_Img_s_en-US_1583289064197430842.jpg")
+        no-repeat center/cover;
+    }
+    .main-content {
+      .bottom-banner {
+        .page800 {
+          padding: 20px 20px 40px;
+          text-align: center;
+        }
+        img {
+          width: 100%;
+          max-width: 250px;
+          float: none !important;
+        }
+        .infor {
+          width: 100%;
+          max-width: 100%;
+          padding-left: 0;
+          float: none;
+        }
+        .btns {
+          a {
+            display: block !important;
+            max-width: 200px;
+            margin: 0 auto 20px;
+          }
+          .margin {
+            margin: 0 auto 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.case-study-list {
+  .page1100 {
+    width: 100%;
+    max-width: 1100px;
+  }
+  .topic {
+    margin: 52px 0;
+  }
+  .page-title {
+    font-size: 30px;
+    color: $color-gray_3333;
+    font-weight: 600;
+  }
+  .case-list {
+    margin: 0 auto;
+    padding: 60px 30px 0;
+    @include b768 {
+      padding: 60px 20px 0;
+    }
+  }
+
+  .top-banner {
+    background-image: none;
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/application/bg.jpg")
+      center/cover no-repeat;
+    padding: 230px 80px 135px 80px;
+    @include b768 {
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/application/application_bg_sm.jpg")
+        center/cover no-repeat;
+      padding: 240px 20px 65px 20px;
+    }
+    .desc {
+      max-width: 550px;
+    }
+  }
+  // .case_list_ul {
+  // }
+  .case {
+    background-color: #f7f7f7;
+    position: relative;
+    margin-bottom: 25px;
+    &.case-item {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      @include b768 {
+        flex-wrap: wrap;
+      }
+    }
+    .case-link {
+      display: inline-block;
+      width: 360px;
+      @include b1279 {
+        width: 300px;
+      }
+      @include b768 {
+        width: 100%;
+      }
+    }
+    &-img {
+      width: 360px;
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      @include b1279 {
+        width: 300px;
+      }
+      @include b768 {
+        width: 100%;
+      }
+    }
+    &-content {
+      width: 100%;
+      vertical-align: top;
+      padding: 24px;
+    }
+    &-category {
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      color: #141414;
+    }
+    &-desc {
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 400;
+      color: #464646;
+    }
+    &-data {
+      color: #828282;
+      position: absolute;
+      bottom: 24px;
+    }
+  }
+  .moreBtn {
+    color: #cf1e1e;
+    padding: 0 24px;
+    min-width: 130px;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 40px;
+    text-decoration: underline;
+    text-align: center;
+    text-align: left;
+    padding: 0 0 24px;
+    display: inline-block;
+  }
+}

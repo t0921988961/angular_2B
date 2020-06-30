@@ -6,7 +6,8 @@ import { CasestudyContentComponent } from './casestudy/casestudy-content/casestu
 
 const routes: Routes = [
   {
-    path: '', component: CasestudyListComponent, children: [
+    path: '', component: CasestudyListComponent,
+    children: [
       { path: ':id', component: CasestudyContentComponent, },
     ],
   },

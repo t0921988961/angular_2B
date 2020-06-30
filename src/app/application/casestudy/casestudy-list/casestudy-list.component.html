@@ -1,3 +1,46 @@
-<p>casestudy-list works!</p>
+<!-- <p>casestudy-list works!</p>
 
 <a [routerLink]="['01']">casestudy_01</a>
+<a [routerLink]="['02']">casestudy_02</a> -->
+<div class="page-static-content case-study-list case-study">
+  <!-- Top banner start-->
+  <div class="top-banner">
+    <div class="w_1100">
+      <div class="w_550 font_c_w">
+        <h1 class="primary-title">{{ "caseStudy.index.title" | translate }}</h1>
+        <p class="desc" [innerHTML]="'caseStudy.index.desc' | translate"></p>
+      </div>
+    </div>
+  </div>
+  <!-- Top banner end-->
+
+  <!-- Start page list -->
+  <div class="case-list page1100">
+    <ul class="case_list_ul clearfix">
+      <li class="case case-item" *ngFor="let item of apiCaseStudyList$ | async">
+        <a class="case-link" [routerLink]="item.URL">
+          <div class="case-img-wrap">
+            <figure
+              class="case-img"
+              [style]="{ 'background-image': 'url(' + item.ListImg + ')' }"
+              alt=""
+            ></figure>
+          </div>
+        </a>
+        <div class="case-content">
+          <p class="case-category">
+            {{ item.StudyClassToB }}
+          </p>
+          <p class="case-desc" ng-cloak>
+            {{ item.ListEX }}
+          </p>
+          <a class="moreBtn" [routerLink]="item.URL"
+            >{{ "caseStudy.index.knowMore.btn" | translate }}
+          </a>
+          <p class="case-data">{{ item.Date | date: "MMM. dd yyyy" }}</p>
+        </div>
+      </li>
+    </ul>
+    <!-- End page list -->
+  </div>
+</div>
