@@ -26,8 +26,9 @@ export class HeadComponent implements OnInit, OnDestroy {
   pathLang = this.translateService.nowUrlPathlangCode;
 
   // For Formal-site
-  apiParameter = this.callApiService.apiParameter;
-  apiLangParameter = this.callApiService.apiLangParameter;
+  apiUse = this.callApiService.checkSitePath();
+  apiHeadParameter = this.apiUse.apiHead;
+  apiLangParameter = this.apiUse.apiLangParameter;
 
   // tslint:disable-next-line:variable-name
   mobile_mode = window.innerWidth < 736 ? true : false;
@@ -36,16 +37,14 @@ export class HeadComponent implements OnInit, OnDestroy {
 
   menuItemActive = false;
   subProductActive = '';
+  showMenuLangCode = '';
+
   showSubMenu_mb = false;
   showMenu_mb = false;
+  scollShow = false;
 
   apiHeadMenuLists$: Observable<any>;
   apiLangLists$: Observable<any>;
-
-
-  scollShow = false;
-
-  showMenuLangCode = '';
 
   constructor(
     public translateService: LanguageService,
@@ -58,19 +57,16 @@ export class HeadComponent implements OnInit, OnDestroy {
     smoothscroll.polyfill();
   }
 
-  test$: Observable<any>;
-
   ngOnInit() {
-
     const isLangCodeApiPath = this.apiUrl + this.apiLangParameter + '/FELangToB/';
     const appInitWindowWidth = window.innerWidth;
-    const isHeadApiPath = this.apiUrl + this.apiParameter + '/IndexToB/' + this.translateService.nowLangCode;
+    const isHeadApiPath = this.apiUrl + this.apiHeadParameter + '/IndexToB/' + this.translateService.nowLangCode;
 
     // set device size
     this.reizeService.setInitDeviceSize(appInitWindowWidth);
-    window.addEventListener('scroll', this.scrollEvent, true);
-
     this.showMenuLangCode = this.translateService.menuShowLangList[this.pathLang];
+
+    window.addEventListener('scroll', this.scrollEvent, true);
 
     // Call Head API
     this.apiHeadMenuLists$ = this.callApiService.get(isHeadApiPath, 'Head_API');

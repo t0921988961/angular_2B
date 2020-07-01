@@ -1,1 +1,65 @@
 <p>casestudy-content works!</p>
+
+<div class="casestudy">
+  <!-- Start banner block -->
+  <div class="banner relative">
+    <!-- banner image -->
+    <div class="banner-image-wrap">
+      <!-- <figure
+        class="banner-image"
+        [style]="{ 'background-image': 'url(' + bgImage + ')' }"
+      ></figure> -->
+    </div>
+
+    <!-- banner text content -->
+    <div class="banner-content page960-max absolute text-center">
+      <!-- <h1 class="banner-title element-inlineb">{{ item.barTitle }}</h1>
+      <div [innerHTML]="item.BarContent"></div> -->
+    </div>
+    <!-- End banner block -->
+
+    <!-- Start customized editor -->
+    <div class="unreset page960-max customerEdit">
+      <!-- <div class="" [innerHTML]="item.introduction"></div>
+      <div class="Stories" [innerHTML]="item.mainContent"></div> -->
+    </div>
+    <!-- End customized editor -->
+
+    <!-- BTN Download PDF  -->
+    <!-- btn group -->
+    <!-- <a
+      [href]="item.Download"
+      class="download_caseStudy"
+      target="{{ item.bindProdDT }}"
+      *ngIf="item.Download !== ''"
+      >@Messages.get("btn.downloadCaseStudy")
+    </a> -->
+
+    <!-- Star related product -->
+    <div class="bottom-banner">
+      <div class="page800 clearfix">
+        <!-- <img class="float-left" src="{{ bindProdImg }}" alt="" /> -->
+        <div class="infor float-right">
+          <p
+            class="note-for-title"
+            ng-bind-html="bindProdSubTitle | sanitize"
+          ></p>
+          <p class="primary-title" ng-bind-html="bindProdTitle | sanitize"></p>
+          <p class="desc" ng-bind-html="bindProdContent | sanitize"></p>
+
+          <!-- btn group -->
+          <div class="btns">
+            <!-- <a
+              href="{{ bindProdKnowMore }}"
+              class="moreBtn-black"
+              target="{{ bindProdKT }}"
+              *ngIf="bindProdKnowMore !== ''"
+              >@Messages.get("btn.learnMore")
+            </a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End related product -->
+  </div>
+</div>

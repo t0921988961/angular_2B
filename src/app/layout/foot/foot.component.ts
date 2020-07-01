@@ -12,16 +12,18 @@ export class FootComponent implements OnInit {
 
   // API URL Domain name
   apiUrl = this.callApiService.apiUrl;
+
   // For Formal-site
-  apiParameter = this.callApiService.apiParameter;
-  apiLangParameter = this.callApiService.apiLangParameter;
+  apiUse = this.callApiService.checkSitePath();
+  apiHeadParameter = this.apiUse.apiHead;
+  apiLangParameter = this.apiUse.apiLangParameter;
 
   apiFootResponse$: Observable<any>;
 
   constructor(public translateService: LanguageService, public callApiService: CallApiService) { }
 
   ngOnInit() {
-    const isFooterApiPath = this.apiUrl + '/' + this.apiParameter + '/FooterToB/' + this.translateService.nowLangCode;
+    const isFooterApiPath = this.apiUrl + '/' + this.apiHeadParameter + '/FooterToB/' + this.translateService.nowLangCode;
     this.apiFootResponse$ = this.callApiService.get(isFooterApiPath, 'Foot_Api');
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient, HttpParams, HttpBackend } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpBackend } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,29 +10,21 @@ export class CallApiService {
 
   // API URL Domain name
   apiUrl = 'https://web-api.xyzprinting.com/Gw/Cache/Website/';
+  caseStudyApiUrl = 'https://web-api.xyzprinting.com/';
 
   // For Formal-site
   allApiFormalSite = {
     apiHead: 'Exp',
     apiLangParameter: 'Cfg',
-    caseStudy: 'api',
+    caseStudy: 'Apitob',
   };
 
   // For Test-site
   allApiTestSite = {
     apiHead: 'ExpTest',
     apiLangParameter: 'CfgTest',
-    caseStudy: 'apitest',
+    caseStudy: 'Apitesttob',
   };
-
-  // For Formal-site
-  apiParameter = 'Exp';
-  apiLangParameter = 'Cfg';
-
-  // For Test-site
-  // apiParameter = 'ExpTest';
-  // apiLangParameter = 'CfgTest';
-
 
   constructor(
     public http: HttpClient,
@@ -40,6 +32,30 @@ export class CallApiService {
     private httpWithoutInterceptor: HttpClient,
   ) {
   }
+
+  checkSitePath() {
+    const nowLoactionHostname = location.hostname;
+    const isFormalSite = nowLoactionHostname === 'pro.xyzprinting.com';
+    const isTestSite = nowLoactionHostname === 'pro-sg.xyzprinting.com';
+
+    // return Formal-site API
+    if (isFormalSite) {
+      // console.log('isFormalSite:', isFormalSite);
+      return this.allApiFormalSite;
+    }
+
+    // return Test-site API
+    if (isTestSite) {
+      // console.log('isTestSite:', isTestSite);
+      return this.allApiTestSite;
+    }
+
+    // return local-site API
+    // console.log('Is local-site');
+    // return allApiTestSite;
+    return this.allApiFormalSite;
+  }
+
 
   // catch API error and return Observable let keep for Subscribe
   // Retries the caught source Observable again in case of error, similar to retry() operator

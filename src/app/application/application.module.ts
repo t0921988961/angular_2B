@@ -16,4 +16,5 @@ import { SharedTranslateModule } from '../sharedModule/shared-translate/shared-t
   ],
   exports: [CasestudyListComponent]
 })
-export class ApplicationModule { }
+export class ApplicationModule {
+}

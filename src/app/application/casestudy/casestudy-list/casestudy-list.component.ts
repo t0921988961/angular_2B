@@ -11,12 +11,11 @@ import { Observable } from 'rxjs';
 export class CasestudyListComponent implements OnInit {
 
   langCode = this.languageService.nowUrlPathlangCode;
-  // API URL Domain name
-  apiUrl = this.callApiService.apiUrl;
-  pathLang = this.languageService.nowUrlPathlangCode;
-  // For Formal-site
-  apiParameter = this.callApiService.apiParameter;
-  apiLangParameter = this.callApiService.apiLangParameter;
+
+  // Set API
+  apiUse = this.callApiService.checkSitePath();
+  apiUseCaseStudy = this.apiUse.caseStudy;
+  isCaseStudyListApiPath = this.callApiService.caseStudyApiUrl + this.apiUseCaseStudy + '/Appstudy/' + this.langCode;
 
   apiCaseStudyList$: Observable<any>;
 
@@ -26,11 +25,8 @@ export class CasestudyListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    const isCaseStudyListApiPath = 'https://web-api.xyzprinting.com/Apitob/Appstudy/' + this.langCode;
-    console.log('isCaseStudyListApiPath:', isCaseStudyListApiPath);
     // Call LangCode API
-    this.apiCaseStudyList$ = this.callApiService.get(isCaseStudyListApiPath, 'CaseStudyList_API');
+    this.apiCaseStudyList$ = this.callApiService.get(this.isCaseStudyListApiPath, 'CaseStudyList_API');
   }
 
 }
