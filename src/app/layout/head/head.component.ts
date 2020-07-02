@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MetaService } from '@ngx-meta/core';
 import { Observable } from 'rxjs';
 import smoothscroll from 'smoothscroll-polyfill';
+import { share } from 'rxjs/operators';
 
 
 @Component({
@@ -69,7 +70,9 @@ export class HeadComponent implements OnInit, OnDestroy {
     window.addEventListener('scroll', this.scrollEvent, true);
 
     // Call Head API
-    this.apiHeadMenuLists$ = this.callApiService.get(isHeadApiPath, 'Head_API');
+    this.apiHeadMenuLists$ = this.callApiService.get(isHeadApiPath, 'Head_API').pipe(
+      share()
+    );
     // Call LangCode API
     this.apiLangLists$ = this.callApiService.get(isLangCodeApiPath, 'LangCode_API');
   }

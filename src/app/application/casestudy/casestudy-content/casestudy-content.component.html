@@ -1,22 +1,30 @@
-<p>casestudy-content works!</p>
-
 <div class="casestudy">
   <!-- Start banner block -->
   <div class="banner relative">
+    <p>
+      {{
+        (this.resizeService.imgSize === "lg" ? "item.Img_b" : "item.Img_s")
+          | json
+      }}
+    </p>
     <!-- banner image -->
-    <div class="banner-image-wrap">
-      <!-- <figure
+    <div
+      class="banner-image-wrap"
+      *ngFor="let item of apiCaseStudyMainContent$ | async"
+    >
+      <figure
         class="banner-image"
-        [style]="{ 'background-image': 'url(' + bgImage + ')' }"
-      ></figure> -->
+        [ngStyle]="{
+          'background-image': 'url(' + item.Img_s + ')'
+        }"
+      ></figure>
+      <!-- banner text content -->
+      <div class="banner-content page960-max absolute text-center">
+        <h1 class="banner-title element-inlineb">{{ item.barTitle }}</h1>
+        <div [innerHTML]="item.BarContent"></div>
+      </div>
+      <!-- End banner block -->
     </div>
-
-    <!-- banner text content -->
-    <div class="banner-content page960-max absolute text-center">
-      <!-- <h1 class="banner-title element-inlineb">{{ item.barTitle }}</h1>
-      <div [innerHTML]="item.BarContent"></div> -->
-    </div>
-    <!-- End banner block -->
 
     <!-- Start customized editor -->
     <div class="unreset page960-max customerEdit">
