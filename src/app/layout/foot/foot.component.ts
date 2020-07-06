@@ -20,7 +20,10 @@ export class FootComponent implements OnInit {
 
   apiFootResponse$: Observable<any>;
 
-  constructor(public translateService: LanguageService, public callApiService: CallApiService) { }
+  constructor(
+    public translateService: LanguageService,
+    public callApiService: CallApiService
+  ) { }
 
   ngOnInit() {
     const isFooterApiPath = this.apiUrl + '/' + this.apiHeadParameter + '/FooterToB/' + this.translateService.nowLangCode;

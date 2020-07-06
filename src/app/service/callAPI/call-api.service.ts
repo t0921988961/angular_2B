@@ -16,14 +16,14 @@ export class CallApiService {
   allApiFormalSite = {
     apiHead: 'Exp',
     apiLangParameter: 'Cfg',
-    caseStudy: 'Apitob',
+    caseStudy: 'apitob',
   };
 
   // For Test-site
   allApiTestSite = {
     apiHead: 'ExpTest',
     apiLangParameter: 'CfgTest',
-    caseStudy: 'Apitesttob',
+    caseStudy: 'apitesttob',
   };
 
   constructor(

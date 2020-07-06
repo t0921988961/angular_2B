@@ -358,10 +358,11 @@
       }
       .step_img {
         position: absolute;
-        left: 250px;
+        // left: 250px;
         width: 244px;
         height: 139px;
-        opacity: 0.3;
+        // opacity: 0.3;
+        opacity: 1;
         transition: all 0.3s cubic-bezier(1, 0.39, 0.01, 0.97);
         @include b768 {
           // width: 140px;

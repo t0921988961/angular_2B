@@ -1,35 +1,33 @@
 <div class="casestudy">
   <!-- Start banner block -->
   <div class="banner relative">
-    <p>
-      {{
-        (this.resizeService.imgSize === "lg" ? "item.Img_b" : "item.Img_s")
-          | json
-      }}
-    </p>
     <!-- banner image -->
-    <div
-      class="banner-image-wrap"
-      *ngFor="let item of apiCaseStudyMainContent$ | async"
-    >
+    <div class="banner-image-wrap">
       <figure
         class="banner-image"
-        [ngStyle]="{
-          'background-image': 'url(' + item.Img_s + ')'
-        }"
+        [style.background-image]="
+          this.resizeService.imgSize === 'lg'
+            ? apiCaseStudyMainContentObject.desktopBarBg
+            : apiCaseStudyMainContentObject.mobileBarBg
+        "
       ></figure>
       <!-- banner text content -->
       <div class="banner-content page960-max absolute text-center">
-        <h1 class="banner-title element-inlineb">{{ item.barTitle }}</h1>
-        <div [innerHTML]="item.BarContent"></div>
+        <h1 class="banner-title element-inlineb">
+          {{ apiCaseStudyMainContentObject.barTitle }}
+        </h1>
+        <div [innerHTML]="apiCaseStudyMainContentObject.barContent"></div>
       </div>
       <!-- End banner block -->
     </div>
 
     <!-- Start customized editor -->
     <div class="unreset page960-max customerEdit">
-      <!-- <div class="" [innerHTML]="item.introduction"></div>
-      <div class="Stories" [innerHTML]="item.mainContent"></div> -->
+      <div [innerHTML]="apiCaseStudyMainContentObject.introduction"></div>
+      <div
+        class="Stories"
+        [innerHTML]="apiCaseStudyMainContentObject.mainContent"
+      ></div>
     </div>
     <!-- End customized editor -->
 
