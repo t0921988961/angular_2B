@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpBackend } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, share } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +68,7 @@ export class CallApiService {
   get(path: string, apiName: string, params: HttpParams = new HttpParams()): Observable<any> {
     return this.http.get(`${path}`, { params })
       .pipe(
+        share(),
         catchError((err) => {
           console.log(apiName + ' Err: ', '**********', err);
           // this.formatErrors;

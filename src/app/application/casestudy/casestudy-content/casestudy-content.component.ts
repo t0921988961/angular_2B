@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LanguageService } from 'src/app/service/language/language.service';
 import { CallApiService } from 'src/app/service/callAPI/call-api.service';
 import { ResizeService } from 'src/app/service/resize/resize.service';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
-import { catchError, } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-casestudy-content',
@@ -13,7 +13,7 @@ import { catchError, } from 'rxjs/operators';
   styleUrls: ['./casestudy-content.component.scss']
 })
 
-export class CasestudyContentComponent implements OnInit {
+export class CasestudyContentComponent implements OnInit, OnDestroy {
 
   constructor(
     public languageService: LanguageService,
@@ -35,6 +35,10 @@ export class CasestudyContentComponent implements OnInit {
 
   isCaseStudySeoMetaCssApiPath = this.callApiService.caseStudyApiUrl + this.apiUseCaseStudy + '/Seo/' + this.langCode + '?path=casestudy/' + this.getUrlProductName + '&url=' + 'https://pro.xyzprinting.com';
 
+  isCaseStudyProductApiPath = '';
+
+  oldHeadHTML = document.head.innerHTML;
+
   apiCaseStudyMainContent;
   apiCaseStudyMainContentObject = {
     desktopBarBg: null,
@@ -43,48 +47,71 @@ export class CasestudyContentComponent implements OnInit {
     barContent: null,
     introduction: null,
     mainContent: null,
+    bindProd: null,
+    bindProdDownloadCaseStudy: null,
   };
 
   apiCaseStudySeo;
 
+  apiCaseStudyProduct$: Observable<any>;
+
   ngOnInit(
   ) {
-    console.log('isCaseStudySeoMetaCssApiPath:', this.isCaseStudySeoMetaCssApiPath);
-
-    // Call Main Content API
-    this.apiCaseStudyMainContent = this.http.get(this.isCaseStudyMainContentApiPath)
-      .pipe(
-        catchError((err) => {
-          console.log('apiCaseStudyMainContent_API Err: ', '**********', err);
-          return of(() => { });
-        })
-      )
-      .subscribe(
-        res => {
-          const resArr = res[0];
-          this.apiCaseStudyMainContentObject.barTitle = resArr.BarTitle;
-          this.apiCaseStudyMainContentObject.barContent = resArr.BarContent;
-          this.apiCaseStudyMainContentObject.introduction = this.sanitizer.bypassSecurityTrustHtml(resArr.Introduction);
-          this.apiCaseStudyMainContentObject.mainContent = this.sanitizer.bypassSecurityTrustHtml(resArr.Content);
-          this.apiCaseStudyMainContentObject.desktopBarBg = this.sanitizer.bypassSecurityTrustStyle('url(' + resArr.Img_b + ')');
-          this.apiCaseStudyMainContentObject.mobileBarBg = this.sanitizer.bypassSecurityTrustStyle('url(' + resArr.Img_s + ')');
-        }
-      );
 
     // Call SEO API
-    this.apiCaseStudySeo = this.http.get(this.isCaseStudySeoMetaCssApiPath)
-      .pipe(
-        catchError((err) => {
-          console.log('isCaseStudySeoMetaCssApiPath_API Err: ', '**********', err);
-          return of(() => { });
-        })
-      )
-      .subscribe(
-        res => {
-          console.log('apiCaseStudySeo res => ', JSON.stringify(res));
-        }
-      );
+    {
+      this.apiCaseStudySeo = this.http.get(this.isCaseStudySeoMetaCssApiPath, { responseType: 'text' })
+        .pipe(
+          catchError((err) => {
+            console.log('isCaseStudySeoMetaCssApiPath_API Err: ', '**********', err);
+            return of(() => { });
+          })
+        )
+        .subscribe(
+          res => {
+            console.log('apiCaseStudySeo res => ', res);
+            document.head.innerHTML = this.oldHeadHTML + res;
+          }
+        );
+    }
+
+    // Call Main Content API
+    {
+      this.apiCaseStudyMainContent = this.http.get(this.isCaseStudyMainContentApiPath)
+        .pipe(
+          catchError((err) => {
+            console.log('apiCaseStudyMainContent_API Err: ', '**********', err);
+            return of(() => { });
+          })
+        )
+        .subscribe(
+          res => {
+            const resArr = res[0];
+            this.apiCaseStudyMainContentObject.barTitle = resArr.BarTitle;
+            this.apiCaseStudyMainContentObject.barContent = resArr.BarContent;
+            this.apiCaseStudyMainContentObject.bindProd = resArr.Bind;
+            this.apiCaseStudyMainContentObject.bindProdDownloadCaseStudy = resArr.Download;
+            this.apiCaseStudyMainContentObject.introduction = this.sanitizer.bypassSecurityTrustHtml(resArr.Introduction);
+            this.apiCaseStudyMainContentObject.mainContent = this.sanitizer.bypassSecurityTrustHtml(resArr.Content);
+            this.apiCaseStudyMainContentObject.desktopBarBg = this.sanitizer.bypassSecurityTrustStyle('url(' + resArr.Img_b + ')');
+            this.apiCaseStudyMainContentObject.mobileBarBg = this.sanitizer.bypassSecurityTrustStyle('url(' + resArr.Img_s + ')');
+
+            this.isCaseStudyProductApiPath = this.callApiService.caseStudyApiUrl + this.apiUseCaseStudy + '/StudyPd/' + this.langCode + '/' + this.apiCaseStudyMainContentObject.bindProd;
+
+            this.callProduct();
+          }
+        );
+    }
+
   }
 
+  ngOnDestroy(): void {
+    document.head.innerHTML = this.oldHeadHTML;
+  }
+
+  // Call related product API
+  callProduct() {
+    this.apiCaseStudyProduct$ = this.callApiService.get(this.isCaseStudyProductApiPath, 'isCaseStudyProductApiPath');
+  }
 
 }

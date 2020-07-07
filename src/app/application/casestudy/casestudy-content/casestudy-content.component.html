@@ -28,40 +28,38 @@
         class="Stories"
         [innerHTML]="apiCaseStudyMainContentObject.mainContent"
       ></div>
+
+      <!-- btn group -->
+      <a
+        [href]="apiCaseStudyMainContentObject.bindProdDownloadCaseStudy"
+        class="download_caseStudy"
+        *ngIf="apiCaseStudyMainContentObject.bindProdDownloadCaseStudy !== ''"
+        >{{ "btn.downloadCaseStudy" | translate }}
+      </a>
     </div>
     <!-- End customized editor -->
 
-    <!-- BTN Download PDF  -->
-    <!-- btn group -->
-    <!-- <a
-      [href]="item.Download"
-      class="download_caseStudy"
-      target="{{ item.bindProdDT }}"
-      *ngIf="item.Download !== ''"
-      >@Messages.get("btn.downloadCaseStudy")
-    </a> -->
-
     <!-- Star related product -->
-    <div class="bottom-banner">
+    <div
+      class="bottom-banner"
+      *ngFor="let item of apiCaseStudyProduct$ | async"
+    >
       <div class="page800 clearfix">
-        <!-- <img class="float-left" src="{{ bindProdImg }}" alt="" /> -->
+        <img class="float-left" src="{{ item.Img }}" alt="" />
         <div class="infor float-right">
-          <p
-            class="note-for-title"
-            ng-bind-html="bindProdSubTitle | sanitize"
-          ></p>
-          <p class="primary-title" ng-bind-html="bindProdTitle | sanitize"></p>
-          <p class="desc" ng-bind-html="bindProdContent | sanitize"></p>
+          <p class="note-for-title" [innerHTML]="item.SubTitle"></p>
+          <p class="primary-title" [innerHTML]="item.Title"></p>
+          <p class="desc" [innerHTML]="item.Content"></p>
 
           <!-- btn group -->
           <div class="btns">
-            <!-- <a
-              href="{{ bindProdKnowMore }}"
+            <a
+              href="{{ item.LeamMoreLink }}"
               class="moreBtn-black"
-              target="{{ bindProdKT }}"
-              *ngIf="bindProdKnowMore !== ''"
-              >@Messages.get("btn.learnMore")
-            </a> -->
+              target="{{ item.LM_Target }}"
+              *ngIf="item.LeamMoreLink !== ''"
+              >{{ "btn.learnMore" | translate }}
+            </a>
           </div>
         </div>
       </div>
