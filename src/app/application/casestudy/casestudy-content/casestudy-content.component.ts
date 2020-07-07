@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-casestudy-content',
@@ -20,9 +21,17 @@ export class CasestudyContentComponent implements OnInit, OnDestroy {
     public callApiService: CallApiService,
     public resizeService: ResizeService,
     private http: HttpClient,
+    private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
   ) {
+    // Use ResolveService *************************************
+    this.route.data.subscribe((res) => {
+      console.log(res.cres);
+      this.listArray = res.cres;
+    });
+
   }
+  listArray;
 
   langCode = this.languageService.nowUrlPathlangCode;
   getUrlProductName = location.pathname.replace('/', '').split('/').pop();

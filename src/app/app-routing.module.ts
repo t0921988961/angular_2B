@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
 import { CasestudyListComponent } from './application/casestudy/casestudy-list/casestudy-list.component';
 import { CasestudyContentComponent } from './application/casestudy/casestudy-content/casestudy-content.component';
+import { ResolveService } from './resolve/share-resolve.service';
 // import { ContactComponent } from './contact/contact.component';
 
 
@@ -74,7 +75,8 @@ const routes: Routes = [
             title: 'caseStudy.title',
             description: 'caseStudy.description'
           }
-        }
+        },
+        resolve: { cres: ResolveService }
       },
       {
         path: 'casestudy/:id', component: CasestudyContentComponent,
