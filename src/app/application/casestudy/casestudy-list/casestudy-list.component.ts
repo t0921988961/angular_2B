@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LanguageService } from 'src/app/service/language/language.service';
 import { CallApiService } from 'src/app/service/callAPI/call-api.service';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-casestudy-list',
@@ -12,21 +13,24 @@ export class CasestudyListComponent implements OnInit {
 
   langCode = this.languageService.nowUrlPathlangCode;
 
-  // Set API
-  apiUse = this.callApiService.checkSitePath();
-  apiUseCaseStudy = this.apiUse.caseStudy;
-  isCaseStudyListApiPath = this.callApiService.caseStudyApiUrl + this.apiUseCaseStudy + '/Appstudy/' + this.langCode;
-
   apiCaseStudyList$: Observable<any>;
+  apiCaseStudyList;
+
 
   constructor(
     public languageService: LanguageService,
     public callApiService: CallApiService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
+    // Use ResolveService *************************************
+    // console.log('this.route.snapshot.data.cres:', this.route.snapshot.data.cres);
+    this.apiCaseStudyList = this.route.snapshot.data.cres;
+
+
     // Call LangCode API
-    this.apiCaseStudyList$ = this.callApiService.get(this.isCaseStudyListApiPath, 'CaseStudyList_API');
+    // this.apiCaseStudyList$ = this.callApiService.get(this.isCaseStudyListApiPath, 'CaseStudyList_API');
   }
 
 }

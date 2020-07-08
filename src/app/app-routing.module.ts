@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { CasestudyListComponent } from './application/casestudy/casestudy-list/casestudy-list.component';
 import { CasestudyContentComponent } from './application/casestudy/casestudy-content/casestudy-content.component';
 import { ResolveService } from './resolve/share-resolve.service';
+import { CaseContentResolveService } from './resolve/caseStudyContent/case-content-resolve.service';
 // import { ContactComponent } from './contact/contact.component';
 
 
@@ -85,7 +86,8 @@ const routes: Routes = [
             title: 'caseStudy.title',
             description: 'caseStudy.description'
           }
-        }
+        },
+        resolve: { cres: CaseContentResolveService }
       },
       {
         path: 'support', loadChildren: () => import('./support/support.module').then(m => m.SupportModule)
@@ -115,6 +117,9 @@ const routes: Routes = [
       // enableTracing: true, // use debug route path
     })
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    ResolveService
+  ]
 })
 export class AppRoutingModule { }

@@ -26,7 +26,7 @@ export class FootComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const isFooterApiPath = this.apiUrl + '/' + this.apiHeadParameter + '/FooterToB/' + this.translateService.nowLangCode;
+    const isFooterApiPath = this.apiUrl + this.apiHeadParameter + '/FooterToB/' + this.translateService.nowLangCode;
     this.apiFootResponse$ = this.callApiService.get(isFooterApiPath, 'Foot_Api');
   }
 

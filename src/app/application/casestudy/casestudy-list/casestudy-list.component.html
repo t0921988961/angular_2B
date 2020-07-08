@@ -17,7 +17,7 @@
   <!-- Start page list -->
   <div class="case-list page1100">
     <ul class="case_list_ul clearfix">
-      <li class="case case-item" *ngFor="let item of apiCaseStudyList$ | async">
+      <li class="case case-item" *ngFor="let item of apiCaseStudyList">
         <a class="case-link" [routerLink]="item.URL">
           <div class="case-img-wrap">
             <figure
