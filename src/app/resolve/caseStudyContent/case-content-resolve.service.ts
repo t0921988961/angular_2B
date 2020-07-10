@@ -32,12 +32,8 @@ export class CaseContentResolveService {
   resolve(
     route: ActivatedRouteSnapshot,
     rstate: RouterStateSnapshot
-  ) {
-    return [
-      this.http.get(this.isCaseStudySeoMetaCssApiPath, { responseType: 'text' }),
-      '陣列',
-      this.http.get(this.isCaseStudyMainContentApiPath),
-    ];
+  ): Observable<any> {
+    return this.http.get(this.isCaseStudySeoMetaCssApiPath, { responseType: 'text' });
   }
 
 }

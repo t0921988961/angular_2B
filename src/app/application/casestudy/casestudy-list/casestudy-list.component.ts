@@ -26,7 +26,12 @@ export class CasestudyListComponent implements OnInit {
   ngOnInit() {
     // Use ResolveService *************************************
     // console.log('this.route.snapshot.data.cres:', this.route.snapshot.data.cres);
-    this.apiCaseStudyList = this.route.snapshot.data.cres;
+    this.route.data.subscribe(
+      res => {
+        this.apiCaseStudyList = res.cres;
+      }
+    );
+    // console.log('LIST this.route:', this.route.data);
 
 
     // Call LangCode API

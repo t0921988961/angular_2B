@@ -11,7 +11,9 @@ export class Partpro350XBCComponent implements OnInit {
 
   langCode = this.languageService.nowUrlPathlangCode;
 
-  constructor(public languageService: LanguageService) { }
+  constructor(
+    public languageService: LanguageService
+  ) { }
 
   ngOnInit() {
   }

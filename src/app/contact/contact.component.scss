@@ -1,0 +1,288 @@
+@import "variables";
+@import "breakpoint";
+
+.page-static-content {
+  margin-top: -120px;
+  @include b768 {
+    margin-top: 0;
+  }
+  .w_1100 {
+    width: 1100px;
+    margin: 0 auto;
+    display: flex !important;
+    justify-content: flex-end;
+    @include b1279 {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  .w_550 {
+    width: 550px;
+    @include b768 {
+      width: 100%;
+    }
+  }
+  section {
+    max-width: 800px;
+    padding: 30px 20px 10px;
+    margin: auto;
+  }
+  .top-banner {
+    color: white;
+    font-size: 0;
+    // @include background-image(
+    //   linear-gradient(
+    //     to right,
+    //     $color-gradient-start 50%,
+    //     $color-gradient-end 100%
+    //   )
+    // );
+    figure {
+      display: inline-block;
+      width: 50%;
+      height: 400px;
+      vertical-align: top;
+    }
+    .content-right {
+      width: 50%;
+      height: auto;
+      text-align: left;
+      padding: 0 70px;
+    }
+  }
+  .v-align-center {
+    text-align: left;
+    & > div {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+    }
+  }
+  // page story **************
+  &.story {
+    background-color: $color-white;
+    padding-bottom: 40px;
+    .top-banner {
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/our_story/our_strory_bg.jpg")
+        no-repeat center/cover;
+      padding: 230px 0 135px 0;
+      @include b768 {
+        background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/our_story/ourStory_bg_sm.jpg")
+          no-repeat center/cover;
+        padding: 270px 20px 65px 20px;
+        text-align: center;
+      }
+    }
+    .desc-title {
+      color: $color-red;
+    }
+  }
+  // page contact **************
+  &.contact {
+    .top-banner {
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/contact/contact_bg.jpg")
+        no-repeat center/cover;
+      padding: 230px 0 135px 0;
+      @include b768 {
+        background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/contact/contact_bg_sm.jpg")
+          no-repeat center/cover;
+        padding: 240px 20px 65px 20px;
+        text-align: center;
+      }
+    }
+    .main-content {
+      font-size: 0;
+      padding: 30px;
+      .desc-title {
+        padding: 0 12px;
+      }
+      .contact-us {
+        max-width: 400px;
+        margin: auto;
+        .location {
+          font-size: $fontsize-base;
+          // TODO: add toggle effect in the feture
+          // height: 40px;
+          // @include transition(height 0.3s 0.3s);
+          // overflow: hidden;
+          // &.show-drop{
+          //     height: 188px;
+          // }
+          .local-name {
+            background-color: $color-white;
+            padding: 8px 20px;
+            line-height: 1.5;
+            position: relative;
+            // TODO: add toggle effect in the feture
+            // cursor: pointer;
+            &:after,
+            &:before {
+              content: "";
+              display: block;
+              position: absolute;
+              right: 25px;
+              top: 0;
+              bottom: 0;
+              margin: auto;
+              background-color: white;
+            }
+            &:after {
+              width: 4px;
+              height: 16px;
+              right: 31px;
+            }
+            &:before {
+              width: 16px;
+              height: 4px;
+            }
+          }
+          .info {
+            padding: 10px 0;
+            .contact_mail {
+              padding: 0;
+            }
+          }
+          p {
+            padding: 4px 20px;
+            line-height: 1.5;
+          }
+          .contact-info {
+            padding: 10px 0px;
+            max-width: 390px;
+            p {
+              span {
+                font-weight: 600;
+              }
+            }
+            a {
+              padding: 4px 20px;
+              font-size: 12px;
+              color: #0000ee;
+            }
+          }
+        }
+      }
+      .decoration-border {
+        border-left: 2px solid $color-red;
+      }
+      .customer-support {
+        max-width: 400px;
+        margin: auto;
+        .contact-form {
+          font-size: 14px;
+          line-height: 1.5;
+          // select,
+          // input,
+          // textarea {
+          //   @include appearance(none);
+          //   color: #828282;
+          //   border: 1px solid #828282;
+          //   border-radius: 4px;
+          //   width: 100%;
+          //   padding: 10px;
+          //   box-sizing: border-box;
+          //   &.ng-dirty.ng-invalid-required,
+          //   &.ng-touched.ng-invalid-required,
+          //   &.checkError.ng-invalid-required,
+          //   &.ng-invalid-email,
+          //   &.ng-invalid-pattern,
+          //   &.ng-invalid-pattern {
+          //     border: 1px solid $color-red;
+          //   }
+          //   &:focus {
+          //     color: $color-black-1414;
+          //   }
+          // }
+          select,
+          label {
+            display: block;
+            width: 100%;
+            margin-bottom: 12px;
+          }
+          .form-select {
+            position: relative;
+            width: 100%;
+            &:after {
+              content: "";
+              position: absolute;
+              right: 15px;
+              top: -3px;
+              bottom: 0;
+              margin: auto;
+              width: 8px;
+              height: 8px;
+              border-left: 2px solid #828282;
+              border-bottom: 2px solid #828282;
+              transform: rotate(-45deg);
+            }
+          }
+          textarea {
+            resize: none;
+          }
+          p {
+            padding: 0 0 5px 12px;
+          }
+          .submitBtn {
+            border: none;
+            color: white;
+            // @include lg-btn($color-red, $color-red-light);
+            &[disabled] {
+              background-color: $color-red-light;
+              cursor: no-drop;
+            }
+          }
+          .ErrorText {
+            span {
+              color: $color-red;
+              padding: 5px 0 0 15px;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include mediaQueries(mobile) {
+    .top-banner {
+      height: auto;
+      line-height: normal;
+      background: none;
+      figure {
+        display: block;
+        width: 100%;
+        height: 0;
+        padding-top: 67.6%;
+      }
+      .content-right {
+        width: 100%;
+        // @include background-image(
+        //   linear-gradient(
+        //     to right,
+        //     $color-gradient-start 50%,
+        //     $color-gradient-end 100%
+        //   )
+        // );
+        vertical-align: top;
+        padding: 20px 30px;
+      }
+    }
+    &.contact {
+      .top-banner {
+        figure {
+          background: url("https://twportal.blob.core.windows.net/images-xyzprinting/b2b/contact/img_contact_banner_sm.jpg")
+            no-repeat center/cover;
+        }
+        .desc {
+          max-width: 100%;
+        }
+      }
+      .main-content {
+        .decoration-border {
+          border-left: none;
+          border-top: 2px solid $color-red;
+        }
+      }
+    }
+  }
+}

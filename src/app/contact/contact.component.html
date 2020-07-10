@@ -1,1 +1,244 @@
-<p>contact works!</p>
+<div class="page-static-content contact">
+  <!-- Content Left -->
+  <div class="top-banner v-align-center">
+    <div class="w_1100">
+      <div class="w_550">
+        <h1 class="primary-title">
+          {{ "contact.topArea.slogan" | translate }}
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content page1100">
+    <!-- Content right Start-->
+    <div
+      class="col-6 mobile-col-12 element-inlineb v-align-top elem-padding-normal"
+    >
+      <div class="contact-us">
+        <h2 class="desc-title">{{ "contact.location.title" | translate }}</h2>
+        <div class="location">
+          <p
+            class="local-name"
+            *ngIf="
+              langCode != 'en-US' &&
+              langCode != 'en-GB' &&
+              langCode != 'ja-JP' &&
+              langCode != 'fr-FR' &&
+              langCode != 'zh-TW' &&
+              langCode != 'zh-CN' &&
+              langCode != 'ko-KR' &&
+              langCode != 'de-DE'
+            "
+          >
+            North America
+          </p>
+          <div class="info" *ngIf="langCode != 'ja-JP'">
+            <p class="contact_mail">{{ "contact.email" | translate }}</p>
+          </div>
+          <div class="contact-info" *ngIf="langCode == 'ja-JP'">
+            <p>
+              <span>{{ "contact.info.desc1" | translate }}</span
+              >{{ "contact.info.desc2" | translate }}
+            </p>
+            <br />
+            <a
+              href="https://support.xyzfamily.com/ja-JP/Help/customerService"
+              >{{ "contact.info.desc3" | translate }}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content right End-->
+
+    <!-- Reactive Forms start -->
+    <div
+      class="decoration-border element-inlineb v-align-top elem-padding-normal"
+    >
+      <div class="customer-support">
+        <h2 class="desc-title">{{ "contact.form.title" | translate }}</h2>
+        <div class="contact-form" [formGroup]="HelloForm">
+          <!-- Inquiry Select -->
+          <div class="form-select">
+            <select formControlName="uIntentionSelect" id="intention">
+              <option value="" disabled="disabled">
+                {{ "contact.form.inquirySelect" | translate }}
+              </option>
+              <option
+                *ngFor="let item of intentionList"
+                [ngValue]="item.text | translate"
+              >
+                {{ item.text | translate }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Model Select -->
+          <!-- <label for="model" required>
+            <p>{{ "contact.form.model" | translate }}</p>
+            <div class="form-select">
+              <select
+                name="uModelSelect"
+                id="model"
+                ng-model="form.modelSelect"
+                ng-options="item.text for item in modelList track by item.value"
+              >
+                <option value="" disabled="disabled">
+                  {{ "contact.form.modelSelect" | translate }}
+                </option>
+                <option value="10">
+                  {{ "contact.form.model20" | translate }}
+                </option>
+              </select>
+            </div>
+          </label> -->
+
+          <!-- name* input -->
+          <!-- <label for="name">
+            <p>{{ "contact.form.name" | translate }}</p>
+            <input
+              name="uName"
+              type="text"
+              id="name"
+              ng-model="form.name"
+              ng-class="{ checkError: customerForm.$submitted }"
+              required
+            />
+            <div
+              class="ErrorText"
+              ng-show="customerForm.$submitted || customerForm.uName.$touched"
+            >
+              <span
+                ng-show="
+                  customerForm.uName.$error.required &&
+                  customerForm.uName.$dirty
+                "
+                >{{ "contact.form.name.error" | translate }}</span
+              >
+            </div>
+          </label> -->
+
+          <!-- company input -->
+          <!-- <label for="company">
+            <p>{{ "contact.form.company" | translate }}</p>
+            <input
+              name="uCompany"
+              type="text"
+              id="company"
+              ng-model="form.company"
+            />
+          </label> -->
+
+          <!-- Country Select -->
+          <!-- <label for="country" required>
+            <p>{{ "contact.form.country" | translate }}</p>
+            <div class="form-select">
+              <select
+                name="uCountrySelect"
+                ng-model="form.countrySelect"
+                id="country"
+                ng-options="item.name for item in countryList track by item.id"
+              >
+                <option value="" disabled="disabled">{{
+                  "contact.form.countrySelect" | translate
+                }}</option>
+              </select>
+            </div>
+          </label> -->
+
+          <!-- email input -->
+          <!-- <label for="email">
+            <p>{{ "contact.form.email" | translate }}</p>
+            <input
+              name="uEmail"
+              type="email"
+              id="email"
+              ng-model="form.email"
+              ng-class="{ checkError: customerForm.$submitted }"
+              required=""
+            />
+            <div
+              class="ErrorText"
+              ng-show="customerForm.$submitted || customerForm.uEmail.$touched"
+            >
+              <span
+                ng-show="
+                  customerForm.uEmail.$error.required &&
+                  customerForm.uEmail.$dirty
+                "
+                >{{ "contact.form.email.error.required" | translate }}</span
+              >
+              <span ng-show="customerForm.uEmail.$error.email">{{
+                "contact.form.email.error.invalid" | translate
+              }}</span>
+            </div>
+          </label> -->
+
+          <!-- phone input -->
+          <!-- <label for="phone">
+            <p>{{ "contact.form.phone" | translate }}</p>
+            <input
+              name="uPhone"
+              type="tel"
+              id="phone"
+              ng-model="form.phone"
+              ng-class="{ checkError: customerForm.$submitted }"
+              ng-pattern="/^[\d-]*$/"
+              required
+            />
+            <div
+              class="ErrorText"
+              ng-show="customerForm.$submitted || customerForm.uPhone.$touched"
+            >
+              <span
+                ng-show="
+                  customerForm.uPhone.$error.required &&
+                  customerForm.uPhone.$dirty
+                "
+                >{{ "contact.form.phone.error.required" | translate }}</span
+              >
+              <span ng-show="customerForm.uPhone.$error.pattern">{{
+                "contact.form.phone.error.invalid" | translate
+              }}</span>
+            </div>
+          </label> -->
+
+          <!-- message textarea -->
+          <!-- <label for="message">
+            <p>{{ "contact.form.message" | translate }}</p>
+            <textarea
+              name="uMessage"
+              id="message"
+              cols="30"
+              rows="10"
+              ng-model="form.message"
+              ng-class="{ checkError: customerForm.$submitted }"
+              required
+            ></textarea>
+            <div
+              class="ErrorText"
+              ng-show="
+                customerForm.$submitted || customerForm.uMessage.$touched
+              "
+            >
+              <span
+                ng-show="
+                  customerForm.uMessage.$error.required &&
+                  customerForm.uPhone.$dirty
+                "
+                >{{ "contact.form.message.error.required" | translate }}</span
+              >
+            </div>
+          </label> -->
+
+          <!-- submit button -->
+          <button class="submitBtn" type="submit">
+            {{ "contact.form.submit" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Reactive Forms End -->
+  </div>
+</div>

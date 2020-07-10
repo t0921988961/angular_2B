@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ngx-translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -70,6 +70,7 @@ export function metaFactory(translate: TranslateService): MetaLoader {
     LayoutModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxUsefulSwiperModule,
     TranslateModule.forRoot({
       loader: {
