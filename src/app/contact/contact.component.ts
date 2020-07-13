@@ -11,6 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ContactComponent implements OnInit, OnDestroy {
 
+  submitted = false;
   langCode = this.languageService.nowUrlPathlangCode;
   intentionList = [
     {
@@ -20,18 +21,142 @@ export class ContactComponent implements OnInit, OnDestroy {
     }, {
       value: 'partner', text: 'contact.intentionList.partner'
     }];
+  modelList = null;
+
+
+
 
 
   HelloForm = new FormGroup({
-    uIntentionSelect: new FormControl(Validators.required),
-    title: new FormControl('test'),
+    uIntentionSelect: new FormControl('',),
+    modelSelect: new FormControl(),
+    email: new FormControl('123@gmail.com', [Validators.required, Validators.email]),
+    message: new FormControl('test', [Validators.required, Validators.minLength(5)]),
   });
 
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,
     private meta: MetaService,
-  ) { }
+  ) {
+
+    if (this.langCode === 'zh-TW' || this.langCode === 'zh-CN') {
+      this.modelList = [
+        {
+          value: 1,
+          text: 'contact.form.model1'
+        }, {
+          value: 2,
+          text: 'contact.form.model2'
+        }, {
+          value: 3,
+          text: 'contact.form.model3'
+        }, {
+          value: 4,
+          text: 'contact.form.model4'
+        }, {
+          value: 5,
+          text: 'contact.form.model5'
+        }, {
+          value: 6,
+          text: 'contact.form.model6'
+        }, {
+          value: 7,
+          text: 'contact.form.model9'
+        }, {
+          value: 8,
+          text: 'contact.form.model1',
+        }, {
+          value: 9,
+          text: 'contact.form.model2',
+        }
+      ];
+    }
+    if (this.langCode === 'en-US' || this.langCode === 'en-GB' || this.langCode === 'fr-FR' || this.langCode === 'de-DE') {
+      this.modelList = [
+        {
+          value: 1,
+          text: 'contact.form.model1'
+        }, {
+          value: 2,
+          text: 'contact.form.model2'
+        }, {
+          value: 3,
+          text: 'contact.form.model3'
+        }, {
+          value: 4,
+          text: 'contact.form.model4'
+        }, {
+          value: 5,
+          text: 'contact.form.model5'
+        }, {
+          value: 6,
+          text: 'contact.form.model6'
+        }, {
+          value: 7,
+          text: 'contact.form.model7'
+        }, {
+          value: 8,
+          text: 'contact.form.model8'
+        }, {
+          value: 9,
+          text: 'contact.form.model9'
+        }, {
+          value: 10,
+          text: 'contact.form.model1',
+        }, {
+          value: 11,
+          text: 'contact.form.model2',
+        }
+      ];
+    }
+    if (this.langCode === 'ja-JP') {
+      this.modelList = [
+        {
+          value: 1,
+          text: 'contact.form.model1'
+        }, {
+          value: 2,
+          text: 'contact.form.model2'
+        }, {
+          value: 3,
+          text: 'contact.form.model3'
+        }, {
+          value: 4,
+          text: 'contact.form.model4'
+        }, {
+          value: 5,
+          text: 'contact.form.model5'
+        }, {
+          value: 6,
+          text: 'contact.form.model6'
+        }, {
+          value: 7,
+          text: 'contact.form.model7'
+        }, {
+          value: 8,
+          text: 'contact.form.model8'
+        }, {
+          value: 9,
+          text: 'contact.form.model2',
+        }
+      ];
+    }
+    if (this.langCode === 'ko-KR') {
+      this.modelList = [
+        {
+          value: 1,
+          text: 'contact.form.model1'
+        }, {
+          value: 2,
+          text: 'contact.form.model6'
+        }, {
+          value: 3,
+          text: 'contact.form.model2',
+        }
+      ];
+    }
+  }
 
   ngOnInit() {
     // this.meta.setTitle(this.translate.instant('contact.title'));
@@ -45,8 +170,11 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
   doSubmit(form) {
-    console.log('form => ', form);
-
+    console.log('form:', form);
+    console.log('Hello');
+    this.submitted = true;
+    console.log('this.HelloForm.value => ', this.HelloForm.value);
+    console.log('this.submitted:', this.submitted);
   }
 
 }

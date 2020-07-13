@@ -58,7 +58,12 @@
     >
       <div class="customer-support">
         <h2 class="desc-title">{{ "contact.form.title" | translate }}</h2>
-        <div class="contact-form" [formGroup]="HelloForm">
+        <form
+          class="contact-form"
+          [formGroup]="HelloForm"
+          (ngSubmit)="doSubmit(tForm)"
+          #tForm="ngForm"
+        >
           <!-- Inquiry Select -->
           <div class="form-select">
             <select formControlName="uIntentionSelect" id="intention">
@@ -75,24 +80,22 @@
           </div>
 
           <!-- Model Select -->
-          <!-- <label for="model" required>
+          <label for="model">
             <p>{{ "contact.form.model" | translate }}</p>
             <div class="form-select">
-              <select
-                name="uModelSelect"
-                id="model"
-                ng-model="form.modelSelect"
-                ng-options="item.text for item in modelList track by item.value"
-              >
+              <select formControlName="modelSelect" id="model">
                 <option value="" disabled="disabled">
                   {{ "contact.form.modelSelect" | translate }}
                 </option>
-                <option value="10">
-                  {{ "contact.form.model20" | translate }}
+                <option
+                  *ngFor="let item of modelList"
+                  [ngValue]="item.text | translate"
+                >
+                  {{ item.text | translate }}
                 </option>
               </select>
             </div>
-          </label> -->
+          </label>
 
           <!-- name* input -->
           <!-- <label for="name">
@@ -148,32 +151,26 @@
           </label> -->
 
           <!-- email input -->
-          <!-- <label for="email">
+          <label for="email">
             <p>{{ "contact.form.email" | translate }}</p>
             <input
               name="uEmail"
               type="email"
               id="email"
-              ng-model="form.email"
-              ng-class="{ checkError: customerForm.$submitted }"
-              required=""
+              formControlName="email"
             />
             <div
               class="ErrorText"
-              ng-show="customerForm.$submitted || customerForm.uEmail.$touched"
+              *ngIf="tForm.submitted || HelloForm.get('email').invalid"
             >
-              <span
-                ng-show="
-                  customerForm.uEmail.$error.required &&
-                  customerForm.uEmail.$dirty
-                "
-                >{{ "contact.form.email.error.required" | translate }}</span
-              >
-              <span ng-show="customerForm.uEmail.$error.email">{{
-                "contact.form.email.error.invalid" | translate
-              }}</span>
+              <span *ngIf="HelloForm.get('email').errors?.email">
+                {{ "contact.form.email.error.invalid" | translate }}
+              </span>
+              <span *ngIf="HelloForm.get('email').errors?.required">
+                {{ "contact.form.email.error.required" | translate }}
+              </span>
             </div>
-          </label> -->
+          </label>
 
           <!-- phone input -->
           <!-- <label for="phone">
@@ -205,38 +202,40 @@
           </label> -->
 
           <!-- message textarea -->
-          <!-- <label for="message">
+          <label for="message">
             <p>{{ "contact.form.message" | translate }}</p>
             <textarea
               name="uMessage"
               id="message"
-              cols="30"
-              rows="10"
-              ng-model="form.message"
-              ng-class="{ checkError: customerForm.$submitted }"
-              required
+              formControlName="message"
             ></textarea>
             <div
               class="ErrorText"
-              ng-show="
-                customerForm.$submitted || customerForm.uMessage.$touched
-              "
+              *ngIf="tForm.submitted || HelloForm.get('message').invalid"
             >
               <span
-                ng-show="
-                  customerForm.uMessage.$error.required &&
-                  customerForm.uPhone.$dirty
+                *ngIf="
+                  HelloForm.get('message').errors?.required &&
+                  HelloForm.get('message').dirty
                 "
-                >{{ "contact.form.message.error.required" | translate }}</span
               >
+                {{ "contact.form.message.error.required" | translate }}
+              </span>
             </div>
-          </label> -->
+          </label>
 
           <!-- submit button -->
-          <button class="submitBtn" type="submit">
+          <button
+            class="submitBtn"
+            type="submit"
+            [disabled]="HelloForm.invalid"
+          >
             {{ "contact.form.submit" | translate }}
           </button>
-        </div>
+          <p>{{ HelloForm.valid | json }}</p>
+          <p>{{ HelloForm.invalid | json }}</p>
+          <p>{{ HelloForm.errors | json }}</p>
+        </form>
       </div>
     </div>
     <!-- Reactive Forms End -->
