@@ -21,6 +21,7 @@ import { MetaModule, MetaLoader, MetaStaticLoader, PageTitlePositioning } from '
 import { TranslateService } from '@ngx-translate/core';
 
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { NewsEventComponent } from './newsEvent/news-event/news-event.component';
 
 // ngx-translate set language json url path
 export function createLoader(http: HttpClient) {
@@ -63,6 +64,7 @@ export function metaFactory(translate: TranslateService): MetaLoader {
     AppComponent,
     LayoutComponent,
     HomeComponent,
+    NewsEventComponent,
   ],
   imports: [
     BrowserModule,

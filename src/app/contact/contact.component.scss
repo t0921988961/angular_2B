@@ -258,6 +258,9 @@
   }
 
   @include mediaQueries(mobile) {
+    .mobile-col-12 {
+      width: 100%;
+    }
     .top-banner {
       height: auto;
       line-height: normal;

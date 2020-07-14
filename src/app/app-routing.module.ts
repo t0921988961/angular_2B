@@ -6,6 +6,7 @@ import { CasestudyListComponent } from './application/casestudy/casestudy-list/c
 import { CasestudyContentComponent } from './application/casestudy/casestudy-content/casestudy-content.component';
 import { ResolveService } from './resolve/share-resolve.service';
 import { CaseContentResolveService } from './resolve/caseStudyContent/case-content-resolve.service';
+import { NewsEventComponent } from './newsEvent/news-event/news-event.component';
 // import { ContactComponent } from './contact/contact.component';
 
 
@@ -66,9 +67,6 @@ const routes: Routes = [
       {
         path: 'materials', loadChildren: () => import('./materials/materials.module').then(m => m.MaterialsModule)
       },
-      // {
-      //   path: 'casestudy', loadChildren: () => import('./application/application.module').then(m => m.ApplicationModule)
-      // },
       {
         path: 'casestudy', component: CasestudyListComponent,
         data: {
@@ -87,7 +85,16 @@ const routes: Routes = [
             description: 'caseStudy.description'
           }
         },
-        resolve: { cres: CaseContentResolveService }
+        // resolve: { cres: CaseContentResolveService }
+      },
+      {
+        path: 'news/:id', component: NewsEventComponent,
+        data: {
+          meta: {
+            title: 'news.title',
+            description: 'news.description'
+          }
+        }
       },
       {
         path: 'support', loadChildren: () => import('./support/support.module').then(m => m.SupportModule)
