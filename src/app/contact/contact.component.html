@@ -54,7 +54,7 @@
 
     <!-- Reactive Forms start -->
     <div
-      class="decoration-border element-inlineb v-align-top elem-padding-normal"
+      class="decoration-border col-6 element-inlineb v-align-top elem-padding-normal"
     >
       <div class="customer-support">
         <h2 class="desc-title">{{ "contact.form.title" | translate }}</h2>
@@ -64,7 +64,7 @@
           (ngSubmit)="doSubmit(tForm)"
           #tForm="ngForm"
         >
-          {{ HelloForm.value | json }}
+          <!-- {{ HelloForm.value | json }} -->
 
           <!-- Inquiry Select -->
           <div class="form-select">
@@ -197,6 +197,8 @@
             <textarea
               name="uMessage"
               id="message"
+              cols="30"
+              rows="10"
               formControlName="message"
             ></textarea>
             <div class="ErrorText" *ngIf="HelloForm.get('message').invalid">
@@ -219,9 +221,6 @@
           >
             {{ "contact.form.submit" | translate }}
           </button>
-          <p>{{ HelloForm.valid | json }}</p>
-          <p>{{ HelloForm.invalid | json }}</p>
-          <p>{{ HelloForm.errors | json }}</p>
         </form>
       </div>
     </div>

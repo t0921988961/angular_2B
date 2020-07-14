@@ -1,6 +1,10 @@
 @import "variables";
 @import "breakpoint";
 
+.col-6 {
+  width: 50%;
+}
+
 .page-static-content {
   margin-top: -120px;
   @include b768 {
@@ -171,28 +175,29 @@
         .contact-form {
           font-size: 14px;
           line-height: 1.5;
-          // select,
-          // input,
-          // textarea {
-          //   @include appearance(none);
-          //   color: #828282;
-          //   border: 1px solid #828282;
-          //   border-radius: 4px;
-          //   width: 100%;
-          //   padding: 10px;
-          //   box-sizing: border-box;
-          //   &.ng-dirty.ng-invalid-required,
-          //   &.ng-touched.ng-invalid-required,
-          //   &.checkError.ng-invalid-required,
-          //   &.ng-invalid-email,
-          //   &.ng-invalid-pattern,
-          //   &.ng-invalid-pattern {
-          //     border: 1px solid $color-red;
-          //   }
-          //   &:focus {
-          //     color: $color-black-1414;
-          //   }
-          // }
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          select,
+          input,
+          textarea {
+            cursor: pointer;
+            appearance: none;
+            color: #828282;
+            border: 1px solid #828282;
+            border-radius: 4px;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            &.ng-invalid.ng-touched,
+            &.ng-invalid-email,
+            &.ng-invalid-pattern {
+              border: 1px solid $color-red;
+            }
+            &:focus {
+              color: $color-black-1414;
+            }
+          }
           select,
           label {
             display: block;
@@ -225,13 +230,22 @@
           .submitBtn {
             border: none;
             color: white;
-            // @include lg-btn($color-red, $color-red-light);
+            background-color: #cf1e1e;
+            padding: 0 24px;
+            min-width: 200px;
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 40px;
+            text-align: center;
             &[disabled] {
               background-color: $color-red-light;
               cursor: no-drop;
             }
           }
           .ErrorText {
+            height: 20px;
+            font-size: 12px;
+            position: relative;
             span {
               color: $color-red;
               padding: 5px 0 0 15px;
