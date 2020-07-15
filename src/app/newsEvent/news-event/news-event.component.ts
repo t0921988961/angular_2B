@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from 'src/app/service/language/language.service';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { CallApiService } from 'src/app/service/callAPI/call-api.service';
 
 @Component({
   selector: 'app-news-event',
@@ -259,9 +262,20 @@ export class NewsEventComponent implements OnInit {
 
   constructor(
     public languageService: LanguageService,
-  ) { }
+    public callApiService: CallApiService,
+    private route: ActivatedRoute,
+  ) {
+
+  }
 
   ngOnInit(): void {
+    this.route.queryParamMap
+      .pipe(map(params => params.get('tab')))
+      .subscribe(
+        (res) => {
+          console.log('res => ', res);
+        }
+      );
   }
 
   onChangeTab(tabName) {
