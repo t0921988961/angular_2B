@@ -8,7 +8,11 @@
             <!-- Not redirective URL -->
             <a
               le
-              *ngIf="subItem.Link.indexOf('http') !== 0"
+              *ngIf="
+                subItem.Link.indexOf('http') !== 0 &&
+                subItem.Link !== 'news?tab=news' &&
+                subItem.Link !== 'news?tab=events'
+              "
               [routerLink]="
                 '/' + this.translateService.nowLangCode + '/' + subItem.Link
               "
@@ -40,6 +44,24 @@
             <a
               *ngIf="subItem.Link.indexOf('account') === 8"
               [href]="subItem.Link"
+            >
+              {{ subItem.Title }}
+            </a>
+            <!-- News URL -->
+            <a
+              le
+              *ngIf="subItem.Link === 'news?tab=news'"
+              [routerLink]="'/' + this.translateService.nowLangCode + '/news'"
+              [queryParams]="{ tab: 'news' }"
+            >
+              {{ subItem.Title }}
+            </a>
+            <!-- Events URL -->
+            <a
+              le
+              *ngIf="subItem.Link === 'news?tab=events'"
+              [routerLink]="'/' + this.translateService.nowLangCode + '/news'"
+              [queryParams]="{ tab: 'events' }"
             >
               {{ subItem.Title }}
             </a>

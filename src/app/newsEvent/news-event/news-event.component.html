@@ -1,2 +1,109 @@
-<p>news-event works!</p>
-<a [routerLink]="['news']" [queryParams]="{ tab: 'news' }">TEST</a>
+<div class="page-static-content newsAndEvents">
+  <div class="index-container">
+    <div class="top-banner">
+      <div class="w_1100">
+        <div class="w_550 font_c_w">
+          <h1 class="primary-title">{{ "news.topArea.slogan" | translate }}</h1>
+          <p class="desc">{{ "news.topArea.desc" | translate }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Tab -->
+    <div class="tabNav">
+      <div
+        class="news is-pointer"
+        [ngClass]="{ active: tab === 'news' }"
+        (click)="onChangeTab('news')"
+      >
+        {{ "news.tabName.news" | translate }}
+      </div>
+      <div
+        class="event is-pointer"
+        [ngClass]="{ active: tab === 'events' }"
+        (click)="onChangeTab('events')"
+      >
+        {{ "news.tabName.events" | translate }}
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="!showContentList">
+      <div class="loading-data"></div>
+      <p class="text">Loading...</p>
+    </div>
+
+    <!-- News Lists -->
+    <div
+      class="content-lists news-content-lists page1100"
+      *ngIf="tab === 'news' && showContentList"
+    >
+      <div class="item" *ngFor="let item of newsList">
+        <a [href]="'/' + langCode + '/news/' + item.id">
+          <h2 class="desc-title">{{ item.title }}</h2>
+        </a>
+        <p class="desc">
+          <span [innerHTML]="item.content | safeHtml"></span>
+          <a
+            class="moreBtn is-pointer"
+            [routerLink]="'/' + langCode + '/news/' + item.id"
+          >
+            {{ "btn.learnMore" | translate }}
+          </a>
+        </p>
+        <div class="date">{{ item.online_date }}</div>
+      </div>
+    </div>
+
+    <!-- Events Lists -->
+    <div
+      class="content-lists event-content-lists page1100"
+      *ngIf="tab === 'events' && showContentList"
+    >
+      <!-- <div class="content-lists event-content-lists page1100" *ngIf="false"> -->
+      <div class="item clearfix item-event" *ngFor="let item of articleLists">
+        <!-- <figure class="float-left" ng-style="{'background-image':'url(' + item.thumbnail_image +')'}"></figure> -->
+        <figure class="float-left fig-events">
+          <div class="dispOnlineDate">
+            <p class="bold" ng-bind="item.online_date.substring(0,4)"></p>
+            <p
+              class="red"
+              ng-bind="item.online_date.substring(4,6).replace(',', ' ')"
+            ></p>
+            <p class="medium" ng-bind="item.online_date.substring(7,12)"></p>
+          </div>
+        </figure>
+        <div class="infor infor-events">
+          <h2 class="desc-title desc-title-events" ng-bind="item.title"></h2>
+          <p class="desc desc-events">
+            <span ng-bind="item.second_title"></span>
+          </p>
+          <a
+            [href]="item.transmit_url"
+            target="_blank"
+            class="moreBtn moreBtn-events"
+          >
+            {{ "btn.learnMore" | translate }}
+          </a>
+          <!-- <div class="date" ng-bind="item.online_date"></div> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- pagination -->
+    <div class="text-center" *ngIf="showContentList && newsListLength != 0">
+      <!-- <pagination
+        boundary-links="true"
+        total-items="totalItems"
+        ng-model="currentPage"
+        items-per-page="numPerPage"
+        max-size="maxSize"
+        class="pagination"
+        direction-links="false"
+        first-text="&lt;&lt;"
+        last-text="&gt;&gt;"
+      >
+      </pagination> -->
+    </div>
+  </div>
+</div>

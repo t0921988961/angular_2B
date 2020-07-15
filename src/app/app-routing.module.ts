@@ -88,7 +88,7 @@ const routes: Routes = [
         // resolve: { cres: CaseContentResolveService }
       },
       {
-        path: 'news/:id', component: NewsEventComponent,
+        path: 'news', component: NewsEventComponent,
         data: {
           meta: {
             title: 'news.title',
