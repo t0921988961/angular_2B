@@ -36,7 +36,7 @@
     <!-- News Lists -->
     <div
       class="content-lists news-content-lists page1100"
-      *ngIf="tab === 'news' && showContentList"
+      *ngIf="tab === 'news' && paginationData"
     >
       <div class="item" *ngFor="let item of newsList">
         <a [href]="'/' + langCode + '/news/' + item.id">
@@ -58,7 +58,7 @@
     <!-- Events Lists -->
     <div
       class="content-lists event-content-lists page1100"
-      *ngIf="tab === 'events' && showContentList"
+      *ngIf="tab === 'events' && paginationData"
     >
       <!-- <div class="content-lists event-content-lists page1100" *ngIf="false"> -->
       <div class="item clearfix item-event" *ngFor="let item of articleLists">
