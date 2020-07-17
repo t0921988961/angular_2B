@@ -92,6 +92,33 @@
 
     <!-- pagination -->
     <div class="text-center" *ngIf="showContentList && newsListLength != 0">
+      <nav aria-label="Page navigation example">
+        <ul
+          class="pagination"
+          id="pageid"
+          *ngFor="let item of pageTotalArr; let idx = index"
+        >
+          <!-- Preview -->
+          <li class="page-item" *ngIf="currentPage > 1 && idx + 1 === 1">
+            <a class="page-link" data-page="${Number(page.currentPage) - 1}">
+              <<
+            </a>
+          </li>
+          <!-- Numbers -->
+          <li class="page-item">
+            <a class="page-link" (click)="switchPage(idx)">{{ idx + 1 }}</a>
+          </li>
+
+          <!-- Next -->
+          <li
+            class="page-item disabled"
+            *ngIf="currentPage < pageTotal && idx + 1 === pageTotalArr.length"
+          >
+            <span class="page-link">>></span>
+          </li>
+        </ul>
+      </nav>
+
       <!-- <pagination
         boundary-links="true"
         total-items="totalItems"

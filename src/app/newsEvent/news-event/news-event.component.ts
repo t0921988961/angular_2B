@@ -14,8 +14,6 @@ import { HttpClient } from '@angular/common/http';
 
 export class NewsEventComponent implements OnInit {
 
-
-
   langCode = this.languageService.nowUrlPathlangCode;
   tab = 'news';
   pageSize = 6;
@@ -535,14 +533,19 @@ export class NewsEventComponent implements OnInit {
   articleTotalLength = this.newsList.length;
   showPerPage = 6;
   pageTotal = Math.ceil(this.newsListLength / this.showPerPage);
+  pageTotalArr = new Array(this.pageTotal);
   currentPage = 2;
   minData = null;
   maxData = null;
   paginationData = [];
+  page = {};
+  hasPage = null;
+  hasNext = null;
 
   // API path
   articleListArr$: Observable<any>;
   articleListPath = 'https://pro.xyzprinting.com/getNewsList/en-US/1/100';
+
 
   constructor(
     public languageService: LanguageService,
@@ -553,9 +556,20 @@ export class NewsEventComponent implements OnInit {
     this.currentPage > this.pageTotal ? this.currentPage = this.pageTotal : this.currentPage = 2;
     this.minData = (this.currentPage * this.showPerPage) - this.showPerPage + 1;
     this.maxData = (this.currentPage * this.showPerPage);
+
+    this.hasPage = this.currentPage > 1;
+    this.hasNext = this.currentPage < this.pageTotal;
+
   }
 
   ngOnInit(): void {
+
+    this.page = {
+      pageTotal: this.pageTotal,
+      currentPage: this.currentPage,
+      hasPage: this.currentPage > 1,
+      hasNext: this.currentPage < this.pageTotal,
+    };
 
     this.route.queryParamMap
       .pipe(map(params => params.get('tab')))
@@ -588,6 +602,13 @@ export class NewsEventComponent implements OnInit {
     // location.href = '/@lang/news?tab=' + tabName;
     // $scope.tab = tabName;
     // setPageItems(1, $scope.pageSize);
+  }
+
+  switchPage(idx) {
+    console.log('idx:', idx);
+    // if (e.target.nodeName !== 'A') { return; }
+    // const page = e.target.dataset.page;
+    // pagination(jsonData, page);
   }
 
 }
