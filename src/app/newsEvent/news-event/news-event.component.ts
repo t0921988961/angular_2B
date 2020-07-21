@@ -527,18 +527,16 @@ export class NewsEventComponent implements OnInit {
 
   // initial pagination
   showContentList = true;
-  // articleLists = [];
+  showArticleArr = [];
 
   // article
   articleTotalLength = this.newsList.length;
-  showPerPage = 6;
-  pageTotal = Math.ceil(this.newsListLength / this.showPerPage);
-  pageTotalArr = new Array(this.pageTotal);
-  currentPage = 2;
+  pageTotal = null;
+  pageTotalArr = null;
+  currentPage = null;
   minData = null;
   maxData = null;
   paginationData = [];
-  page = {};
   hasPage = null;
   hasNext = null;
 
@@ -553,23 +551,12 @@ export class NewsEventComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
   ) {
-    this.currentPage > this.pageTotal ? this.currentPage = this.pageTotal : this.currentPage = 2;
-    this.minData = (this.currentPage * this.showPerPage) - this.showPerPage + 1;
-    this.maxData = (this.currentPage * this.showPerPage);
-
-    this.hasPage = this.currentPage > 1;
-    this.hasNext = this.currentPage < this.pageTotal;
 
   }
 
   ngOnInit(): void {
 
-    this.page = {
-      pageTotal: this.pageTotal,
-      currentPage: this.currentPage,
-      hasPage: this.currentPage > 1,
-      hasNext: this.currentPage < this.pageTotal,
-    };
+    this.pagination(this.newsList, 1);
 
     this.route.queryParamMap
       .pipe(map(params => params.get('tab')))
@@ -579,15 +566,6 @@ export class NewsEventComponent implements OnInit {
         }
       );
 
-    this.newsList.forEach((item, index) => {
-      const num = index + 1;
-
-      if (num >= this.minData && num <= this.maxData) {
-        this.paginationData.push(item);
-      }
-    });
-
-    console.log('this.paginationData:', this.paginationData);
 
     // call api
     // this.http.get('https://pro.xyzprinting.com/getNewsList/en-US/1/100').subscribe(
@@ -604,11 +582,46 @@ export class NewsEventComponent implements OnInit {
     // setPageItems(1, $scope.pageSize);
   }
 
+  pagination(jsonData, nowPage) {
+    const dataTotal = jsonData.length;
+    const perPage = 6;
+    this.pageTotal = Math.ceil(dataTotal / perPage);
+    this.pageTotalArr = new Array(this.pageTotal);
+    this.currentPage = nowPage;
+
+    if (this.currentPage > this.pageTotal) {
+      return this.currentPage = this.pageTotal;
+    }
+
+    // 由前面可知 最小數字為 6 ，所以用答案來回推公式。
+    const minData = (this.currentPage * perPage) - perPage + 1;
+    const maxData = (this.currentPage * perPage);
+
+    jsonData.forEach((item, index) => {
+      const num = index + 1;
+      if (num >= minData && num <= maxData) {
+        this.showArticleArr.push(item);
+      }
+    });
+
+    // 用物件方式來傳遞資料
+    this.hasPage = this.currentPage > 1;
+    this.hasNext = this.currentPage < this.pageTotal;
+
+    this.displayData(this.showArticleArr);
+
+  }
+
+  displayData(data) {
+    this.showArticleArr = data;
+  }
+
+
   switchPage(idx) {
-    console.log('idx:', idx);
-    // if (e.target.nodeName !== 'A') { return; }
-    // const page = e.target.dataset.page;
-    // pagination(jsonData, page);
+    if (idx <= 0) { return idx = 1; }
+    if (idx >= this.pageTotal) { idx = this.pageTotal; }
+    this.showArticleArr = [];
+    this.pagination(this.newsList, idx);
   }
 
 }

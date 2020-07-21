@@ -36,9 +36,9 @@
     <!-- News Lists -->
     <div
       class="content-lists news-content-lists page1100"
-      *ngIf="tab === 'news' && paginationData"
+      *ngIf="tab === 'news'"
     >
-      <div class="item" *ngFor="let item of newsList">
+      <div class="item" *ngFor="let item of showArticleArr">
         <a [href]="'/' + langCode + '/news/' + item.id">
           <h2 class="desc-title">{{ item.title }}</h2>
         </a>
@@ -90,7 +90,7 @@
       </div>
     </div>
 
-    <!-- pagination -->
+    <!-- News pagination -->
     <div class="text-center" *ngIf="showContentList && newsListLength != 0">
       <nav aria-label="Page navigation example">
         <ul
@@ -99,20 +99,41 @@
           *ngFor="let item of pageTotalArr; let idx = index"
         >
           <!-- Preview -->
-          <li class="page-item" *ngIf="currentPage > 1 && idx + 1 === 1">
+          <li
+            class="page-item disabled"
+            *ngIf="hasPage === false && idx + 1 === 1"
+            (click)="switchPage(currentPage - 1)"
+          >
+            <a class="page-link" data-page="${Number(page.currentPage) - 1}">
+              <<
+            </a>
+          </li>
+          <li
+            class="page-item"
+            *ngIf="hasPage === true && idx + 1 === 1"
+            (click)="switchPage(currentPage - 1)"
+          >
             <a class="page-link" data-page="${Number(page.currentPage) - 1}">
               <<
             </a>
           </li>
           <!-- Numbers -->
-          <li class="page-item">
-            <a class="page-link" (click)="switchPage(idx)">{{ idx + 1 }}</a>
+          <li class="page-item" [ngClass]="{ active: currentPage === idx + 1 }">
+            <a class="page-link" (click)="switchPage(idx + 1)">{{ idx + 1 }}</a>
           </li>
 
           <!-- Next -->
           <li
             class="page-item disabled"
-            *ngIf="currentPage < pageTotal && idx + 1 === pageTotalArr.length"
+            *ngIf="hasNext === false && idx + 1 === pageTotalArr.length"
+            (click)="switchPage(currentPage + 1)"
+          >
+            <span class="page-link">>></span>
+          </li>
+          <li
+            class="page-item"
+            *ngIf="hasNext === true && idx + 1 === pageTotalArr.length"
+            (click)="switchPage(currentPage + 1)"
           >
             <span class="page-link">>></span>
           </li>
