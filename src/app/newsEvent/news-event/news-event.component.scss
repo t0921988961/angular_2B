@@ -80,6 +80,9 @@
         color: white;
         border-bottom: 5px solid $color-gradient-start;
       }
+      &:focus {
+        outline: none;
+      }
     }
   }
   .loading-data {

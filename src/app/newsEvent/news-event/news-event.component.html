@@ -14,14 +14,16 @@
       <div
         class="news is-pointer"
         [ngClass]="{ active: tab === 'news' }"
-        (click)="onChangeTab('news')"
+        [routerLink]="'/' + langCode + '/news'"
+        [queryParams]="{ tab: 'news' }"
       >
         {{ "news.tabName.news" | translate }}
       </div>
       <div
         class="event is-pointer"
         [ngClass]="{ active: tab === 'events' }"
-        (click)="onChangeTab('events')"
+        [routerLink]="'/' + langCode + '/news'"
+        [queryParams]="{ tab: 'events' }"
       >
         {{ "news.tabName.events" | translate }}
       </div>
@@ -58,7 +60,7 @@
     <!-- Events Lists -->
     <div
       class="content-lists event-content-lists page1100"
-      *ngIf="tab === 'events' && paginationData"
+      *ngIf="tab === 'events'"
     >
       <!-- <div class="content-lists event-content-lists page1100" *ngIf="false"> -->
       <div class="item clearfix item-event" *ngFor="let item of articleLists">
@@ -91,7 +93,7 @@
     </div>
 
     <!-- News pagination -->
-    <div class="text-center" *ngIf="showContentList && newsListLength != 0">
+    <div class="text-center" *ngIf="tab === 'news'">
       <nav aria-label="Page navigation example">
         <ul
           class="pagination"

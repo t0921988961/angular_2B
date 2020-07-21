@@ -15,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 export class NewsEventComponent implements OnInit {
 
   langCode = this.languageService.nowUrlPathlangCode;
-  tab = 'news';
+  tab = null;
   pageSize = 6;
   articleLists = {
     page: 1,
@@ -529,7 +529,7 @@ export class NewsEventComponent implements OnInit {
   showContentList = true;
   showArticleArr = [];
 
-  // article
+  // News article
   articleTotalLength = this.newsList.length;
   pageTotal = null;
   pageTotalArr = null;
@@ -540,10 +540,13 @@ export class NewsEventComponent implements OnInit {
   hasPage = null;
   hasNext = null;
 
-  // API path
+  // API News path
   articleListArr$: Observable<any>;
   articleListPath = 'https://pro.xyzprinting.com/getNewsList/en-US/1/100';
 
+  // API Events path
+  eventListArr$: Observable<any>;
+  eventListPath = 'https://pro.xyzprinting.com/getPromotionList/en-US/1/100';
 
   constructor(
     public languageService: LanguageService,
@@ -551,7 +554,6 @@ export class NewsEventComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
   ) {
-
   }
 
   ngOnInit(): void {
@@ -563,9 +565,9 @@ export class NewsEventComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log('res => ', res);
+          this.tab = res;
         }
       );
-
 
     // call api
     // this.http.get('https://pro.xyzprinting.com/getNewsList/en-US/1/100').subscribe(
@@ -576,12 +578,14 @@ export class NewsEventComponent implements OnInit {
   }
 
   onChangeTab(tabName) {
+    this.tab = tabName;
     console.log('tabName => ', tabName);
     // location.href = '/@lang/news?tab=' + tabName;
     // $scope.tab = tabName;
     // setPageItems(1, $scope.pageSize);
   }
 
+  // News pagination
   pagination(jsonData, nowPage) {
     const dataTotal = jsonData.length;
     const perPage = 6;
@@ -589,11 +593,6 @@ export class NewsEventComponent implements OnInit {
     this.pageTotalArr = new Array(this.pageTotal);
     this.currentPage = nowPage;
 
-    if (this.currentPage > this.pageTotal) {
-      return this.currentPage = this.pageTotal;
-    }
-
-    // 由前面可知 最小數字為 6 ，所以用答案來回推公式。
     const minData = (this.currentPage * perPage) - perPage + 1;
     const maxData = (this.currentPage * perPage);
 
@@ -604,19 +603,17 @@ export class NewsEventComponent implements OnInit {
       }
     });
 
-    // 用物件方式來傳遞資料
     this.hasPage = this.currentPage > 1;
     this.hasNext = this.currentPage < this.pageTotal;
-
     this.displayData(this.showArticleArr);
-
   }
 
+  // News displayData
   displayData(data) {
     this.showArticleArr = data;
   }
 
-
+  // News switchPage
   switchPage(idx) {
     if (idx <= 0) { return idx = 1; }
     if (idx >= this.pageTotal) { idx = this.pageTotal; }
