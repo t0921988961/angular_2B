@@ -5,7 +5,7 @@
       <a
         class="swiper-slide"
         *ngFor="let item of bannerLists; let idx = index"
-        [href]="item.moreBtn_link"
+        [routerLink]="item.moreBtn_link"
       >
         <!-- slide bg img -->
         <img
@@ -76,34 +76,36 @@
   </swiper>
 
   <!-- Application -->
-  <div class="prototyping v-align-center text-center-layout">
-    <div class="textWrap">
-      <h2 class="primary-title_KR">
-        {{ "index.prototype.title" | translate }}
-      </h2>
-      <h4 class="note-for-title">
-        {{ "index.prototype.product" | translate }}
-      </h4>
-      <p
-        *ngIf="this.translateService.nowLangCode != 'ko-KR'"
-        class="primary-title"
-      >
-        {{ "index.prototype.desc" | translate }}
-      </p>
-      <p
-        *ngIf="this.translateService.nowLangCode == 'ko-KR'"
-        class="primary-title"
-      >
-        {{ "index.prototype.desc" | translate }}
-      </p>
-      <a
-        [href]="
-          '/' + this.translateService.nowLangCode + '/case-study/castpro100-xp'
-        "
-        class="moreBtn"
-      >
-        {{ "index.prototype.moreBtn" | translate }}
-      </a>
+  <div class="prototyping font_c_w" ng-if="lang == 'en-US' || lang == 'en-GB'">
+    <div class="w_1100 application">
+      <div class="textWrap">
+        <h2 class="primary-title_KR">
+          {{ "index.prototype.title" | translate }}
+        </h2>
+        <h4 class="note-for-title">
+          {{ "index.prototype.product" | translate }}
+        </h4>
+        <p
+          class="primary-title"
+          [innerHTML]="'index.prototype.desc' | translate"
+        ></p>
+        <a
+          [routerLink]="
+            '/' +
+            this.translateService.nowLangCode +
+            '/casestudy/MfgPro230_xS_LeardonSolutions'
+          "
+          class="moreBtn"
+        >
+          {{ "index.prototype.moreBtn" | translate }}
+        </a>
+      </div>
+      <div class="application_img">
+        <img
+          src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/index/index_application_product.png"
+          alt=""
+        />
+      </div>
     </div>
   </div>
 
@@ -116,7 +118,7 @@
           <h4 class="font_24">
             {{ "index.newAndEvent.title" | translate }}
           </h4>
-          <!-- <h3 class="subtitle">@Html(Messages.get("index.news.subtitle"))</h3> -->
+          <!-- <h3 class="subtitle">@Html(Messages.get("index.news.subtitle" | translate }})</h3> -->
           <p class="desc">
             {{ "index.news.desc" | translate }}
           </p>
@@ -136,7 +138,7 @@
       <!-- Looking For Something Feel Free To Ask. -->
       <div class="event float-right col-6 mobile-col-12">
         <div class="textWrap">
-          <!-- <h4 class="desc-title">@Messages.get("index.event.title")</h4> -->
+          <!-- <h4 class="desc-title">{{ "index.event.title" | translate }}</h4> -->
           <h3
             class="subtitle-event"
             [innerHTML]="'index.event.subtitle' | translate"

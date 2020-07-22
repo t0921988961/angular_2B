@@ -6,6 +6,7 @@ import { CasestudyListComponent } from './application/casestudy/casestudy-list/c
 import { CasestudyContentComponent } from './application/casestudy/casestudy-content/casestudy-content.component';
 import { ResolveService } from './resolve/share-resolve.service';
 import { NewsEventComponent } from './newsEvent/news-event/news-event.component';
+import { PrintServiceContentComponent } from './print-service/print-service-content/print-service-content/print-service-content.component';
 // import { ContactComponent } from './contact/contact.component';
 
 
@@ -57,6 +58,15 @@ const routes: Routes = [
           meta: {
             title: 'index.title',
             description: 'index.description'
+          }
+        }
+      },
+      {
+        path: 'print_service', component: PrintServiceContentComponent,
+        data: {
+          meta: {
+            title: 'softwarePrintService.title',
+            description: 'softwarePrintService.description'
           }
         }
       },

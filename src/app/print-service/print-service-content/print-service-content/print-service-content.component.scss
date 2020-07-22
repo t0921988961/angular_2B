@@ -1,0 +1,624 @@
+@import "variables";
+@import "breakpoint";
+
+// Partpro300
+#print_service {
+  margin: 0 auto;
+  margin-top: -120px;
+  line-height: 1.5;
+  @include b768 {
+    margin-top: 0;
+  }
+
+  // all section style
+  .section {
+    min-height: 500px;
+    padding: 145px 0 160px 0;
+    @include b1279 {
+      padding: 145px 50px 160px 50px;
+    }
+    @include b768 {
+      min-height: 650px;
+      display: flex;
+      align-items: flex-end;
+      padding: 145px 20px 70px 20px;
+    }
+    .container {
+      width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: left;
+      @include b1279 {
+        width: 100%;
+      }
+      @include b768 {
+        text-align: center;
+      }
+    }
+    .intro {
+      width: 50%;
+      @include b768 {
+        width: 100%;
+      }
+    }
+  }
+  .title {
+    font-size: 36px;
+    padding-bottom: 32px;
+    font-weight: bold;
+    @include b768 {
+      font-size: 28px;
+    }
+  }
+  .desc {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 25px;
+    text-align: left;
+    @include b768 {
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+  .desc_KR {
+    margin: auto;
+    font-size: 15px;
+    font-weight: 300;
+    width: 100%;
+  }
+
+  .svg_arrow {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px 0 12px 13px;
+    border-color: transparent transparent transparent #828282;
+  }
+
+  .btn-download {
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 13px 30px;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #cf1e1e;
+  }
+
+  .f_b500 {
+    font-weight: 500;
+  }
+
+  .form_bg_white {
+    background-color: #f7f7f7;
+  }
+
+  .form_bg_gray {
+    background-color: #e9e9e9;
+  }
+
+  // *************************
+
+  .sec1 {
+    padding: 160px 50px 105px 50px;
+    background: url(https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/software/print_service/sec01_bg_lg.jpg)
+      center / cover;
+    @include b768 {
+      background: url(https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/software/print_service/sec01_bg_sm.jpg)
+        center / cover;
+      padding: 185px 20px 80px 20px;
+    }
+    .container {
+      line-height: 1.2;
+      text-align: center;
+      .intro {
+        width: 100%;
+        @include b768 {
+          margin-top: 0;
+        }
+        .title {
+          font-size: 28px;
+          font-weight: normal;
+          padding-bottom: 20px;
+          line-height: 1.2;
+          font-weight: 500;
+        }
+        .title2 {
+          font-size: 36px;
+          // padding-bottom: 32px;
+          line-height: 1.2;
+          font-weight: 600;
+          margin-bottom: 20px;
+          @include b768 {
+            font-size: 28px;
+          }
+        }
+        .desc {
+          letter-spacing: 1px;
+          max-width: 761px;
+          margin: 0 auto;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 1.25;
+          text-align: center;
+        }
+      }
+    }
+    .sec01_printer {
+      width: 190px;
+      margin-bottom: 25px;
+    }
+  }
+
+  .sec2 {
+    background: #d3d3d3;
+    text-align: center;
+    padding: 75px 20px 65px 20px;
+    @include b768 {
+      display: block;
+    }
+    .desc {
+      text-align: center;
+    }
+    .title {
+      padding-bottom: 0;
+    }
+    .container {
+      justify-content: center;
+      flex-wrap: wrap;
+      @include b768 {
+        flex-wrap: wrap;
+      }
+    }
+    .product_des {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      @include b1279 {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      @include b768 {
+        padding: 0 20px 50px;
+      }
+      .product_img {
+        width: 40%;
+        @include b768 {
+          width: 100%;
+        }
+      }
+      .des_text {
+        font-size: 16px;
+        padding: 30px 0;
+        @include b768 {
+          padding: 20px 0;
+          width: 100%;
+        }
+      }
+    }
+    .svg_des {
+      width: 80%;
+      @include b1279 {
+        width: 90%;
+      }
+      @include b768 {
+        width: 100%;
+      }
+      .svg_title {
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 1.29;
+        text-align: center;
+        margin-bottom: 25px;
+        @include b768 {
+          margin-bottom: 54px;
+        }
+      }
+    }
+    .svg_group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include b768 {
+        flex-direction: column;
+      }
+      .svg_img_text {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 105px;
+        @include b768 {
+          align-self: center;
+        }
+        .svg_img {
+          // margin: auto;
+        }
+        .svg_text {
+          font-size: 16px;
+          line-height: 1.25;
+        }
+      }
+    }
+    .svg_arrow {
+      margin-bottom: 20px;
+      @include b768 {
+        margin: 35px 0;
+        transform: rotate(90deg);
+      }
+    }
+    .svg_upload {
+      width: 88px;
+      margin: 10px 0 10px 0;
+    }
+    .svg_quotation {
+      width: 58px;
+      margin: 5px 0 4px 0;
+    }
+    .svg_units {
+      margin: 10px 0 10px 0;
+      width: 73px;
+    }
+    .svg_print {
+      margin-bottom: 15px;
+      width: 60px;
+    }
+  }
+
+  .sec3 {
+    min-height: 500px;
+    background: url(https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/software/print_service/sec03_bg_lg.jpg)
+      center / cover;
+    @include b768 {
+      align-items: center;
+      padding: 100px 20px 100px 20px;
+      background: url(https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/software/print_service/sec03_bg_sm.jpg)
+        center / cover;
+    }
+    .container {
+      justify-content: center;
+      @include b768 {
+        flex-wrap: wrap;
+      }
+      .intro {
+        width: 80%;
+        @include b768 {
+          width: 100%;
+          padding: 0;
+        }
+      }
+      .title {
+        text-align: center;
+      }
+    }
+  }
+
+  .sec4 {
+    background: #d1d1d1;
+    text-align: center;
+    padding: 55px 20px 30px 20px;
+    @include b768 {
+      display: block;
+      padding: 45px 20px 10px 20px;
+    }
+    .desc {
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1.36;
+      letter-spacing: normal;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .title {
+      padding-bottom: 0;
+      @include b768 {
+        padding-bottom: 30px;
+      }
+    }
+    .container {
+      justify-content: center;
+      flex-wrap: wrap;
+      @include b768 {
+        flex-wrap: wrap;
+      }
+    }
+    .product_des {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      @include b1279 {
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 50px;
+      }
+      @include b768 {
+        padding: 0;
+      }
+      .product_img {
+        width: 36%;
+        @include b768 {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+      }
+      .des_text {
+        width: 56%;
+        margin-left: 40px;
+        font-size: 16px;
+        line-height: 1.25;
+        @include b1279 {
+          width: 100%;
+          text-align: left;
+        }
+        @include b768 {
+          width: 100%;
+          margin-left: 0;
+        }
+        .text_group {
+          display: flex;
+        }
+      }
+    }
+    .mfg230_text {
+      width: 95%;
+      @include b1279 {
+        width: 100%;
+      }
+    }
+    .sec_formGroup {
+      margin-top: 20px;
+    }
+    .form_item {
+      display: flex;
+      text-align: left;
+      font-size: 16px;
+      @include b768 {
+        flex-wrap: wrap;
+        font-size: 14px;
+      }
+      .form_title {
+        width: 40%;
+        padding: 6px 5px 6px 20px;
+        @include b768 {
+          width: 100%;
+          background-color: #e9e9e9;
+        }
+      }
+      .form_des {
+        width: 60%;
+        padding: 6px 1px 6px 40px;
+        @include b768 {
+          width: 100%;
+          background-color: #f7f7f7;
+          padding: 6px 5px 6px 20px;
+        }
+      }
+    }
+  }
+
+  .sec5 {
+    background: #fff;
+    padding: 80px 30px 80px 30px;
+    .container {
+      justify-content: flex-start;
+      align-items: unset;
+      @include b768 {
+        flex-wrap: wrap;
+      }
+      .intro {
+        width: 50%;
+        @include b768 {
+          width: 100%;
+          padding: 0 20px 50px;
+        }
+        .desc_KR {
+          text-align: left;
+        }
+      }
+      .section_img {
+        width: 50%;
+        @include b768 {
+          width: 100%;
+        }
+        img {
+          max-width: 100%;
+        }
+      }
+      .text_group {
+        display: flex;
+      }
+    }
+  }
+
+  .sec6 {
+    min-height: auto;
+    background: #464646;
+    padding: 45px 30px 50px 30px;
+    @include b768 {
+      padding: 45px 30px 5px 30px;
+    }
+    .container {
+      justify-content: center;
+      @include b768 {
+        flex-wrap: wrap;
+      }
+      .intro {
+        width: 100%;
+        @include b768 {
+          width: 100%;
+          padding: 0;
+        }
+      }
+      .title {
+        text-align: center;
+      }
+    }
+    .img_block {
+      display: flex;
+      width: 70%;
+      margin: 0px 215px auto;
+      margin-bottom: 35px;
+      @include b1279 {
+        width: 100%;
+        margin: 0 40px auto;
+        margin-bottom: 35px;
+      }
+      @include b768 {
+        flex-wrap: wrap;
+        margin: 0 auto;
+      }
+      .img_group {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        @include b768 {
+          width: 100%;
+          flex-direction: column;
+          margin-bottom: 40px;
+        }
+        > p {
+          margin-left: 20px;
+          margin-right: 40px;
+          @include b768 {
+            margin: 0;
+          }
+        }
+        > img {
+          @include b768 {
+            margin-bottom: 20px;
+          }
+        }
+      }
+      .img_low {
+        width: 110px;
+      }
+      .img_complex {
+        width: 95px;
+      }
+      .img_fast {
+        width: 105px;
+      }
+      .img_models {
+        width: 82px;
+      }
+    }
+  }
+
+  .sec7 {
+    background: #fff;
+    text-align: center;
+    padding: 75px 20px 65px 20px;
+    @include b768 {
+      display: block;
+      padding: 45px 20px 60px 20px;
+    }
+    .desc {
+      text-align: center;
+    }
+    .container {
+      justify-content: center;
+      flex-wrap: wrap;
+      @include b768 {
+        flex-wrap: wrap;
+      }
+    }
+
+    .logo_des {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 70px;
+      @include b1279 {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      @include b768 {
+        padding: 0;
+      }
+      .logo_img {
+        width: 31%;
+        margin-right: 50px;
+        @include b768 {
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: 25px;
+        }
+      }
+      .des_text {
+        font-size: 16px;
+        line-height: 1.25;
+        @include b768 {
+          width: 100%;
+          text-align: left;
+        }
+      }
+    }
+
+    .product_des {
+      width: 100%;
+      .product_title {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.29;
+        text-align: center;
+        margin-bottom: 25px;
+        @include b768 {
+          margin-bottom: 25px;
+        }
+      }
+    }
+    .product_group {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 50px;
+      @include b768 {
+        flex-wrap: wrap;
+      }
+      .product_img {
+        width: 45%;
+        @include b768 {
+          width: 115%;
+          margin-bottom: 25px;
+        }
+      }
+      .product_text {
+        width: 45%;
+        @include b768 {
+          width: 100%;
+          text-align: left;
+        }
+      }
+    }
+
+    .results_des {
+      width: 70%;
+      @include b768 {
+        width: 100%;
+      }
+      .results_title {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 1.17;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .results_text {
+        font-size: 16px;
+        letter-spacing: normal;
+        @include b768 {
+          text-align: left;
+        }
+      }
+    }
+  }
+}

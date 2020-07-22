@@ -246,21 +246,54 @@
 
   // section Application START ******************************
   .prototyping {
-    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/index/application@3x.jpg")
+    background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/index/index_application_bg_lg.jpg")
       no-repeat center/cover;
-    color: white;
     @include b768 {
-      width: 100%;
-      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/index/application-sm@3x.jpg")
+      background: url("https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/index/index_application_bg_sm.jpg")
         no-repeat center/cover;
     }
+    .application {
+      padding: 80px 0 50px;
+      display: flex;
+      justify-content: space-between;
+      @include b1279 {
+        padding: 80px 30px 50px;
+        flex-direction: column;
+      }
+    }
+    .textWrap {
+      width: 50%;
+      @include b1279 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 50px;
+      }
+    }
+    .application_img {
+      width: 50%;
+      display: inline-block;
+      > img {
+        width: 100%;
+        display: block;
+      }
+      @include b1279 {
+        margin: auto;
+      }
+      @include b768 {
+        width: 100%;
+      }
+    }
     .note-for-title {
-      margin: 20px 0;
+      margin: 10px 0 20px;
+      font-weight: 200;
+    }
+    .primary-title {
+      margin-bottom: 40px;
+      line-height: 1.1;
     }
     .moreBtn {
       display: inline-block;
       @include sm-btn($color-red, $color-red-light);
-      // @include sm-btn($color-black-1414, $color-gray_4646);
     }
   }
   // section Application END ********************************

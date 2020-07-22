@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
         productName: '',
         title: 'partpro200xTCS.banner.title',
         desc: 'partpro200xTCS.banner.desc',
-        moreBtn_link: '',
+        moreBtn_link: '/' + getLangCode + '/home',
         moreBtn_text: '',
         otherBtn_link: '',
         otherBtn_text: '',

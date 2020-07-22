@@ -23,6 +23,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { NewsEventComponent } from './newsEvent/news-event/news-event.component';
 import { SafeHtmlPipe } from './pipe/safe-html.pipe';
+import { PrintServiceContentComponent } from './print-service/print-service-content/print-service-content/print-service-content.component';
 
 // ngx-translate set language json url path
 export function createLoader(http: HttpClient) {
@@ -67,6 +68,7 @@ export function metaFactory(translate: TranslateService): MetaLoader {
     HomeComponent,
     NewsEventComponent,
     SafeHtmlPipe,
+    PrintServiceContentComponent,
   ],
   imports: [
     BrowserModule,
