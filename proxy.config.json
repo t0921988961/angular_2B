@@ -1,0 +1,7 @@
+{
+  "/opendata": {
+    "target": "https://pro.xyzprinting.com",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

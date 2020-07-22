@@ -5,7 +5,6 @@ import { HomeComponent } from './home/home.component';
 import { CasestudyListComponent } from './application/casestudy/casestudy-list/casestudy-list.component';
 import { CasestudyContentComponent } from './application/casestudy/casestudy-content/casestudy-content.component';
 import { ResolveService } from './resolve/share-resolve.service';
-import { CaseContentResolveService } from './resolve/caseStudyContent/case-content-resolve.service';
 import { NewsEventComponent } from './newsEvent/news-event/news-event.component';
 // import { ContactComponent } from './contact/contact.component';
 

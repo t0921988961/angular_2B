@@ -3,8 +3,12 @@
     <div class="top-banner">
       <div class="w_1100">
         <div class="w_550 font_c_w">
-          <h1 class="primary-title">{{ "news.topArea.slogan" | translate }}</h1>
-          <p class="desc">{{ "news.topArea.desc" | translate }}</p>
+          <h1 class="primary-title">
+            {{ "news.topArea.slogan" | translate }}
+          </h1>
+          <p class="desc">
+            {{ "news.topArea.desc" | translate }}
+          </p>
         </div>
       </div>
     </div>
@@ -35,7 +39,7 @@
       <p class="text">Loading...</p>
     </div>
 
-    <!-- News Lists -->
+    <!-- News List -->
     <div
       class="content-lists news-content-lists page1100"
       *ngIf="tab === 'news'"
@@ -57,28 +61,33 @@
       </div>
     </div>
 
-    <!-- Events Lists -->
+    <!-- Events List -->
     <div
       class="content-lists event-content-lists page1100"
       *ngIf="tab === 'events'"
     >
-      <!-- <div class="content-lists event-content-lists page1100" *ngIf="false"> -->
-      <div class="item clearfix item-event" *ngFor="let item of articleLists">
-        <!-- <figure class="float-left" ng-style="{'background-image':'url(' + item.thumbnail_image +')'}"></figure> -->
+      <div class="item clearfix item-event" *ngFor="let item of showArticleArr">
         <figure class="float-left fig-events">
           <div class="dispOnlineDate">
-            <p class="bold" ng-bind="item.online_date.substring(0,4)"></p>
-            <p
-              class="red"
-              ng-bind="item.online_date.substring(4,6).replace(',', ' ')"
-            ></p>
-            <p class="medium" ng-bind="item.online_date.substring(7,12)"></p>
+            <p class="bold">
+              {{ item.online_date | slice: 0:4 }}
+            </p>
+            <p class="red">
+              {{ item.online_date.replace(",", " ") | slice: 4:6 }}
+            </p>
+            <p class="medium">
+              {{ item.online_date | slice: 7:12 }}
+            </p>
           </div>
         </figure>
         <div class="infor infor-events">
-          <h2 class="desc-title desc-title-events" ng-bind="item.title"></h2>
+          <h2 class="desc-title desc-title-events">
+            {{ item.title }}
+          </h2>
           <p class="desc desc-events">
-            <span ng-bind="item.second_title"></span>
+            <span>
+              {{ item.second_title }}
+            </span>
           </p>
           <a
             [href]="item.transmit_url"
@@ -87,14 +96,13 @@
           >
             {{ "btn.learnMore" | translate }}
           </a>
-          <!-- <div class="date" ng-bind="item.online_date"></div> -->
         </div>
       </div>
     </div>
 
     <!-- News pagination -->
-    <div class="text-center" *ngIf="tab === 'news'">
-      <nav aria-label="Page navigation example">
+    <div class="text-center">
+      <nav>
         <ul
           class="pagination"
           id="pageid"
@@ -106,7 +114,7 @@
             *ngIf="hasPage === false && idx + 1 === 1"
             (click)="switchPage(currentPage - 1)"
           >
-            <a class="page-link" data-page="${Number(page.currentPage) - 1}">
+            <a class="page-link">
               <<
             </a>
           </li>
@@ -115,7 +123,7 @@
             *ngIf="hasPage === true && idx + 1 === 1"
             (click)="switchPage(currentPage - 1)"
           >
-            <a class="page-link" data-page="${Number(page.currentPage) - 1}">
+            <a class="page-link">
               <<
             </a>
           </li>
@@ -141,19 +149,6 @@
           </li>
         </ul>
       </nav>
-
-      <!-- <pagination
-        boundary-links="true"
-        total-items="totalItems"
-        ng-model="currentPage"
-        items-per-page="numPerPage"
-        max-size="maxSize"
-        class="pagination"
-        direction-links="false"
-        first-text="&lt;&lt;"
-        last-text="&gt;&gt;"
-      >
-      </pagination> -->
     </div>
   </div>
 </div>
