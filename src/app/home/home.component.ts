@@ -20,11 +20,11 @@ export class HomeComponent implements OnInit {
     pagination: { el: '.swiper-pagination', clickable: true, },
     direction: 'horizontal', //  竖屏 vertical  、 横屏 horizontal
     initialSlide: 0,
-    slidesPerView: 'auto',
+    slidesPerView: 1,
+    loop: true,
     autoHeight: true,
     watchSlidesVisibility: true,
-    // spaceBetween: 30,
-    loop: true,
+    spaceBetween: 0,
     parallax: true,
     speed: 300,
     grabCursor: true, //  抓手光标
@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
   bannerLists = null;
 
   ngOnInit() {
+    console.log('this.resizeService.imgSize:', this.resizeService.imgSize);
 
     const getLangCode = this.translateService.nowLangCode;
 
@@ -93,6 +94,7 @@ export class HomeComponent implements OnInit {
         otherBtn_text: '',
       },
     ];
+
   }
 
 }

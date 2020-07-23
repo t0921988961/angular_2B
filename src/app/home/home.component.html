@@ -4,7 +4,7 @@
     <div class="swiper-wrapper" id="banner">
       <a
         class="swiper-slide"
-        *ngFor="let item of bannerLists; let idx = index"
+        *ngFor="let item of bannerLists"
         [routerLink]="item.moreBtn_link"
       >
         <!-- slide bg img -->
@@ -124,9 +124,8 @@
           </p>
           <div class="btns">
             <a
-              [href]="
-                '/' + this.translateService.nowLangCode + '/news?tab=news'
-              "
+              [routerLink]="'/' + this.translateService.nowLangCode + '/news'"
+              [queryParams]="{ tab: 'news' }"
               class="moreBtn"
             >
               {{ "index.news.readBtn" | translate }}
@@ -146,7 +145,9 @@
           <p class="desc">{{ "index.event.desc" | translate }}</p>
           <div class="btns">
             <a
-              [href]="'/' + this.translateService.nowLangCode + '/contact-us'"
+              [routerLink]="
+                '/' + this.translateService.nowLangCode + '/contact-us'
+              "
               class="moreBtn"
               ng-if="true"
             >

@@ -2,6 +2,10 @@
 @import "breakpoint";
 @import "component/buttons";
 
+.swiper-wrapper {
+  box-sizing: border-box;
+}
+
 // slide customer style
 .swiper-button-next {
   right: 6%;
