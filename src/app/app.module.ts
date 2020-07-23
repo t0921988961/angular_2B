@@ -24,6 +24,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { NewsEventComponent } from './newsEvent/news-event/news-event.component';
 import { SafeHtmlPipe } from './pipe/safe-html.pipe';
 import { PrintServiceContentComponent } from './print-service/print-service-content/print-service-content/print-service-content.component';
+import { PrintServiceFormComponent } from './print-service/print-service-form/print-service-form/print-service-form.component';
 
 // ngx-translate set language json url path
 export function createLoader(http: HttpClient) {
@@ -69,6 +70,7 @@ export function metaFactory(translate: TranslateService): MetaLoader {
     NewsEventComponent,
     SafeHtmlPipe,
     PrintServiceContentComponent,
+    PrintServiceFormComponent,
   ],
   imports: [
     BrowserModule,

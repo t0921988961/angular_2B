@@ -1,0 +1,431 @@
+<div class="" id="print_service_form">
+  <!-- title -->
+  <div class="print_service_form_title font_c_w">
+    Contact<br class="sm_br" />
+    Information and<br class="sm_br" />
+    Model Upload
+  </div>
+
+  <!-- Form input -->
+  <div class="main-content page1100">
+    <form
+      class="contact-form"
+      name="customerForm"
+      [formGroup]="printInfoForm"
+      (ngSubmit)="formSubmit(tForm)"
+      #tForm="ngForm"
+    >
+      <!-- your contact info -->
+      <div class="info_block font_c_b">
+        <div class="info_block_title">
+          <img
+            class="svg_number"
+            src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/software/print_service/01.svg"
+            alt=""
+          />
+          Your Contact Information
+        </div>
+
+        <!-- Part Quantity input -->
+        <label for="PartQuantity">
+          <div class="input_group">
+            <p>Part quantity*</p>
+            <input
+              name="uPartQuantity"
+              type="text"
+              id="PartQuantity"
+              formControlName="uQuantity"
+            />
+          </div>
+          <div class="ErrorText">
+            <span
+              class="errMessage"
+              *ngIf="
+                printInfoForm.get('uQuantity').errors?.required &&
+                printInfoForm.get('uQuantity').touched
+              "
+            >
+              This field is required.
+            </span>
+            <span
+              class="errMessage"
+              *ngIf="printInfoForm.get('uQuantity').errors?.pattern"
+              >Please enter a valid quantity
+            </span>
+          </div>
+        </label>
+
+        <!-- Name input -->
+        <label for="name">
+          <div class="input_group">
+            <p>Your name*</p>
+            <input name="uName" type="text" id="name" formControlName="uName" />
+          </div>
+          <div class="ErrorText">
+            <span
+              class="errMessage"
+              *ngIf="
+                printInfoForm.get('uName').errors?.required &&
+                printInfoForm.get('uName').touched
+              "
+            >
+              This field is required.
+            </span>
+            <span
+              class="errMessage"
+              *ngIf="printInfoForm.get('uName').errors.pattern"
+              >Please enter your first name and last name.
+            </span>
+          </div>
+        </label>
+
+        <!-- company input -->
+        <label for="company">
+          <div class="input_group">
+            <p>Company*</p>
+            <input
+              name="uCompany"
+              type="text"
+              id="company"
+              ng-model="form.Company"
+              ng-trim="true"
+              required
+            />
+          </div>
+          <div class="ErrorText">
+            <span
+              class="errMessage"
+              ng-show="
+                customerForm.uCompany.$error.required &&
+                customerForm.uCompany.$dirty
+              "
+            >
+              This field is required.
+            </span>
+            <span
+              class="errMessage"
+              ng-show="customerForm.uCompany.$error.pattern"
+              >Please enter your company name.
+            </span>
+          </div>
+        </label>
+
+        <!-- phone input -->
+        <label for="phone">
+          <div class="input_group">
+            <p>Phone number*</p>
+            <input
+              name="uPhone"
+              type="tel"
+              id="phone"
+              pattern="\d*"
+              ng-model="form.Phone"
+              ng-trim="true"
+              ng-class="{ checkError: customerForm.$submitted }"
+              required
+            />
+          </div>
+          <div class="ErrorText">
+            <span
+              class="errMessage"
+              ng-show="
+                customerForm.uPhone.$error.required &&
+                customerForm.uPhone.$dirty
+              "
+              >This field is required.</span
+            >
+          </div>
+        </label>
+
+        <!-- email input -->
+        <label for="email">
+          <div class="input_group">
+            <p>Email*</p>
+            <input
+              name="uEmail"
+              type="email"
+              id="email"
+              placeholder="abc@@xyzprinting.com"
+              ng-model="form.Email"
+              ng-trim="true"
+              ng-class="{ checkError: customerForm.$submitted }"
+              required
+            />
+          </div>
+          <div class="ErrorText">
+            <span
+              class="errMessage"
+              ng-show="
+                customerForm.uEmail.$error.required &&
+                customerForm.uEmail.$dirty
+              "
+              >This field is required.</span
+            >
+            <span class="errMessage" ng-show="customerForm.uEmail.$error.email"
+              >Please enter a valid email address.</span
+            >
+          </div>
+        </label>
+
+        <!-- confirm email input -->
+        <label for="confirmEmail">
+          <div class="input_group">
+            <p>Confirm email*</p>
+            <input
+              name="uConfirmEmail"
+              type="email"
+              id="confirmEmail"
+              ng-model="form.confirmEmail"
+              ng-trim="true"
+              ng-class="{ checkError: customerForm.$submitted }"
+              ng-pattern="form.Email"
+              required
+            />
+          </div>
+          <div class="ErrorText">
+            <span
+              class="errMessage"
+              ng-show="
+                customerForm.uConfirmEmail.$error.required &&
+                customerForm.uConfirmEmail.$dirty
+              "
+              >This field is required.</span
+            >
+            <span
+              class="errMessage"
+              ng-show="customerForm.uConfirmEmail.$error.pattern"
+              >Please enter same email address.</span
+            >
+          </div>
+        </label>
+
+        <!-- Street input -->
+        <label for="street">
+          <div class="input_group">
+            <p>Street*</p>
+            <input
+              name="uStreet"
+              type="text"
+              id="street"
+              ng-model="form.Street"
+              ng-trim="true"
+              ng-class="{ checkError: customerForm.$submitted }"
+              ng-pattern="/^[a-zA-Z0-9\s,'-]*$/"
+              required
+            />
+          </div>
+          <div class="ErrorText">
+            <span
+              class="errMessage"
+              ng-show="
+                customerForm.uStreet.$error.required &&
+                customerForm.uStreet.$dirty
+              "
+              >This field is required.</span
+            >
+            <span
+              class="errMessage"
+              ng-show="customerForm.uStreet.$error.pattern"
+              >street Error</span
+            >
+          </div>
+        </label>
+
+        <!-- City input -->
+        <label for="city">
+          <div class="input_group">
+            <p>City*</p>
+            <input
+              name="uCity"
+              type="name"
+              id="city"
+              ng-model="form.City"
+              ng-trim="true"
+              ng-class="{ checkError: customerForm.$submitted }"
+              ng-pattern="/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/"
+              required
+            />
+          </div>
+          <div class="ErrorText">
+            <span
+              class="errMessage"
+              ng-show="
+                customerForm.uCity.$error.required && customerForm.uCity.$dirty
+              "
+              >City required</span
+            >
+            <span class="errMessage" ng-show="customerForm.uCity.$error.pattern"
+              >City error</span
+            >
+          </div>
+        </label>
+
+        <!-- State input -->
+        <label for="state">
+          <div class="input_group">
+            <p>State*</p>
+            <div class="form-select">
+              <select
+                name="uStateSelect"
+                ng-model="form.State"
+                id="country"
+                ng-options="item as item.value disable when item.disabled for item in usaStateList"
+                required
+              >
+                <option value="" disabled="disabled">
+                  US / Canada State Required
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="ErrorText">
+            <span
+              class="errMessage"
+              ng-show="
+                customerForm.uStateSelect.$error.required &&
+                customerForm.uStateSelect.$dirty
+              "
+              >This field is required.</span
+            >
+            <span
+              class="errMessage"
+              ng-show="customerForm.uStateSelect.$error.pattern"
+              >ZipCode Error</span
+            >
+          </div>
+        </label>
+
+        <!-- Zip Code input -->
+        <label for="zipCode">
+          <div class="input_group">
+            <p>Zip code*</p>
+            <input
+              name="uZipCode"
+              type="name"
+              id="zipCode"
+              ng-model="form.ZipCode"
+              ng-trim="true"
+              ng-class="{ checkError: customerForm.$submitted }"
+              required
+            />
+          </div>
+          <div class="ErrorText">
+            <span
+              class="errMessage"
+              ng-show="
+                customerForm.uZipCode.$error.required &&
+                customerForm.uZipCode.$dirty
+              "
+              >This field is required.</span
+            >
+          </div>
+        </label>
+
+        <p class="required_text">* Required information</p>
+      </div>
+
+      <!-- your 3D model -->
+      <div class="models_block font_c_w">
+        <div class="models_block_title">
+          <img
+            class="svg_number"
+            src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/software/print_service/02.svg"
+            alt=""
+          />
+          Your 3D Models
+        </div>
+
+        <p class="models_block_des">
+          Acceptable file formats : .3MF and .STL For multiple files please
+          upload a .ZIP file.
+        </p>
+
+        <!-- upload -->
+        <label for="upload" class="upload_style">
+          <p class="upload_button">Upload</p>
+          <input
+            name="uUpload"
+            type="file"
+            id="inputfile"
+            ng-model="form.Upload"
+            accept=".stl,.3mf,.zip"
+            multiple="multiple"
+            (change)="getUploadFile($event)"
+          />
+          <p class="upload_file_name">{{ upload_file_name }}</p>
+          <div id="dvProgressPrcent">
+            <div class="progress">0 %</div>
+            <div class="dvProgress"></div>
+          </div>
+          <p class="upload_max_size">
+            Max. file size: 100 MB
+          </p>
+        </label>
+      </div>
+
+      <!-- Send me the quote -->
+      <div class="form_send font_c_w">
+        <div class="btn_group">
+          <img
+            class="svg_number"
+            src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/software/print_service/03.svg"
+            alt=""
+          />
+          <!-- submit button -->
+          <button
+            class="submitBtn"
+            ng-disabled="customerForm.$invalid || disableSubmitBtn"
+            type="submit"
+          >
+            Send me the quote
+          </button>
+        </div>
+        <a
+          class="mail_to"
+          href="mailto:john.calhoun@xyzprinting.com?subject=Need assistance with our 3D printing service?&body=This's content:"
+        >
+          Need assistance with our <br class="sm_br" />
+          3D printing service?
+        </a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Upload Successful -->
+  <div
+    class="upload_success"
+    [ngClass]="{ upload_success_show: upload_active }"
+  >
+    <div class="success_mask"></div>
+    <div class="success_block">
+      <img
+        src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/software/print_service/success.svg"
+        alt="Successful"
+      />
+      <p class="upload_title">Upload Successful</p>
+      <p class="upload_des">
+        Your file was successfully uploaded to us, thank you.
+      </p>
+      <img
+        class="upload_close_svg"
+        (click)="removeUploadClose()"
+        src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/software/print_service/close.svg"
+        alt=""
+      />
+    </div>
+  </div>
+
+  <!-- Send Successful -->
+  <div class="send_success" [ngClass]="{ send_success_show: send_active }">
+    <div class="success_mask"></div>
+    <div class="success_block">
+      <img
+        src="https://xyzwebsite.blob.core.windows.net/b2b-landing/renew-b2b-20190902/software/print_service/success.svg"
+        alt="Successful"
+      />
+      <p class="upload_title">Thank you!</p>
+      <p class="upload_des">We will contact you shortly.</p>
+      <div class="don_btn" (click)="removeSendClose()">Done</div>
+    </div>
+  </div>
+</div>

@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit {
   bannerLists = null;
 
   ngOnInit() {
-    console.log('this.resizeService.imgSize:', this.resizeService.imgSize);
 
     const getLangCode = this.translateService.nowLangCode;
 
