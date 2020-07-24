@@ -342,14 +342,24 @@ export class PrintServiceFormComponent implements OnInit {
     },
   ];
 
-
   uQuantityPattern = '^[1-9]+$';
-  uNamePattern = '/^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/';
+  uNamePattern = '^[A-Za-z]+([\ A-Za-z]+)*';
+  uPhonePattern = '[0-9]*';
+  uStreetPattern = '^[a-zA-Z0-9\s,\'-]*$';
+  uCityPattern = '^[A-Za-z]+([\ A-Za-z]+)*';
 
   // FormGroup
   printInfoForm = new FormGroup({
     uQuantity: new FormControl('', [Validators.required, Validators.pattern(this.uQuantityPattern)]),
     uName: new FormControl('', [Validators.required, Validators.pattern(this.uNamePattern)]),
+    uCompany: new FormControl('', [Validators.required]),
+    uPhone: new FormControl('', [Validators.required, Validators.pattern(this.uPhonePattern)]),
+    uEmail: new FormControl('', [Validators.required, Validators.email]),
+    uConfirmEmail: new FormControl('', [Validators.required]),
+    uStreet: new FormControl('', [Validators.required, Validators.pattern(this.uStreetPattern)]),
+    uCity: new FormControl('', [Validators.required, Validators.pattern(this.uCityPattern)]),
+    uStateSelect: new FormControl('', [Validators.required]),
+    uZipCode: new FormControl('', [Validators.required]),
   });
 
   constructor(

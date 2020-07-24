@@ -73,7 +73,7 @@
             </span>
             <span
               class="errMessage"
-              *ngIf="printInfoForm.get('uName').errors.pattern"
+              *ngIf="printInfoForm.get('uName').errors?.pattern"
               >Please enter your first name and last name.
             </span>
           </div>
@@ -87,25 +87,18 @@
               name="uCompany"
               type="text"
               id="company"
-              ng-model="form.Company"
-              ng-trim="true"
-              required
+              formControlName="uCompany"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
-              ng-show="
-                customerForm.uCompany.$error.required &&
-                customerForm.uCompany.$dirty
+              *ngIf="
+                printInfoForm.get('uCompany').errors?.required &&
+                printInfoForm.get('uCompany').touched
               "
             >
               This field is required.
-            </span>
-            <span
-              class="errMessage"
-              ng-show="customerForm.uCompany.$error.pattern"
-              >Please enter your company name.
             </span>
           </div>
         </label>
@@ -118,22 +111,23 @@
               name="uPhone"
               type="tel"
               id="phone"
-              pattern="\d*"
-              ng-model="form.Phone"
-              ng-trim="true"
-              ng-class="{ checkError: customerForm.$submitted }"
-              required
+              formControlName="uPhone"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
-              ng-show="
-                customerForm.uPhone.$error.required &&
-                customerForm.uPhone.$dirty
+              *ngIf="
+                printInfoForm.get('uPhone').errors?.required &&
+                printInfoForm.get('uPhone').touched
               "
-              >This field is required.</span
-            >
+              >This field is required.
+            </span>
+            <span
+              class="errMessage"
+              *ngIf="printInfoForm.get('uPhone').errors?.pattern"
+              >Please enter numbers.
+            </span>
           </div>
         </label>
 
@@ -145,25 +139,24 @@
               name="uEmail"
               type="email"
               id="email"
-              placeholder="abc@@xyzprinting.com"
-              ng-model="form.Email"
-              ng-trim="true"
-              ng-class="{ checkError: customerForm.$submitted }"
-              required
+              placeholder="abc@xyzprinting.com"
+              formControlName="uEmail"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
-              ng-show="
-                customerForm.uEmail.$error.required &&
-                customerForm.uEmail.$dirty
+              *ngIf="
+                printInfoForm.get('uEmail').errors?.required &&
+                printInfoForm.get('uEmail').touched
               "
-              >This field is required.</span
-            >
-            <span class="errMessage" ng-show="customerForm.uEmail.$error.email"
-              >Please enter a valid email address.</span
-            >
+              >This field is required.
+            </span>
+            <span
+              class="errMessage"
+              *ngIf="printInfoForm.get('uEmail').errors?.email"
+              >Please enter a valid email address.
+            </span>
           </div>
         </label>
 
@@ -175,27 +168,23 @@
               name="uConfirmEmail"
               type="email"
               id="confirmEmail"
-              ng-model="form.confirmEmail"
-              ng-trim="true"
-              ng-class="{ checkError: customerForm.$submitted }"
-              ng-pattern="form.Email"
-              required
+              formControlName="uConfirmEmail"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
-              ng-show="
-                customerForm.uConfirmEmail.$error.required &&
-                customerForm.uConfirmEmail.$dirty
+              *ngIf="
+                printInfoForm.get('uConfirmEmail').errors?.required &&
+                printInfoForm.get('uConfirmEmail').touched
               "
               >This field is required.</span
             >
             <span
               class="errMessage"
-              ng-show="customerForm.uConfirmEmail.$error.pattern"
-              >Please enter same email address.</span
-            >
+              *ngIf="printInfoForm.get('uConfirmEmail').errors?.pattern"
+              >Please enter same email address.
+            </span>
           </div>
         </label>
 
@@ -207,27 +196,23 @@
               name="uStreet"
               type="text"
               id="street"
-              ng-model="form.Street"
-              ng-trim="true"
-              ng-class="{ checkError: customerForm.$submitted }"
-              ng-pattern="/^[a-zA-Z0-9\s,'-]*$/"
-              required
+              formControlName="uStreet"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
-              ng-show="
-                customerForm.uStreet.$error.required &&
-                customerForm.uStreet.$dirty
+              *ngIf="
+                printInfoForm.get('uStreet').errors?.required &&
+                printInfoForm.get('uStreet').touched
               "
-              >This field is required.</span
-            >
+              >This field is required.
+            </span>
             <span
               class="errMessage"
-              ng-show="customerForm.uStreet.$error.pattern"
-              >street Error</span
-            >
+              *ngIf="printInfoForm.get('uStreet').errors?.pattern"
+              >street Error
+            </span>
           </div>
         </label>
 
@@ -235,26 +220,20 @@
         <label for="city">
           <div class="input_group">
             <p>City*</p>
-            <input
-              name="uCity"
-              type="name"
-              id="city"
-              ng-model="form.City"
-              ng-trim="true"
-              ng-class="{ checkError: customerForm.$submitted }"
-              ng-pattern="/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/"
-              required
-            />
+            <input name="uCity" type="name" id="city" formControlName="uCity" />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
-              ng-show="
-                customerForm.uCity.$error.required && customerForm.uCity.$dirty
+              *ngIf="
+                printInfoForm.get('uCity').errors?.required &&
+                printInfoForm.get('uCity').touched
               "
               >City required</span
             >
-            <span class="errMessage" ng-show="customerForm.uCity.$error.pattern"
+            <span
+              class="errMessage"
+              *ngIf="printInfoForm.get('uCity').errors?.pattern"
               >City error</span
             >
           </div>
@@ -267,13 +246,18 @@
             <div class="form-select">
               <select
                 name="uStateSelect"
-                ng-model="form.State"
                 id="country"
-                ng-options="item as item.value disable when item.disabled for item in usaStateList"
-                required
+                formControlName="uStateSelect"
               >
                 <option value="" disabled="disabled">
                   US / Canada State Required
+                </option>
+                <option
+                  *ngFor="let item of usaStateList"
+                  [disabled]="item.disabled === true"
+                  [ngValue]="item.value | translate"
+                >
+                  {{ item.value | translate }}
                 </option>
               </select>
             </div>
@@ -281,17 +265,12 @@
           <div class="ErrorText">
             <span
               class="errMessage"
-              ng-show="
-                customerForm.uStateSelect.$error.required &&
-                customerForm.uStateSelect.$dirty
+              *ngIf="
+                printInfoForm.get('uStateSelect').errors?.required &&
+                printInfoForm.get('uStateSelect').touched
               "
-              >This field is required.</span
-            >
-            <span
-              class="errMessage"
-              ng-show="customerForm.uStateSelect.$error.pattern"
-              >ZipCode Error</span
-            >
+              >This field is required.
+            </span>
           </div>
         </label>
 
@@ -303,18 +282,15 @@
               name="uZipCode"
               type="name"
               id="zipCode"
-              ng-model="form.ZipCode"
-              ng-trim="true"
-              ng-class="{ checkError: customerForm.$submitted }"
-              required
+              formControlName="uZipCode"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
-              ng-show="
-                customerForm.uZipCode.$error.required &&
-                customerForm.uZipCode.$dirty
+              *ngIf="
+                printInfoForm.get('uZipCode').errors?.required &&
+                printInfoForm.get('uZipCode').touched
               "
               >This field is required.</span
             >
