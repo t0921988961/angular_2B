@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from 'src/app/service/language/language.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-print-service-form',
@@ -14,8 +16,10 @@ export class PrintServiceFormComponent implements OnInit {
   // Parameter
   getUploadFileDoanloadPath = '';
   upload_file_name = 'File Name';
+  isProgressPersent = 0;
   upload_active = false;
   send_active = false;
+  disableSubmitBtn = false;
   usaStateList = [
     {
       state: 'USA',
@@ -342,28 +346,29 @@ export class PrintServiceFormComponent implements OnInit {
     },
   ];
 
-  uQuantityPattern = '^[1-9]+$';
-  uNamePattern = '^[A-Za-z]+([\ A-Za-z]+)*';
-  uPhonePattern = '[0-9]*';
-  uStreetPattern = '^[a-zA-Z0-9\s,\'-]*$';
-  uCityPattern = '^[A-Za-z]+([\ A-Za-z]+)*';
+  PartQuantityPattern = /^[1-9]+$/;
+  NamePattern = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/;
+  PhonePattern = /\d*/;
+  StreetPattern = /^[a-zA-Z0-9\s,\'\'-]*$/;
+  CityPattern = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
 
   // FormGroup
   printInfoForm = new FormGroup({
-    uQuantity: new FormControl('', [Validators.required, Validators.pattern(this.uQuantityPattern)]),
-    uName: new FormControl('', [Validators.required, Validators.pattern(this.uNamePattern)]),
-    uCompany: new FormControl('', [Validators.required]),
-    uPhone: new FormControl('', [Validators.required, Validators.pattern(this.uPhonePattern)]),
-    uEmail: new FormControl('', [Validators.required, Validators.email]),
-    uConfirmEmail: new FormControl('', [Validators.required]),
-    uStreet: new FormControl('', [Validators.required, Validators.pattern(this.uStreetPattern)]),
-    uCity: new FormControl('', [Validators.required, Validators.pattern(this.uCityPattern)]),
-    uStateSelect: new FormControl('', [Validators.required]),
-    uZipCode: new FormControl('', [Validators.required]),
+    PartQuantity: new FormControl('', [Validators.required, Validators.pattern(this.PartQuantityPattern)]),
+    Name: new FormControl('', [Validators.required, Validators.pattern(this.NamePattern)]),
+    Company: new FormControl('', [Validators.required]),
+    Phone: new FormControl('', [Validators.required, Validators.pattern(this.PhonePattern)]),
+    Email: new FormControl('', [Validators.required, Validators.email]),
+    confirmEmail: new FormControl('', [Validators.required]),
+    Street: new FormControl('', [Validators.required, Validators.pattern(this.StreetPattern)]),
+    City: new FormControl('', [Validators.required, Validators.pattern(this.CityPattern)]),
+    State: new FormControl('', [Validators.required]),
+    ZipCode: new FormControl('', [Validators.required]),
   });
 
   constructor(
-    public languageService: LanguageService
+    public languageService: LanguageService,
+    private http: HttpClient,
   ) { }
 
   ngOnInit(): void {
@@ -390,36 +395,80 @@ export class PrintServiceFormComponent implements OnInit {
   // Get Upload File
   getUploadFile(files) {
     // console.log('files:', files.target.files);
-    console.log('files:', files.target.files[0].name);
+    // console.log('files:', files.target.files[0].name);
+    const getFileObject = files.target.files;
     const getFileName = files.target.files[0].name;
     this.upload_file_name = getFileName;
-    // this.startUploadFile(files);
+    this.startUploadFile(getFileObject);
+  }
+
+  uploadProgressPersent(apiPostEvent) {
+    const isProgressLengthComputable = apiPostEvent.lengthComputable;
+    this.isProgressPersent =
+      // tslint:disable-next-line:no-bitwise
+      ((apiPostEvent.loaded / apiPostEvent.total) * 100) | 0;
+    const isComplete100 = this.isProgressPersent === 100;
+
+    if (isProgressLengthComputable) {
+      this.isProgressPersent = this.isProgressPersent;
+    }
+
+    if (isComplete100) {
+      this.upload_active = true;
+    }
+  }
+
+  callUploadApiPost(apiUploadPath, nowFormdata) {
+    console.log('callUploadApiPost ******************* ');
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', apiUploadPath, true);
+    console.log('xhr.upload:', xhr.upload);
+    xhr.upload.onprogress = (apiPostEvent) => {
+      /*Upload progress*/
+      this.uploadProgressPersent(apiPostEvent);
+    };
+
+    // // Start upload
+    xhr.send(nowFormdata);
+    // tslint:disable-next-line:only-arrow-functions
+    xhr.onload = () => {
+      console.log('xhr.statu:', xhr.status);
+      const isStatus200 = xhr.status === 200;
+      const isReadyState = xhr.readyState === XMLHttpRequest.DONE;
+      const isStatusNot200 = xhr.status !== 200;
+      if (isStatus200 && isReadyState) {
+        this.getUploadFileDoanloadPath = JSON.parse(xhr.responseText)[0];
+      }
+      if (isStatusNot200) {
+        return alert('Upload Err [status] => ' + xhr.status);
+      }
+    };
   }
 
   startUploadFile(files) {
-    // const getFileSize = files[0].size;
-    // const maxFileSize = 104857600; // Max size 10MB
-    // const isFilesName = files[0].name;
-    // const apiUploadPath =
-    //   'https://event.xyzprinting.com/Admin/NEWUP/' +
-    //   isFilesName +
-    //   '&mid=0&mclass=2BModsUpload&lang=Test&class=Test';
-    // const nowFormdata = new FormData();
-    // nowFormdata.append('File[]', files[0]);
+    const getFileSize = files[0].size;
+    const maxFileSize = 104857600; // Max size 10MB
+    const isFilesName = files[0].name;
+    const apiUploadPath =
+      'https://event.xyzprinting.com/Admin/NEWUP/' +
+      isFilesName +
+      '&mid=0&mclass=2BModsUpload&lang=Test&class=Test';
+    const nowFormdata = new FormData();
+    nowFormdata.append('File[]', files[0]);
 
-    // const isFileSizeTooLarge = getFileSize > maxFileSize;
-    // const isFileSizeGood = getFileSize <= maxFileSize;
+    const isFileSizeTooLarge = getFileSize > maxFileSize;
+    const isFileSizeGood = getFileSize <= maxFileSize;
 
-    // if (isFileSizeTooLarge) { return alert('Your File too larg'); }
-    // if (isFileSizeGood) {
-    //   this.callUploadApiPost(apiUploadPath, nowFormdata);
+    if (isFileSizeTooLarge) { return alert('Your File too larg'); }
+    if (isFileSizeGood) {
+      this.callUploadApiPost(apiUploadPath, nowFormdata);
+    }
   }
 
   formSubmit(tForm) {
-    console.log('tForm => ', tForm);
     if (confirm('Sure submit')) {
       if (this.getUploadFileDoanloadPath) {
-        this.prepareFormData(this.getUploadFileDoanloadPath);
+        this.prepareFormData(this.getUploadFileDoanloadPath, tForm);
       } else {
         alert('Please upload model file');
       }
@@ -428,73 +477,35 @@ export class PrintServiceFormComponent implements OnInit {
     }
   }
 
-  callUploadApiPost(apiUploadPath, nowFormdata) {
-    // const xhr = new XMLHttpRequest();
-    // xhr.open('POST', apiUploadPath);
-    // xhr.upload.onprogress = function(apiPostEvent) {
-    //   /*Upload progress*/
-    //   this.uploadProgressPersent(apiPostEvent);
-    // };
 
-    // // Start upload
-    // xhr.send(nowFormdata);
-    // xhr.onload = function() {
-    //   const isStatus200 = xhr.status === 200;
-    //   const isReadyState = xhr.readyState === XMLHttpRequest.DONE;
-    //   const isStatusNot200 = xhr.status !== 200;
-    //   if (isStatus200 && isReadyState) {
-    //     return (getUploadFileDoanloadPath = JSON.parse(
-    //       Array(xhr.responseText)[0]
-    //     )[0]);
-    //   }
-    //   if (isStatusNot200) {
-    //     return alert('Upload Err', '[status] => ', xhr.status);
-    //   }
-    // };
-  }
+  prepareFormData(getUploadFileDoanloadPath, tForm) {
+    console.log('getUploadFileDoanloadPath:', getUploadFileDoanloadPath);
+    this.disableSubmitBtn = true;
+    const formData = tForm.value;
 
-  uploadProgressPersent(apiPostEvent) {
-    // let isProgressLengthComputable = apiPostEvent.lengthComputable;
-    // let isProgressPersent =
-    //   ((apiPostEvent.loaded / apiPostEvent.total) * 100) | 0;
-    // let isComplete100 = isProgressPersent === 100;
-
-    // // Return progress
-    // // console.log('[isProgressPersent]', isProgressPersent + '%');
-
-    // if (isProgressLengthComputable) {
-    //   $('#dvProgressPrcent .progress').html(isProgressPersent + '%');
-    //   $('.dvProgress').css({ width: isProgressPersent + '%' });
-    // }
-
-    // if (isComplete100) {
-    //   return $scope.$apply(function () {
-    //     $scope.upload_active = true;
-    //   });
-    // }
-  }
-
-  prepareFormData(getUploadFileDoanloadPath) {
-    // disableSubmitBtn = true;
-    // let formData = form;
-
-    // formData.Upload = getUploadFileDoanloadPath;
-    // formData.State = form.State.value;
-    // formData.RandCode = `${Math.random()}`;
-    // // STrigger,SEmail,SName => Control recipient
-    // formData.STrigger = '2BModsUpload';
-    // formData.StateControl = 'Ongoing';
-    // // formData.SEmail = formData.Email;
-    // // formData.SName = formData.Name;
+    formData.SEmail = formData.Email;
+    formData.Upload = getUploadFileDoanloadPath;
+    formData.RandCode = `${Math.random()}`;
+    // STrigger,SEmail,SName => Control recipient
+    formData.STrigger = '2BModsUpload';
+    formData.StateControl = 'Ongoing';
+    formData.SEmail = formData.Email;
+    formData.SName = formData.Name;
     // formData.SEmail = 'john.calhoun@xyzprinting.com';
     // formData.SName = 'John';
 
-    // this.callApiSubmit(formData);
+    this.callApiSubmit(formData);
   }
 
   callApiSubmit(formData) {
+    const apiPath = 'https://event.xyzprinting.com/Tp/EXPADD/2BModsUpload/Test/';
+
+    this.http.post(apiPath, formData
+    ).subscribe((res) => {
+      console.log('res:', res);
+    });
     // reset form data
-    // $http({
+    // http({
     //   method: 'POST',
     //   url: 'https://event.xyzprinting.com/Tp/EXPADD/2BModsUpload/Test/',
     //   data: $httpParamSerializerJQLike(formData),

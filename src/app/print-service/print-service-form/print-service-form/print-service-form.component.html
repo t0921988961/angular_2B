@@ -34,22 +34,22 @@
               name="uPartQuantity"
               type="text"
               id="PartQuantity"
-              formControlName="uQuantity"
+              formControlName="PartQuantity"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
               *ngIf="
-                printInfoForm.get('uQuantity').errors?.required &&
-                printInfoForm.get('uQuantity').touched
+                printInfoForm.get('PartQuantity').errors?.required &&
+                printInfoForm.get('PartQuantity').touched
               "
             >
               This field is required.
             </span>
             <span
               class="errMessage"
-              *ngIf="printInfoForm.get('uQuantity').errors?.pattern"
+              *ngIf="printInfoForm.get('PartQuantity').errors?.pattern"
               >Please enter a valid quantity
             </span>
           </div>
@@ -59,21 +59,21 @@
         <label for="name">
           <div class="input_group">
             <p>Your name*</p>
-            <input name="uName" type="text" id="name" formControlName="uName" />
+            <input name="uName" type="text" id="name" formControlName="Name" />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
               *ngIf="
-                printInfoForm.get('uName').errors?.required &&
-                printInfoForm.get('uName').touched
+                printInfoForm.get('Name').errors?.required &&
+                printInfoForm.get('Name').touched
               "
             >
               This field is required.
             </span>
             <span
               class="errMessage"
-              *ngIf="printInfoForm.get('uName').errors?.pattern"
+              *ngIf="printInfoForm.get('Name').errors?.pattern"
               >Please enter your first name and last name.
             </span>
           </div>
@@ -87,15 +87,15 @@
               name="uCompany"
               type="text"
               id="company"
-              formControlName="uCompany"
+              formControlName="Company"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
               *ngIf="
-                printInfoForm.get('uCompany').errors?.required &&
-                printInfoForm.get('uCompany').touched
+                printInfoForm.get('Company').errors?.required &&
+                printInfoForm.get('Company').touched
               "
             >
               This field is required.
@@ -111,21 +111,21 @@
               name="uPhone"
               type="tel"
               id="phone"
-              formControlName="uPhone"
+              formControlName="Phone"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
               *ngIf="
-                printInfoForm.get('uPhone').errors?.required &&
-                printInfoForm.get('uPhone').touched
+                printInfoForm.get('Phone').errors?.required &&
+                printInfoForm.get('Phone').touched
               "
               >This field is required.
             </span>
             <span
               class="errMessage"
-              *ngIf="printInfoForm.get('uPhone').errors?.pattern"
+              *ngIf="printInfoForm.get('Phone').errors?.pattern"
               >Please enter numbers.
             </span>
           </div>
@@ -140,21 +140,21 @@
               type="email"
               id="email"
               placeholder="abc@xyzprinting.com"
-              formControlName="uEmail"
+              formControlName="Email"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
               *ngIf="
-                printInfoForm.get('uEmail').errors?.required &&
-                printInfoForm.get('uEmail').touched
+                printInfoForm.get('Email').errors?.required &&
+                printInfoForm.get('Email').touched
               "
               >This field is required.
             </span>
             <span
               class="errMessage"
-              *ngIf="printInfoForm.get('uEmail').errors?.email"
+              *ngIf="printInfoForm.get('Email').errors?.email"
               >Please enter a valid email address.
             </span>
           </div>
@@ -168,21 +168,21 @@
               name="uConfirmEmail"
               type="email"
               id="confirmEmail"
-              formControlName="uConfirmEmail"
+              formControlName="confirmEmail"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
               *ngIf="
-                printInfoForm.get('uConfirmEmail').errors?.required &&
-                printInfoForm.get('uConfirmEmail').touched
+                printInfoForm.get('confirmEmail').errors?.required &&
+                printInfoForm.get('confirmEmail').touched
               "
               >This field is required.</span
             >
             <span
               class="errMessage"
-              *ngIf="printInfoForm.get('uConfirmEmail').errors?.pattern"
+              *ngIf="printInfoForm.get('confirmEmail').errors?.pattern"
               >Please enter same email address.
             </span>
           </div>
@@ -196,21 +196,21 @@
               name="uStreet"
               type="text"
               id="street"
-              formControlName="uStreet"
+              formControlName="Street"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
               *ngIf="
-                printInfoForm.get('uStreet').errors?.required &&
-                printInfoForm.get('uStreet').touched
+                printInfoForm.get('Street').errors?.required &&
+                printInfoForm.get('Street').touched
               "
               >This field is required.
             </span>
             <span
               class="errMessage"
-              *ngIf="printInfoForm.get('uStreet').errors?.pattern"
+              *ngIf="printInfoForm.get('Street').errors?.pattern"
               >street Error
             </span>
           </div>
@@ -220,20 +220,20 @@
         <label for="city">
           <div class="input_group">
             <p>City*</p>
-            <input name="uCity" type="name" id="city" formControlName="uCity" />
+            <input name="uCity" type="name" id="city" formControlName="City" />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
               *ngIf="
-                printInfoForm.get('uCity').errors?.required &&
-                printInfoForm.get('uCity').touched
+                printInfoForm.get('City').errors?.required &&
+                printInfoForm.get('City').touched
               "
               >City required</span
             >
             <span
               class="errMessage"
-              *ngIf="printInfoForm.get('uCity').errors?.pattern"
+              *ngIf="printInfoForm.get('City').errors?.pattern"
               >City error</span
             >
           </div>
@@ -244,11 +244,7 @@
           <div class="input_group">
             <p>State*</p>
             <div class="form-select">
-              <select
-                name="uStateSelect"
-                id="country"
-                formControlName="uStateSelect"
-              >
+              <select name="uStateSelect" id="country" formControlName="State">
                 <option value="" disabled="disabled">
                   US / Canada State Required
                 </option>
@@ -266,8 +262,8 @@
             <span
               class="errMessage"
               *ngIf="
-                printInfoForm.get('uStateSelect').errors?.required &&
-                printInfoForm.get('uStateSelect').touched
+                printInfoForm.get('State').errors?.required &&
+                printInfoForm.get('State').touched
               "
               >This field is required.
             </span>
@@ -282,15 +278,15 @@
               name="uZipCode"
               type="name"
               id="zipCode"
-              formControlName="uZipCode"
+              formControlName="ZipCode"
             />
           </div>
           <div class="ErrorText">
             <span
               class="errMessage"
               *ngIf="
-                printInfoForm.get('uZipCode').errors?.required &&
-                printInfoForm.get('uZipCode').touched
+                printInfoForm.get('ZipCode').errors?.required &&
+                printInfoForm.get('ZipCode').touched
               "
               >This field is required.</span
             >
@@ -323,15 +319,17 @@
             name="uUpload"
             type="file"
             id="inputfile"
-            ng-model="form.Upload"
             accept=".stl,.3mf,.zip"
             multiple="multiple"
             (change)="getUploadFile($event)"
           />
           <p class="upload_file_name">{{ upload_file_name }}</p>
           <div id="dvProgressPrcent">
-            <div class="progress">0 %</div>
-            <div class="dvProgress"></div>
+            <div class="progress">{{ isProgressPersent }} %</div>
+            <div
+              class="dvProgress"
+              [ngStyle]="{ width: isProgressPersent + '%' }"
+            ></div>
           </div>
           <p class="upload_max_size">
             Max. file size: 100 MB
@@ -350,7 +348,7 @@
           <!-- submit button -->
           <button
             class="submitBtn"
-            ng-disabled="customerForm.$invalid || disableSubmitBtn"
+            [disabled]="printInfoForm?.invalid || disableSubmitBtn"
             type="submit"
           >
             Send me the quote
