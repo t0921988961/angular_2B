@@ -3,6 +3,7 @@ import { LanguageService } from 'src/app/service/language/language.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-print-service-form',
@@ -369,6 +370,7 @@ export class PrintServiceFormComponent implements OnInit {
   constructor(
     public languageService: LanguageService,
     private http: HttpClient,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -381,15 +383,8 @@ export class PrintServiceFormComponent implements OnInit {
 
   // close Send Success
   removeSendClose() {
-    // send_active = false;
-    // const isPrintServicePage =
-    //   urlParameters.protocol +
-    //   '//' +
-    //   urlParameters.host +
-    //   '/' +
-    //   lang +
-    //   '/print_service';
-    // window.location = isPrintServicePage;
+    this.send_active = false;
+    this.router.navigate([this.langCode + '/print_service']);
   }
 
   // Get Upload File
@@ -419,10 +414,8 @@ export class PrintServiceFormComponent implements OnInit {
   }
 
   callUploadApiPost(apiUploadPath, nowFormdata) {
-    console.log('callUploadApiPost ******************* ');
     const xhr = new XMLHttpRequest();
     xhr.open('POST', apiUploadPath, true);
-    console.log('xhr.upload:', xhr.upload);
     xhr.upload.onprogress = (apiPostEvent) => {
       /*Upload progress*/
       this.uploadProgressPersent(apiPostEvent);
@@ -497,37 +490,31 @@ export class PrintServiceFormComponent implements OnInit {
     this.callApiSubmit(formData);
   }
 
-  callApiSubmit(formData) {
+  callApiSubmit(getFormObject) {
     const apiPath = 'https://event.xyzprinting.com/Tp/EXPADD/2BModsUpload/Test/';
+    const newFormData = new FormData();
 
-    this.http.post(apiPath, formData
+    for (const formKey of Object.keys(getFormObject)) {
+      const value = getFormObject[formKey];
+      // console.log('key => ' + formKey, '/// value => ' + value);
+      newFormData.append(formKey, value);
+      // console.log(`newFormData.get(${formKey}) =>`, newFormData.get(formKey));
+    }
+
+    this.http.post(apiPath, newFormData
     ).subscribe((res) => {
       console.log('res:', res);
-    });
-    // reset form data
-    // http({
-    //   method: 'POST',
-    //   url: 'https://event.xyzprinting.com/Tp/EXPADD/2BModsUpload/Test/',
-    //   data: $httpParamSerializerJQLike(formData),
-    //   headers: {
-    //     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    //   },
-    // })
-    //   .then((res) => {
-    //     $scope.disableSubmitBtn = false;
-    //     let isSuccess = res.data === '2';
-    //     let isFaile = res.data === '6';
+      this.disableSubmitBtn = false;
+      const isSuccess = (res === 2);
+      const isFaile = (res === 6);
 
-    //     if (isFaile) return alert('ERR Messages', '[Res Data] => ', res.data);
-    //     if (isSuccess) {
-    //       // alert('Thank you, Success Messages');
-    //       console.log('API State Code => ', res.data);
-    //       $scope.send_active = true;
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log('Err Form Data API');
-    //   });
+      if (isFaile) { return console.log('ERR Messages => ', res); }
+      if (isSuccess) {
+        // alert('Thank you, Success Messages');
+        this.send_active = true;
+        console.log('API State Code => ', res);
+      }
+    });
   }
 
 }
