@@ -21,6 +21,36 @@
   font-size: $fontsize-sm;
 }
 
+// br -------------------------------
+.lg_br {
+  display: block;
+  @include b768 {
+    display: none;
+  }
+}
+
+.sm_br {
+  display: none;
+  @include b768 {
+    display: block;
+  }
+}
+
+// display ----------------------------------
+.lg_show {
+  display: block;
+  @include b768 {
+    display: none !important;
+  }
+}
+
+.sm_show {
+  display: none;
+  @include b768 {
+    display: block;
+  }
+}
+
 // ============ text style
 .text_sub {
   display: inline-block;
