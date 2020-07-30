@@ -8,6 +8,7 @@ import { ResolveService } from './resolve/share-resolve.service';
 import { NewsEventComponent } from './newsEvent/news-event/news-event.component';
 import { PrintServiceContentComponent } from './print-service/print-service-content/print-service-content/print-service-content.component';
 import { PrintServiceFormComponent } from './print-service/print-service-form/print-service-form/print-service-form.component';
+import { NewsContentComponent } from './newsEvent/news-content/news-content/news-content.component';
 // import { ContactComponent } from './contact/contact.component';
 
 
@@ -113,7 +114,17 @@ const routes: Routes = [
             title: 'news.title',
             description: 'news.description'
           }
-        }
+        }, children: [
+          {
+            path: ':id', component: NewsContentComponent,
+            data: {
+              meta: {
+                title: 'index.title',
+                description: 'index.description'
+              }
+            }
+          },
+        ]
       },
       {
         path: 'support', loadChildren: () => import('./support/support.module').then(m => m.SupportModule)

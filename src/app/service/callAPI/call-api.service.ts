@@ -86,6 +86,4 @@ export class CallApiService {
     ).pipe(catchError(this.formatErrors));
   }
 
-
-
 }
