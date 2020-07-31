@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { LanguageService } from 'src/app/service/language/language.service';
 import { CallApiService } from 'src/app/service/callAPI/call-api.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-news-content',
@@ -35,10 +38,18 @@ export class NewsContentComponent implements OnInit {
   constructor(
     public languageService: LanguageService,
     public callApiService: CallApiService,
+    private route: ActivatedRoute,
+    private http: HttpClient,
   ) { }
 
   ngOnInit(): void {
 
+    this.route.queryParamMap.pipe(
+      map(params => {
+        params.get('id');
+        console.log('params.get(\'id\'):', params.get('id'));
+      })
+    );
   }
 
 }

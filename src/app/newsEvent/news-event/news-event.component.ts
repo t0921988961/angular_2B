@@ -3,8 +3,10 @@ import { LanguageService } from 'src/app/service/language/language.service';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { CallApiService } from 'src/app/service/callAPI/call-api.service';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, forkJoin } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { NewsListObject } from 'src/app/model-type/newsListArray.model';
+import { EventsListObject } from 'src/app/model-type/eventsListArray.model';
 
 @Component({
   selector: 'app-news-event',
@@ -19,9 +21,9 @@ export class NewsEventComponent implements OnInit, OnDestroy {
   tab = null;
   nowArrayList = [];
   // News Array
-  newsList: Array<RootObject>;
+  newsList;
   // Events Array
-  eventsList: Array<RootObject>;
+  eventsList;
 
   // initial pagination
   showContentList = true;
@@ -60,29 +62,29 @@ export class NewsEventComponent implements OnInit, OnDestroy {
         }
       );
 
-    // call News api
-    this.http.get('https://pro.xyzprinting.com/getNewsList/en-US/1/100').subscribe({
+    const GetNewsList$ = this.http.get<NewsListObject>('https://pro.xyzprinting.com/getNewsList/en-US/1/100');
+    const GetPromotionList$ = this.http.get<EventsListObject>('https://pro.xyzprinting.com/getPromotionList/en-US/1/100');
+
+    // forkJoin 會在所有 observable 都完成(complete)後，才會取得最終的結果，
+    // 所以對於 Http Request 的整合，我們可以直接使用 forkJoin
+    // 因為 Http Request 只會發生一次，然後就完成了！
+    const data$ = forkJoin(GetNewsList$, GetPromotionList$).pipe(
+      map(([GetNewsList, GetPromotionList]) => ({
+        GetNewsList, GetPromotionList
+      }))
+    );
+
+    data$.subscribe({
       next: (res) => {
-        console.log('GetNewsList res => ', res);
-        this.newsList = res.newsList;
+        this.newsList = res.GetNewsList.newsList;
+        this.eventsList = res.GetPromotionList.newsList;
       },
       complete: () => {
-        console.log('this.tab:', this.tab);
-        this.switchApiArray(this.tab);
+        console.log('complete done');
+        this.articleInit(this.tab);
       }
     });
 
-    // call Events api
-    this.http.get('https://pro.xyzprinting.com/getPromotionList/en-US/1/100').subscribe({
-      next: (res) => {
-        console.log('GetPromotionList res => ', res);
-        this.eventsList = res.newsList;
-      },
-      complete: () => {
-        console.log('this.tab:', this.tab);
-        this.switchApiArray(this.tab);
-      }
-    });
   }
 
   ngOnDestroy(): void {
@@ -91,30 +93,22 @@ export class NewsEventComponent implements OnInit, OnDestroy {
 
   onChangeTab(tabName) {
     this.tab = tabName;
-    this.switchApiArray(tabName);
+    // console.log('this.tab:', this.tab);
+    this.articleInit(tabName);
   }
 
-  // Switch News or Events Array
-  switchApiArray(tabName) {
-    console.log('tabName:', tabName);
-    console.log('this.nowArrayList:', this.nowArrayList);
-    if (tabName === 'news') {
-      console.log('news:');
-      this.nowArrayList = this.newsList;
-      this.pagination(this.nowArrayList, 1);
-      return;
-    }
-    if (tabName === 'events') {
-      console.log('events:');
-      this.nowArrayList = this.eventsList;
-      this.pagination(this.nowArrayList, 1);
-      return;
-    }
+  articleInit(tabName) {
+    const tabNameObject = {
+      news: this.newsList,
+      events: this.eventsList
+    };
+    this.nowArrayList = tabNameObject[tabName];
+    this.pagination(this.nowArrayList, 1);
   }
+
 
   // News pagination
   pagination(jsonData, nowPage) {
-    console.log('jsonData:', jsonData);
     this.showArticleArr = [];
     const dataTotal = jsonData.length;
     const perPage = 6;

@@ -1,13 +1,11 @@
-<div class="newsAndEvents">
-  <article class="article-container">
-    <div class="content text-wrap" *ngIf="articleData as item">
-      <div class="content h-center">
-        <h1 class="primary-title">{{ item.title }}</h1>
-      </div>
-      <div
-        class="ckEditerStyle press_content unreset"
-        [innerHTML]="item.content | safeHtml"
-      ></div>
+<article class="article-container">
+  <div class="content text-wrap" *ngIf="articleData as item">
+    <div class="content h-center">
+      <h1 class="primary-title">{{ item.title }}</h1>
     </div>
-  </article>
-</div>
+    <div
+      class="ckEditerStyle press_content unreset"
+      [innerHTML]="item.content | safeHtml"
+    ></div>
+  </div>
+</article>

@@ -20,6 +20,7 @@
         [ngClass]="{ active: tab === 'news' }"
         [routerLink]="'/' + langCode + '/news'"
         [queryParams]="{ tab: 'news' }"
+        (click)="onChangeTab('news')"
       >
         {{ "news.tabName.news" | translate }}
       </div>
@@ -28,13 +29,14 @@
         [ngClass]="{ active: tab === 'events' }"
         [routerLink]="'/' + langCode + '/news'"
         [queryParams]="{ tab: 'events' }"
+        (click)="onChangeTab('events')"
       >
         {{ "news.tabName.events" | translate }}
       </div>
     </div>
 
     <!-- Loading -->
-    <div *ngIf="!showContentList">
+    <div *ngIf="!eventsList">
       <div class="loading-data"></div>
       <p class="text">Loading...</p>
     </div>
