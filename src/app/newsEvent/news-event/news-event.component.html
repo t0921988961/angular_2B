@@ -17,7 +17,7 @@
     <div class="tabNav">
       <div
         class="news is-pointer"
-        [ngClass]="{ active: tab === 'news' }"
+        [ngClass]="{ active: tab === 'news' || this.tab === null }"
         [routerLink]="'/' + langCode + '/news'"
         [queryParams]="{ tab: 'news' }"
         (click)="onChangeTab('news')"
@@ -103,7 +103,7 @@
     </div>
 
     <!-- News pagination -->
-    <div class="text-center">
+    <div class="text-center" *ngIf="isNewsListPage">
       <nav>
         <ul
           class="pagination"

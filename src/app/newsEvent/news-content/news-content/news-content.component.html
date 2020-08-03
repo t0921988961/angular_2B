@@ -1,5 +1,5 @@
 <article class="article-container">
-  <div class="content text-wrap" *ngIf="articleData as item">
+  <div class="content text-wrap" *ngIf="getNewsContent$ | async as item">
     <div class="content h-center">
       <h1 class="primary-title">{{ item.title }}</h1>
     </div>

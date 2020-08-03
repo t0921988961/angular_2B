@@ -9,6 +9,7 @@ import { NewsEventComponent } from './newsEvent/news-event/news-event.component'
 import { PrintServiceContentComponent } from './print-service/print-service-content/print-service-content/print-service-content.component';
 import { PrintServiceFormComponent } from './print-service/print-service-form/print-service-form/print-service-form.component';
 import { NewsContentComponent } from './newsEvent/news-content/news-content/news-content.component';
+import { NewsContentResolverService } from './resolve/newsContent/news-content-resolver.service';
 // import { ContactComponent } from './contact/contact.component';
 
 
@@ -116,7 +117,9 @@ const routes: Routes = [
           }
         }, children: [
           {
-            path: ':id', component: NewsContentComponent,
+            path: ':id', component: NewsContentComponent, resolve: {
+              newsArticles: NewsContentResolverService
+            },
             data: {
               meta: {
                 title: 'index.title',

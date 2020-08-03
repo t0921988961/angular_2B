@@ -20,6 +20,7 @@ export class NewsEventComponent implements OnInit, OnDestroy {
   langCode = this.languageService.nowUrlPathlangCode;
   tab = null;
   nowArrayList = [];
+  isNewsListPage = true;
   // News Array
   newsList;
   // Events Array
@@ -38,11 +39,11 @@ export class NewsEventComponent implements OnInit, OnDestroy {
 
   // API News path
   articleListArr$: Observable<any>;
-  articleListPath = 'https://pro.xyzprinting.com/getNewsList/en-US/1/100';
+  apiArticleListPath = 'https://pro.xyzprinting.com/getNewsList/';
 
   // API Events path
   eventListArr$: Observable<any>;
-  eventListPath = 'https://pro.xyzprinting.com/getPromotionList/en-US/1/100';
+  apiEventListPath = 'https://pro.xyzprinting.com/getPromotionList/';
 
   constructor(
     public languageService: LanguageService,
@@ -59,11 +60,12 @@ export class NewsEventComponent implements OnInit, OnDestroy {
       .subscribe(
         (res) => {
           this.tab = res;
+          this.checkNowPage(this.tab);
         }
       );
 
-    const GetNewsList$ = this.http.get<NewsListObject>('https://pro.xyzprinting.com/getNewsList/en-US/1/100');
-    const GetPromotionList$ = this.http.get<EventsListObject>('https://pro.xyzprinting.com/getPromotionList/en-US/1/100');
+    const GetNewsList$ = this.http.get<NewsListObject>(this.apiArticleListPath + this.langCode + '/1/100');
+    const GetPromotionList$ = this.http.get<EventsListObject>(this.apiEventListPath + this.langCode + '/1/100');
 
     // forkJoin 會在所有 observable 都完成(complete)後，才會取得最終的結果，
     // 所以對於 Http Request 的整合，我們可以直接使用 forkJoin
@@ -98,12 +100,23 @@ export class NewsEventComponent implements OnInit, OnDestroy {
   }
 
   articleInit(tabName) {
+    this.checkNowPage(tabName);
     const tabNameObject = {
       news: this.newsList,
       events: this.eventsList
     };
     this.nowArrayList = tabNameObject[tabName];
+    if (this.isNewsListPage === false) { return; }
     this.pagination(this.nowArrayList, 1);
+  }
+
+  checkNowPage(tabName) {
+    const isNewsListPage = tabName === 'news';
+    const isEventsListPage = tabName === 'events';
+    const isNewsContentPage = tabName === null;
+    if (isNewsContentPage) { return this.isNewsListPage = false; }
+    if (isNewsListPage) { return this.isNewsListPage = true; }
+    if (isEventsListPage) { return this.isNewsListPage = true; }
   }
 
 
