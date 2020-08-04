@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LanguageService } from 'src/app/service/language/language.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { CallApiService } from 'src/app/service/callAPI/call-api.service';
 import { Observable, combineLatest, forkJoin } from 'rxjs';
@@ -50,19 +50,14 @@ export class NewsEventComponent implements OnInit, OnDestroy {
     public callApiService: CallApiService,
     private route: ActivatedRoute,
     private http: HttpClient,
+    private router: Router,
   ) {
   }
 
   ngOnInit(): void {
 
-    this.route.queryParamMap
-      .pipe(map(params => params.get('tab')))
-      .subscribe(
-        (res) => {
-          this.tab = res;
-          this.checkNowPage(this.tab);
-        }
-      );
+
+    this.getRoutTabName();
 
     const GetNewsList$ = this.http.get<NewsListObject>(this.apiArticleListPath + this.langCode + '/1/100');
     const GetPromotionList$ = this.http.get<EventsListObject>(this.apiEventListPath + this.langCode + '/1/100');
@@ -87,6 +82,21 @@ export class NewsEventComponent implements OnInit, OnDestroy {
       }
     });
 
+    this.router.events.subscribe(
+      (e) => {
+        if (e instanceof NavigationStart) {
+          // console.log('e ======================> ', e);
+          // console.log('e.url ======================> ', e.url);
+          // console.log('Router Change');
+          const isTabName = (e.url.split('='))[1];
+          // console.log('isTabName:', isTabName);
+          // this.getRoutTabName();
+          this.checkNowPage(isTabName);
+          this.articleInit(isTabName);
+        }
+      }
+    );
+
   }
 
   ngOnDestroy(): void {
@@ -99,7 +109,18 @@ export class NewsEventComponent implements OnInit, OnDestroy {
     this.articleInit(tabName);
   }
 
+  getRoutTabName() {
+    this.route.queryParamMap
+      .pipe(map(params => params.get('tab')))
+      .subscribe(
+        (res) => {
+          this.tab = res;
+        }
+      );
+  }
+
   articleInit(tabName) {
+    console.log('tabName:', tabName);
     this.checkNowPage(tabName);
     const tabNameObject = {
       news: this.newsList,
